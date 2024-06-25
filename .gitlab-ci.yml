@@ -1,0 +1,21 @@
+include:
+  - https://gitlab.thewitslab.com/api/v4/projects/416/repository/files/nextjs.yml/raw?ref=main&private_token=$Boilerplate_Pipeline&.yaml
+
+deploy:client-server:
+  after_script:
+    - Path=$(pwd)
+    - cd /home/ubuntu/script && ./env_script.sh prod miningauction-next-frontend-prod $VAULT_TOKEN  && cd $Path
+    - mv /home/ubuntu/script/.env $Path && cd $Path 
+    -  |
+          sshpass -p $MINI_PROD_SERVER_PASSWORD ssh -tt $Default_Username@$MINI_PROD_HOST " 
+            if [[ -d /home/ubuntu/PROD/miningauction-next-frontend ]];then
+               sudo rm -rf /home/ubuntu/PROD/miningauction-next-frontend
+            fi "
+    - sshpass -p $MINI_PROD_SERVER_PASSWORD ssh -tt $Default_Username@$MINI_PROD_HOST "cd /home/ubuntu/PROD && git clone https://user:$GITLAB_ACCESS_TOKEN@gitlab.thewitslab.com/wil-workspace/WIL-Miningauction-Marketplace/miningauction-next-frontend.git "
+    - sshpass -p $MINI_PROD_SERVER_PASSWORD scp .env $Default_Username@$MINI_PROD_HOST:/home/ubuntu/PROD/miningauction-next-frontend
+    - echo "scp complete"
+    - sshpass -p $MINI_PROD_SERVER_PASSWORD ssh $Default_Username@$MINI_PROD_HOST " cd ./PROD/miningauction-next-frontend && npm i -f && npm run build " 
+    - sshpass -p $MINI_PROD_SERVER_PASSWORD ssh $Default_Username@$MINI_PROD_HOST "sudo -kS <<< $MINI_PROD_SERVER_PASSWORD sudo nginx -t && sudo nginx -s reload"
+    - echo "Hosted URL https://basicmining.com/"
+
+
