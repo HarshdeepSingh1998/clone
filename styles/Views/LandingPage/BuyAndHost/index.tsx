@@ -131,13 +131,11 @@ export const BuyAndHostCard = styled.div`
   justify-content: space-evenly;
 
   @media (max-width: 767px) {
-    border: 2px solid #813627;
     border-radius: 50%;
     padding: 18px;
     max-width: 500px;
   }
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
-    border: 2px solid #813627;
     border-radius: 50%;
     padding: 18px;
     width: unset;
