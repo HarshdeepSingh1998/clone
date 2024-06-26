@@ -2,6 +2,8 @@ import { MinerHostingDataType } from 'utils/LandingPageContent/MinerHosting/type
 import Lovely from '@/assets/images/svg/Lovely'
 import Crown from '@/assets/images/svg/Crown'
 import Mining from '@/assets/images/svg/Mining'
+import Close from '@/assets/images/svg/Close'
+import Tick from '@/assets/images/svg/Tick'
 
 export const minerHostingData: MinerHostingDataType[] = [
   {
@@ -12,13 +14,31 @@ export const minerHostingData: MinerHostingDataType[] = [
     unit: '/KWH',
     membership: 'Plus membership fee',
     list: [
-      'Precision Billing',
-      '95% Uptime',
-      'Pay with AutoPay or Crypto',
-      'Aftermarket Firmware Support',
-      'Choose Your Pool',
-      '1 Year Warranty',
-      'Priority Deployment'
+      { icon: Tick, text: 'Precision Billing' },
+      {
+        icon: Tick,
+        text: '95% Uptime'
+      },
+      {
+        icon: Tick,
+        text: 'Pay with AutoPay or Crypto'
+      },
+      {
+        icon: Tick,
+        text: 'Aftermarket Firmware Support'
+      },
+      {
+        icon: Tick,
+        text: 'Choose Your Pool'
+      },
+      {
+        icon: Close,
+        text: '1 Year Warranty'
+      },
+      {
+        icon: Close,
+        text: 'Priority Deployment'
+      }
     ],
     buttonText: 'Request Quote'
   },
@@ -29,14 +49,33 @@ export const minerHostingData: MinerHostingDataType[] = [
     rate: '$0.065',
     unit: '/KWH',
     membership: 'Plus membership fee',
+
     list: [
-      'Precision Billing',
-      '95% Uptime',
-      'Pay with AutoPay or Crypto',
-      'Aftermarket Firmware Support',
-      'Choose Your Pool',
-      '1 Year Warranty',
-      'Priority Deployment'
+      { icon: Tick, text: 'Precision Billing' },
+      {
+        icon: Tick,
+        text: '95% Uptime'
+      },
+      {
+        icon: Tick,
+        text: 'Pay with AutoPay or Crypto'
+      },
+      {
+        icon: Tick,
+        text: 'Aftermarket Firmware Support'
+      },
+      {
+        icon: Tick,
+        text: 'Choose Your Pool'
+      },
+      {
+        icon: Tick,
+        text: '1 Year Warranty'
+      },
+      {
+        icon: Tick,
+        text: 'Priority Deployment'
+      }
     ],
     buttonText: 'Shop Miners'
   },
@@ -48,13 +87,31 @@ export const minerHostingData: MinerHostingDataType[] = [
     unit: '',
     membership: 'Custom',
     list: [
-      'Precision Billing',
-      '95% Uptime',
-      'Pay with AutoPay or Crypto',
-      'Aftermarket Firmware Support',
-      'Choose Your Pool',
-      '1 Year Warranty',
-      'Priority Deployment'
+      { icon: Tick, text: 'Precision Billing' },
+      {
+        icon: Tick,
+        text: '95% Uptime'
+      },
+      {
+        icon: Tick,
+        text: 'Pay with AutoPay or Crypto'
+      },
+      {
+        icon: Tick,
+        text: 'Aftermarket Firmware Support'
+      },
+      {
+        icon: Tick,
+        text: 'Choose Your Pool'
+      },
+      {
+        icon: Close,
+        text: '1 Year Warranty'
+      },
+      {
+        icon: Close,
+        text: 'Priority Deployment'
+      }
     ],
     buttonText: 'Contact Us'
   }

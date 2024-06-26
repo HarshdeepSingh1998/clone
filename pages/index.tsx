@@ -10,11 +10,11 @@ import { membershipData } from '@/utils/LandingPageContent/Membership'
 import Layout from '@/components/Layout'
 import BannerView from 'views/LandingPage/BannerView'
 import ServiceView from '@/views/LandingPage/ServiceView'
-import BuyAndHostView from 'views/LandingPage/BuyAndHost'
+import BuyAndHostView from '@/views/LandingPage/BuyAndHostView'
 import FeatureView from '@/views/LandingPage/FeatureView'
+import MinerHostingView from '@/views/LandingPage/MinerHostingView'
 import MiningAccount from '@/views/LandingPage/MiningAccount'
 import SellerSection from '@/views/LandingPage/SellerSection'
-import MinerHostingSection from '@/views/LandingPage/MinerHostingSection'
 import FaqSection from '@/views/LandingPage/FaqSection'
 import ShopRigsSection from '@/views/LandingPage/ShopRigs'
 
@@ -45,6 +45,9 @@ const Home = () => {
       <ServiceView serviceData={serviceData} />
       <BuyAndHostView buyAndHostData={buyAndHostData} />
       <FeatureView featuresData={featuresData} />
+      <div ref={minerHostingRef}>
+        <MinerHostingView minerHostingData={minerHostingData} />
+      </div>
       {/* <FAQSection faqData={faqData}/>
       <ServiceSection serviceData={serviceData} />
       <ShopRigsSection shopRigData={shopRigData} />

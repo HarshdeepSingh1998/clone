@@ -5,6 +5,9 @@ export interface MinerHostingDataType {
   rate: string
   unit: string
   membership: string
-  list: string[]
+  list: {
+    icon: () => JSX.Element
+    text: string
+  }[]
   buttonText: string
 }
