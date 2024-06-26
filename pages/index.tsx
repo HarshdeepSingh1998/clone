@@ -8,8 +8,9 @@ import { minerSellerData } from '@/utils/LandingPageContent/MinerSeller'
 import { faqData } from '@/utils/LandingPageContent/Faq'
 import { membershipData } from '@/utils/LandingPageContent/Membership'
 import Layout from '@/components/Layout'
-import BannerSection from 'views/LandingPage/BannerSection/index'
-import ServiceSection from '@/views/LandingPage/ServiceSection'
+import BannerView from 'views/LandingPage/BannerView'
+import ServiceView from '@/views/LandingPage/ServiceView'
+import BuyAndHostView from 'views/LandingPage/BuyAndHost'
 import MiningAccount from '@/views/LandingPage/MiningAccount'
 import WhyUsSection from '@/views/LandingPage/WhyUsSection'
 import SellerSection from '@/views/LandingPage/SellerSection'
@@ -40,9 +41,13 @@ const Home = () => {
         #000513 53.58%
       );"
     >
-      <div>Hi</div>
-      {/* <BannerSection onSeePricingClick={scrollToMinerHosting} />
-      <FAQSection faqData={faqData}/>
+      <BannerView
+        onSeePricingClick={scrollToMinerHosting}
+        bannerData={bannerData}
+      />
+      <ServiceView serviceData={serviceData} />
+      <BuyAndHostView buyAndHostData={buyAndHostData} />
+      {/* <FAQSection faqData={faqData}/>
       <ServiceSection serviceData={serviceData} />
       <ShopRigsSection shopRigData={shopRigData} />
       <PlaceBidSection placeBidData={placeBidData} />
