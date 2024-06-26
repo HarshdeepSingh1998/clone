@@ -11,8 +11,8 @@ import Layout from '@/components/Layout'
 import BannerView from 'views/LandingPage/BannerView'
 import ServiceView from '@/views/LandingPage/ServiceView'
 import BuyAndHostView from 'views/LandingPage/BuyAndHost'
+import FeatureView from '@/views/LandingPage/FeatureView'
 import MiningAccount from '@/views/LandingPage/MiningAccount'
-import WhyUsSection from '@/views/LandingPage/WhyUsSection'
 import SellerSection from '@/views/LandingPage/SellerSection'
 import MinerHostingSection from '@/views/LandingPage/MinerHostingSection'
 import FaqSection from '@/views/LandingPage/FaqSection'
@@ -44,6 +44,7 @@ const Home = () => {
       />
       <ServiceView serviceData={serviceData} />
       <BuyAndHostView buyAndHostData={buyAndHostData} />
+      <FeatureView featuresData={featuresData} />
       {/* <FAQSection faqData={faqData}/>
       <ServiceSection serviceData={serviceData} />
       <ShopRigsSection shopRigData={shopRigData} />
