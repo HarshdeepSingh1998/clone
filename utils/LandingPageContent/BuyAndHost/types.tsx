@@ -1,11 +1,13 @@
 import { StaticImageData } from 'next/image'
 
 export interface BuyAndHostDataType {
-  usd: string
   image: StaticImageData
   title: string
-  rate: string
+  rate: number
   location: string
   price: string
-  buttonText: string
+  serialNumber: string
+  lotId: string | null
+  quantity: number
+  transaction: boolean
 }

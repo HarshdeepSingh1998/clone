@@ -8,8 +8,9 @@ import { minerSellerData } from '@/utils/LandingPageContent/MinerSeller'
 import { faqData } from '@/utils/LandingPageContent/Faq'
 import { membershipData } from '@/utils/LandingPageContent/Membership'
 import Layout from '@/components/Layout'
-import BannerSection from 'views/LandingPage/BannerSection/index'
-import ServiceSection from '@/views/LandingPage/ServiceSection'
+import BannerView from 'views/LandingPage/BannerView'
+import ServiceView from '@/views/LandingPage/ServiceView'
+import BuyAndHostView from 'views/LandingPage/BuyAndHost'
 import MiningAccount from '@/views/LandingPage/MiningAccount'
 import WhyUsSection from '@/views/LandingPage/WhyUsSection'
 import SellerSection from '@/views/LandingPage/SellerSection'
@@ -20,9 +21,6 @@ import ShopRigsSection from '@/views/LandingPage/ShopRigs'
 const Home = () => {
   const minerHostingRef = useRef<HTMLDivElement>(null)
 
-  /**
-   * @description This method is to scroll to the pricing section in the home page
-   */
   const scrollToMinerHosting = () => {
     if (minerHostingRef.current) {
       minerHostingRef.current.scrollIntoView({
@@ -40,9 +38,13 @@ const Home = () => {
         #000513 53.58%
       );"
     >
-      <div>Hi</div>
-      {/* <BannerSection onSeePricingClick={scrollToMinerHosting} />
-      <FAQSection faqData={faqData}/>
+      <BannerView
+        onSeePricingClick={scrollToMinerHosting}
+        bannerData={bannerData}
+      />
+      <ServiceView serviceData={serviceData} />
+      <BuyAndHostView buyAndHostData={buyAndHostData} />
+      {/* <FAQSection faqData={faqData}/>
       <ServiceSection serviceData={serviceData} />
       <ShopRigsSection shopRigData={shopRigData} />
       <PlaceBidSection placeBidData={placeBidData} />
@@ -50,7 +52,6 @@ const Home = () => {
       <div ref={minerHostingRef}>
         <MinerHostingSection miningHostData={miningHostData} />
       </div>
-
       <SellerSection />
       <FaqSection faqData={faqDataHomePage} />
       <FAQSection faqData={accordionData} />
