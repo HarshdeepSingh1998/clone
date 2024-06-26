@@ -52,7 +52,6 @@ const Home = () => {
       <div ref={minerHostingRef}>
         <MinerHostingSection miningHostData={miningHostData} />
       </div>
-
       <SellerSection />
       <FaqSection faqData={faqDataHomePage} />
       <FAQSection faqData={accordionData} />
