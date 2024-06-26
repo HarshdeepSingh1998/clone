@@ -21,9 +21,6 @@ import ShopRigsSection from '@/views/LandingPage/ShopRigs'
 const Home = () => {
   const minerHostingRef = useRef<HTMLDivElement>(null)
 
-  /**
-   * @description This method is to scroll to the pricing section in the home page
-   */
   const scrollToMinerHosting = () => {
     if (minerHostingRef.current) {
       minerHostingRef.current.scrollIntoView({
