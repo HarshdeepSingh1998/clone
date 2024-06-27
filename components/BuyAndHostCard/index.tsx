@@ -65,7 +65,6 @@ const BuyAndHostCardComponent: React.FC<BuyAndHostCardProps> = ({
             {data?.quantity ? `QTY: ${data?.quantity}` : ``}
           </span>
         </BuyAndHostPriceContainer>
-        {/* {!data?.price ? 'NA' : `$ ${data?.price}`} */}
       </BuyAndHostTextContainer>
 
       <BuyAndHostButtonContainer>

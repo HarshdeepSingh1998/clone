@@ -10,14 +10,22 @@ export const CustomStepConnector = styled(StepConnector)(() => ({
     marginLeft: '23px',
     '&:nth-child(4)': {
       span: {
-        borderLeftStyle: 'dashed'
+        borderLeftStyle: 'dashed',
+        borderLeftWidth: '3px'
       }
+    },
+    '&:nth-child(2)': {
+      span: {
+        borderLeftStyle: 'solid',
+        borderLeftWidth: '3px',
+        borderColor: 'rgb(251, 103, 75) !important'
+      }
+    },
+    '&.Mui-disabled': {
+      opacity: '1 !important', // Override the default opacity
+      padding: '0',
+      marginRight: '20px'
     }
-  },
-  '& .MuiStepConnector-line': {
-    borderColor: '#eaeaf0',
-    borderTopWidth: 3,
-    borderRadius: 1
   }
 }))
 
