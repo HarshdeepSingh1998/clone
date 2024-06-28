@@ -75,8 +75,6 @@ export const BuyAndHostCardContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  // padding-bottom: 5%;
-  // flex-wrap: wrap;
 
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     height: 700px;
@@ -110,73 +108,36 @@ export const BuyAndHostCardContainer = styled.div`
 
   @media (max-width: 767px) {
     height: unset;
-    padding-bottom: 25vw;
+
     width: 100%;
     &::before {
       display: none;
     }
   }
-  @media only screen and (min-width: 768px) and (max-width: 1224px) {
-    // height: unset;
-    // &::before {
-    //   display: none;
-    // }
-  }
 `
 export const BuyAndHostCard = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: -webkit-center;
   width: 100%;
-  justify-content: space-evenly;
 
   @media (max-width: 767px) {
     border-radius: 50%;
     padding: 18px;
     max-width: 500px;
+
+    .css-1f8sh1y {
+      height: 470px !important;
+    }
   }
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     border-radius: 50%;
     padding: 18px;
-    width: unset;
+
+    .css-1f8sh1y {
+      height: 437px !important;
+    }
   }
 `
-export const BuyAndHostCardLeftArrow = styled.div`
-  display: flex;
-  width: 111px;
-  height: 111px;
-  padding: 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
 
-  position: absolute;
-  left: -7%;
-  border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, 0.11);
-
-  cursor: pointer;
-
-  &:hover {
-    background: linear-gradient(180deg, #020615 0%, #17182e 100%);
-  }
-  @media (max-width: 767px) {
-    left: 33%;
-    top: 86%;
-    width: 62px;
-    height: 62px;
-  }
-  @media only screen and (min-width: 768px) and (max-width: 1224px) {
-    left: 4%;
-    width: 62px;
-    height: 62px;
-  }
-  /* @media (max-width: 1200px) {
-    left: 9%;
-    width: 62px;
-    height: 62px;
-  } */
-`
 export const BuyAndHostMainContainer = styled.div`
   width: 580px;
   height: 580px;
@@ -191,41 +152,11 @@ export const BuyAndHostMainContainer = styled.div`
 
   @media (max-width: 767px) {
     height: 470px;
+    width: unset;
   }
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     width: 445px;
     height: 437px;
     flex-direction: unset;
-  }
-`
-export const BuyAndHostCardRightArrow = styled.div`
-  display: flex;
-  width: 111px;
-  height: 111px;
-  padding: 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  position: absolute;
-  /* left: -7%; */
-  left: 96.7%;
-  /* left: -7%; */
-  left: 96.7%;
-  border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  cursor: pointer;
-  &:hover {
-    background: linear-gradient(180deg, #020615 0%, #17182e 100%);
-  }
-  @media (max-width: 767px) {
-    left: 56%;
-    top: 86%;
-    width: 62px;
-    height: 62px;
-  }
-  @media only screen and (min-width: 768px) and (max-width: 1224px) {
-    left: 88.7%;
-    width: 62px;
-    height: 62px;
   }
 `

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Carousel from 'react-material-ui-carousel'
 import Image from 'next/image'
 import useGet from '@/hooks/useGet'
 import { BuyAndHostDataType } from '@/utils/LandingPageContent/BuyAndHost/types'
@@ -11,9 +12,7 @@ import {
   BuyAndHostHeadingContainer,
   BuyAndHostCard,
   BuyAndHostHeading,
-  BuyAndHostCardLeftArrow,
-  BuyAndHostMainContainer,
-  BuyAndHostCardRightArrow
+  BuyAndHostMainContainer
 } from 'styles/Views/LandingPage/BuyAndHost'
 
 interface BuyAndHostData {
@@ -87,27 +86,28 @@ const BuyAndHostView: React.FC<BuyAndHostData> = ({ buyAndHostData }) => {
         </BuyAndHostHeading>
       </BuyAndHostHeadingContainer>
       <BuyAndHostCardContainer>
-        <BuyAndHostCard>
-          <BuyAndHostCardLeftArrow onClick={handlePrev}>
-            {' '}
-            <Image src={ArrowLeft} alt="arrow left" />
-          </BuyAndHostCardLeftArrow>
-          <BuyAndHostMainContainer>
-            {(productList || buyAndHostData)?.length > 0 &&
-              (productList || buyAndHostData)?.map((data, i) => (
-                <BuyAndHostCardComponent
-                  key={i}
-                  i={i}
-                  activeIndex={activeIndex}
-                  data={data}
-                  length={(productList || buyAndHostData)?.length}
-                />
-              ))}
-          </BuyAndHostMainContainer>
-          <BuyAndHostCardRightArrow onClick={handleNext}>
-            {' '}
-            <Image src={ArrowRight} alt="arrow right" />
-          </BuyAndHostCardRightArrow>
+        <BuyAndHostCard className="buy-host-card">
+          <Carousel
+            navButtonsAlwaysVisible={true}
+            NextIcon={<Image src={ArrowRight} alt="arrow right" />}
+            PrevIcon={<Image src={ArrowLeft} alt="arrow left" />}
+            next={handleNext}
+            prev={handlePrev}
+            autoPlay={false}
+          >
+            <BuyAndHostMainContainer>
+              {(productList || buyAndHostData)?.length > 0 &&
+                (productList || buyAndHostData)?.map((data, i) => (
+                  <BuyAndHostCardComponent
+                    key={i}
+                    i={i}
+                    activeIndex={activeIndex}
+                    data={data}
+                    length={(productList || buyAndHostData)?.length}
+                  />
+                ))}
+            </BuyAndHostMainContainer>
+          </Carousel>
         </BuyAndHostCard>
       </BuyAndHostCardContainer>
     </BuyAndHostContainer>

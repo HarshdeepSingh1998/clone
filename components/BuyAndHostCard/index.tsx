@@ -25,15 +25,7 @@ const BuyAndHostCardComponent: React.FC<BuyAndHostCardProps> = ({
   const initialClass = useInitialClass(i, length, activeIndex)
 
   return (
-    <BuyAndHostContent
-      key={i}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-      className={initialClass}
-    >
+    <BuyAndHostContent key={i} className={initialClass}>
       <BuyAndHostImage>
         <Image
           src={!data?.image ? NavImg : data?.image}
@@ -68,7 +60,6 @@ const BuyAndHostCardComponent: React.FC<BuyAndHostCardProps> = ({
       </BuyAndHostTextContainer>
 
       <BuyAndHostButtonContainer>
-        {' '}
         <Button
           type="submit"
           variant="contained"

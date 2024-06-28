@@ -2,35 +2,39 @@ import styled from 'styled-components'
 
 export const BuyAndHostContent = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
-  transition: transform 0.5s ease; // Add transition property for slide effect
+  transition: transform 0.5s ease;
 
   width: 490px;
   position: absolute;
+  z-index: 1;
   display: flex;
-  /* left: 50%; */
-  top: 10px;
-  left: 52px;
   &.active {
-    transform: translateX(0); // Display the active card
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
     z-index: 1;
   }
 
   &.prev {
-    transform: translateX(-100%); // Slide to the left for the previous card
+    transform: translate(-100%, -50%);
     z-index: -1;
   }
 
   &.next {
-    transform: translateX(100%); // Slide to the right for the next card
+    transform: translate(100%, -50%);
+    top: 50%;
+    left: 50%;
     z-index: -1;
   }
 
   &.nonactive {
-    transform: translateX(-200%); // Move them off-screen
-    z-index: -2; // Set a lower z-index
+    transform: translate(-200%, -50%);
+    z-index: -2;
   }
 
   &::before,
@@ -43,18 +47,12 @@ export const BuyAndHostContent = styled.div`
     margin-left: 8px; /* Create the gap after the card */
   }
   @media (max-width: 767px) {
-    //   left: 90px;
     width: 70%;
-    // max-width: 500px;
   }
-  // @media only screen and (min-width: 430px) and (max-width: 767px) {
-  //   max-width: 500px;
-  //   // width: 80%;
-  // }
+
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     gap: 0px;
     width: 350px;
-    top: 25px;
   }
 `
 export const BuyAndHostImage = styled.div`
@@ -102,7 +100,6 @@ export const BuyAndHostTextContainer = styled.div`
 `
 export const BuyAndHostTitle = styled.div`
   display: flex;
-  // width: 399px;
   flex-direction: column;
   align-items: center;
   gap: 20px;
