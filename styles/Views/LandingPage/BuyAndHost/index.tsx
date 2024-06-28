@@ -119,6 +119,10 @@ export const BuyAndHostCard = styled.div`
   text-align: -webkit-center;
   width: 100%;
 
+  .css-1f8sh1y {
+    height: 580px !important;
+  }
+
   @media (max-width: 767px) {
     border-radius: 50%;
     padding: 18px;
