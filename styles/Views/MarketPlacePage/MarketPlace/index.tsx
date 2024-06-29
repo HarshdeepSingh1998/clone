@@ -23,3 +23,24 @@ export const MarketPlaceContainer = styled.div`
     gap: 32px;
   }
 `
+export const CardContainer = styled.div`
+  width: 90%;
+  margin: auto;
+  // display: flex;
+  gap: 10px;
+  justify-content: center;
+  max-width: 1100px;
+  z-index: 2;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1224px) {
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 1225px) {
+    flex-wrap: wrap;
+  }
+`

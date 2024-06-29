@@ -1,4 +1,8 @@
+import { faqData } from '@/utils/LandingPageContent/Faq'
+import { membershipData } from '@/utils/LandingPageContent/Membership'
 import Layout from '@/components/Layout'
+import FaqView from '@/views/LandingPage/FaqView'
+import MembershipView from '@/views/LandingPage/MembershipView'
 import HeaderView from '@/views/MarketPlacePage/HeaderView'
 import MarketPlaceView from '@/views/MarketPlacePage/MarketPlaceView'
 
@@ -13,6 +17,8 @@ const MarketplacePage = () => {
     >
       <HeaderView />
       <MarketPlaceView />
+      <FaqView faqData={faqData} />
+      <MembershipView membershipData={membershipData} />
     </Layout>
   )
 }
