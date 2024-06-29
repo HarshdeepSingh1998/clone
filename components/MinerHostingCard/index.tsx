@@ -66,26 +66,14 @@ const MinerHostingCardComponent: React.FC<MinerHostingCardProps> = ({
         ))}
       </FeatureSection>
       <ButtonSection>
-        {' '}
-        {active === i ? (
-          <Button
-            type="submit"
-            variant="contained"
-            label={data?.buttonText}
-            onClick={() => {
-              handleButtonClick(data?.buttonText)
-            }}
-          />
-        ) : (
-          <Button
-            type="submit"
-            variant="outline"
-            label={data?.buttonText}
-            onClick={() => {
-              handleButtonClick(data?.buttonText)
-            }}
-          />
-        )}
+        <Button
+          type="submit"
+          variant={active === i ? 'contained' : 'outline'}
+          label={data?.buttonText}
+          onClick={() => {
+            handleButtonClick(data?.buttonText)
+          }}
+        />
       </ButtonSection>
     </MinerHostingCard>
   )

@@ -35,7 +35,7 @@ const Accordian: React.FC<AccordianProps> = ({
       </FaqAccordianHeading>
       {i === id && (
         <FaqAccordianContent>
-          {faqData?.content?.heading ? (
+          {faqData?.content?.heading && (
             <>
               <FaqAccordianContent>
                 {faqData?.content?.heading}
@@ -49,8 +49,6 @@ const Accordian: React.FC<AccordianProps> = ({
                 ))}
               </ul>
             </>
-          ) : (
-            faqData?.content?.heading
           )}
         </FaqAccordianContent>
       )}

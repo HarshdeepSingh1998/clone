@@ -47,7 +47,7 @@ export const StoryDescription = styled.div<{
 }>`
   display: flex;
   flex-direction: column;
-  color: rgb(100, 113, 140);
+  color: ${({ index }) => (index === 2 ? 'rgb(251, 103, 75)' : 'rgb(100, 113, 140)')};
   align-items: flex-start;
   font-feature-settings:
     'clig' 0,
@@ -64,7 +64,7 @@ export const StoryDescription = styled.div<{
   align-items: ${({ index }) => (index === 1 ? 'end' : '')};
   gap: 16px;
   span {
-    color: var(--Neutral-20, #f1f4f9);
+    color:  var(--Neutral-20, #f1f4f9);
     text-align: left;
     font-feature-settings:
       'clig' 0,
