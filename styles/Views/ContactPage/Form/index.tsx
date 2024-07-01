@@ -59,6 +59,10 @@ export const FormContent = styled.div`
   padding: 5vw 0;
   @media (max-width: 767px) {
     width: 93%;
+    padding: 25vw 0 2vh 0;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1224px) {
+    padding: 10vw 0 28px 0;
   }
 `
 export const TitleContainer = styled.div`
@@ -94,7 +98,7 @@ export const ContactFormContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 45px;
+  gap: 20px;
   padding: 28px 24px;
   width: 100%;
   background: linear-gradient(#030616, #14162a, #1b202b, #1b202b);
@@ -108,39 +112,26 @@ export const ContactFormContainer = styled.div`
     font-size: 38px;
   }
 `
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 12px;
-  @media screen and (max-width: 1366px) {
-    gap: 5px;
-  }
-`
-export const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+
+export const LowerFanContainer = styled.div`
   position: relative;
-  input {
-    width: 100%;
-    border: 1px solid #323a4b;
-    background: #ffffff14;
-    color: #ffffff;
-    padding-left: 40px;
-    ::placeholder {
-      color: #64718c;
-    }
-  }
   svg {
     position: absolute;
-    top: 15px;
-    left: 12px;
+    right: 0;
+    top: 10%;
   }
-  span {
+  @media (max-width: 767px) {
     svg {
-      position: absolute;
-      top: 10px;
-      left: 12px;
+      width: unset;
+      top: 268px;
+      left: -140px;
+    }
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1224px) {
+    svg {
+      width: unset;
+      top: 151px;
+      left: -187px;
     }
   }
 `

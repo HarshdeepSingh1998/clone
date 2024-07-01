@@ -7,6 +7,7 @@ export const CONTACT_VALIDATION_SCHEMA = Yup.object().shape({
     .trim()
     .required('Email is mandatory.')
     .matches(emailRegex, 'Please enter a valid email.'),
+  company: Yup.string().trim().required('Company is mandatory.'),
   subject: Yup.string().trim().required('Subject is mandatory.'),
   message: Yup.string().trim().required('Message is mandatory.')
 })

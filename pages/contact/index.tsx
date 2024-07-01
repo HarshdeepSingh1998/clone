@@ -1,5 +1,9 @@
-import FormView from '@/views/ContactPage/FormView'
+import { faqData } from '@/utils/LandingPageContent/Faq'
+import { membershipData } from '@/utils/LandingPageContent/Membership'
 import Layout from '@/components/Layout'
+import FormView from '@/views/ContactPage/FormView'
+import FaqView from '@/views/LandingPage/FaqView'
+import MembershipView from '@/views/LandingPage/MembershipView'
 
 const Contact = () => {
   return (
@@ -11,8 +15,8 @@ const Contact = () => {
       );"
     >
       <FormView />
-      {/* <FaqSection faqData={faqDataHomePage}></FaqSection>
-      <MiningAccount /> */}
+      <FaqView faqData={faqData} />
+      <MembershipView membershipData={membershipData} />
     </Layout>
   )
 }

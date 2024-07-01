@@ -1,7 +1,12 @@
+import { useState } from 'react'
+import { toast } from 'react-toastify'
 import Image from 'next/image'
+import usePost from '@/hooks/usePost'
 import { useContactForm } from '@/utils/Customhooks/useContactForm'
-import Input from '@/components/Input'
+import { formData } from '@/utils/ContactPageContent/Form'
+import Form from 'components/Form'
 import FanAnimation from '@/components/FanAnimation'
+import GetInTouch from 'views/ContactPage/FormView/GetInTouch'
 import Contact from 'assets/images/images/contact.png'
 import {
   FormContainer,
@@ -9,10 +14,8 @@ import {
   FormContent,
   TitleContainer,
   ContactFormContainer,
-  Form,
-  InputContainer
+  LowerFanContainer
 } from '@/styles/Views/ContactPage/Form'
-import { formData } from '@/utils/ContactPageContent/Form'
 
 const FormView = () => {
   const {
@@ -21,9 +24,36 @@ const FormView = () => {
     control,
     formState: { errors }
   } = useContactForm()
+  const [disable, setDisable] = useState<boolean>(false)
+  const { mutateAsync } = usePost()
+  const onSubmit = async (values: any): Promise<void> => {
+    setDisable(true)
+    const payload = { ...values, email: values.email.toLowerCase() }
 
-  const onSubmit = async (values: any) => {
-    console.log(values)
+    try {
+      const response = await mutateAsync({
+        url: '/api/contactUs',
+        payload: payload
+      })
+      if (response?.data.status === 200) {
+        reset()
+        toast.success(`${response?.data?.message}`)
+        setDisable(false)
+      }
+    } catch (error: any) {
+      const messages = error?.response?.data?.message
+      if (typeof messages === 'object' && messages !== null) {
+        for (const key in messages) {
+          if (Object.prototype.hasOwnProperty.call(messages, key)) {
+            toast.error(`${key} error : ${messages[key]?.message}`)
+          }
+        }
+      } else {
+        toast.error('An error occurred.')
+      }
+
+      setDisable(false)
+    }
   }
 
   return (
@@ -37,27 +67,20 @@ const FormView = () => {
           <Image src={Contact} alt={'Contact'} />
         </TitleContainer>
         <ContactFormContainer>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <InputContainer>
-              {formData.map((data, i) => (
-                <Input
-                  key={i}
-                  title={data.title}
-                  controllername={data.controllername}
-                  control={control}
-                  defaultValue={data.defaultValue}
-                  placeholder={data.placeholder}
-                  type={data.type}
-                  maxLength={data.maxLength}
-                  maxwidth={data.maxwidth}
-                  border={data.border}
-                  errors={errors}
-                />
-              ))}
-            </InputContainer>
-          </Form>
+          <Form
+            handleSubmit={handleSubmit}
+            formData={formData}
+            control={control}
+            errors={errors}
+            onSubmit={onSubmit}
+            disable={disable}
+          />
+          <GetInTouch />
         </ContactFormContainer>
       </FormContent>
+      <LowerFanContainer>
+        <FanAnimation />
+      </LowerFanContainer>
     </FormContainer>
   )
 }
