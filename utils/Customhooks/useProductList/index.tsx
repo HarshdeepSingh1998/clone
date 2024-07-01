@@ -27,7 +27,8 @@ const useProductList = () => {
     hosting,
     setHosting,
     productList,
-    setProductList
+    setProductList,
+    data
   }
 }
 

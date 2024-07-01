@@ -6,7 +6,7 @@ export const MarketPlaceContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   height: auto;
-  padding: 0px 0 26px 0;
+  padding: 0 0 5vw 0;
   width: 100%;
   text-align: center;
   font-family: Ubuntu;

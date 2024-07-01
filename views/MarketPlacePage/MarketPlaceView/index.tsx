@@ -9,10 +9,11 @@ import {
   MarketPlaceContainer
 } from '@/styles/Views/MarketPlacePage/MarketPlace'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
+import CircularLoader from '@/components/CircularLoader'
 
 const MarketPlaceView = () => {
   const { screenType } = useScreenType()
-  const { setHosting, productList, setProductList } = useProductList()
+  const { setHosting, productList, setProductList, data } = useProductList()
   const slidesToShow =
     screenType === 'mobile'
       ? 1
@@ -23,24 +24,29 @@ const MarketPlaceView = () => {
   return (
     <MarketPlaceContainer>
       <Button setHosting={setHosting} setProductList={setProductList} />
-      {(productList || [])?.length === 0 && (
-        <NoProductFound
-          className="admin-marketplace"
-          heading="No Products In Marketplace."
-          text=""
-        />
+      {!data ? (
+        <CircularLoader minHeight="194px" />
+      ) : (
+        (productList || [])?.length === 0 && (
+          <NoProductFound
+            className="admin-marketplace"
+            heading="No Products In Marketplace."
+            text=""
+          />
+        )
       )}
-      <CardContainer>
-        <SliderComponent
-          slidesToShow={slidesToShow}
-          dataLength={(productList || [])?.length}
-        >
-          {(productList || [])?.length > 0 &&
-            (productList || [])?.map((data: ProductList, i: number) => (
+      {(productList || [])?.length > 0 && (
+        <CardContainer>
+          <SliderComponent
+            slidesToShow={slidesToShow}
+            dataLength={(productList || [])?.length}
+          >
+            {(productList || [])?.map((data: ProductList, i: number) => (
               <ProductCard data={data} i={i} key={i} />
             ))}
-        </SliderComponent>
-      </CardContainer>
+          </SliderComponent>
+        </CardContainer>
+      )}
     </MarketPlaceContainer>
   )
 }
