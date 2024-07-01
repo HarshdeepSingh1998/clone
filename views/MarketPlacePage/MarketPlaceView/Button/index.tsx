@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useState } from 'react'
+import { ProductList } from '@/utils/ApiTypes/ProductList'
 import {
   ButtonContainer,
   ButtonContent,
   Options
 } from '@/styles/Views/MarketPlacePage/MarketPlace/Button'
-import { ProductList } from '@/utils/ApiTypes/ProductList'
 
 interface ButtonProps {
   setHosting: Dispatch<SetStateAction<boolean>>

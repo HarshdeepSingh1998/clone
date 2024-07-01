@@ -2,9 +2,9 @@ import { useState } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import useScreenType from '@/utils/Customhooks/useScreenType'
 import { SliderProps } from 'components/Slider/types'
 import { SliderContainer } from '@/styles/Components/Slider'
-import useScreenType from '@/utils/Customhooks/useScreenType'
 
 const SliderComponent: React.FC<SliderProps> = ({
   slidesToShow,

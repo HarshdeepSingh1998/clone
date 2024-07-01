@@ -1,15 +1,15 @@
 import useProductList from '@/utils/Customhooks/useProductList'
 import useScreenType from '@/utils/Customhooks/useScreenType'
+import { ProductList } from '@/utils/ApiTypes/ProductList'
 import SliderComponent from '@/components/Slider'
 import NoProductFound from '@/components/NoProductFound'
 import ProductCard from '@/components/ProductCard'
+import CircularLoader from '@/components/CircularLoader'
 import Button from 'views/MarketPlacePage/MarketPlaceView/Button'
 import {
   CardContainer,
   MarketPlaceContainer
 } from '@/styles/Views/MarketPlacePage/MarketPlace'
-import { ProductList } from '@/utils/ApiTypes/ProductList'
-import CircularLoader from '@/components/CircularLoader'
 
 const MarketPlaceView = () => {
   const { screenType } = useScreenType()
