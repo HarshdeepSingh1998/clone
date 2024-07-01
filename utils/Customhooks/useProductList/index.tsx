@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 import useGet from '@/hooks/useGet'
+import { ProductList } from '@/utils/ApiTypes/ProductList'
 
 const useProductList = () => {
   const [hosting, setHosting] = useState(true)
-  const [productList, setProductList] = useState([])
+  const [productList, setProductList] = useState<undefined | ProductList[]>(
+    undefined
+  )
 
   const { data, refetch: fetchData } = useGet(
     `marketPlaceProductListHosting${hosting}`,

@@ -19,7 +19,6 @@ import {
 } from '@/styles/Components/ProductCard/Content'
 
 const Content: React.FC<ContentProps> = ({ data }) => {
-  console.log(data)
   return (
     <ContentContainer>
       <ImageContainer>

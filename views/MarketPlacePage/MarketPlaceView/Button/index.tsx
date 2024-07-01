@@ -4,10 +4,11 @@ import {
   ButtonContent,
   Options
 } from '@/styles/Views/MarketPlacePage/MarketPlace/Button'
+import { ProductList } from '@/utils/ApiTypes/ProductList'
 
 interface ButtonProps {
   setHosting: Dispatch<SetStateAction<boolean>>
-  setProductList: Dispatch<SetStateAction<never[]>>
+  setProductList: Dispatch<SetStateAction<ProductList[] | undefined>>
 }
 
 const Button = ({ setProductList, setHosting }: ButtonProps) => {

@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react'
 import { MinerHostingDataType } from '@/utils/LandingPageContent/MinerHosting/types'
 
 export interface MinerHostingCardProps {

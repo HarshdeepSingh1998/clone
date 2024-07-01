@@ -35,7 +35,7 @@ const MobileView: React.FC<IProps> = () => {
                 <Button
                   type="button"
                   label={navbarData.loginButtonText}
-                  padding={'15px 52px'}
+                  padding={'15px 52px !important'}
                 ></Button>
               </Link>
             </NavButtonSignIn>
@@ -46,7 +46,7 @@ const MobileView: React.FC<IProps> = () => {
                   type="button"
                   variant="contained"
                   label={navbarData.getStartedButtonText}
-                  padding={'15px 25px'}
+                  padding={'15px 25px !important'}
                 />
               </Link>
             </NavButtonStyle>

@@ -8,6 +8,7 @@ import {
   CardContainer,
   MarketPlaceContainer
 } from '@/styles/Views/MarketPlacePage/MarketPlace'
+import { ProductList } from '@/utils/ApiTypes/ProductList'
 
 const MarketPlaceView = () => {
   const { screenType } = useScreenType()
@@ -16,13 +17,13 @@ const MarketPlaceView = () => {
     screenType === 'mobile'
       ? 1
       : screenType === 'tab'
-        ? Math.min(3, productList?.length)
-        : Math.min(4, productList?.length)
+        ? Math.min(3, (productList || []).length)
+        : Math.min(4, (productList || []).length)
 
   return (
     <MarketPlaceContainer>
       <Button setHosting={setHosting} setProductList={setProductList} />
-      {productList?.length === 0 && (
+      {(productList || [])?.length === 0 && (
         <NoProductFound
           className="admin-marketplace"
           heading="No Products In Marketplace."
@@ -32,10 +33,10 @@ const MarketPlaceView = () => {
       <CardContainer>
         <SliderComponent
           slidesToShow={slidesToShow}
-          dataLength={productList?.length}
+          dataLength={(productList || [])?.length}
         >
-          {productList?.length > 0 &&
-            productList?.map((data: any, i: number) => (
+          {(productList || [])?.length > 0 &&
+            (productList || [])?.map((data: ProductList, i: number) => (
               <ProductCard data={data} i={i} key={i} />
             ))}
         </SliderComponent>

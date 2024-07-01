@@ -12,7 +12,7 @@ import {
 const Header: React.FC<HeaderProps> = ({ data }) => {
   return (
     <HeaderContainer>
-      <HeadingContent isProfileImage={data?.user?.profileImage}>
+      <HeadingContent isProfileImage={Boolean(data?.user?.profileImage)}>
         {data?.auctionStartDate && (
           <CardHeading className="card-heading">
             {'Auction Ends:' + endDate(data?.auctionEndDate)}

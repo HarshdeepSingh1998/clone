@@ -68,7 +68,7 @@ const BuyAndHostCardComponent: React.FC<BuyAndHostCardProps> = ({
             router.push('/signin')
           }}
           disable={data.transaction === false}
-          padding="15px 36px"
+          padding="15px 36px !important"
         />
       </BuyAndHostButtonContainer>
     </BuyAndHostContent>

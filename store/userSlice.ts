@@ -1,24 +1,10 @@
-import axiosInstance from '@/services/axiosInstance'
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import router from 'next/router'
-// import { getData } from "../services/axiosInstance";
-
-export interface IUser {
-  id: string
-  email: string
-  role: string
-  personalData: {
-    name?: string
-    profileImage?: string
-    phone?: string
-    username?: string
-  }
-  profileCompletion: number
-  termsAgreed?: boolean
-}
+import axiosInstance from '@/services/axiosInstance'
+import { GetUserInterface } from '@/utils/ApiTypes/getUser'
 
 export interface UserState {
-  data: IUser | null
+  data: GetUserInterface | null
   status: 'idle' | 'loading' | 'error'
 }
 
@@ -33,7 +19,7 @@ const initialState: UserState = {
   status: STATUSES.IDLE
 }
 
-export const fetchUser = createAsyncThunk<IUser | null>(
+export const fetchUser = createAsyncThunk<GetUserInterface | null>(
   'user/fetch',
   async () => {
     const url = '/api/getUserInfo'
@@ -56,7 +42,7 @@ export const fetchUser = createAsyncThunk<IUser | null>(
         router.push('/user/marketplace')
       }
 
-      return response?.data?.data as IUser
+      return response?.data?.data as GetUserInterface
     } catch (error) {
       return null
     }
@@ -67,13 +53,13 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser(state, action: PayloadAction<IUser | null>) {
+    setUser(state, action: PayloadAction<GetUserInterface | null>) {
       state.data = action.payload
     },
     setStatus(state, action: PayloadAction<'idle' | 'loading' | 'error'>) {
       state.status = action.payload
     },
-    resetUserState(state, action: PayloadAction<IUser | null>) {
+    resetUserState(state, action: PayloadAction<GetUserInterface | null>) {
       state.data = action.payload
     }
   },
@@ -84,7 +70,7 @@ const userSlice = createSlice({
       })
       .addCase(
         fetchUser.fulfilled,
-        (state, action: PayloadAction<IUser | null>) => {
+        (state, action: PayloadAction<GetUserInterface | null>) => {
           state.data = action.payload
           state.status = STATUSES.IDLE
         }

@@ -1,11 +1,9 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
 import { persistStore, persistReducer, PersistConfig } from 'redux-persist'
-import userReducer from './userSlice' // Make sure this reducer is written in TypeScript
+import userReducer from './userSlice' 
 import productReducer from './productSlice'
-import machineReducer from './machineSlice'
 import contractReducer from './contractSlice'
-import currencyReducer from './currencySlice'
 
 // Define the RootState type
 export type RootState = ReturnType<typeof rootReducer>
@@ -20,9 +18,7 @@ const persistConfig: PersistConfig<RootState> = {
 const rootReducer = combineReducers({
   user: userReducer,
   product: productReducer,
-  machine: machineReducer,
   contract: contractReducer,
-  currency: currencyReducer
 })
 
 // Create a persisted reducer

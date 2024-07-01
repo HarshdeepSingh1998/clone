@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export const endDate = (endDate: string) => {
   const auctionEndDate = moment(endDate)
   const currentDate = moment()

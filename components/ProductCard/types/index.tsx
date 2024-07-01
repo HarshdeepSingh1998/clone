@@ -1,13 +1,15 @@
+import { ProductList } from '@/utils/ApiTypes/ProductList'
+
 export interface ProductCardProps {
-  data: any
+  data: ProductList
   i: number
 }
 export interface HeaderProps {
-  data: any
+  data: ProductList
 }
 export interface ContentProps {
-  data: any
+  data: ProductList
 }
 export interface FooterProps {
-  data: any
+  data: ProductList
 }
