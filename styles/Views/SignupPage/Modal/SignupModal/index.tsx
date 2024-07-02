@@ -5,9 +5,8 @@ export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   position: relative;
-
+  align-items: center;
   @media (max-width: 767px) {
     padding: 0px 16px;
   }
@@ -22,6 +21,7 @@ export const LogoContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   @media (max-width: 767px) {
+    top: -10%;
   }
 `
 export const SignupBottomWrap = styled.div`
@@ -47,7 +47,6 @@ export const SignupBottomWrap = styled.div`
 export const ModalContent = styled(SignupBottomWrap)`
   padding: 20px;
   width: 100%;
-  max-width: 332px;
   display: flex;
   flex-direction: column;
   // gap: 40px;
@@ -68,5 +67,25 @@ export const SubheaderContainer = styled.div`
 
   &.signup-paragraph {
     padding: 4px 0 9px 0;
+  }
+`
+export const SigninContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+`
+export const TextContainer = styled.div`
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Inter;
+  color: #ffffff;
+  line-height: 16px;
+  span {
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: Inter;
+    color: #ed832f;
   }
 `

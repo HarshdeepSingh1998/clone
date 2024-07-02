@@ -20,6 +20,7 @@ const FormView = () => {
     handleSubmit,
     control,
     reset,
+    watch,
     formState: { errors }
   } = useContactForm()
   const { onSubmit, disable } = useSubmitForm(reset)
@@ -41,6 +42,9 @@ const FormView = () => {
             errors={errors}
             onSubmit={onSubmit}
             disable={disable}
+            isTextboxVisible={true}
+            buttonText=""
+            watch={watch}
           />
           <GetInTouch />
         </ContactFormContainer>

@@ -8,4 +8,7 @@ export interface FormType {
   errors: any
   onSubmit: (values: any) => Promise<void>
   disable?: boolean
+  isTextboxVisible: boolean
+  buttonText?: string
+  watch?: any
 }

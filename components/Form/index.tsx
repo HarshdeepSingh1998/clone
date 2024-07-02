@@ -15,7 +15,10 @@ const Form = ({
   control,
   errors,
   onSubmit,
-  disable
+  disable,
+  isTextboxVisible,
+  buttonText,
+  watch
 }: FormType) => {
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -34,20 +37,25 @@ const Form = ({
               maxwidth={data.maxwidth}
               border={data.border}
               errors={errors}
+              startImage={data.startImage}
+              endImage={data.endImage}
+              watch={watch}
             />
           ))}
-          <Textbox
-            title={'Leave A Message'}
-            controllername={'message'}
-            control={control}
-            defaultValue={''}
-            placeholder={'How can we help'}
-            maxLength={600}
-            errors={errors}
-          />
+          {isTextboxVisible && (
+            <Textbox
+              title={'Leave A Message'}
+              controllername={'message'}
+              control={control}
+              defaultValue={''}
+              placeholder={'How can we help'}
+              maxLength={600}
+              errors={errors}
+            />
+          )}
         </>
       </InputContainer>
-      <ButtonContainer>
+      <ButtonContainer disable={disable}>
         <Button
           type="submit"
           variant="contained"

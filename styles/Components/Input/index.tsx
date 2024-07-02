@@ -113,3 +113,20 @@ export const ErrorMessageContainer = styled.div`
   margin-left: 6px;
   padding-top: 5px;
 `
+
+export const EndImageContainer = styled.div`
+  position: absolute;
+  right: 50px;
+  top: 0;
+`
+export const PasswordImageContainer = styled.div`
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  svg {
+    position: unset !important;
+    top: unset !important;
+    left: unset !important;
+    height: unset !important;
+  }
+`

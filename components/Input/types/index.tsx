@@ -1,3 +1,6 @@
+import { SVGProps } from 'react'
+
+/* eslint-disable no-unused-vars */
 export interface InputProps {
   title: string
   controllername: string
@@ -18,4 +21,7 @@ export interface InputProps {
   step?: string
   errors?: any
   control?: any
+  startImage?: (props?: SVGProps<SVGSVGElement>) => JSX.Element
+  endImage?: (props?: SVGProps<SVGSVGElement>) => JSX.Element
+  watch?: any
 }

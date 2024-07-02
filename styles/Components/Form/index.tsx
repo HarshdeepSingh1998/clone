@@ -13,6 +13,7 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  gap: 10px;
   input {
     width: 100%;
     border: 1px solid #323a4b;
@@ -36,7 +37,7 @@ export const InputContainer = styled.div`
     }
   }
 `
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div<{ disable?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,6 +48,13 @@ export const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    ${props =>
+      props.disable &&
+      `
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: grey
+    `}
   }
 
   .MuiCircularProgress-root {

@@ -16,6 +16,7 @@ export const GetInTouchContainer = styled.div`
 export const GetInTouchCallContainer = styled.div`
   display: flex;
   padding: 14px 18px;
+  flex: 1;
   div {
     display: flex;
     flex-direction: column;
@@ -29,7 +30,7 @@ export const GetInTouchCallContainer = styled.div`
   height: 117px;
   max-width: 322px;
   @media (max-width: 767px) {
-    height: unset;
+    height: 88px;
   }
 
   font-family: Inter;
@@ -59,6 +60,7 @@ export const GetInTouchCallContainer = styled.div`
 export const GetInTouchEmailContainer = styled.div`
   display: flex;
   padding: 14px 18px;
+  flex: 1;
   div {
     display: flex;
     flex-direction: column;
@@ -72,7 +74,7 @@ export const GetInTouchEmailContainer = styled.div`
   height: 117px;
   max-width: 322px;
   @media (max-width: 767px) {
-    height: unset;
+    height: 88px;
   }
   font-family: Inter;
   font-size: 20px;
@@ -84,7 +86,8 @@ export const GetInTouchEmailContainer = styled.div`
   span {
     color: #90a3bf;
     font-size: 16px;
-    white-space: nowrap;
+
+    word-break: break-all;
   }
   @media (max-width: 767px) {
     font-size: 14px;

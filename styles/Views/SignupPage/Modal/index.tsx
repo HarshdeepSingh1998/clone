@@ -19,9 +19,9 @@ export const ModalMainContainer = styled.div`
     ),
     radial-gradient(55.18% 30.5% at 83.78% 67.65%, #572b17 0%, #000513 100%);
   backdrop-filter: blur(8px);
-
   @media (max-width: 767px) {
     justify-content: center;
+    flex-direction: column;
   }
 
   &.signup-class {
@@ -31,13 +31,13 @@ export const ModalMainContainer = styled.div`
     }
   }
 
-  @media (max-width: 390px) {
-    margin-top: 0px;
-    justify-content: unset;
-  }
-
-  div:nth-child(3) {
+  > div:nth-child(3) {
     display: flex;
     align-items: end;
+    margin-bottom: 67px;
+    @media (max-width: 767px) {
+      justify-content: end;
+      margin-bottom: 0;
+    }
   }
 `
