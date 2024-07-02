@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent } from 'react'
 import { Controller } from 'react-hook-form'
 import { TextBoxProps } from 'components/Textbox/types'
 import {
@@ -14,34 +14,26 @@ const TextBox = ({
   defaultValue,
   placeholder,
   onChange,
-  value,
   maxLength,
   errors
 }: TextBoxProps) => {
-  const [inputValue, setInputValue] = useState(value)
-
-  useEffect(() => {
-    setInputValue(value)
-  }, [value])
-
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setInputValue(e.target.value)
-    onChange?.(e.target.value)
-  }
-
   return (
     <>
       <TextContainer>{title}</TextContainer>
       <Controller
         name={controllername}
-        control={control} // Ensure you have 'control' from useForm
+        control={control}
         defaultValue={defaultValue}
         render={({ field }) => (
           <TextBoxStyle
             {...field}
+            name={controllername}
             placeholder={placeholder}
-            onChange={handleChange}
-            value={inputValue}
+            value={field.value || ''}
+            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+              field.onChange(e)
+              onChange?.(e.target.value)
+            }}
             maxLength={maxLength}
           />
         )}

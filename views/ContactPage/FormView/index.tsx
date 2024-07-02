@@ -1,9 +1,7 @@
-import { useState } from 'react'
-import { toast } from 'react-toastify'
 import Image from 'next/image'
-import usePost from '@/hooks/usePost'
 import { useContactForm } from '@/utils/Customhooks/useContactForm'
 import { formData } from '@/utils/ContactPageContent/Form'
+import useSubmitForm from '@/utils/Callback/ContactPage'
 import Form from 'components/Form'
 import FanAnimation from '@/components/FanAnimation'
 import GetInTouch from 'views/ContactPage/FormView/GetInTouch'
@@ -20,42 +18,11 @@ import {
 const FormView = () => {
   const {
     handleSubmit,
-    reset,
     control,
+    reset,
     formState: { errors }
   } = useContactForm()
-  const [disable, setDisable] = useState<boolean>(false)
-  const { mutateAsync } = usePost()
-  const onSubmit = async (values: any): Promise<void> => {
-    setDisable(true)
-    const payload = { ...values, email: values.email.toLowerCase() }
-
-    try {
-      const response = await mutateAsync({
-        url: '/api/contactUs',
-        payload: payload
-      })
-      if (response?.data.status === 200) {
-        reset()
-        toast.success(`${response?.data?.message}`)
-        setDisable(false)
-      }
-    } catch (error: any) {
-      const messages = error?.response?.data?.message
-      if (typeof messages === 'object' && messages !== null) {
-        for (const key in messages) {
-          if (Object.prototype.hasOwnProperty.call(messages, key)) {
-            toast.error(`${key} error : ${messages[key]?.message}`)
-          }
-        }
-      } else {
-        toast.error('An error occurred.')
-      }
-
-      setDisable(false)
-    }
-  }
-
+  const { onSubmit, disable } = useSubmitForm(reset)
   return (
     <FormContainer>
       <UpperFanContainer>

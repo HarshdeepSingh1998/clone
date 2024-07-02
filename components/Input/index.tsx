@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent } from 'react'
 import { Controller } from 'react-hook-form'
 import { InputProps } from 'components/Input/types'
 import {
@@ -15,10 +15,8 @@ const Input = ({
   className,
   type,
   placeholder,
-  name,
   maxwidth,
   border,
-  value,
   onChange,
   maxLength,
   disabled,
@@ -30,17 +28,6 @@ const Input = ({
   errors,
   control
 }: InputProps) => {
-  const [inputValue, setInputValue] = useState(value)
-
-  useEffect(() => {
-    setInputValue(value)
-  }, [value])
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value)
-    onChange?.(e.target.value)
-  }
-
   return (
     <InputContent>
       <InputText>{title}</InputText>
@@ -54,13 +41,14 @@ const Input = ({
             className={className}
             type={type}
             placeholder={placeholder}
-            name={name}
+            name={controllername}
             maxwidth={maxwidth}
             border={border}
-            value={
-              inputValue as string | number | readonly string[] | undefined
-            }
-            onChange={handleChange}
+            value={field.value || ''}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              field.onChange(e)
+              onChange?.(e.target.value)
+            }}
             maxLength={maxLength}
             disabled={disabled}
             min={min}

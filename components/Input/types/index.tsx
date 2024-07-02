@@ -4,9 +4,7 @@ export interface InputProps {
   defaultValue: string
   type: 'email' | 'password' | 'text' | 'number' | 'file'
   className?: string
-  value?: string | number | undefined | null
   placeholder?: string
-  name?: string
   // eslint-disable-next-line no-unused-vars
   onChange?: (e: string) => void
   onBlur?: () => void
