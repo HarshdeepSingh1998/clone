@@ -1,9 +1,6 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react'
-import CircularProgress from '@mui/material/CircularProgress'
-import Button from '@/components/Button'
 import {
   OtpContainer,
-  ButtonContainer,
   OtpContent
 } from '@/styles/Views/SignupPage/Modal/OtpModal'
 
@@ -62,7 +59,10 @@ const OtpModal = ({ otp, inputsRef, setOtp }: OtpModalInterface) => {
             maxLength={1}
             value={digit}
             onChange={e => {
-              handleOtpChange(index, e.target.value, false, inputsRef)
+              const value = e.target.value
+              if (/^\d?$/.test(value)) {
+                handleOtpChange(index, value, false, inputsRef)
+              }
             }}
             onKeyDown={e => {
               if (e.key === 'Backspace') {
