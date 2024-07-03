@@ -69,6 +69,7 @@ const Input = ({
             step={step}
             onBlur={onBlur}
             autoComplete={autocomplete ? autocomplete : ''}
+            startImage={startImage}
           />
         )}
       />

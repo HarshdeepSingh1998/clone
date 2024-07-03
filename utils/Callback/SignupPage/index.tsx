@@ -18,7 +18,7 @@ const useSignupSubmit = (
   const onSubmit = async (values: any) => {
     const lowercaseEmail = values.email.toLowerCase()
     const password = values.password
-
+    setDisable(true)
     if (isSignUpVisible) {
       try {
         const response = await mutateAsync({

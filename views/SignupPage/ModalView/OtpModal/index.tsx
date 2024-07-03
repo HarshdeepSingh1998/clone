@@ -8,19 +8,19 @@ import {
 } from '@/styles/Views/SignupPage/Modal/OtpModal'
 
 interface OtpModalInterface {
-  otp: string[]
-  inputsRef: MutableRefObject<(HTMLInputElement | null)[]>
-  setOtp: Dispatch<SetStateAction<string[]>>
-  disable: boolean
+  otp?: string[]
+  inputsRef?: MutableRefObject<(HTMLInputElement | null)[]>
+  setOtp?: Dispatch<SetStateAction<string[]>>
 }
 
-const OtpModal = ({ otp, inputsRef, setOtp, disable }: OtpModalInterface) => {
+const OtpModal = ({ otp, inputsRef, setOtp }: OtpModalInterface) => {
   const handleOtpChange = (
     index: number,
     value: string,
     isBackspace: boolean,
     inputsRef: React.MutableRefObject<(HTMLInputElement | null)[]>
   ): void => {
+    if (!otp || !setOtp || !inputsRef) return
     const newOtp = [...otp]
     newOtp[index] = value
     setOtp(newOtp)
@@ -35,6 +35,7 @@ const OtpModal = ({ otp, inputsRef, setOtp, disable }: OtpModalInterface) => {
   }
 
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>): void => {
+    if (!otp || !setOtp || !inputsRef) return
     e.preventDefault()
     const pastedText = e.clipboardData.getData('text')
     const newOtp = Array.from(pastedText.slice(0, otp.length)) as string[]
@@ -44,6 +45,10 @@ const OtpModal = ({ otp, inputsRef, setOtp, disable }: OtpModalInterface) => {
 
     setOtp(newOtp)
     inputsRef.current[otp.length - 1]?.focus()
+  }
+
+  if (!otp || !inputsRef || !setOtp) {
+    return null
   }
 
   return (
@@ -69,14 +74,6 @@ const OtpModal = ({ otp, inputsRef, setOtp, disable }: OtpModalInterface) => {
           />
         ))}
       </OtpContent>
-      <ButtonContainer>
-        <Button
-          type="submit"
-          variant="contained"
-          // disable={disable || !isOtpValid()}
-          label={disable ? <CircularProgress /> : 'Continue'}
-        />
-      </ButtonContainer>
     </OtpContainer>
   )
 }

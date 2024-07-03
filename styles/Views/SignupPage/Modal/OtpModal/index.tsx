@@ -19,6 +19,7 @@ export const OtpContainer = styled.form`
     font-size: 25px;
     text-align: center;
     color: #ffffff;
+    padding-left: 0 !important;
     ::placeholder {
       color: #d22929;
     }
@@ -51,5 +52,6 @@ export const ButtonContainer = styled.div`
 
 export const OtpContent = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 2px;
+  justify-content: space-around;
 `

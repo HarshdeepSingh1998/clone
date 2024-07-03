@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+import { SVGProps } from 'react'
 import styled from 'styled-components'
 
 export const InputContent = styled.div`
@@ -62,6 +64,7 @@ export const StyledInput = styled.input<{
   maxwidth?: string
   border?: string
   disabled?: boolean
+  startImage?: (props?: SVGProps<SVGSVGElement>) => JSX.Element
 }>`
   display: flex;
   align-items: center;
@@ -70,7 +73,8 @@ export const StyledInput = styled.input<{
   max-width: ${({ maxwidth }) => maxwidth};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   background-color: #ffffff14;
-  padding-left: 20px;
+
+  padding-left: ${props => (props.startImage ? '40px' : '20px')};
   border: ${({ border }) => border};
   border-radius: 12px;
   color: ${({ disabled }) => (disabled ? '#64718C' : '#fff')};

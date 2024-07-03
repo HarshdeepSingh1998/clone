@@ -19,7 +19,7 @@ export const InputContainer = styled.div`
     border: 1px solid #323a4b;
     background: #ffffff14;
     color: #ffffff;
-    padding-left: 40px;
+    // padding-left: 40px;
     ::placeholder {
       color: #64718c;
     }
@@ -29,13 +29,6 @@ export const InputContainer = styled.div`
     top: 15px;
     left: 12px;
   }
-  span {
-    svg {
-      position: absolute;
-      top: 10px;
-      left: 12px;
-    }
-  }
 `
 export const ButtonContainer = styled.div<{ disable?: boolean }>`
   display: flex;
@@ -44,7 +37,7 @@ export const ButtonContainer = styled.div<{ disable?: boolean }>`
   // padding-bottom: 31px;
   button {
     width: 100%;
-    max-width: 320px;
+    height: 42px;
     display: flex;
     justify-content: center;
     align-items: center;

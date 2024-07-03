@@ -8,6 +8,7 @@ import {
   InputContainer,
   ButtonContainer
 } from '@/styles/Components/Form'
+import OtpModal from '@/views/SignupPage/ModalView/OtpModal'
 
 const Form = ({
   handleSubmit,
@@ -18,30 +19,35 @@ const Form = ({
   disable,
   isTextboxVisible,
   buttonText,
-  watch
+  watch,
+  isSignUpVisible,
+  otp,
+  inputsRef,
+  setOtp
 }: FormType) => {
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <InputContainer>
         <>
-          {formData.map((data, i) => (
-            <Input
-              key={i}
-              title={data.title}
-              controllername={data.controllername}
-              control={control}
-              defaultValue={data.defaultValue}
-              placeholder={data.placeholder}
-              type={data.type}
-              maxLength={data.maxLength}
-              maxwidth={data.maxwidth}
-              border={data.border}
-              errors={errors}
-              startImage={data.startImage}
-              endImage={data.endImage}
-              watch={watch}
-            />
-          ))}
+          {isSignUpVisible &&
+            formData.map((data, i) => (
+              <Input
+                key={i}
+                title={data.title}
+                controllername={data.controllername}
+                control={control}
+                defaultValue={data.defaultValue}
+                placeholder={data.placeholder}
+                type={data.type}
+                maxLength={data.maxLength}
+                maxwidth={data.maxwidth}
+                border={data.border}
+                errors={errors}
+                startImage={data.startImage}
+                endImage={data.endImage}
+                watch={watch}
+              />
+            ))}
           {isTextboxVisible && (
             <Textbox
               title={'Leave A Message'}
@@ -53,14 +59,23 @@ const Form = ({
               errors={errors}
             />
           )}
+          {!isSignUpVisible && (
+            <OtpModal otp={otp} inputsRef={inputsRef} setOtp={setOtp} />
+          )}
         </>
       </InputContainer>
-      <ButtonContainer disable={disable}>
+      <ButtonContainer
+        disable={
+          isSignUpVisible
+            ? formData.some(data => watch(data.controllername) === '')
+            : otp?.some(digit => digit === '')
+        }
+      >
         <Button
           type="submit"
           variant="contained"
           disable={disable}
-          label={disable ? <CircularProgress /> : 'Send Message'}
+          label={disable ? <CircularProgress /> : buttonText || 'Send Message'}
         />
       </ButtonContainer>
     </FormContainer>

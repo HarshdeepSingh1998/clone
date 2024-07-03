@@ -64,6 +64,10 @@ export const FormContent = styled.div`
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     padding: 10vw 0 28px 0;
   }
+
+  button {
+    max-width: 320px !important;
+  }
 `
 export const TitleContainer = styled.div`
   display: flex;

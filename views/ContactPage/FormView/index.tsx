@@ -45,6 +45,7 @@ const FormView = () => {
             isTextboxVisible={true}
             buttonText=""
             watch={watch}
+            isSignUpVisible={true}
           />
           <GetInTouch />
         </ContactFormContainer>

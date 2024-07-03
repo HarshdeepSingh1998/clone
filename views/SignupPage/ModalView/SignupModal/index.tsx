@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { formData } from '@/utils/SignupPageContent/Form'
 import { useSignupForm } from '@/utils/Customhooks/useSignupForm'
 import Form from 'components/Form'
-import OtpModal from 'views/SignupPage/ModalView/OtpModal'
 import ProjectLogo from 'assets/images/images/project-logo.png'
 import {
   ModalContainer,
@@ -37,9 +36,6 @@ const SignupModal = () => {
     setDisable,
     getValues
   )
-  const isOtpValid = (): boolean => {
-    return otp.every(digit => digit !== '')
-  }
 
   return (
     <ModalContainer>
@@ -57,39 +53,30 @@ const SignupModal = () => {
             ? `Continue with email address`
             : `Enter OTP sent to your registered email ID`}
         </SubheaderContainer>
+        <Form
+          handleSubmit={handleSubmit}
+          formData={formData}
+          control={control}
+          errors={errors}
+          buttonText="Continue"
+          isTextboxVisible={false}
+          watch={watch}
+          onSubmit={onSubmit}
+          disable={disable}
+          isSignUpVisible={isSignUpVisible}
+          otp={otp}
+          inputsRef={inputsRef}
+          setOtp={setOtp}
+        />
         {isSignUpVisible && (
-          <>
-            {' '}
-            <Form
-              handleSubmit={handleSubmit}
-              formData={formData}
-              control={control}
-              errors={errors}
-              buttonText="Continue"
-              isTextboxVisible={false}
-              watch={watch}
-              onSubmit={onSubmit}
-              disable={disable}
-              isSignUpVisible={isSignUpVisible}
-              isOtpValid={isOtpValid}
-            />
-            <SigninContainer>
-              <TextContainer>
-                Already have an account? &nbsp;
-                <span onClick={() => (window.location.href = '/signin')}>
-                  Sign in
-                </span>
-              </TextContainer>
-            </SigninContainer>
-          </>
-        )}
-        {!isSignUpVisible && (
-          <OtpModal
-            otp={otp}
-            inputsRef={inputsRef}
-            setOtp={setOtp}
-            disable={disable}
-          />
+          <SigninContainer>
+            <TextContainer>
+              Already have an account? &nbsp;
+              <span onClick={() => (window.location.href = '/signin')}>
+                Sign in
+              </span>
+            </TextContainer>
+          </SigninContainer>
         )}
       </ModalContent>
     </ModalContainer>
