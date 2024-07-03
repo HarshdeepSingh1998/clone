@@ -50,6 +50,18 @@ export const ModalContent = styled(SignupBottomWrap)`
   display: flex;
   flex-direction: column;
   // gap: 40px;
+
+  button {
+    width: 100%;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  a {
+    width: 100%;
+  }
 `
 export const HeaderContainer = styled.div`
   color: #ffffff;
@@ -69,24 +81,17 @@ export const SubheaderContainer = styled.div`
     padding: 4px 0 9px 0;
   }
 `
-export const SigninContainer = styled.div`
+export const MailSentContainer = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 15px;
+  align-items: center;
+  gap: 13px;
 `
 export const TextContainer = styled.div`
   font-size: 12px;
   font-weight: 600;
   font-family: Inter;
-  color: #ffffff;
+  color: rgb(112, 124, 150);
   line-height: 16px;
-  span {
-    line-height: 16px;
-    font-size: 12px;
-    font-weight: 600;
-    font-family: Inter;
-    color: #ed832f;
-    cursor: pointer;
-  }
 `

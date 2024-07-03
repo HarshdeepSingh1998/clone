@@ -58,7 +58,7 @@ const OtpModal = ({ otp, inputsRef, setOtp }: OtpModalInterface) => {
           <input
             key={index}
             ref={el => (inputsRef.current[index] = el)}
-            type="text"
+            type="number"
             maxLength={1}
             value={digit}
             onChange={e => {

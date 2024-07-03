@@ -54,4 +54,15 @@ export const OtpContent = styled.div`
   display: flex;
   gap: 2px;
   justify-content: space-around;
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Hide controls in Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
 `

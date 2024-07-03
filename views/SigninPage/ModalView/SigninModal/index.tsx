@@ -54,7 +54,9 @@ const SigninModal = () => {
               Sign up
             </span>
           </TextContainer>
-          <span>Forgot Password?</span>
+          <span onClick={() => (window.location.href = '/resetpassword')}>
+            Forgot Password?
+          </span>
         </SigninContainer>
       </ModalContent>
     </ModalContainer>
