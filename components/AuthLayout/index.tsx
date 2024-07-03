@@ -57,11 +57,12 @@ const AuthLayout = ({ children, isPopUpVisible }: AuthLayoutInterface) => {
 
       <NavbarContainer>
         <AuthNavbar
-          setMenuModalOpen={handleSetMenuModalOpen}
-          showMenu={isModalOpen.menuModal}
           openPdfViewer={isModalOpen.pdfviewer}
-          setMenuSliderOpen={handleSetMenuSliderOpen}
           setOpenPdfViewer={handleSetOpenPdfViewer}
+          setMenuModalOpen={handleSetMenuModalOpen}
+          showMenuSlider={isModalOpen.menuslider}
+          setMenuSliderOpen={handleSetMenuSliderOpen}
+          userRole={userData?.data?.role as string}
         />
         {children}
       </NavbarContainer>

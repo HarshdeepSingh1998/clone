@@ -1,20 +1,24 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 import { useRouter } from 'next/router'
 import { getParamValue, getsidebarData } from '@/components/Sidebar/data'
 import { SideBarDataInterface } from '@/components/Sidebar/types'
 
-const useCustomSidebar = (
+const useMobileNavbar = (
+  logout: () => Promise<void>,
+  handleEditClick: () => void,
+  handleChangePassword: () => void,
   userRole: string,
-  setOpenPdfViewer: Dispatch<SetStateAction<boolean>>,
-  setSideBarData: Dispatch<SetStateAction<SideBarDataInterface[]>>
+  setSideBarData: Dispatch<SetStateAction<SideBarDataInterface[]>>,
+  setMenuSliderOpen: (isOpen: any) => void,
+  setPdfUrl: Dispatch<SetStateAction<string>>,
+  setOpenPdfViewer: (isOpen: any) => void
 ) => {
   const router = useRouter()
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(
     null
   )
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
-
-  const [pdfUrl, setPdfUrl] = useState<string>('')
 
   useEffect(() => {
     const pathSegments = router.pathname.split('/').filter(Boolean)
@@ -27,26 +31,34 @@ const useCustomSidebar = (
   const handleItemClick = (index: number) => {
     setSelectedItemIndex(index)
   }
+  const handleLogoutClick = () => {
+    logout()
+  }
+  const handleEditClickUser = () => {
+    handleEditClick()
+  }
+  const handleChangePasswordUse = () => {
+    handleChangePassword()
+  }
 
   const openPdfView = (pdfURL: string) => {
+    setMenuSliderOpen(false)
     if (pdfURL) {
       setPdfUrl(pdfURL)
       setOpenPdfViewer(true)
     }
-  }
 
-  const closePdfModal = () => {
-    setOpenPdfViewer(false)
+    return
   }
 
   return {
-    selectedItemIndex,
     selectedIndex,
-    pdfUrl,
     handleItemClick,
     openPdfView,
-    closePdfModal
+    handleLogoutClick,
+    handleEditClickUser,
+    handleChangePasswordUse
   }
 }
 
-export default useCustomSidebar
+export default useMobileNavbar
