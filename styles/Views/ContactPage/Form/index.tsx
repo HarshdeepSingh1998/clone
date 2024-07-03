@@ -105,13 +105,11 @@ export const ContactFormContainer = styled.div`
   gap: 20px;
   padding: 28px 24px;
   width: 100%;
-  background: linear-gradient(#030616, #14162a, #1b202b, #1b202b);
+
+  background: linear-gradient(to bottom, #030616 0%, #14162a 100%);
   width: 100%;
   border-radius: 40px;
 
-  @media (max-width: 767px) {
-    background: linear-gradient(to bottom, #030616 0%, #14162a 100%);
-  }
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     font-size: 38px;
   }
