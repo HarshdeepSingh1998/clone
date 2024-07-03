@@ -3,12 +3,12 @@ import { FormType } from 'components/Form/types'
 import Button from '@/components/Button'
 import Textbox from '@/components/Textbox'
 import Input from '@/components/Input'
+import OtpModal from '@/views/SignupPage/ModalView/OtpModal'
 import {
   FormContainer,
   InputContainer,
   ButtonContainer
 } from '@/styles/Components/Form'
-import OtpModal from '@/views/SignupPage/ModalView/OtpModal'
 
 const Form = ({
   handleSubmit,

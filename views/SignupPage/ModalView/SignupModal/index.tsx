@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { formData } from '@/utils/SignupPageContent/Form'
 import { useSignupForm } from '@/utils/Customhooks/useSignupForm'
+import useSignupSubmit from '@/utils/Callback/SignupPage'
 import Form from 'components/Form'
 import ProjectLogo from 'assets/images/images/project-logo.png'
 import {
@@ -14,7 +15,6 @@ import {
   SigninContainer,
   TextContainer
 } from '@/styles/Views/SignupPage/Modal/SignupModal'
-import useSignupSubmit from '@/utils/Callback/SignupPage'
 
 const SignupModal = () => {
   const [isSignUpVisible, setIsSignUpVisible] = useState(true)
