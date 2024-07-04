@@ -17,10 +17,10 @@ export const ProfileContent = styled.div`
 `
 export const ImageContainer = styled.div`
   cursor: pointer;
-  image {
+  img {
     width: 48px;
     height: 48px;
-    border-radius: 50px;
+    border-radius: 50%;
   }
 `
 
@@ -44,7 +44,7 @@ export const ButtonContainer = styled.div`
     svg {
       position: absolute;
       left: 12px;
-      margintop: 4;
+      margin-top: 4px;
     }
   }
 

@@ -16,4 +16,5 @@ export interface FormType {
   otp?: string[]
   inputsRef?: MutableRefObject<(HTMLInputElement | null)[]>
   setOtp?: Dispatch<SetStateAction<string[]>>
+  svgPosition?: string
 }

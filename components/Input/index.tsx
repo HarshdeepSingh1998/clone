@@ -32,7 +32,8 @@ const Input = ({
   control,
   startImage,
   endImage,
-  watch
+  watch,
+  value
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false)
   const handleToggleShowPassword = () => {
@@ -57,7 +58,7 @@ const Input = ({
             name={controllername}
             maxwidth={maxwidth}
             border={border}
-            value={field.value || ''}
+            value={field.value || value}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               field.onChange(e)
               onChange?.(e.target.value)

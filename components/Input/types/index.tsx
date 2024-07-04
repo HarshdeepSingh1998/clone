@@ -24,4 +24,5 @@ export interface InputProps {
   startImage?: (props?: SVGProps<SVGSVGElement>) => JSX.Element
   endImage?: (props?: SVGProps<SVGSVGElement>) => JSX.Element
   watch?: any
+  value?: string
 }

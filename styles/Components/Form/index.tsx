@@ -9,7 +9,7 @@ export const FormContainer = styled.form`
     gap: 5px;
   }
 `
-export const InputContainer = styled.div`
+export const InputContainer = styled.div<{ svgPosition?: string }>`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -18,7 +18,7 @@ export const InputContainer = styled.div`
     width: 100%;
     border: 1px solid #323a4b;
     background: #ffffff14;
-    color: #ffffff;
+
     // padding-left: 40px;
     ::placeholder {
       color: #64718c;
@@ -27,6 +27,14 @@ export const InputContainer = styled.div`
   svg {
     position: absolute;
     top: 15px;
+    ${props =>
+      props.svgPosition
+        ? `
+        top: ${props.svgPosition};
+      `
+        : `
+        top: 15px;
+      `}
     left: 12px;
   }
 `

@@ -12,4 +12,6 @@ export interface FormDataType {
   border?: string
   startImage?: (props?: SVGProps<SVGSVGElement>) => JSX.Element
   endImage?: (props?: SVGProps<SVGSVGElement>) => JSX.Element
+  value?: string
+  disabled?: boolean
 }

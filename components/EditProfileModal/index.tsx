@@ -10,6 +10,7 @@ import {
   EditProfileContent
 } from '@/styles/Components/EditProfile'
 import { useRef } from 'react'
+import { updatedFormData } from './data'
 
 const EditProfileModal = ({
   showModal,
@@ -43,6 +44,7 @@ const EditProfileModal = ({
     setSelectedImage,
     hiddenFileInputRef
   )
+  const updatedFormDataArray = updatedFormData(userData, formData)
   return (
     <EditProfileContainer>
       <EditProfileContent>
@@ -67,12 +69,12 @@ const EditProfileModal = ({
         />
         <Form
           handleSubmit={handleSubmit}
-          formData={formData}
+          formData={updatedFormDataArray}
           control={control}
           errors={errors}
           onSubmit={onSubmit}
           disable={disable}
-          isTextboxVisible={true}
+          isTextboxVisible={false}
           buttonText="Save Changes"
           watch={watch}
           isSignUpVisible={true}

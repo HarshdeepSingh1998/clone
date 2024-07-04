@@ -37,7 +37,15 @@ export const getModalConfigurations = ({
     isOpen: showEditProfileModal,
     onRequestClose: () => setShowEditProfileModal(false),
     ariaHideApp: false,
-    style: { content: { overflow: 'hidden', height: '100%' } },
+    style: {
+      content: {
+        overflow: 'hidden',
+        height: '100%',
+        width: '100%',
+        inset: 0,
+        padding: '0px'
+      }
+    },
     content: (
       <EditProfileModal
         showModal={setShowEditProfileModal}

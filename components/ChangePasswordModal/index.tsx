@@ -55,6 +55,7 @@ const ChangePassword = ({ showModal, setMenuModalOpen }: ModalInterface) => {
           buttonText="Update password"
           watch={watch}
           isSignUpVisible={true}
+          svgPosition={'33px'}
         />
       </ChangePasswordContent>
     </ChangePasswordContainer>

@@ -77,7 +77,7 @@ export const StyledInput = styled.input<{
   padding-left: ${props => (props.startImage ? '40px' : '20px')};
   border: ${({ border }) => border};
   border-radius: 12px;
-  color: ${({ disabled }) => (disabled ? '#64718C' : '#fff')};
+  color: ${({ disabled }) => (disabled ? 'rgb(100, 113, 140);' : '#fff')};
   // color: #fff;
   outline: none;
   &:focus {

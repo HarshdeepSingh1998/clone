@@ -23,11 +23,12 @@ const Form = ({
   isSignUpVisible,
   otp,
   inputsRef,
-  setOtp
+  setOtp,
+  svgPosition
 }: FormType) => {
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
-      <InputContainer>
+      <InputContainer svgPosition={svgPosition}>
         <>
           {isSignUpVisible &&
             formData.map((data, i) => (
@@ -46,6 +47,8 @@ const Form = ({
                 startImage={data.startImage}
                 endImage={data.endImage}
                 watch={watch}
+                value={data.value}
+                disabled={data.disabled}
               />
             ))}
           {isTextboxVisible && (
