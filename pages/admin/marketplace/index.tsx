@@ -4,6 +4,7 @@ import HeaderView from '@/views/Admin/MarketPlacePage/HeaderView'
 import CardView from '@/views/Admin/MarketPlacePage/CardView'
 import { MarketPlaceContainer } from '@/styles/Pages/Admin/MarketPlace'
 import useAdminMarketPlace from '@/utils/Customhooks/useAdminMarketPlace'
+import NoProductView from '@/views/Admin/MarketPlacePage/NoProductView'
 
 const AdminMarketPlace = () => {
   const {
@@ -12,7 +13,8 @@ const AdminMarketPlace = () => {
     handleShopClick,
     hosting,
     data,
-    productList
+    productList,
+    handleLoadMoreClick
   } = useAdminMarketPlace()
   return (
     <AuthLayout>
@@ -22,7 +24,12 @@ const AdminMarketPlace = () => {
           handleBuyAndHostClick={handleBuyAndHostClick}
           handleShopClick={handleShopClick}
         />
-        <CardView hosting={hosting} data={data} productList={productList} />
+        <CardView data={data} productList={productList} />
+        <NoProductView
+          productList={productList}
+          data={data}
+          handleLoadMoreClick={handleLoadMoreClick}
+        />
       </MarketPlaceContainer>
     </AuthLayout>
   )

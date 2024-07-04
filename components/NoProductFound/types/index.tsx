@@ -1,5 +1,5 @@
 export interface NoProductFoundProps {
-  className: string
+  className?: string
   heading: string
   text: string
 }

@@ -18,9 +18,20 @@ import {
   TitleContainer
 } from '@/styles/Components/ProductCard/Content'
 
-const Content: React.FC<ContentProps> = ({ data }) => {
+const Content: React.FC<ContentProps> = ({
+  data,
+  userData,
+  handleViewProduct,
+  productDetailsPage
+}) => {
   return (
-    <ContentContainer>
+    <ContentContainer
+      onClick={() => {
+        userData?.data?.role === 'user' &&
+          !productDetailsPage &&
+          handleViewProduct(data._id as string)
+      }}
+    >
       <ImageContainer>
         <Image
           src={data?.images[0] || DefaultMachineImage}

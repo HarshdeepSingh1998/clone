@@ -9,18 +9,39 @@ import {
   ProductCardContainer
 } from '@/styles/Components/ProductCard'
 
-const ProductCard: React.FC<ProductCardProps> = ({ data, i }) => {
+const ProductCard: React.FC<ProductCardProps> = ({
+  data,
+  i,
+  width,
+  productDetailsPage,
+  userData
+}) => {
   const router = useRouter()
 
+  const handleViewProduct = (productId: string) => {
+    if (userData?.data?.role === 'admin') {
+      router.push(`/admin/productDetails?productId=${productId}`)
+    } else {
+      router.push(`/user/productDetails?productId=${productId}`)
+    }
+  }
+
   return (
-    <ProductCardContainer key={i} width={'100%'}>
+    <ProductCardContainer key={i} width={width}>
       <CardContent
         onClick={() => {
-          router.push('/signin')
+          userData?.data?.role === 'admin' && !productDetailsPage
+            ? handleViewProduct(data._id as string)
+            : router.push('/signin')
         }}
       >
-        <Header data={data} />
-        <Content data={data} />
+        <Header data={data} userData={userData} />
+        <Content
+          data={data}
+          userData={userData}
+          handleViewProduct={handleViewProduct}
+          productDetailsPage={productDetailsPage}
+        />
         <Footer data={data} />
       </CardContent>
       {data.transaction?.paymentReceived === false && (

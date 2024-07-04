@@ -1,3 +1,4 @@
+import { HeaderViewInterface } from 'views/Admin/MarketPlacePage/HeaderView/types'
 import {
   HeaderContainer,
   TitleContainer,
@@ -10,7 +11,7 @@ const HeaderView = ({
   toggleActive,
   handleBuyAndHostClick,
   handleShopClick
-}) => {
+}: HeaderViewInterface) => {
   return (
     <HeaderContainer>
       <TitleContainer>Marketplace</TitleContainer>
