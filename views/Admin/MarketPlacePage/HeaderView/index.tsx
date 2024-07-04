@@ -1,4 +1,3 @@
-import useAdminMarketPlace from '@/utils/Customhooks/useAdminMarketPlace'
 import {
   HeaderContainer,
   TitleContainer,
@@ -7,9 +6,11 @@ import {
   CustomButton
 } from '@/styles/Views/Admin/MarketPlacePage/Header'
 
-const HeaderView = () => {
-  const { toggleActive, handleBuyAndHostClick, handleShopClick } =
-    useAdminMarketPlace()
+const HeaderView = ({
+  toggleActive,
+  handleBuyAndHostClick,
+  handleShopClick
+}) => {
   return (
     <HeaderContainer>
       <TitleContainer>Marketplace</TitleContainer>

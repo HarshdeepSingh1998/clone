@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const LoaderContainer = styled.div`
-  position: relative;
   .loader-bg {
     width: 100%;
     height: 100vh;
@@ -26,21 +25,17 @@ export const LoaderContainer = styled.div`
 
 export const SvgContainer = styled.div`
   z-index: 1000;
-  position: relative;
+  position: absolute;
 
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 10px;
-  font-family: Ubuntu;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 26px;
-  letter-spacing: 0em;
-  text-align: left;
-  height: 100vh;
-  color: #fff;
+  backdrop-filter: blur(10px);
   svg {
     width: 324px;
     animation: rotateAnimation 2s linear infinite;
