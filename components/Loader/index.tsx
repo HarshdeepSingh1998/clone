@@ -6,18 +6,17 @@ const Loader: React.FC<LoaderProps> = ({ isLoading }) => {
   return (
     <LoaderContainer>
       <div className={'loader-bg' + (isLoading ? ' opacity-bg' : '')}></div>
-      {isLoading && (
-        <>
-          <SvgContainer>
-            <Fan />
-            <div className="loader">
-              <div className="loader__bounce first"></div>
-              <div className="loader__bounce second"></div>
-              <div className="loader__bounce third"></div>
-            </div>
-          </SvgContainer>
-        </>
-      )}
+
+      <>
+        <SvgContainer>
+          <Fan />
+          <div className="loader">
+            <div className="loader__bounce first"></div>
+            <div className="loader__bounce second"></div>
+            <div className="loader__bounce third"></div>
+          </div>
+        </SvgContainer>
+      </>
     </LoaderContainer>
   )
 }

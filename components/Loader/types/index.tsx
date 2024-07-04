@@ -1,3 +1,3 @@
 export interface LoaderProps {
-  isLoading: boolean
+  isLoading?: boolean
 }

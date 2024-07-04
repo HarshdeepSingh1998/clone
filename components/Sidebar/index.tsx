@@ -26,7 +26,7 @@ const Sidebar = ({
     useCustomSidebar(userRole, setOpenPdfViewer, setSideBarData)
   return (
     <SidebarContainer>
-      <div>
+      <div style={{ width: '260px' }}>
         <LogoContainer>
           <Link href="/">
             <Image src={ProjectLogo} alt="Asic mining" />

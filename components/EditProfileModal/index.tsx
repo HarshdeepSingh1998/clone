@@ -27,17 +27,7 @@ const EditProfileModal = ({
     formState: { errors }
   } = useEditProfileModalForm(userData)
   const hiddenFileInputRef = useRef<HTMLInputElement | null>(null)
-  const {
-    onSubmit,
-    disable,
-    removeButtonDisabled,
-    handleButtonClick,
-    handleRemoveImage,
-    setRemoveImageClicked,
-    setAddImageClicked,
-    profileImageUpdated,
-    setProfileImageUpdated
-  } = useSubmitForm(
+  const submitFormData = useSubmitForm(
     selectedImage,
     userData,
     showModal,
@@ -48,8 +38,8 @@ const EditProfileModal = ({
   const updatedFormDataArray = updatedFormData(userData, formData)
   const handleSecondaryButtonClick = () => {
     showModal(false)
-    setAddImageClicked(false)
-    setRemoveImageClicked(false)
+    submitFormData.setAddImageClicked(false)
+    submitFormData.setRemoveImageClicked(false)
     setMenuModalOpen(false)
     setSelectedImage(
       userData?.data?.personalData?.profileImage || DEFAULT_PROFILE_URL
@@ -60,31 +50,31 @@ const EditProfileModal = ({
     <EditProfileContainer>
       <EditProfileContent>
         <Header
-          setRemoveImageClicked={setRemoveImageClicked}
-          setAddImageClicked={setAddImageClicked}
+          setRemoveImageClicked={submitFormData.setRemoveImageClicked}
+          setAddImageClicked={submitFormData.setAddImageClicked}
           showModal={showModal}
           setSelectedImage={setSelectedImage}
           userData={userData}
           setMenuModalOpen={setMenuModalOpen}
         />
         <Profile
-          profileImageUpdated={profileImageUpdated}
+          profileImageUpdated={submitFormData.profileImageUpdated}
           hiddenFileInputRef={hiddenFileInputRef}
-          setProfileImageUpdated={setProfileImageUpdated}
+          setProfileImageUpdated={submitFormData.setProfileImageUpdated}
           setSelectedImage={setSelectedImage}
-          setAddImageClicked={setAddImageClicked}
-          setRemoveImageClicked={setRemoveImageClicked}
-          handleButtonClick={handleButtonClick}
-          handleRemoveImage={handleRemoveImage}
-          removeButtonDisabled={removeButtonDisabled}
+          setAddImageClicked={submitFormData.setAddImageClicked}
+          setRemoveImageClicked={submitFormData.setRemoveImageClicked}
+          handleButtonClick={submitFormData.handleButtonClick}
+          handleRemoveImage={submitFormData.handleRemoveImage}
+          removeButtonDisabled={submitFormData.removeButtonDisabled}
         />
         <Form
           handleSubmit={handleSubmit}
           formData={updatedFormDataArray}
           control={control}
           errors={errors}
-          onSubmit={onSubmit}
-          disable={disable}
+          onSubmit={submitFormData.onSubmit}
+          disable={submitFormData.disable}
           isTextboxVisible={false}
           buttonText="Save Changes"
           watch={watch}

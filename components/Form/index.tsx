@@ -70,11 +70,11 @@ const Form = ({
         </>
       </InputContainer>
       <ButtonContainer
-      // disable={
-      //   isSignUpVisible
-      //     ? formData.some(data => watch(data.controllername) === '')
-      //     : otp?.some(digit => digit === '')
-      // }
+        disable={
+          isSignUpVisible
+            ? formData.some(data => watch(data.controllername) === '')
+            : otp?.some(digit => digit === '')
+        }
       >
         <Button
           type="submit"
