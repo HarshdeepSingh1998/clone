@@ -17,7 +17,7 @@ export interface ContentProps {
   data: ProductList
   userData?: UserState
   productDetailsPage?: boolean
-  handleViewProduct?: (productId: string) => void
+  handleViewProduct: (productId: string) => void
 }
 export interface FooterProps {
   data: ProductList

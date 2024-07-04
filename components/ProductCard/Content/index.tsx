@@ -84,7 +84,6 @@ const Content: React.FC<ContentProps> = ({
             </FeatureContainer>
           </DescriptionContainer>
         )}
-
         <DescriptionContainer>
           <FeatureContainer>
             <PowerIcon />

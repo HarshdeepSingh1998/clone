@@ -2,16 +2,15 @@ import AuthLayout from '@/components/AuthLayout'
 import withAuth from '@/utils/Authentication'
 import HeaderView from '@/views/Admin/MarketPlacePage/HeaderView'
 import CardView from '@/views/Admin/MarketPlacePage/CardView'
+import NoProductView from '@/views/Admin/MarketPlacePage/NoProductView'
 import { MarketPlaceContainer } from '@/styles/Pages/Admin/MarketPlace'
 import useAdminMarketPlace from '@/utils/Customhooks/useAdminMarketPlace'
-import NoProductView from '@/views/Admin/MarketPlacePage/NoProductView'
 
 const AdminMarketPlace = () => {
   const {
     toggleActive,
     handleBuyAndHostClick,
     handleShopClick,
-    hosting,
     data,
     productList,
     handleLoadMoreClick
