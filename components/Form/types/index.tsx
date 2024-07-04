@@ -17,4 +17,7 @@ export interface FormType {
   inputsRef?: MutableRefObject<(HTMLInputElement | null)[]>
   setOtp?: Dispatch<SetStateAction<string[]>>
   svgPosition?: string
+  isSecondaryButtonVisible?: boolean
+  secondaryButtonText?: string
+  handleSecondaryButtonClick?: () => void
 }

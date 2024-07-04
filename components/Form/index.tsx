@@ -24,7 +24,10 @@ const Form = ({
   otp,
   inputsRef,
   setOtp,
-  svgPosition
+  svgPosition,
+  isSecondaryButtonVisible,
+  secondaryButtonText,
+  handleSecondaryButtonClick
 }: FormType) => {
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -47,7 +50,6 @@ const Form = ({
                 startImage={data.startImage}
                 endImage={data.endImage}
                 watch={watch}
-                value={data.value}
                 disabled={data.disabled}
               />
             ))}
@@ -68,11 +70,11 @@ const Form = ({
         </>
       </InputContainer>
       <ButtonContainer
-        disable={
-          isSignUpVisible
-            ? formData.some(data => watch(data.controllername) === '')
-            : otp?.some(digit => digit === '')
-        }
+      // disable={
+      //   isSignUpVisible
+      //     ? formData.some(data => watch(data.controllername) === '')
+      //     : otp?.some(digit => digit === '')
+      // }
       >
         <Button
           type="submit"
@@ -80,6 +82,14 @@ const Form = ({
           disable={disable}
           label={disable ? <CircularProgress /> : buttonText || 'Send Message'}
         />
+        {isSecondaryButtonVisible && (
+          <Button
+            type="submit"
+            variant="text"
+            label={secondaryButtonText || 'Send Message'}
+            onClick={handleSecondaryButtonClick}
+          />
+        )}
       </ButtonContainer>
     </FormContainer>
   )

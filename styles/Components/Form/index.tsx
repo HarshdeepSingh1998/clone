@@ -43,9 +43,10 @@ export const ButtonContainer = styled.div<{ disable?: boolean }>`
   justify-content: center;
   align-items: center;
   // padding-bottom: 31px;
+  gap: 20px;
   button {
     width: 100%;
-    height: 42px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;

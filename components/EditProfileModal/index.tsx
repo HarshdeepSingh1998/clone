@@ -1,16 +1,17 @@
+import { useRef } from 'react'
 import useSubmitForm from '@/utils/Callback/User/MarketPlacePage/EditProfileModal'
 import { useEditProfileModalForm } from '@/utils/Customhooks/useEditProfileModalForm'
 import { formData } from '@/utils/User/MarketPlaceContent/EditProfileModal/Form'
+import Form from 'components/Form'
+import { updatedFormData } from 'components/EditProfileModal/data'
 import { ModalInterface } from 'components/EditProfileModal/types'
 import Header from 'components/EditProfileModal/Header'
 import Profile from 'components/EditProfileModal/Profile'
-import Form from 'components/Form'
+import DEFAULT_PROFILE_URL from 'assets/images/images/default-profile.png'
 import {
   EditProfileContainer,
   EditProfileContent
 } from '@/styles/Components/EditProfile'
-import { useRef } from 'react'
-import { updatedFormData } from './data'
 
 const EditProfileModal = ({
   showModal,
@@ -45,6 +46,16 @@ const EditProfileModal = ({
     hiddenFileInputRef
   )
   const updatedFormDataArray = updatedFormData(userData, formData)
+  const handleSecondaryButtonClick = () => {
+    showModal(false)
+    setAddImageClicked(false)
+    setRemoveImageClicked(false)
+    setMenuModalOpen(false)
+    setSelectedImage(
+      userData?.data?.personalData?.profileImage || DEFAULT_PROFILE_URL
+    )
+  }
+
   return (
     <EditProfileContainer>
       <EditProfileContent>
@@ -78,6 +89,9 @@ const EditProfileModal = ({
           buttonText="Save Changes"
           watch={watch}
           isSignUpVisible={true}
+          isSecondaryButtonVisible={true}
+          secondaryButtonText="Cancel"
+          handleSecondaryButtonClick={handleSecondaryButtonClick}
         />
       </EditProfileContent>
     </EditProfileContainer>

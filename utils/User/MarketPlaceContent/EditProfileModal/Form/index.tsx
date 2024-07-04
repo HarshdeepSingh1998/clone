@@ -3,7 +3,7 @@ import { FormDataType } from 'utils/ContactPageContent/Form/types'
 export const formData: FormDataType[] = [
   {
     title: 'User name',
-    controllername: 'username',
+    controllername: 'displayname',
     defaultValue: '',
     placeholder: 'Username',
     type: 'text',
@@ -23,9 +23,9 @@ export const formData: FormDataType[] = [
   },
   {
     title: 'Email',
-    controllername: 'email',
+    controllername: 'useremail',
     defaultValue: '',
-    placeholder: 'Your full name here',
+    placeholder: 'Enter your email',
     type: 'email',
     maxLength: 50,
     maxwidth: '100%',
@@ -35,8 +35,8 @@ export const formData: FormDataType[] = [
     title: 'Phone Number',
     controllername: 'phonenumber',
     defaultValue: '',
-    placeholder: 'Type you number',
-    type: 'email',
+    placeholder: 'Type your number',
+    type: 'number',
     maxLength: 50,
     maxwidth: '100%',
     border: '1px solid #DADADA;'
