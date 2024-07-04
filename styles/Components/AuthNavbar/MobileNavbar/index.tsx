@@ -194,7 +194,8 @@ export const LogoutContainer = styled.div`
 `
 export const TermsAndConditionsContainer = styled.div`
   padding: 0 30px;
-
+  position: fixed;
+  bottom: 2vw;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;

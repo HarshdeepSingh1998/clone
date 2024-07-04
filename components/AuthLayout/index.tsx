@@ -63,6 +63,7 @@ const AuthLayout = ({ children, isPopUpVisible }: AuthLayoutInterface) => {
           showMenuSlider={isModalOpen.menuslider}
           setMenuSliderOpen={handleSetMenuSliderOpen}
           userRole={userData?.data?.role as string}
+          userData={userData}
         />
         {children}
       </NavbarContainer>

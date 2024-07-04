@@ -9,10 +9,12 @@ import DEFAULT_PROFILE_URL from 'assets/images/images/default-profile.png'
 
 const useNavbar = (
   setMenuModalOpen: Dispatch<SetStateAction<boolean>>,
-  setMenuSliderOpen: Dispatch<SetStateAction<boolean>>
+  setMenuSliderOpen: Dispatch<SetStateAction<boolean>>,
+  setOpenPdfViewer: Dispatch<SetStateAction<boolean>>
 ) => {
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false)
   const [showEditProfileModal, setShowEditProfileModal] = useState(false)
+  const [pdfUrl, setPdfUrl] = useState<string>('')
   const { refetch: fetchData } = useGet('logout', '/api/logout', true)
   const router = useRouter()
   const userData = useSelector(selectUser)
@@ -78,8 +80,12 @@ const useNavbar = (
   }
 
   const handleLogoutClick = (popupState: { close: () => void }): void => {
-    logout()
+    logoutClick()
     popupState.close()
+  }
+
+  const closePdfModal = () => {
+    setOpenPdfViewer(false)
   }
 
   return {
@@ -94,7 +100,10 @@ const useNavbar = (
     handleEditClick,
     handleChangePasswordClick,
     handleLogoutClick,
-    logoutClick
+    logoutClick,
+    pdfUrl,
+    setPdfUrl,
+    closePdfModal
   }
 }
 
