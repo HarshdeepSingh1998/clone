@@ -13,6 +13,7 @@ export interface ProductDetailsInterface {
   setIndex: React.Dispatch<React.SetStateAction<number>>
   page?: string
   data: any
+  setSelectedProduct: Dispatch<SetStateAction<ProductList | undefined>>
 }
 
 export interface ActionButtonInterface {

@@ -5,6 +5,8 @@ import useActionButton from '@/utils/Customhooks/useActionButton'
 import AuthLayout from '@/components/AuthLayout'
 import HeaderView from '@/views/Admin/ProductDetailsPage/HeaderView'
 import DetailsView from '@/views/Admin/ProductDetailsPage/DetailsView'
+import HostingView from '@/views/Admin/ProductDetailsPage/HostingView'
+import DescriptionView from '@/views/Admin/ProductDetailsPage/DescriptionView'
 import { ProductDetailsContainer } from '@/styles/Pages/Admin/ProductDetailsPage'
 
 const ProductDetails = () => {
@@ -28,7 +30,8 @@ const ProductDetails = () => {
           anchorEl={anchorEl}
           setAnchorEl={setAnchorEl}
         />
-        <HostingView />
+        <HostingView productDetailsData={productDetailsData} />
+        <DescriptionView productDetailsData={productDetailsData} />
       </ProductDetailsContainer>
     </AuthLayout>
   )

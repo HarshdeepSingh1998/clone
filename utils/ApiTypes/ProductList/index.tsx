@@ -42,6 +42,7 @@ export interface ProductList {
     location: string
     depositPrice: number
     setupPrice: number
+    expirationDate: string
   }
   transaction: {
     _id: string

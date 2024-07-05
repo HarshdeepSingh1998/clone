@@ -161,6 +161,10 @@ export const RowContainer = styled.div`
   display: flex;
   gap: 16px;
   justify-content: space-between;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    gap: 0;
+  }
 `
 
 export const DescriptionTextContainer = styled.div`

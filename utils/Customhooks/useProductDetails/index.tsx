@@ -66,6 +66,7 @@ export const useProductDetails = (): ProductDetailsInterface => {
     sanitizeHTML,
     setIndex,
     page,
-    data
+    data,
+    setSelectedProduct
   }
 }

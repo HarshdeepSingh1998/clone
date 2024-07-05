@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import { ProductList } from '@/utils/ApiTypes/ProductList'
-import { Dispatch, SetStateAction } from 'react'
 
 export interface ProductDetailsInterface {
   productDetails: ProductList[] | undefined
@@ -13,5 +12,4 @@ export interface ProductDetailsInterface {
   setIndex: React.Dispatch<React.SetStateAction<number>>
   page?: string
   data: any
-  setSelectedProduct: Dispatch<SetStateAction<ProductList | undefined>>
 }
