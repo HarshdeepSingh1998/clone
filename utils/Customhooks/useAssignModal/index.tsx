@@ -35,8 +35,8 @@ export const useUserData = () => {
   }, [usersData])
 
   useEffect(() => {
-    if ((userDataList || [])?.length === 0) return
-    if ((userDataList || []).length < usersData?.data?.meta?.totalResults) {
+    if (!userDataList) return
+    if (userDataList.length < usersData?.data?.meta?.totalResults) {
       setUserPage(prev => prev + 1)
     }
   }, [userDataList, usersData])

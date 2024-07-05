@@ -47,14 +47,18 @@ const ProductDetails = () => {
             productDetailsData.productDetails?.[productDetailsData?.index]
           }
         />
-        <AssignModal
-          selectedProduct={productDetailsData.selectedProduct}
-          setSelectedProductId={() => {}}
-          fetchData={productDetailsData.fetchData}
-          setIsAssignModalVisible={actionButtonDetails.setIsAssignModalVisible}
-          inventoryPage={false}
-          isOpen={actionButtonDetails.isAssignModalVisible}
-        />
+        {actionButtonDetails.isAssignModalVisible && (
+          <AssignModal
+            selectedProduct={productDetailsData.selectedProduct}
+            setSelectedProductId={() => {}}
+            fetchData={productDetailsData.fetchData}
+            setIsAssignModalVisible={
+              actionButtonDetails.setIsAssignModalVisible
+            }
+            inventoryPage={false}
+            isOpen={actionButtonDetails.isAssignModalVisible}
+          />
+        )}
       </ProductDetailsContainer>
     </AuthLayout>
   )
