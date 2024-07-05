@@ -10,6 +10,16 @@ import {
   ButtonContainer
 } from '@/styles/Components/RevokeModal'
 
+export const Style = {
+  content: {
+    overflow: 'hidden',
+    height: '100%',
+    width: '100%',
+    inset: 0,
+    padding: '0px'
+  }
+}
+
 const RevokeModal: React.FC<RevokeModalProps> = ({
   setShowRevokeModel,
   isOpen,
@@ -23,15 +33,7 @@ const RevokeModal: React.FC<RevokeModalProps> = ({
     fetchData,
     setShowRevokeModel
   })
-  const Style = {
-    content: {
-      overflow: 'hidden',
-      height: '100%',
-      width: '100%',
-      inset: 0,
-      padding: '0px'
-    }
-  }
+
   return (
     <Modal
       isOpen={isOpen}
