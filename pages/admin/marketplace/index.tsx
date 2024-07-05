@@ -3,7 +3,7 @@ import withAuth from '@/utils/Authentication'
 import HeaderView from '@/views/Admin/MarketPlacePage/HeaderView'
 import CardView from '@/views/Admin/MarketPlacePage/CardView'
 import NoProductView from '@/views/Admin/MarketPlacePage/NoProductView'
-import { MarketPlaceContainer } from '@/styles/Pages/Admin/MarketPlace'
+import { MarketPlaceContainer } from '@/styles/Pages/Admin/MarketPlacePage'
 import useAdminMarketPlace from '@/utils/Customhooks/useAdminMarketPlace'
 
 const AdminMarketPlace = () => {
