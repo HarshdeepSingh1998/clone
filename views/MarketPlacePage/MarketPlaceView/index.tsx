@@ -42,7 +42,14 @@ const MarketPlaceView = () => {
             dataLength={(productList || [])?.length}
           >
             {(productList || [])?.map((data: ProductList, i: number) => (
-              <ProductCard data={data} i={i} key={i} width="100%" />
+              <ProductCard
+                data={data}
+                i={i}
+                key={i}
+                width="100%"
+                setSelectedProduct={() => {}}
+                setIndex={() => {}}
+              />
             ))}
           </SliderComponent>
         </CardContainer>

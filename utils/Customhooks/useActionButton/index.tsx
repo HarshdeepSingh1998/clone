@@ -54,7 +54,7 @@ const useActionButton = (
   }
 
   useEffect(() => {
-    if (modelDetails?.status === 'Published') {
+    if (modelDetails?.status === 'UnPublished') {
       setActionButtonData([
         {
           key: 'revoke',
@@ -113,9 +113,13 @@ const useActionButton = (
   return {
     actionButtonData,
     showRevokeModel,
+    setShowRevokeModel,
     isPubishModalVisible,
+    setIsPublishModalVisible,
     isAssignModalVisible,
+    setIsAssignModalVisible,
     showDeleteModel,
+    setShowDeleteModel,
     descriptionDetails
   }
 }

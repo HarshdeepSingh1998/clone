@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { UserState } from '@/store/userSlice'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
+import { Dispatch, SetStateAction } from 'react'
 
 export interface ProductCardProps {
   data: ProductList
@@ -8,6 +9,9 @@ export interface ProductCardProps {
   width: string
   productDetailsPage?: boolean
   userData?: UserState
+  setIndex: Dispatch<SetStateAction<number>>
+  selectedCard?: boolean
+  setSelectedProduct: Dispatch<SetStateAction<ProductList | undefined>>
 }
 export interface HeaderProps {
   data: ProductList

@@ -14,7 +14,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
   i,
   width,
   productDetailsPage,
-  userData
+  userData,
+  setIndex,
+  setSelectedProduct,
+  selectedCard
 }) => {
   const router = useRouter()
 
@@ -27,12 +30,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   return (
-    <ProductCardContainer key={i} width={width}>
+    <ProductCardContainer key={i} width={width} selectedCard={selectedCard}>
       <CardContent
         onClick={() => {
           userData?.data?.role === 'admin' && !productDetailsPage
             ? handleViewProduct(data._id as string)
-            : router.push('/signin')
+            : userData?.data?.role === 'admin'
+              ? ''
+              : router.push('/signin')
+          setIndex(i)
+          setSelectedProduct(data)
         }}
       >
         <Header data={data} userData={userData} />

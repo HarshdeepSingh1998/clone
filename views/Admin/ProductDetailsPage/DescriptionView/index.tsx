@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import { ProductDetailsInterface } from 'views/Admin/ProductDetailsPage/DescriptionView/types'
 import {
   DescriptionContainer,
@@ -8,6 +9,7 @@ import {
   CardContainer
 } from '@/styles/Views/Admin/ProductDetailsPage/Description'
 import ProductCard from '@/components/ProductCard'
+import { selectUser } from '@/store/userSlice'
 
 const DescriptionView = ({
   productDetailsData
@@ -16,6 +18,8 @@ const DescriptionView = ({
 }) => {
   const descriptionDetails =
     productDetailsData.productDetails?.[productDetailsData?.index]
+
+  const userData = useSelector(selectUser)
   return (
     <>
       {!descriptionDetails?.lotId && (
@@ -40,15 +44,17 @@ const DescriptionView = ({
             </TitleContainer>
             <DescriptionContent>
               <CardContainer>
-                {productDetailsData.productDetails?.map(data => (
+                {productDetailsData.productDetails?.map((data, i) => (
                   <>
                     <ProductCard
                       data={data}
-                      //   toggleActive={'1'}
+                      width="238px"
+                      userData={userData}
                       productDetailsPage={true}
-                      //   setIndex={productDetailsData.setIndex}
-                      //   index={productDetailsData.index}
-                      //   setSelectedProduct={productDetailsData.setSelectedProduct}
+                      setIndex={productDetailsData.setIndex}
+                      selectedCard={i === productDetailsData.index}
+                      i={i}
+                      setSelectedProduct={productDetailsData.setSelectedProduct}
                     />
                   </>
                 ))}

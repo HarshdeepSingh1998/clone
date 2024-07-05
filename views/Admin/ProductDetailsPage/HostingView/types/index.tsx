@@ -12,4 +12,5 @@ export interface ProductDetailsInterface {
   setIndex: React.Dispatch<React.SetStateAction<number>>
   page?: string
   data: any
+  fetchData: any
 }

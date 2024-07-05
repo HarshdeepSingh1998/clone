@@ -14,6 +14,7 @@ export interface ProductDetailsInterface {
   page?: string
   data: any
   setSelectedProduct: Dispatch<SetStateAction<ProductList | undefined>>
+  fetchData: any
 }
 
 export interface ActionButtonInterface {

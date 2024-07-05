@@ -1,10 +1,10 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import Image from 'next/image'
-import useActionButton from '@/utils/Customhooks/useActionButton'
 import {
   ActionButtonInterface,
   ProductDetailsInterface
 } from '@/views/Admin/ProductDetailsPage/DetailsView/types'
+import ActionButton from '@/components/ActionButton'
 import DEFAULT_PROFILE_URL from 'assets/images/images/default-profile.png'
 import {
   ModalContainer,
@@ -20,7 +20,6 @@ import {
   RowContainer,
   DescriptionTextContainer
 } from '@/styles/Views/Admin/ProductDetailsPage/Details/Modal'
-import ActionButton from '@/components/ActionButton'
 
 const ModalDescription = ({
   productDetailsData,

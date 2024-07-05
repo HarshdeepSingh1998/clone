@@ -1,11 +1,15 @@
 import styled from 'styled-components'
 
-export const ProductCardContainer = styled.div<{ width: string }>`
+export const ProductCardContainer = styled.div<{
+  width: string
+  selectedCard?: boolean
+}>`
   width: ${props => props.width || '238px'};
+  border: ${({ selectedCard }) =>
+    selectedCard ? '1px solid #fb674b' : '1px solid #1b202b'};
   maxwidth: 300px;
   border-radius: 12px;
   background-color: #131529;
-  border: 1px solid #1b202b;
   padding: 12px;
   cursor: pointer;
   position: relative;

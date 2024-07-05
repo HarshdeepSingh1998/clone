@@ -22,6 +22,8 @@ const CardView = ({ data, productList }: CardViewInterface) => {
             width="238px"
             productDetailsPage={false}
             userData={userData}
+            setIndex={() => {}}
+            setSelectedProduct={() => {}}
           />
         </>
       ))}

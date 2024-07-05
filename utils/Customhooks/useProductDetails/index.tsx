@@ -67,6 +67,7 @@ export const useProductDetails = (): ProductDetailsInterface => {
     setIndex,
     page,
     data,
-    setSelectedProduct
+    setSelectedProduct,
+    fetchData
   }
 }
