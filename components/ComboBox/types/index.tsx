@@ -4,9 +4,12 @@ export interface ComboBoxInterface {
     label: string
     value: string
   }[]
-  // eslint-disable-next-line no-unused-vars
-  onSelect: (e: any) => void
   placeholder: string
+  control: any
+  controllername: string
+  defaultValue: string
+  title: string
+  errors: any
 }
 
 export interface OptionType {

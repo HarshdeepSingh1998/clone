@@ -11,4 +11,5 @@ export interface UsersList {
   updatedAt: string
   username: string
   _id: string
+  profileImage: string
 }

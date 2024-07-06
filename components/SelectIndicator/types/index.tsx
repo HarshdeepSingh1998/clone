@@ -10,4 +10,9 @@ export type SelectIndicatorProps = {
   value?: string | null | number
   className?: string
   disabled?: boolean
+  control: any
+  controllername: string
+  defaultValue: string
+  errors: any
+  title: string
 }

@@ -1,5 +1,4 @@
 import Modal from 'react-modal'
-import { Controller } from 'react-hook-form'
 import { useUserData } from '@/utils/Customhooks/useAssignModal'
 import { useAssignModalForm } from '@/utils/Customhooks/useAssignModalForm'
 import useSubmit from '@/utils/Callback/Admin/MarketPlacePage/AssignModal'
@@ -10,9 +9,7 @@ import {
   HeaderContainer,
   BoxImage
 } from '@/styles/Components/AssignModal'
-import Button from '../Button'
-import SelectIndicator from '../SelectIndicator'
-import ComboBox from '../ComboBox'
+import AssignForm from './AssignForm'
 
 const AssignModal: React.FC<AssignModalProps> = ({
   selectedProduct,
@@ -42,8 +39,7 @@ const AssignModal: React.FC<AssignModalProps> = ({
     selectedProduct,
     setIsAssignModalVisible,
     inventoryPage,
-    fetchData,
-    contractList
+    fetchData
   )
 
   return (
@@ -55,8 +51,19 @@ const AssignModal: React.FC<AssignModalProps> = ({
       <ModalContainer>
         <HeaderContainer>
           <BoxImage />
-          Revoke Machine
+          Assign
         </HeaderContainer>
+        <AssignForm
+          assignOptions={assignOption}
+          contractOptions={contractTypeOptions}
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
+          control={control}
+          errors={errors}
+          watch={watch}
+          setIsAssignModalVisible={setIsAssignModalVisible}
+          contractList={contractList}
+        />
       </ModalContainer>
     </Modal>
   )

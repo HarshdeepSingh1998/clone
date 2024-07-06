@@ -2,7 +2,6 @@ import { Dispatch, SetStateAction, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import usePut from '@/hooks/usePut'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
-import { ContractList } from '@/utils/ApiTypes/ContractList'
 
 const useSubmit = (
   setError: any,
@@ -12,8 +11,7 @@ const useSubmit = (
   selectedProduct: ProductList | undefined,
   setIsAssignModalVisible: Dispatch<SetStateAction<boolean>>,
   inventoryPage: boolean,
-  fetchData: any,
-  contractList: ContractList[] | undefined
+  fetchData: any
 ) => {
   const contract = watch('contract')
   const hosting = watch('hosting')
@@ -25,17 +23,6 @@ const useSubmit = (
       setValue('hosting', hosting)
     }
   }, [hosting, reset, setValue])
-
-  useEffect(() => {
-    const contractDetails: any = contractList?.find(
-      (contractInfo: any) => contractInfo._id === contract
-    )
-    setValue(`location`, contractDetails?.location)
-    setValue(`hostRate`, contractDetails?.hostRate)
-    setValue(`depositPrice`, contractDetails?.depositPrice)
-    setValue(`setupPrice`, contractDetails?.setupPrice)
-    setValue(`expirationDate`, contractDetails?.expirationDate)
-  }, [contract, setValue, contractList])
 
   const onSubmit = async (values: any) => {
     if (hosting === 'with_hosting' && !contract) {

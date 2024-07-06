@@ -32,14 +32,14 @@ export const useUserData = () => {
   useEffect(() => {
     const list = usersData?.data?.users || []
     setUserDataList(prev => [...(prev || []), ...list])
-  }, [usersData])
+  }, [usersData, setUserDataList])
 
   useEffect(() => {
-    if (!userDataList) return
-    if (userDataList.length < usersData?.data?.meta?.totalResults) {
+    if (!(userDataList || []).length) return
+    if ((userDataList || []).length < totalCount) {
       setUserPage(prev => prev + 1)
     }
-  }, [userDataList, usersData])
+  }, [userDataList, totalCount])
 
   const [contractList, setContractList] = useState<ContractList[] | undefined>(
     undefined
@@ -62,7 +62,7 @@ export const useUserData = () => {
 
   const assignOption =
     (userDataList || [])?.length > 0
-      ? (userDataList || [])?.map((user: any) => {
+      ? (userDataList || [])?.map(user => {
           return {
             img: (
               <Image
@@ -80,7 +80,7 @@ export const useUserData = () => {
 
   const contractTypeOptions =
     (contractList || [])?.length > 0
-      ? contractList?.map((contract: any) => {
+      ? contractList?.map(contract => {
           return {
             label: `Contract ID - ${contract.contractId}`,
             value: contract._id

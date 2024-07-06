@@ -9,3 +9,23 @@ export interface AssignModalProps {
   inventoryPage: boolean
   isOpen: boolean
 }
+
+export interface AssignFormProps {
+  assignOptions: {
+    img: JSX.Element
+    label: string
+    value: string
+  }[]
+  contractOptions:
+    | {
+        label: string
+        value: string
+      }[]
+    | undefined
+  handleSubmit: any
+  onSubmit: any
+  control: any
+  errors: any
+  watch: any
+  setIsAssignModalVisible: Dispatch<SetStateAction<boolean>>
+}
