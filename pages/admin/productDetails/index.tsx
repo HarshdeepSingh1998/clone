@@ -20,13 +20,18 @@ const ProductDetails = () => {
     productDetailsData.productDetails?.[productDetailsData?.index],
     setAnchorEl
   )
-  console.log(
-    'product',
-    productDetailsData.selectedProduct,
-    productDetailsData.productDetails?.[productDetailsData?.index]
-  )
+  // console.log(
+  //   'product',
+  //   productDetailsData.selectedProduct,
+  //   productDetailsData.productDetails?.[productDetailsData?.index]
+  // )
   return (
-    <AuthLayout isPopUpVisible={actionButtonDetails?.showRevokeModel}>
+    <AuthLayout
+      isPopUpVisible={
+        actionButtonDetails?.showRevokeModel ||
+        actionButtonDetails?.isAssignModalVisible
+      }
+    >
       <ProductDetailsContainer>
         <HeaderView {...productDetailsData} />
         <DetailsView
@@ -50,7 +55,6 @@ const ProductDetails = () => {
         {actionButtonDetails.isAssignModalVisible && (
           <AssignModal
             selectedProduct={productDetailsData.selectedProduct}
-            setSelectedProductId={() => {}}
             fetchData={productDetailsData.fetchData}
             setIsAssignModalVisible={
               actionButtonDetails.setIsAssignModalVisible

@@ -1,9 +1,10 @@
+import { ContractList } from '@/utils/ApiTypes/ContractList'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
 import { Dispatch, SetStateAction } from 'react'
 
 export interface AssignModalProps {
   selectedProduct?: ProductList
-  setSelectedProductId: () => unknown
+  setSelectedProductId?: () => unknown
   fetchData: any
   setIsAssignModalVisible: Dispatch<SetStateAction<boolean>>
   inventoryPage: boolean
@@ -28,4 +29,5 @@ export interface AssignFormProps {
   errors: any
   watch: any
   setIsAssignModalVisible: Dispatch<SetStateAction<boolean>>
+  contractList: ContractList[] | undefined
 }

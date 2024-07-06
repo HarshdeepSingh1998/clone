@@ -4,16 +4,15 @@ import { useAssignModalForm } from '@/utils/Customhooks/useAssignModalForm'
 import useSubmit from '@/utils/Callback/Admin/MarketPlacePage/AssignModal'
 import { AssignModalProps } from 'components/AssignModal/types'
 import { Style } from 'components/RevokeModal'
+import AssignForm from 'components/AssignModal/AssignForm'
 import {
   ModalContainer,
   HeaderContainer,
   BoxImage
 } from '@/styles/Components/AssignModal'
-import AssignForm from './AssignForm'
 
 const AssignModal: React.FC<AssignModalProps> = ({
   selectedProduct,
-  setSelectedProductId,
   fetchData,
   setIsAssignModalVisible,
   inventoryPage,

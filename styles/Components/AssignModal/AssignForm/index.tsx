@@ -27,6 +27,11 @@ export const InputContainer = styled.div`
     }
   }
 `
+export const InputContent = styled.div`
+display: flex;
+
+}
+`
 export const ButtonContainer = styled.div<{ disable?: boolean }>`
   display: flex;
   justify-content: center;

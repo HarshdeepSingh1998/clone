@@ -7,12 +7,9 @@ import {
   InputContainer,
   ButtonContainer
 } from '@/styles/Components/AssignModal/AssignForm'
-import {
-  generateFormData,
-  updatedFormData
-} from '@/utils/Admin/MarketPlacePageContent/Form'
+import { generateFormData } from '@/utils/Admin/MarketPlacePageContent/Form'
 import { AssignFormProps } from 'components/AssignModal/types'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const hostingTypeOptions = [
   { label: 'With Hosting', value: 'with_hosting' },
@@ -30,15 +27,26 @@ const AssignForm: React.FC<AssignFormProps> = ({
   setIsAssignModalVisible,
   contractList
 }) => {
+  const [, setShowContractFields] = useState(false)
+  const [showAdditionalFields, setShowAdditionalFields] = useState(false)
   const hosting = watch('hosting')
   const contract = watch('contract')
-  console.log('watch', hosting, contract)
-  const formData = generateFormData(
-    assignOptions,
-    contractOptions,
-    hostingTypeOptions,
-    watch
-  )
+
+  useEffect(() => {
+    if (hosting === 'with_hosting') {
+      setShowContractFields(true)
+    } else {
+      setShowContractFields(false)
+    }
+
+    if (hosting === 'with_hosting' && contract) {
+      setShowAdditionalFields(true)
+    } else {
+      setShowAdditionalFields(false)
+    }
+  }, [hosting, contract, watch])
+
+  const formData = generateFormData(assignOptions)
 
   // useEffect(() => {
   //   const contractDetails: any = contractList?.find(
@@ -56,52 +64,72 @@ const AssignForm: React.FC<AssignFormProps> = ({
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <InputContainer>
         <>
-          {formData.map((field, index) => {
-            switch (field.inputType) {
-              case 'input':
-                return (
-                  <Input
-                    key={index}
-                    title={field.title}
-                    control={control}
-                    controllername={field.controllername}
-                    defaultValue={field.defaultValue}
-                    placeholder={field.placeholder}
-                    type={field.type as any}
-                    errors={errors}
-                  />
-                )
-              case 'dropdown':
-                return (
-                  <SelectIndicator
-                    key={index}
-                    title={field.title}
-                    control={control}
-                    controllername={field.controllername}
-                    defaultValue={field.defaultValue}
-                    placeholder={field.placeholder}
-                    options={field.options}
-                    width="100%"
-                    errors={errors}
-                  />
-                )
-              case 'combobox':
-                return (
-                  <ComboBox
-                    key={index}
-                    title={field.title}
-                    control={control}
-                    controllername={field.controllername}
-                    defaultValue={field.defaultValue}
-                    assignOption={field.options}
-                    placeholder={field.placeholder}
-                    errors={errors}
-                  />
-                )
-              default:
-                return null
-            }
-          })}
+          <SelectIndicator
+            title="Hosting Type"
+            control={control}
+            controllername="hosting"
+            defaultValue={''}
+            placeholder="Select Hosting Type"
+            options={hostingTypeOptions}
+            width="100%"
+            errors={errors}
+          />
+          {hosting === 'with_hosting' && (
+            <SelectIndicator
+              title="Contract Type"
+              control={control}
+              controllername="contract"
+              defaultValue={''}
+              placeholder="Select Contract Type"
+              options={contractOptions}
+              width="100%"
+              errors={errors}
+            />
+          )}
+          {showAdditionalFields &&
+            formData.map((field, index) => {
+              switch (field.inputType) {
+                case 'input':
+                  return (
+                    <Input
+                      key={index}
+                      title={field.title}
+                      control={control}
+                      controllername={field.controllername}
+                      defaultValue={field.defaultValue}
+                      placeholder={field.placeholder}
+                      type={field.type as any}
+                      errors={errors}
+                    />
+                  )
+                case 'combobox':
+                  return (
+                    <ComboBox
+                      key={index}
+                      title={field.title}
+                      control={control}
+                      controllername={field.controllername}
+                      defaultValue={field.defaultValue}
+                      assignOption={field.options}
+                      placeholder={field.placeholder}
+                      errors={errors}
+                    />
+                  )
+                default:
+                  return null
+              }
+            })}
+          {hosting === 'without_hosting' && (
+            <ComboBox
+              title="Assign To"
+              control={control}
+              controllername="assign_to"
+              defaultValue=""
+              assignOption={assignOptions}
+              placeholder="Assign To"
+              errors={errors}
+            />
+          )}
           <ButtonContainer disable={false}>
             <Button
               type="submit"
