@@ -1,20 +1,17 @@
+import { useEffect, useState } from 'react'
+import {
+  renderFieldRows,
+  hostingTypeOptions
+} from 'components/AssignModal/data'
 import Button from '@/components/Button'
 import ComboBox from '@/components/ComboBox'
-import Input from '@/components/Input'
 import SelectIndicator from '@/components/SelectIndicator'
+import { AssignFormProps } from 'components/AssignModal/types'
 import {
   FormContainer,
   InputContainer,
   ButtonContainer
 } from '@/styles/Components/AssignModal/AssignForm'
-import { generateFormData } from '@/utils/Admin/MarketPlacePageContent/Form'
-import { AssignFormProps } from 'components/AssignModal/types'
-import { useEffect, useState } from 'react'
-
-const hostingTypeOptions = [
-  { label: 'With Hosting', value: 'with_hosting' },
-  { label: 'Without Hosting', value: 'without_hosting' }
-]
 
 const AssignForm: React.FC<AssignFormProps> = ({
   assignOptions,
@@ -25,7 +22,8 @@ const AssignForm: React.FC<AssignFormProps> = ({
   errors,
   watch,
   setIsAssignModalVisible,
-  contractList
+  contractList,
+  setValue
 }) => {
   const [, setShowContractFields] = useState(false)
   const [showAdditionalFields, setShowAdditionalFields] = useState(false)
@@ -46,19 +44,16 @@ const AssignForm: React.FC<AssignFormProps> = ({
     }
   }, [hosting, contract, watch])
 
-  const formData = generateFormData(assignOptions)
-
-  // useEffect(() => {
-  //   const contractDetails: any = contractList?.find(
-  //     (contractInfo: any) => contractInfo._id === contract
-  //   )
-  //   updatedFormData(contractDetails, formData)
-  // }, [contract, contractList, formData])
-
-  // const updatedForm = updatedFormData(
-  //   contractList?.find((contractInfo: any) => contractInfo._id === contract),
-  //   formData
-  // )
+  useEffect(() => {
+    const contractDetails: any = contractList?.find(
+      (contractInfo: any) => contractInfo._id === contract
+    )
+    setValue(`location`, contractDetails?.location)
+    setValue(`hostRate`, contractDetails?.hostRate)
+    setValue(`depositPrice`, contractDetails?.depositPrice)
+    setValue(`setupPrice`, contractDetails?.setupPrice)
+    setValue(`expirationDate`, contractDetails?.expirationDate)
+  }, [contract, setValue, contractList])
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -86,44 +81,23 @@ const AssignForm: React.FC<AssignFormProps> = ({
               errors={errors}
             />
           )}
-          {showAdditionalFields &&
-            formData.map((field, index) => {
-              switch (field.inputType) {
-                case 'input':
-                  return (
-                    <Input
-                      key={index}
-                      title={field.title}
-                      control={control}
-                      controllername={field.controllername}
-                      defaultValue={field.defaultValue}
-                      placeholder={field.placeholder}
-                      type={field.type as any}
-                      errors={errors}
-                    />
-                  )
-                case 'combobox':
-                  return (
-                    <ComboBox
-                      key={index}
-                      title={field.title}
-                      control={control}
-                      controllername={field.controllername}
-                      defaultValue={field.defaultValue}
-                      assignOption={field.options}
-                      placeholder={field.placeholder}
-                      errors={errors}
-                    />
-                  )
-                default:
-                  return null
-              }
-            })}
+          {showAdditionalFields && renderFieldRows(control, errors)}
+          {showAdditionalFields && (
+            <ComboBox
+              title="Assign To"
+              control={control}
+              controllername="assignedUser"
+              defaultValue=""
+              assignOption={assignOptions}
+              placeholder="Assign To"
+              errors={errors}
+            />
+          )}
           {hosting === 'without_hosting' && (
             <ComboBox
               title="Assign To"
               control={control}
-              controllername="assign_to"
+              controllername="assignedUser"
               defaultValue=""
               assignOption={assignOptions}
               placeholder="Assign To"

@@ -5,7 +5,8 @@ import { ComboBoxInterface, OptionType } from 'components/ComboBox/types'
 import {
   customStyles,
   InputContent,
-  InputText
+  InputText,
+  ErrorMessageContainer
 } from '@/styles/Components/ComboBox'
 
 const ComboBox = ({
@@ -55,6 +56,11 @@ const ComboBox = ({
           />
         )}
       />
+      <ErrorMessageContainer>
+        {errors[controllername] && (
+          <span>{errors[controllername].message}</span>
+        )}
+      </ErrorMessageContainer>
     </InputContent>
   )
 }

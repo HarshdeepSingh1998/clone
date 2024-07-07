@@ -90,3 +90,11 @@ export const InputText = styled.div`
   // padding: 5px 0;
   text-transform: capitalize;
 `
+export const ErrorMessageContainer = styled.div`
+  width: 100%;
+  font-size: 13.5px;
+  color: #ed832f;
+  padding-top: 10px;
+  margin-left: 6px;
+  padding-top: 5px;
+`

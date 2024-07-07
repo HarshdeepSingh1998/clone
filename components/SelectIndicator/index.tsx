@@ -7,7 +7,8 @@ import { SelectIndicatorProps } from '@/components/SelectIndicator/types'
 import {
   StyledSelect,
   InputContent,
-  InputText
+  InputText,
+  ErrorMessageContainer
 } from '@/styles/Components/SelectIndicator'
 
 export default function SelectIndicator({
@@ -73,6 +74,11 @@ export default function SelectIndicator({
           </StyledSelect>
         )}
       />
+      <ErrorMessageContainer>
+        {errors[controllername] && (
+          <span>{errors[controllername].message}</span>
+        )}
+      </ErrorMessageContainer>
     </InputContent>
   )
 }

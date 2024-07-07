@@ -27,11 +27,15 @@ export const InputContainer = styled.div`
     }
   }
 `
-export const InputContent = styled.div`
-display: flex;
+export const FieldRow = styled.div`
+  display: flex;
+  gap: 10px;
 
-}
+  & > div {
+    flex: 1;
+  }
 `
+
 export const ButtonContainer = styled.div<{ disable?: boolean }>`
   display: flex;
   justify-content: center;
