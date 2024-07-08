@@ -3,13 +3,15 @@ import withAuth from '@/utils/Authentication'
 import { useProductDetails } from '@/utils/Customhooks/useProductDetails'
 import useActionButton from '@/utils/Customhooks/useActionButton'
 import AuthLayout from '@/components/AuthLayout'
+import RevokeModal from '@/components/RevokeModal'
+import AssignModal from '@/components/AssignModal'
+import DeleteModal from '@/components/DeleteModal'
+import PublishModal from '@/components/PublishModal'
 import HeaderView from '@/views/Admin/ProductDetailsPage/HeaderView'
 import DetailsView from '@/views/Admin/ProductDetailsPage/DetailsView'
 import HostingView from '@/views/Admin/ProductDetailsPage/HostingView'
 import DescriptionView from '@/views/Admin/ProductDetailsPage/DescriptionView'
 import { ProductDetailsContainer } from '@/styles/Pages/Admin/ProductDetailsPage'
-import RevokeModal from '@/components/RevokeModal'
-import AssignModal from '@/components/AssignModal'
 
 const ProductDetails = () => {
   const productDetailsData = useProductDetails()
@@ -29,7 +31,8 @@ const ProductDetails = () => {
     <AuthLayout
       isPopUpVisible={
         actionButtonDetails?.showRevokeModel ||
-        actionButtonDetails?.isAssignModalVisible
+        actionButtonDetails?.isAssignModalVisible ||
+        actionButtonDetails?.showDeleteModel
       }
     >
       <ProductDetailsContainer>
@@ -51,6 +54,23 @@ const ProductDetails = () => {
           productDetails={
             productDetailsData.productDetails?.[productDetailsData?.index]
           }
+        />
+        <DeleteModal
+          setShowDeleteModel={actionButtonDetails?.setShowDeleteModel}
+          isOpen={actionButtonDetails?.showDeleteModel}
+          fetchData={productDetailsData.fetchData}
+          productDetails={
+            productDetailsData.productDetails?.[productDetailsData?.index]
+          }
+        />
+        <PublishModal
+          selectedProduct={productDetailsData.selectedProduct}
+          fetchData={productDetailsData.fetchData}
+          setIsPublishModalVisible={
+            actionButtonDetails.setIsPublishModalVisible
+          }
+          inventoryPage={false}
+          isOpen={actionButtonDetails.isPubishModalVisible}
         />
         {actionButtonDetails.isAssignModalVisible && (
           <AssignModal

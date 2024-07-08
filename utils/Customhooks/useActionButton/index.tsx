@@ -87,7 +87,7 @@ const useActionButton = (
           key: 'delete',
           image: Remove,
           title: 'Delete',
-          handleClick: handleDeleteButton()
+          handleClick: handleDeleteButton
         }
       ])
     }
