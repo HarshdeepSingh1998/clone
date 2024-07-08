@@ -41,7 +41,7 @@ export const MainContainer = styled.div<{ toggleValue: string }>`
     props.toggleValue === 'Bid' &&
     `
     margin-top: 0;
-    transform: translateY(-5px);
+
   `}
 
   span:first-child {
