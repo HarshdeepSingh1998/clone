@@ -9,4 +9,13 @@ export interface PublishModalProps {
   inventoryPage: boolean
   isOpen: boolean
 }
-export interface PublishFormProps {}
+export interface PublishFormProps {
+  handleSubmit: any
+  onSubmit: any
+  control: any
+  errors: any
+  watch: any
+  setIsPublishModalVisible: Dispatch<SetStateAction<boolean>>
+  setValue: any
+  publishModalData: any
+}

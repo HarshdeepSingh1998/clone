@@ -51,16 +51,14 @@ const PublishModal: React.FC<PublishModalProps> = ({
           Hosting Preference
         </HeaderContainer>
         <PublishForm
-          assignOptions={assignOption}
-          contractOptions={contractTypeOptions}
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
           control={control}
           errors={errors}
           watch={watch}
-          setIsAssignModalVisible={setIsAssignModalVisible}
-          contractList={contractList}
+          setIsPublishModalVisible={setIsPublishModalVisible}
           setValue={setValue}
+          publishModalData={publishModalData}
         />
       </ModalContainer>
     </Modal>
