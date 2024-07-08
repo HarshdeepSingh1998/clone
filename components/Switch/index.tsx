@@ -23,7 +23,10 @@ const Switch: React.FC<SwitchProps> = ({
         <div>
           <InputText>Type</InputText>
         </div>
-        <MainContainer toggleValue={publishModalData.toggleValue}>
+        <MainContainer
+          toggleValue={publishModalData.toggleValue}
+          className={className}
+        >
           <span style={{ marginTop: '3px' }}>{startvalue}</span>
           <ToggleContainer>
             <Stack>

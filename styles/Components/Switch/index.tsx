@@ -52,6 +52,16 @@ export const MainContainer = styled.div<{ toggleValue: string }>`
     color: ${props => (props.toggleValue === 'Bid' ? '#FB674B' : '#fff')};
   }
 
+  &.switch {
+    span:first-child {
+      color: ${props => (props.toggleValue === 'Bid' ? '#FB674B' : '#fff')};
+    }
+
+    span:last-child {
+      color: ${props => (props.toggleValue === 'Buy' ? '#FB674B' : '#fff')};
+    }
+  }
+
   // .css-0 {
   //   margin-top: 6px;
   // }
