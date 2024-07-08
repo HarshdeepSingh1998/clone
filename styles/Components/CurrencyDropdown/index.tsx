@@ -29,6 +29,8 @@ export const CurrencyDropdownContainer = styled.div`
     border: none;
     outline: none;
     padding-left: 5px;
+    & + div {
+    }
   }
   .deposit-unit {
     border: none;

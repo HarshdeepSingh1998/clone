@@ -38,7 +38,6 @@ export const FieldRow = styled.div`
 export const DatePickerContainer = styled.div`
   display: flex;
   gap: 10px;
-  padding-top: 14px;
   // margin-top: 2vw;
   @media (max-width: 767px) {
     flex-direction: column !important;
