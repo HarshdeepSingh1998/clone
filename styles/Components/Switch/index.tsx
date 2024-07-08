@@ -85,10 +85,11 @@ export const AntSwitch = styled(Switch)(({ theme }) => ({
     }
   },
   '& .MuiSwitch-switchBase': {
-    padding: 2,
+    padding: 4,
+    height: '25px !important',
     '&.Mui-checked': {
       transform: 'translateX(12px)',
-      color: '#FB674B',
+      color: '#FB674B !important',
       '& + .MuiSwitch-track': {
         opacity: 1,
         backgroundColor: 'transparent',
