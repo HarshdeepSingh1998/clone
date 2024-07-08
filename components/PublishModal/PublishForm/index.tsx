@@ -12,6 +12,7 @@ import {
 import Button from '@/components/Button'
 import CurrencyDropdown from '@/components/CurrencyDropdown'
 import Switch from '@/components/Switch'
+import DatePicker from '@/components/DatePicker'
 import {
   FormContainer,
   InputContainer,
@@ -19,7 +20,6 @@ import {
   DatePickerContainer,
   InputContent
 } from '@/styles/Components/PublishModal/PublishModalForm'
-import DatePicker from '@/components/DatePicker'
 
 const PublishForm: React.FC<PublishFormProps> = ({
   handleSubmit,

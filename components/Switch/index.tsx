@@ -1,4 +1,3 @@
-import { Stack } from 'react-bootstrap'
 import { SwitchProps } from 'components/Switch/types'
 import {
   SwitchContainer,
@@ -29,15 +28,13 @@ const Switch: React.FC<SwitchProps> = ({
         >
           <span style={{ marginTop: '3px' }}>{startvalue}</span>
           <ToggleContainer>
-            <Stack>
-              <AntSwitch
-                defaultChecked
-                inputProps={{
-                  'aria-label': 'ant design'
-                }}
-                onChange={publishModalData.handleToggleChange}
-              />
-            </Stack>
+            <AntSwitch
+              defaultChecked
+              inputProps={{
+                'aria-label': 'ant design'
+              }}
+              onChange={publishModalData.handleToggleChange}
+            />
           </ToggleContainer>
           <span style={{ marginTop: '3px' }}>{endvalue}</span>
         </MainContainer>
