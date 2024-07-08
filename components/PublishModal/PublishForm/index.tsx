@@ -48,7 +48,6 @@ const PublishForm: React.FC<PublishFormProps> = ({
     }
   }, [publishModalData])
 
-  console.log('publishModalData', publishModalData)
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <InputContainer>
@@ -122,37 +121,55 @@ const PublishForm: React.FC<PublishFormProps> = ({
                 endvalue="Sell"
               />
               {publishModalData.toggleValue === 'Bid' && (
-                <DatePickerContainer>
-                  <DatePicker
-                    publishModalData={publishModalData}
-                    controllername={'auctionStartDate'}
-                    control={control}
-                    errors={errors}
-                    title={'Auction Start Date'}
-                  />
-                  <DatePicker
-                    publishModalData={publishModalData}
-                    controllername={'auctionEndDate'}
-                    control={control}
-                    errors={errors}
-                    title={'Auction End Date'}
-                  />
-                </DatePickerContainer>
+                <>
+                  <InputContent>
+                    <CurrencyDropdown
+                      control={control}
+                      errors={errors}
+                      controllername="askPrice"
+                      title="Asking Price"
+                    />
+                    <CurrencyDropdown
+                      control={control}
+                      errors={errors}
+                      controllername="shippingPrice"
+                      title="Shipping Cost"
+                    />
+                  </InputContent>
+                  <DatePickerContainer>
+                    <DatePicker
+                      publishModalData={publishModalData}
+                      controllername={'auctionStartDate'}
+                      control={control}
+                      errors={errors}
+                      title={'Auction Start Date'}
+                    />
+                    <DatePicker
+                      publishModalData={publishModalData}
+                      controllername={'auctionEndDate'}
+                      control={control}
+                      errors={errors}
+                      title={'Auction End Date'}
+                    />
+                  </DatePickerContainer>
+                </>
               )}
-              <InputContent>
-                <CurrencyDropdown
-                  control={control}
-                  errors={errors}
-                  controllername="askPrice"
-                  title="Asking Price"
-                />
-                <CurrencyDropdown
-                  control={control}
-                  errors={errors}
-                  controllername="askPrice"
-                  title="Shipping Cost"
-                />
-              </InputContent>
+              {publishModalData.toggleValue !== 'Bid' && (
+                <InputContent>
+                  <CurrencyDropdown
+                    control={control}
+                    errors={errors}
+                    controllername="askPrice"
+                    title="Asking Price"
+                  />
+                  <CurrencyDropdown
+                    control={control}
+                    errors={errors}
+                    controllername="shippingPrice"
+                    title="Shipping Cost"
+                  />
+                </InputContent>
+              )}
             </>
           )}
           <ButtonContainer disable={false}>
