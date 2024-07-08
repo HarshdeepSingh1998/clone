@@ -43,6 +43,14 @@ const useSubmit = (
       return
     }
 
+    if (values.hosting === 'with_hosting' && !watch('contract')) {
+      setError('contract', {
+        type: 'manual',
+        message: 'Contract is required.'
+      })
+      return
+    }
+
     if (values.hosting === 'with_hosting' && !watch('askPrice')) {
       setError('askPrice', {
         type: 'manual',
@@ -78,6 +86,7 @@ const useSubmit = (
     }
 
     if (
+      values.auctionStartDate &&
       (!values.auctionEndDate || values.auctionEndDate === 'Invalid Date') &&
       publishModalData.auctionType === 'Bid' &&
       publishModalData.hostingType === 'with_hosting'
@@ -97,7 +106,7 @@ const useSubmit = (
     ) {
       setError('shippingPrice', {
         type: 'manual',
-        message: 'Shipping cost is required if ask price is there.'
+        message: 'Shipping cost is required'
       })
       return
     }
@@ -139,6 +148,7 @@ const useSubmit = (
     }
 
     if (
+      values.auctionStartDate &&
       values.hosting === 'without_hosting' &&
       publishModalData.auctionType === 'Bid' &&
       (!values.auctionEndDate || values.auctionEndDate === 'Invalid Date')

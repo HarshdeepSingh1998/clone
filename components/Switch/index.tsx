@@ -18,7 +18,7 @@ const Switch: React.FC<SwitchProps> = ({
   endvalue
 }) => {
   return (
-    <SwitchContainer>
+    <SwitchContainer className={className}>
       <SwitchContent className={className}>
         <div>
           <InputText>Type</InputText>

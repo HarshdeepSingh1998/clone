@@ -58,10 +58,8 @@ const DatePickerComponent: React.FC<DatePickerProps> = ({
         )}
       />
       <ErrorMessageContainer>
-        {errors.auctionStartDate ? (
-          <span>{errors?.auctionStartDate?.message}</span>
-        ) : (
-          <span></span>
+        {errors[controllername] && (
+          <span>{errors[controllername].message}</span>
         )}
       </ErrorMessageContainer>
     </DatePickerContent>

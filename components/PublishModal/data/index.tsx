@@ -40,3 +40,18 @@ export const renderFieldRows = (control: any, errors: any) => {
 
   return rows
 }
+
+export const currencyData = {
+  controllername: 'askPrice',
+  title: 'Selling Price'
+}
+
+export const dataPickerData = [
+  { controllername: 'auctionStartDate', title: 'Auction Start Date' },
+  { controllername: 'auctionEndDate', title: 'Auction End Date' }
+]
+
+export const withoutHostingCurrencyData = [
+  { controllername: 'askPrice', title: 'Asking Price' },
+  { controllername: 'shippingPrice', title: 'Shipping Cost' }
+]

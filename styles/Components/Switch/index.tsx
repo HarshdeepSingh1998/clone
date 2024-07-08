@@ -4,6 +4,9 @@ import Switch from '@mui/material/Switch'
 export const SwitchContainer = styled.div`
   display: flex;
   flex-direction: column;
+  &.switch {
+    gap: 10px;
+  }
 `
 export const SwitchContent = styled.div`
   // disply: flex;

@@ -1,5 +1,5 @@
 import Modal from 'react-modal'
-import { usePublishModalForm } from '@/utils/Customhooks/UsePublishModalForm'
+import { usePublishModalForm } from '@/utils/Customhooks/usePublishModalForm'
 import { PublishModalProps } from 'components/PublishModal/types'
 import { usePublishData } from '@/utils/Customhooks/usePublishModal'
 import useSubmit from '@/utils/Callback/Admin/MarketPlacePage/PublishModal'

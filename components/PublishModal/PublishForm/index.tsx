@@ -1,9 +1,13 @@
+/* eslint-disable react/jsx-key */
 import { useEffect, useState } from 'react'
 import { PublishFormProps } from 'components/PublishModal/types'
 import SelectIndicator from '@/components/SelectIndicator'
 import {
+  currencyData,
+  dataPickerData,
   hostingTypeOptions,
-  renderFieldRows
+  renderFieldRows,
+  withoutHostingCurrencyData
 } from 'components/PublishModal/data'
 import Button from '@/components/Button'
 import CurrencyDropdown from '@/components/CurrencyDropdown'
@@ -22,9 +26,7 @@ const PublishForm: React.FC<PublishFormProps> = ({
   onSubmit,
   control,
   errors,
-  watch,
   setIsPublishModalVisible,
-  setValue,
   publishModalData,
   reset
 }) => {
@@ -81,8 +83,8 @@ const PublishForm: React.FC<PublishFormProps> = ({
                 <CurrencyDropdown
                   control={control}
                   errors={errors}
-                  controllername="askPrice"
-                  title="Selling Price"
+                  controllername={currencyData.controllername}
+                  title={currencyData.title}
                 />
                 <Switch
                   publishModalData={publishModalData}
@@ -93,20 +95,15 @@ const PublishForm: React.FC<PublishFormProps> = ({
               <div>
                 {publishModalData.toggleValue === 'Bid' && (
                   <DatePickerContainer>
-                    <DatePicker
-                      publishModalData={publishModalData}
-                      controllername={'auctionStartDate'}
-                      control={control}
-                      errors={errors}
-                      title={'Auction Start Date'}
-                    />
-                    <DatePicker
-                      publishModalData={publishModalData}
-                      controllername={'auctionEndDate'}
-                      control={control}
-                      errors={errors}
-                      title={'Auction End Date'}
-                    />
+                    {dataPickerData.map(data => (
+                      <DatePicker
+                        publishModalData={publishModalData}
+                        controllername={data.controllername}
+                        control={control}
+                        errors={errors}
+                        title={data.title}
+                      />
+                    ))}
                   </DatePickerContainer>
                 )}
               </div>
@@ -123,51 +120,38 @@ const PublishForm: React.FC<PublishFormProps> = ({
               {publishModalData.toggleValue === 'Bid' && (
                 <>
                   <InputContent>
-                    <CurrencyDropdown
-                      control={control}
-                      errors={errors}
-                      controllername="askPrice"
-                      title="Asking Price"
-                    />
-                    <CurrencyDropdown
-                      control={control}
-                      errors={errors}
-                      controllername="shippingPrice"
-                      title="Shipping Cost"
-                    />
+                    {withoutHostingCurrencyData.map(data => (
+                      <CurrencyDropdown
+                        control={control}
+                        errors={errors}
+                        controllername={data.controllername}
+                        title={data.title}
+                      />
+                    ))}
                   </InputContent>
                   <DatePickerContainer>
-                    <DatePicker
-                      publishModalData={publishModalData}
-                      controllername={'auctionStartDate'}
-                      control={control}
-                      errors={errors}
-                      title={'Auction Start Date'}
-                    />
-                    <DatePicker
-                      publishModalData={publishModalData}
-                      controllername={'auctionEndDate'}
-                      control={control}
-                      errors={errors}
-                      title={'Auction End Date'}
-                    />
+                    {dataPickerData.map(data => (
+                      <DatePicker
+                        publishModalData={publishModalData}
+                        controllername={data.controllername}
+                        control={control}
+                        errors={errors}
+                        title={data.title}
+                      />
+                    ))}
                   </DatePickerContainer>
                 </>
               )}
               {publishModalData.toggleValue !== 'Bid' && (
                 <InputContent>
-                  <CurrencyDropdown
-                    control={control}
-                    errors={errors}
-                    controllername="askPrice"
-                    title="Asking Price"
-                  />
-                  <CurrencyDropdown
-                    control={control}
-                    errors={errors}
-                    controllername="shippingPrice"
-                    title="Shipping Cost"
-                  />
+                  {withoutHostingCurrencyData.map(data => (
+                    <CurrencyDropdown
+                      control={control}
+                      errors={errors}
+                      controllername={data.controllername}
+                      title={data.title}
+                    />
+                  ))}
                 </InputContent>
               )}
             </>
