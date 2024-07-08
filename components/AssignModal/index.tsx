@@ -63,6 +63,7 @@ const AssignModal: React.FC<AssignModalProps> = ({
           setIsAssignModalVisible={setIsAssignModalVisible}
           contractList={contractList}
           setValue={setValue}
+          reset={reset}
         />
       </ModalContainer>
     </Modal>

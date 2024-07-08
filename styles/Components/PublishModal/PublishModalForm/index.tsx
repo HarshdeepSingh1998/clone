@@ -35,6 +35,28 @@ export const FieldRow = styled.div`
     flex: 1;
   }
 `
+export const DatePickerContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  padding-top: 14px;
+  // margin-top: 2vw;
+  @media (max-width: 767px) {
+    flex-direction: column !important;
+  }
+`
+export const InputContent = styled.div`
+  display: flex;
+  gap: 10px;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    > div {
+      width: 100% !important;
+    }
+  }
+  > div {
+    width: 50%;
+  }
+`
 
 export const ButtonContainer = styled.div<{ disable?: boolean }>`
   display: flex;

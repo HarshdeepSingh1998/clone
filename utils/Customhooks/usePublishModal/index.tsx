@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react'
 import useGet from 'hooks/useGet'
 import { ContractList } from '@/utils/ApiTypes/ContractList'
+import { UsePublishDataInterface } from 'utils/Customhooks/usePublishModal/types'
 
-export const usePublishData = (watch: any, setValue: any, reset: any) => {
+export const usePublishData = (
+  watch: any,
+  setValue: any,
+  reset: any
+): UsePublishDataInterface => {
   const [contractList, setContractList] = useState<ContractList[] | undefined>(
     undefined
   )
@@ -35,12 +40,9 @@ export const usePublishData = (watch: any, setValue: any, reset: any) => {
       : []
 
   const hostingType = watch('hosting')
-
   const auctionDate = watch('auctionStartDate')
-
   const contract = watch('contract')
   const askPrice = watch('askPrice')
-
   const auctionType = watch('auctionType')
 
   useEffect(() => {

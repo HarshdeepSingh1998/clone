@@ -1,4 +1,5 @@
 import { ProductList } from '@/utils/ApiTypes/ProductList'
+import { UsePublishDataInterface } from '@/utils/Customhooks/usePublishModal/types'
 import { Dispatch, SetStateAction } from 'react'
 
 export interface PublishModalProps {
@@ -17,5 +18,6 @@ export interface PublishFormProps {
   watch: any
   setIsPublishModalVisible: Dispatch<SetStateAction<boolean>>
   setValue: any
-  publishModalData: any
+  publishModalData: UsePublishDataInterface
+  reset: any
 }

@@ -23,7 +23,8 @@ const AssignForm: React.FC<AssignFormProps> = ({
   watch,
   setIsAssignModalVisible,
   contractList,
-  setValue
+  setValue,
+  reset
 }) => {
   const [, setShowContractFields] = useState(false)
   const [showAdditionalFields, setShowAdditionalFields] = useState(false)
@@ -115,7 +116,10 @@ const AssignForm: React.FC<AssignFormProps> = ({
               type="submit"
               variant="text"
               label={'Cancel'}
-              onClick={() => setIsAssignModalVisible(false)}
+              onClick={() => {
+                setIsAssignModalVisible(false)
+                reset()
+              }}
             />
           </ButtonContainer>
         </>

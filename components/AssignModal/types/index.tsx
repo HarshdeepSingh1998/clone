@@ -31,4 +31,5 @@ export interface AssignFormProps {
   setIsAssignModalVisible: Dispatch<SetStateAction<boolean>>
   contractList: ContractList[] | undefined
   setValue: any
+  reset: any
 }

@@ -32,7 +32,8 @@ const ProductDetails = () => {
       isPopUpVisible={
         actionButtonDetails?.showRevokeModel ||
         actionButtonDetails?.isAssignModalVisible ||
-        actionButtonDetails?.showDeleteModel
+        actionButtonDetails?.showDeleteModel ||
+        actionButtonDetails?.isPubishModalVisible
       }
     >
       <ProductDetailsContainer>

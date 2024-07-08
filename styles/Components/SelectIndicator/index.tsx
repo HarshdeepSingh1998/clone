@@ -30,6 +30,9 @@ export const StyledSelect = styled(Select)<{ width: string }>`
   &:hover {
     background: #1c1f30;
   }
+  .MuiSelect-button {
+    overflow: visible !important;
+  }
 `
 export const InputContent = styled.div`
   width: 100%;

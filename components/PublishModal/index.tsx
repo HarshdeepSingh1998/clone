@@ -59,6 +59,7 @@ const PublishModal: React.FC<PublishModalProps> = ({
           setIsPublishModalVisible={setIsPublishModalVisible}
           setValue={setValue}
           publishModalData={publishModalData}
+          reset={reset}
         />
       </ModalContainer>
     </Modal>
