@@ -2,4 +2,7 @@ import { UsePublishDataInterface } from '@/utils/Customhooks/usePublishModal/typ
 
 export interface SwitchProps {
   publishModalData: UsePublishDataInterface
+  className?: string
+  startvalue: string
+  endvalue: string
 }

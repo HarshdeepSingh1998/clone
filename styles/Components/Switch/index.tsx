@@ -8,6 +8,11 @@ export const SwitchContainer = styled.div`
 export const SwitchContent = styled.div`
   // disply: flex;
   width: 100%;
+  &.switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 `
 export const InputText = styled.div`
   color: #90a3bf;
@@ -22,7 +27,6 @@ export const InputText = styled.div`
 export const MainContainer = styled.div<{ toggleValue: string }>`
   display: flex;
   gap: 20px;
-  margin-top: 6px;
   font-family: Inter;
   font-size: 20px;
   font-weight: 400;
@@ -170,8 +174,8 @@ export const CheckboxContent = styled.div<{ publishModal?: boolean }>`
   @media (max-width: 767px) {
     gap: 14px;
     width: 100%;
-    transform: translateX(2px);
   }
+  transform: translateX(2px);
 
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     gap: 12px;

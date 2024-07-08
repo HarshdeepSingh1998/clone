@@ -16,7 +16,8 @@ const DatePickerComponent: React.FC<DatePickerProps> = ({
   controllername,
   control,
   errors,
-  className = ''
+  className = '',
+  title
 }) => {
   const minDate =
     publishModalData.calenderClick && publishModalData.auctionDate
@@ -29,7 +30,7 @@ const DatePickerComponent: React.FC<DatePickerProps> = ({
         publishModalData.setCalenderClick(false)
       }}
     >
-      <InputText>Auction Start Date</InputText>
+      <InputText>{title}</InputText>
       <Controller
         name={controllername}
         control={control}

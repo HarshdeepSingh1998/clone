@@ -6,4 +6,5 @@ export interface DatePickerProps {
   control: any
   errors: any
   className?: string
+  title: string
 }

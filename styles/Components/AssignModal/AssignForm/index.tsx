@@ -31,6 +31,10 @@ export const FieldRow = styled.div`
   display: flex;
   gap: 10px;
 
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+
   & > div {
     flex: 1;
   }
@@ -41,7 +45,7 @@ export const ButtonContainer = styled.div<{ disable?: boolean }>`
   justify-content: center;
   align-items: center;
   // padding-bottom: 31px;
-  gap: 20px;
+  gap: 10px;
   button {
     width: 100%;
     height: 50px;

@@ -73,7 +73,7 @@ const Input = ({
           />
         )}
       />
-      <ErrorMessageContainer>
+      <ErrorMessageContainer className="error-message">
         {errors[controllername] && (
           <span>{errors[controllername].message}</span>
         )}

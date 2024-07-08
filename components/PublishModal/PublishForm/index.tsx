@@ -79,8 +79,17 @@ const PublishForm: React.FC<PublishFormProps> = ({
             <>
               {renderFieldRows(control, errors)}
               <InputContent>
-                <CurrencyDropdown control={control} errors={errors} />
-                <Switch publishModalData={publishModalData} />
+                <CurrencyDropdown
+                  control={control}
+                  errors={errors}
+                  controllername="askPrice"
+                  title="Selling Price"
+                />
+                <Switch
+                  publishModalData={publishModalData}
+                  startvalue="Sell"
+                  endvalue="Auction"
+                />
               </InputContent>
               <div>
                 {publishModalData.toggleValue === 'Bid' && (
@@ -90,16 +99,60 @@ const PublishForm: React.FC<PublishFormProps> = ({
                       controllername={'auctionStartDate'}
                       control={control}
                       errors={errors}
+                      title={'Auction Start Date'}
                     />
                     <DatePicker
                       publishModalData={publishModalData}
                       controllername={'auctionEndDate'}
                       control={control}
                       errors={errors}
+                      title={'Auction End Date'}
                     />
                   </DatePickerContainer>
                 )}
               </div>
+            </>
+          )}
+          {publishModalData.hostingType === 'without_hosting' && (
+            <>
+              <Switch
+                publishModalData={publishModalData}
+                className="switch"
+                startvalue="Auction"
+                endvalue="Sell"
+              />
+              {publishModalData.toggleValue === 'Bid' && (
+                <DatePickerContainer>
+                  <DatePicker
+                    publishModalData={publishModalData}
+                    controllername={'auctionStartDate'}
+                    control={control}
+                    errors={errors}
+                    title={'Auction Start Date'}
+                  />
+                  <DatePicker
+                    publishModalData={publishModalData}
+                    controllername={'auctionEndDate'}
+                    control={control}
+                    errors={errors}
+                    title={'Auction End Date'}
+                  />
+                </DatePickerContainer>
+              )}
+              <InputContent>
+                <CurrencyDropdown
+                  control={control}
+                  errors={errors}
+                  controllername="askPrice"
+                  title="Asking Price"
+                />
+                <CurrencyDropdown
+                  control={control}
+                  errors={errors}
+                  controllername="askPrice"
+                  title="Shipping Cost"
+                />
+              </InputContent>
             </>
           )}
           <ButtonContainer disable={false}>

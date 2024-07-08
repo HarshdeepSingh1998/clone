@@ -10,7 +10,6 @@ export const ModalContainer = styled.div`
   width: 602px;
 
   @media (max-width: 767px) {
-    width: 365px;
     padding: 20px;
   }
 `

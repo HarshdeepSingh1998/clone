@@ -37,12 +37,8 @@ export const CurrencyDropdownContainer = styled.div`
 export const InputContainer = styled.div`
   position: relative;
   width: 100%;
-`
-export const ErrorMessageContainer = styled.div`
-  width: 100%;
-  font-size: 13.5px;
-  color: #ed832f;
-  padding-top: 10px;
-  margin-left: 6px;
-  padding-top: 5px;
+  .error-message {
+    position: absolute;
+    width: 120%;
+  }
 `

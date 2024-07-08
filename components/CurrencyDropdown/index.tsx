@@ -10,11 +10,13 @@ import {
 
 const CurrencyDropdown: React.FC<CurrencyDropdownProps> = ({
   control,
-  errors
+  errors,
+  controllername,
+  title
 }) => {
   return (
     <div>
-      <InputText>{'Selling Price'}</InputText>
+      <InputText>{title}</InputText>
       <CurrencyDropdownContainer>
         <SelectIndicator
           placeholder="USD"
@@ -32,7 +34,7 @@ const CurrencyDropdown: React.FC<CurrencyDropdownProps> = ({
           <Input
             title=""
             control={control}
-            controllername="askPrice"
+            controllername={controllername}
             defaultValue=""
             className="deposit-price"
             type="number"

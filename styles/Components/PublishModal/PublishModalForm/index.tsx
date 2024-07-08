@@ -37,7 +37,7 @@ export const FieldRow = styled.div`
 `
 export const DatePickerContainer = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 10px;
   padding-top: 14px;
   // margin-top: 2vw;
   @media (max-width: 767px) {
@@ -63,7 +63,7 @@ export const ButtonContainer = styled.div<{ disable?: boolean }>`
   justify-content: center;
   align-items: center;
   // padding-bottom: 31px;
-  gap: 20px;
+  gap: 10px;
   button {
     width: 100%;
     height: 50px;

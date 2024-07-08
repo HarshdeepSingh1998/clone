@@ -11,15 +11,20 @@ import {
   CheckboxContent
 } from '@/styles/Components/Switch'
 
-const Switch: React.FC<SwitchProps> = ({ publishModalData }) => {
+const Switch: React.FC<SwitchProps> = ({
+  publishModalData,
+  className,
+  startvalue,
+  endvalue
+}) => {
   return (
     <SwitchContainer>
-      <SwitchContent>
+      <SwitchContent className={className}>
         <div>
           <InputText>Type</InputText>
         </div>
         <MainContainer toggleValue={publishModalData.toggleValue}>
-          <span style={{ marginTop: '3px' }}>Sell</span>
+          <span style={{ marginTop: '3px' }}>{startvalue}</span>
           <ToggleContainer>
             <Stack>
               <AntSwitch
@@ -31,7 +36,7 @@ const Switch: React.FC<SwitchProps> = ({ publishModalData }) => {
               />
             </Stack>
           </ToggleContainer>
-          <span style={{ marginTop: '3px' }}>Auction</span>
+          <span style={{ marginTop: '3px' }}>{endvalue}</span>
         </MainContainer>
       </SwitchContent>
 
