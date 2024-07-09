@@ -12,6 +12,7 @@ import {
   PrimaryButttonContainer,
   SecondaryButtonContainer
 } from '@/styles/Views/Admin/InventorymanagementPage/Header'
+import Loader from '@/components/Loader'
 
 const HeaderView = ({
   inventoryData
@@ -77,6 +78,9 @@ const HeaderView = ({
           </>
         )}
       </ButtonContainer>
+      {!inventoryData?.data && (
+        <Loader blurredBackgroundtrue={!inventoryData?.data} />
+      )}
     </HeaderContainer>
   )
 }

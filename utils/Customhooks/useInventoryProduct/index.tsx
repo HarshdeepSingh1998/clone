@@ -53,8 +53,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
       [modalName]: !prevState[modalName]
     }))
   }
-  // const openDeleteModel = () => toggleModal('showDeleteModel');
-  // const closeDeleteModel = () => toggleModal('showDeleteModel');
   const [selectedProduct, setSelectedProduct] = useState('')
   const [contractValue, setContractValue] = useState<string>('')
   const [modelName, setModelName] = useState('')
@@ -243,6 +241,7 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     setSelectedProductIds,
     setSelectAll,
     isModalOpen,
-    toggleModal
+    toggleModal,
+    data
   }
 }

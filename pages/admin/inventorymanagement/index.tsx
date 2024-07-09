@@ -1,8 +1,9 @@
 import AuthLayout from '@/components/AuthLayout'
 import withAuth from '@/utils/Authentication'
+import { useInventoryProduct } from '@/utils/Customhooks/useInventoryProduct'
+import ProductView from '@/views/Admin/InventorymanagementPage/ProductView'
 import HeaderView from '@/views/Admin/InventorymanagementPage/HeaderView'
 import { InventorymanagementContainer } from '@/styles/Pages/Admin/InventorymanagementPage'
-import { useInventoryProduct } from '@/utils/Customhooks/useInventoryProduct'
 
 const InventoryManagement = () => {
   const inventoryData = useInventoryProduct()
@@ -10,7 +11,7 @@ const InventoryManagement = () => {
     <AuthLayout>
       <InventorymanagementContainer>
         <HeaderView inventoryData={inventoryData} />
-        {/* <ProductView /> */}
+        <ProductView inventoryData={inventoryData} />
       </InventorymanagementContainer>
     </AuthLayout>
   )
