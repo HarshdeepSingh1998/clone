@@ -22,11 +22,7 @@ const ProductDetails = () => {
     productDetailsData.productDetails?.[productDetailsData?.index],
     setAnchorEl
   )
-  // console.log(
-  //   'product',
-  //   productDetailsData.selectedProduct,
-  //   productDetailsData.productDetails?.[productDetailsData?.index]
-  // )
+
   return (
     <AuthLayout
       isPopUpVisible={
