@@ -24,14 +24,11 @@ const PublishModal: React.FC<PublishModalProps> = ({
     watch,
     setValue,
     reset,
-    setError,
     formState: { errors }
   } = usePublishModalForm()
 
   const publishModalData = usePublishData(watch, setValue, reset)
   const { onSubmit } = useSubmit(
-    setError,
-    watch,
     reset,
     selectedProduct,
     setIsPublishModalVisible,
