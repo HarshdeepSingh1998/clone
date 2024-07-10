@@ -6,4 +6,5 @@ export interface ActionButtonProps {
   anchorEl: HTMLElement | null
   disabled: boolean
   open: boolean
+  handleClose: () => void
 }

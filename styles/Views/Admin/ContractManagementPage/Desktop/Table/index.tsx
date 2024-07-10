@@ -8,7 +8,6 @@ export const TableContainer = styled.div`
   gap: 40px;
   background: linear-gradient(180deg, #040717 1.55%, #121328 100%);
   border-radius: 10px;
-  padding: 40px;
   border: 1px solid #161929;
   @media (max-width: 767px) {
     margin: 20px 0px 0px 0px;
@@ -24,9 +23,12 @@ export const TableContainer = styled.div`
 
 export const TableContent = styled.div`
   display: flex;
-  padding: 10px;
+  flex-direction: column;
+  align-items: baseline;
+  padding: 24px 19px 24px 24px;
   width: 100%;
   justify-content: start;
+  gap: 44px;
 `
 export const HeaderTitle = styled.div`
   display: flex;

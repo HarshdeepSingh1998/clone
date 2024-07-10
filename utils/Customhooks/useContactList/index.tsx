@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import useDelete from '@/hooks/useDelete'
 import useGet from '@/hooks/useGet'
@@ -7,10 +9,13 @@ import {
   fetchContractSuccess,
   fetchContractFailure
 } from 'store/contractSlice'
-import { toast } from 'react-toastify'
 import { ContractList } from '@/utils/ApiTypes/ContractList'
+import { ContractDataInterface } from '@/views/Admin/ContractmanagementPage/Desktop/types'
+import EditModal from '@/assets/images/images/edit-modal.png'
+import Remove from '@/assets/images/images/Remove.png'
 
-const useContractList = () => {
+const useContractList = (): ContractDataInterface => {
+  const [actionButtonData, setActionButtonData] = useState<any>([])
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [openPdfViewer, setOpenPdfViewer] = useState<boolean>(false)
   const [pdfUrl, setPdfUrl] = useState<string>('')
@@ -22,7 +27,9 @@ const useContractList = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const [page, setPage] = useState(1)
-  const [contractList, setContractList] = useState<any>([])
+  const [contractList, setContractList] = useState<ContractList[] | undefined>(
+    undefined
+  )
   const [loadMoreButtonClicked, setLoadMoreButtonClicked] = useState(false)
   const [forceUpdate, setForceUpdate] = useState(false)
 
@@ -50,7 +57,7 @@ const useContractList = () => {
     const list = contractData?.data?.contracts || []
 
     if (loadMoreButtonClicked) {
-      setContractList((prev: any) => [...prev, ...list])
+      setContractList(prev => [...(prev || []), ...list])
       setLoadMoreButtonClicked(false)
     } else {
       setContractList(list)
@@ -65,30 +72,6 @@ const useContractList = () => {
     }
   }
 
-  const handleClick = (
-    event: React.MouseEvent<HTMLElement>,
-    item: ContractList
-  ) => {
-    setAnchorEl(event.currentTarget)
-    setContractDetails(item)
-  }
-
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-
-  const handleScroll = () => {
-    handleClose()
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   const closePdfModal = () => {
     setOpenPdfViewer(false)
   }
@@ -96,11 +79,6 @@ const useContractList = () => {
   const handleModal = () => {
     setIsModalOpen(!isModalOpen)
     setIsEditModalOpen(false)
-  }
-
-  const handleDeleteButton = () => {
-    handleClose()
-    setShowDeleteModel(true)
   }
 
   const handleDeleteProduct = async () => {
@@ -124,6 +102,14 @@ const useContractList = () => {
       }
     }
   }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const handleDeleteButton = () => {
+    handleClose()
+    setShowDeleteModel(true)
+  }
 
   const handleEditProduct = () => {
     setAnchorEl(null)
@@ -132,6 +118,23 @@ const useContractList = () => {
     setIsEditModalOpen(true)
   }
 
+  useEffect(() => {
+    setActionButtonData([
+      {
+        key: 'edit',
+        image: EditModal,
+        title: 'Edit',
+        handleClick: handleEditProduct
+      },
+      {
+        key: 'delete',
+        image: Remove,
+        title: 'Delete',
+        handleClick: handleDeleteButton
+      }
+    ])
+  }, [contractList])
+
   const handleLoadMoreClick = () => {
     setPage(prev => prev + 1)
     setLoadMoreButtonClicked(true)
@@ -139,10 +142,14 @@ const useContractList = () => {
 
   return {
     isModalOpen,
+    actionButtonData,
+    setIsModalOpen,
     openPdfViewer,
     pdfUrl,
     isEditModalOpen,
+    setIsEditModalOpen,
     showDeleteModel,
+    setShowDeleteModel,
     contractDetails,
     anchorEl,
     open,
@@ -151,14 +158,15 @@ const useContractList = () => {
     loadMoreButtonClicked,
     forceUpdate,
     openPdfView,
-    handleClick,
-    handleClose,
     closePdfModal,
     handleModal,
     handleDeleteButton,
     handleDeleteProduct,
     handleEditProduct,
-    handleLoadMoreClick
+    handleLoadMoreClick,
+    setAnchorEl,
+    setContractDetails,
+    handleClose
   }
 }
 

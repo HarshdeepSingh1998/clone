@@ -87,6 +87,7 @@ const ModalDescription = ({
               anchorEl={anchorEl}
               disabled={modelDetails?.transaction ? true : false}
               open={open}
+              handleClose={actionButtonDetails.handleClose}
             />
           )}
         </PublishNowContainer>

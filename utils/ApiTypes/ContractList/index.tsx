@@ -10,4 +10,5 @@ export interface ContractList {
   location: string
   setupPrice: number
   updatedAt: string
+  isAssignedToProduct: boolean
 }

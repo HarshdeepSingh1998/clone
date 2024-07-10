@@ -24,6 +24,7 @@ export interface ActionButtonInterface {
   isAssignModalVisible: boolean
   showDeleteModel: boolean
   descriptionDetails: any
+  handleClose: () => void
 }
 
 export interface DetailsViewInterface {
