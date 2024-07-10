@@ -8,7 +8,7 @@ export const ProductViewContainer = styled.div`
   gap: 40px;
   background: linear-gradient(180deg, #040717 1.55%, #121328 100%);
   border-radius: 10px;
-  padding: 40px;
+  padding: 24px;
   border: 1px solid #161929;
   @media (max-width: 767px) {
     margin: 20px 0px 0px 0px;
@@ -23,7 +23,7 @@ export const ProductViewContainer = styled.div`
 `
 export const ProductViewContent = styled.div`
   display: flex;
-  padding: 10px;
+
   width: 100%;
   justify-content: space-between;
   @media (max-width: 767px) {

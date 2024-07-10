@@ -1,5 +1,6 @@
 import TableComponent from '@/components/Table'
 import { ContractDataInterface } from 'views/Admin/ContractmanagementPage/Desktop/types'
+import NoProductView from 'views/Admin/ContractmanagementPage/Desktop/NoProductView'
 import {
   TableContainer,
   TableContent,
@@ -23,7 +24,12 @@ const TableView = ({
   )
 
   return (
-    <TableContainer>
+    <TableContainer
+      isGap={
+        (contractData.contractList || [])?.length <
+        contractData.contractData?.data?.meta?.totalNumberOfContracts
+      }
+    >
       <TableContent>
         <HeaderTitle>
           <BoxImage />
@@ -31,6 +37,11 @@ const TableView = ({
         </HeaderTitle>
         <TableComponent columns={columns} data={data} />
       </TableContent>
+      <NoProductView
+        productList={contractData.contractList}
+        data={contractData.contractData}
+        handleLoadMoreClick={contractData.handleLoadMoreClick}
+      />
     </TableContainer>
   )
 }

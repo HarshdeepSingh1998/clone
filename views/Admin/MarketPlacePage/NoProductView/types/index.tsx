@@ -1,7 +1,7 @@
-import { ProductList } from '@/utils/ApiTypes/ProductList'
+import { ContractList } from '@/utils/ApiTypes/ContractList'
 
 export interface NoProductViewInterface {
-  productList: ProductList[] | undefined
+  productList: ContractList[] | undefined
   data: any
   handleLoadMoreClick: () => void
 }

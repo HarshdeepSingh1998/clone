@@ -166,7 +166,10 @@ const useContractList = (): ContractDataInterface => {
     handleLoadMoreClick,
     setAnchorEl,
     setContractDetails,
-    handleClose
+    handleClose,
+    contractData,
+    setForceUpdate,
+    setPage
   }
 }
 

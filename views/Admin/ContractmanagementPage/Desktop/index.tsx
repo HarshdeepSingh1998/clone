@@ -11,11 +11,6 @@ const ContractManagementDesktop = ({
     <>
       <HeaderView contractData={contractData} />
       <TableView contractData={contractData} />
-      {/* <NoProductView
-        productList={productList}
-        data={data}
-        handleLoadMoreClick={handleLoadMoreClick}
-      /> */}
     </>
   )
 }

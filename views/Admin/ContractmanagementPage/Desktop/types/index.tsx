@@ -29,4 +29,7 @@ export interface ContractDataInterface {
   setAnchorEl: Dispatch<SetStateAction<HTMLElement | null>>
   setContractDetails: Dispatch<SetStateAction<ContractList | undefined>>
   handleClose: () => void
+  contractData: any
+  setForceUpdate: Dispatch<SetStateAction<boolean>>
+  setPage: Dispatch<SetStateAction<number>>
 }

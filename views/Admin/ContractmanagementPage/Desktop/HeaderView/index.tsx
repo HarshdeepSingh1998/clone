@@ -6,6 +6,7 @@ import {
   TitleContainer,
   ButtonContainer
 } from '@/styles/Views/Admin/ContractManagementPage/Desktop/Header'
+import Loader from '@/components/Loader'
 
 const ContractManagementDesktop = ({
   contractData
@@ -21,6 +22,9 @@ const ContractManagementDesktop = ({
           Add Product
         </Button>
       </ButtonContainer>
+      {!contractData?.contractData && (
+        <Loader blurredBackgroundtrue={!contractData?.contractData} />
+      )}
     </HeaderContainer>
   )
 }
