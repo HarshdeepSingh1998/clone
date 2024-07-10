@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const InventorymanagementContainer = styled.div`
+export const ContractmanagementContainer = styled.div`
   color: #fff;
   display: flex;
   justify-content: center;
