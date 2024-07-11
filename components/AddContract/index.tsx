@@ -37,7 +37,8 @@ const AddContract: React.FC<AddContractProps> = ({
     contractDetails,
     closeModal,
     setPage,
-    setForceUpdate
+    setForceUpdate,
+    isEditModalOpen
   })
 
   return (

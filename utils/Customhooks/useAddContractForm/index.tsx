@@ -15,7 +15,7 @@ export const useAddContractForm = () => {
       depositPrice: undefined,
       setupPrice: undefined,
       expirationDate: '',
-      document: ''
+      document: undefined
     }
   })
 }

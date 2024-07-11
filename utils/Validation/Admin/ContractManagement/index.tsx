@@ -27,5 +27,5 @@ export const ADD_CONTRACT_SCHEMA = yup.object().shape({
     .string()
     .typeError('Expiration date must be a valid date')
     .required('Expiration date is required'),
-  document: yup.string().url('Document must be a valid URL')
+  document: yup.mixed().nullable()
 })

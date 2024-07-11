@@ -12,6 +12,7 @@ interface UseContractFormProps {
   closeModal: () => void
   setPage: Dispatch<SetStateAction<number>>
   setForceUpdate: Dispatch<SetStateAction<boolean>>
+  isEditModalOpen: boolean
 }
 
 const useSubmit = ({
@@ -19,7 +20,8 @@ const useSubmit = ({
   contractDetails,
   closeModal,
   setPage,
-  setForceUpdate
+  setForceUpdate,
+  isEditModalOpen
 }: UseContractFormProps) => {
   const dispatch = useDispatch()
   const { mutateAsync } = usePost()
@@ -81,8 +83,9 @@ const useSubmit = ({
     }
   }
 
-  const onSubmit = (data: any) => handleFormSubmit(data, false)
-  const handleEditSubmit = (data: any) => handleFormSubmit(data, true)
+  const onSubmit = (data: any) => handleFormSubmit(data, isEditModalOpen)
+  const handleEditSubmit = (data: any) =>
+    handleFormSubmit(data, isEditModalOpen)
 
   return { onSubmit, handleEditSubmit, loading }
 }
