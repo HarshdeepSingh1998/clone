@@ -1,5 +1,5 @@
+import { NoProductViewInterface } from 'views/Admin/ContractmanagementPage/Desktop/types'
 import NoProductFound from '@/components/NoProductFound'
-import { NoProductViewInterface } from 'views/Admin/MarketPlacePage/NoProductView/types'
 import {
   NoProductViewContainer,
   LoadMoreContainer,

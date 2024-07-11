@@ -33,3 +33,8 @@ export interface ContractDataInterface {
   setForceUpdate: Dispatch<SetStateAction<boolean>>
   setPage: Dispatch<SetStateAction<number>>
 }
+export interface NoProductViewInterface {
+  productList: ContractList[] | undefined
+  data: any
+  handleLoadMoreClick: () => void
+}
