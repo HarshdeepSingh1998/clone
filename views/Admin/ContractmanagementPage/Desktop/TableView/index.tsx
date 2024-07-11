@@ -2,12 +2,15 @@ import TableComponent from '@/components/Table'
 import { ContractDataInterface } from 'views/Admin/ContractmanagementPage/Desktop/types'
 import NoProductView from 'views/Admin/ContractmanagementPage/Desktop/NoProductView'
 import {
+  columns,
+  generateTableData
+} from 'views/Admin/ContractmanagementPage/Desktop/data'
+import {
   TableContainer,
   TableContent,
   HeaderTitle,
   BoxImage
 } from '@/styles/Views/Admin/ContractManagementPage/Desktop/Table'
-import { columns, generateTableData } from '../data'
 
 const TableView = ({
   contractData
@@ -20,7 +23,8 @@ const TableView = ({
     contractData.setAnchorEl,
     contractData.anchorEl,
     contractData.actionButtonData,
-    contractData.handleClose
+    contractData.handleClose,
+    contractData.setContractDetails
   )
 
   return (

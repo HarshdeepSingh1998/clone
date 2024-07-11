@@ -17,9 +17,9 @@ import Remove from '@/assets/images/images/Remove.png'
 const useContractList = (): ContractDataInterface => {
   const [actionButtonData, setActionButtonData] = useState<any>([])
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [openPdfViewer, setOpenPdfViewer] = useState<boolean>(false)
   const [pdfUrl, setPdfUrl] = useState<string>('')
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [showDeleteModel, setShowDeleteModel] = useState(false)
   const [contractDetails, setContractDetails] = useState<
     ContractList | undefined

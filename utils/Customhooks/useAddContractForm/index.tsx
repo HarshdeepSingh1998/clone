@@ -10,10 +10,10 @@ export const useAddContractForm = () => {
     defaultValues: {
       contractId: '',
       location: '',
-      hostRate: '',
+      hostRate: undefined,
       unit: 'usd',
-      depositPrice: '',
-      setupPrice: '',
+      depositPrice: undefined,
+      setupPrice: undefined,
       expirationDate: '',
       document: ''
     }

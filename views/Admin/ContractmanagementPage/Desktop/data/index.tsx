@@ -10,7 +10,8 @@ export const generateTableData = (
   setAnchorEl: Dispatch<SetStateAction<HTMLElement | null>>,
   anchorEl: HTMLElement | null,
   actionButtonData: any,
-  handleClose: () => void
+  handleClose: () => void,
+  setContractDetails: Dispatch<SetStateAction<ContractList | undefined>>
 ) => {
   return (contractList || []).map(contract => ({
     contractId: (
@@ -77,6 +78,7 @@ export const generateTableData = (
         disabled={contract.isAssignedToProduct ? true : false}
         actionButtonData={actionButtonData}
         handleClose={handleClose}
+        setData={() => setContractDetails(contract)}
       />
     )
   }))

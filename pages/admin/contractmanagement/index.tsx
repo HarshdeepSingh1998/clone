@@ -11,7 +11,9 @@ const ContractManagement = () => {
   const { screenType } = useScreenType()
   const contractData = useContractList()
   return (
-    <AuthLayout>
+    <AuthLayout
+      isPopUpVisible={contractData.isModalOpen || contractData.isEditModalOpen}
+    >
       <ContractmanagementContainer>
         {(screenType === 'desktop' || screenType === 'tab') && (
           <ContractManagementDesktop contractData={contractData} />
@@ -19,10 +21,10 @@ const ContractManagement = () => {
         {/* {screenType === 'mobile' && <ContractManagementMobile />} */}
       </ContractmanagementContainer>
       <AddContract
-        isOpen={contractData.isModalOpen}
+        isModalOpen={contractData.isModalOpen}
+        isEditModalOpen={contractData.isEditModalOpen}
         closeModal={contractData.handleModal}
         contractDetails={contractData.contractDetails}
-        isEditModalOpen={contractData.isEditModalOpen}
         setPage={contractData.setPage}
         setForceUpdate={contractData.setForceUpdate}
         setIsModalOpen={contractData.setIsModalOpen}

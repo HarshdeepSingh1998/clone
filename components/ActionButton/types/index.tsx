@@ -7,4 +7,5 @@ export interface ActionButtonProps {
   disabled: boolean
   open: boolean
   handleClose: () => void
+  setData?: () => void
 }

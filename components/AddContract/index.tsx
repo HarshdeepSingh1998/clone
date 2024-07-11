@@ -1,6 +1,9 @@
 import Modal from 'react-modal'
 import { useAddContractForm } from '@/utils/Customhooks/useAddContractForm'
-import { AddProductProps } from 'components/AddContract/types'
+import { useAddContractData } from '@/utils/Customhooks/useAddContractData'
+import useSubmit from '@/utils/Callback/Admin/ContractManagementPage/AddContract'
+import AddContractForm from 'components/AddContract/AddContractForm'
+import { AddContractProps } from 'components/AddContract/types'
 import { Style } from 'components/RevokeModal'
 import {
   ModalContainer,
@@ -8,8 +11,8 @@ import {
   BoxImage
 } from '@/styles/Components/AddContract'
 
-const AddProduct: React.FC<AddProductProps> = ({
-  isOpen,
+const AddContract: React.FC<AddContractProps> = ({
+  isModalOpen,
   closeModal,
   contractDetails,
   isEditModalOpen,
@@ -23,33 +26,46 @@ const AddProduct: React.FC<AddProductProps> = ({
     watch,
     setValue,
     reset,
+    setError,
     formState: { errors }
   } = useAddContractForm()
+
+  useAddContractData(isEditModalOpen, setValue, contractDetails)
+
+  const { onSubmit } = useSubmit({
+    setError,
+    contractDetails,
+    closeModal,
+    setPage,
+    setForceUpdate
+  })
+
   return (
     <Modal
-      isOpen={isOpen}
+      isOpen={isModalOpen}
       onRequestClose={() => setIsModalOpen(false)}
       style={Style}
     >
       <ModalContainer>
         <HeaderContainer>
           <BoxImage />
-          Hosting Preference
+          Add Contract
         </HeaderContainer>
-        <PublishForm
+        <AddContractForm
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
           control={control}
           errors={errors}
           watch={watch}
-          setIsPublishModalVisible={setIsPublishModalVisible}
+          isEditModalOpen={isEditModalOpen}
           setValue={setValue}
-          publishModalData={publishModalData}
+          // addContractData={addContractData}
           reset={reset}
+          closeModal={closeModal}
         />
       </ModalContainer>
     </Modal>
   )
 }
 
-export default AddProduct
+export default AddContract

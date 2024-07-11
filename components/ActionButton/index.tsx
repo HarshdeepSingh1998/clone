@@ -15,10 +15,14 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   anchorEl,
   disabled,
   actionButtonData,
-  handleClose
+  handleClose,
+  setData
 }) => {
   const handleOptionClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
+    if (setData) {
+      setData()
+    }
   }
 
   const handleScroll = () => {

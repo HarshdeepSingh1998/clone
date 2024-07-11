@@ -1,12 +1,12 @@
-import Button from '@/components/Button'
 import { ContractDataInterface } from 'views/Admin/ContractmanagementPage/Desktop/types'
+import Button from '@/components/Button'
+import Loader from '@/components/Loader'
 import CircleIcon from '@/assets/images/svg/CircleIcon'
 import {
   HeaderContainer,
   TitleContainer,
   ButtonContainer
 } from '@/styles/Views/Admin/ContractManagementPage/Desktop/Header'
-import Loader from '@/components/Loader'
 
 const ContractManagementDesktop = ({
   contractData

@@ -25,11 +25,7 @@ const DatePickerComponent: React.FC<DatePickerProps> = ({
       : dayjs().subtract(100, 'year')
 
   return (
-    <DatePickerContent
-      onClick={() => {
-        publishModalData.setCalenderClick(false)
-      }}
-    >
+    <DatePickerContent>
       <InputText>{title}</InputText>
       <Controller
         name={controllername}
