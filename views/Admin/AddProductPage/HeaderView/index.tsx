@@ -20,7 +20,7 @@ const HeaderView = () => {
       <HeaderContainer>
         <TitleContainer>Add Product</TitleContainer>
       </HeaderContainer>
-      <Loader blurredBackgroundtrue={loading} />
+      {loading && <Loader blurredBackgroundtrue={loading} />}
     </>
   )
 }
