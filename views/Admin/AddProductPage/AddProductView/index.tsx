@@ -2,9 +2,9 @@ import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store/store'
 import { useAddProductForm } from '@/utils/Customhooks/useAddProductForm'
+import LeftView from 'views/Admin/AddProductPage/AddProductView/LeftView'
 import {
   AddProductContainer,
-  AddProductLeftContainer,
   AddProductRightContainer,
   ProductRightContent,
   TextContainer,
@@ -33,7 +33,12 @@ const AddProductView = () => {
 
   return (
     <AddProductContainer>
-      <AddProductLeftContainer></AddProductLeftContainer>
+      <LeftView
+        addProductData={addProductData}
+        handleSubmit={handleSubmit}
+        control={control}
+        errors={errors}
+      />
       <AddProductRightContainer>
         <ProductRightContent>
           <TextContainer>

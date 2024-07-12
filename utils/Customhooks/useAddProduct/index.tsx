@@ -5,13 +5,16 @@ import Image from 'next/image'
 // import { useRouter } from 'next/router'
 import usePost from '@/hooks/usePost'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
-
+import { UseAddProductInterface } from '@/views/Admin/AddProductPage/types'
 interface AddProductInterface {
   productDetails: ProductList | null
   watch: any
 }
 
-const useAddProduct = ({ productDetails, watch }: AddProductInterface) => {
+const useAddProduct = ({
+  productDetails,
+  watch
+}: AddProductInterface): UseAddProductInterface => {
   const [selectedImages, setSelectedImages] = useState<string[]>([])
   const [modelName, setModelName] = useState('')
   const [power, setPower] = useState('')
@@ -46,14 +49,12 @@ const useAddProduct = ({ productDetails, watch }: AddProductInterface) => {
 
   const convertUrlsToFiles = async (imageUrls: string[]): Promise<File[]> => {
     const files: File[] = []
-
     for (const imageUrl of imageUrls) {
       const response = await fetch(imageUrl)
       const blob = await response.blob()
       const file = new File([blob], imageUrl.split('/').pop() || 'image.png', {
         type: blob.type
       })
-
       files.push(file)
     }
 
@@ -69,7 +70,6 @@ const useAddProduct = ({ productDetails, watch }: AddProductInterface) => {
       const isValidFormat = fileArrayFormat.every(file =>
         allowedFormats.includes(file.type)
       )
-
       if (!isValidFormat) {
         toast.error('Only PNG/JPEG/JPG files are allowed')
         return
@@ -78,7 +78,6 @@ const useAddProduct = ({ productDetails, watch }: AddProductInterface) => {
       const fileSizeExceeded = fileArrayFormat.every(
         file => file.size > 2 * 1024 * 1024
       )
-
       if (fileSizeExceeded) {
         toast.error(`Maximum file size allowed is ${2}MB`)
         return
@@ -115,7 +114,6 @@ const useAddProduct = ({ productDetails, watch }: AddProductInterface) => {
       const isValidFormat = fileArrayFormat.every(file =>
         allowedFormats.includes(file.type)
       )
-
       if (!isValidFormat) {
         toast.error('Only PNG/JPEG/JPG files are allowed')
         return
@@ -124,7 +122,6 @@ const useAddProduct = ({ productDetails, watch }: AddProductInterface) => {
       const fileSizeExceeded = fileArrayFormat.every(
         file => file.size > 2 * 1024 * 1024
       )
-
       if (fileSizeExceeded) {
         toast.error(`Maximum file size allowed is ${2}MB`)
         return
@@ -139,7 +136,6 @@ const useAddProduct = ({ productDetails, watch }: AddProductInterface) => {
       const fileArray: string[] = Array.from(e.target.files)?.map(file =>
         URL.createObjectURL(file)
       )
-
       setSelectedImages(prev => {
         if (productDetails) {
           return [...prev.concat(fileArray)]
@@ -147,7 +143,6 @@ const useAddProduct = ({ productDetails, watch }: AddProductInterface) => {
           return [...prev.concat(fileArray)]
         }
       })
-
       Array.from(e.target.files)?.map((file: File) =>
         URL.revokeObjectURL(file as unknown as string)
       )
@@ -160,7 +155,6 @@ const useAddProduct = ({ productDetails, watch }: AddProductInterface) => {
       newImages.splice(index, 1)
       return newImages
     })
-
     setFiles((prevFiles: any) => {
       const newFiles = [...prevFiles]
       newFiles.splice(index, 1)

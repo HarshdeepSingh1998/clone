@@ -19,20 +19,6 @@ export const AddProductContainer = styled.div`
     background: none;
   }
 `
-export const AddProductLeftContainer = styled.div`
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-
-  // height: calc(100vh - 215px);
-  // overflow-y: scroll;
-  @media (max-width: 767px) {
-    width: 100%;
-  }
-  @media only screen and (min-width: 768px) and (max-width: 1224px) {
-    width: 100%;
-  }
-`
 export const AddProductRightContainer = styled.div`
   width: 40%;
   display: flex;
