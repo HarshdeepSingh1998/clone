@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const ProductViewContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10px 10px 0 10px;
   width: 100%;
   gap: 40px;
   background: linear-gradient(180deg, #040717 1.55%, #121328 100%);
@@ -17,7 +16,7 @@ export const ProductViewContainer = styled.div`
   }
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     padding: 16px;
-    margin: 30px 0px 0px 0px;
+    margin: unset;
     gap: 30px;
   }
 `

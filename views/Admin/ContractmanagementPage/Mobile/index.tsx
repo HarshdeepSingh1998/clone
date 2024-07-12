@@ -1,12 +1,6 @@
 import { ContractDataInterface } from 'views/Admin/ContractmanagementPage/Mobile/types'
-import Button from '@/components/Button'
-import Loader from '@/components/Loader'
-import CircleIcon from '@/assets/images/svg/CircleIcon'
-import {
-  HeaderContainer,
-  TitleContainer,
-  ButtonContainer
-} from '@/styles/Views/Admin/ContractManagementPage/Mobile/Header'
+import HeaderView from 'views/Admin/ContractmanagementPage/Mobile/HeaderView'
+import TableView from 'views/Admin/ContractmanagementPage/Mobile/TableView'
 
 const ContractManagementMobile = ({
   contractData
@@ -14,18 +8,10 @@ const ContractManagementMobile = ({
   contractData: ContractDataInterface
 }) => {
   return (
-    <HeaderContainer>
-      <TitleContainer>Contract Management</TitleContainer>
-      <ButtonContainer>
-        <Button type="button" variant="contained" label={''}>
-          <CircleIcon cursor="pointer" /> {''}
-          Add Product
-        </Button>
-      </ButtonContainer>
-      {!contractData?.contractData && (
-        <Loader blurredBackgroundtrue={!contractData?.contractData} />
-      )}
-    </HeaderContainer>
+    <>
+      <HeaderView contractData={contractData} />
+      <TableView contractData={contractData} />
+    </>
   )
 }
 
