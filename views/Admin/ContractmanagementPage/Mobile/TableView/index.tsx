@@ -29,7 +29,8 @@ const TableView = ({
     contractData.anchorEl,
     contractData.actionButtonData,
     contractData.handleClose,
-    contractData.setContractDetails
+    contractData.setContractDetails,
+    contractData.openPdfView
   )
   const contractListLength = contractData.contractList?.length ?? 0
 

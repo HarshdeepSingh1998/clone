@@ -3,10 +3,12 @@ import useContractList from '@/utils/Customhooks/useContactList'
 import useScreenType from '@/utils/Customhooks/useScreenType'
 import AuthLayout from '@/components/AuthLayout'
 import AddContract from '@/components/AddContract'
+import Modal from '@/components/Modal'
 import ContractDeleteModal from '@/components/ContractDeleteModal'
 import ContractManagementDesktop from '@/views/Admin/ContractmanagementPage/Desktop'
 import ContractManagementMobile from '@/views/Admin/ContractmanagementPage/Mobile'
 import { ContractmanagementContainer } from '@/styles/Pages/Admin/contractmanagementPage'
+import PdfViewer from '@/components/PdfViewer'
 
 const ContractManagement = () => {
   //   const inventoryData = useInventoryProduct()
@@ -17,7 +19,8 @@ const ContractManagement = () => {
       isPopUpVisible={
         contractData.isModalOpen ||
         contractData.isEditModalOpen ||
-        contractData.showDeleteModel
+        contractData.showDeleteModel ||
+        contractData.openPdfViewer
       }
     >
       <ContractmanagementContainer>
@@ -44,6 +47,17 @@ const ContractManagement = () => {
         setPage={contractData.setPage}
         isOpen={contractData.showDeleteModel}
       />
+      {contractData.openPdfViewer && (
+        <Modal
+          isOpen={contractData.openPdfViewer}
+          hideModal={contractData.closePdfModal}
+        >
+          <PdfViewer
+            url={contractData.pdfUrl}
+            closePdfModal={contractData.closePdfModal}
+          />
+        </Modal>
+      )}
     </AuthLayout>
   )
 }

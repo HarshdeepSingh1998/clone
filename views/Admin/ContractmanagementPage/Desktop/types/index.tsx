@@ -32,6 +32,7 @@ export interface ContractDataInterface {
   contractData: any
   setForceUpdate: Dispatch<SetStateAction<boolean>>
   setPage: Dispatch<SetStateAction<number>>
+  setPdfUrl: Dispatch<SetStateAction<string>>
 }
 export interface NoProductViewInterface {
   productList: ContractList[] | undefined

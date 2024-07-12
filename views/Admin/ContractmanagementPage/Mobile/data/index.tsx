@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Tooltip from '@mui/material/Tooltip'
 import ActionButton from '@/components/ActionButton'
 import PdfIcon from '@/assets/images/svg/PdfIcon'
@@ -22,7 +23,8 @@ export const generateTableData = (
   anchorEl: HTMLElement | null,
   actionButtonData: any,
   handleClose: () => void,
-  setContractDetails: Dispatch<SetStateAction<ContractList | undefined>>
+  setContractDetails: Dispatch<SetStateAction<ContractList | undefined>>,
+  openPdfView: (pdfURL: string) => void
 ): TableData[] => {
   return (contractList || []).map(contract => ({
     action: (
@@ -91,7 +93,13 @@ export const generateTableData = (
         </div>
       </Tooltip>
     ),
-    document: contract.document ? <PdfIcon /> : '-'
+    document: contract.document ? (
+      <div onClick={() => openPdfView(contract.document)}>
+        <PdfIcon />
+      </div>
+    ) : (
+      '-'
+    )
   }))
 }
 

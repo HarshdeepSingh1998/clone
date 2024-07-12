@@ -24,7 +24,8 @@ const TableView = ({
     contractData.anchorEl,
     contractData.actionButtonData,
     contractData.handleClose,
-    contractData.setContractDetails
+    contractData.setContractDetails,
+    contractData.openPdfView
   )
 
   return (

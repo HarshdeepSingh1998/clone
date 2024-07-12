@@ -169,7 +169,8 @@ const useContractList = (): ContractDataInterface => {
     handleClose,
     contractData,
     setForceUpdate,
-    setPage
+    setPage,
+    setPdfUrl
   }
 }
 

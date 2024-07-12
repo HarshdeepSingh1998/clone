@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { ContractList } from '@/utils/ApiTypes/ContractList'
 import { Dispatch, SetStateAction } from 'react'
 
@@ -31,6 +32,7 @@ export interface ContractDataInterface {
   contractData: any
   setForceUpdate: Dispatch<SetStateAction<boolean>>
   setPage: Dispatch<SetStateAction<number>>
+  setPdfUrl: Dispatch<SetStateAction<string>>
 }
 export interface NoProductViewInterface {
   productList: ContractList[] | undefined
