@@ -1,22 +1,35 @@
+/* eslint-disable no-console */
 import { toast } from 'react-toastify'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 // import { useRouter } from 'next/router'
 import usePost from '@/hooks/usePost'
+import { ProductList } from '@/utils/ApiTypes/ProductList'
 
 interface AddProductInterface {
-  _id?: string
-  images?: string[]
+  productDetails: ProductList | null
+  watch: any
 }
 
-const useAddProduct = (productDetails?: AddProductInterface) => {
+const useAddProduct = ({ productDetails, watch }: AddProductInterface) => {
   const [selectedImages, setSelectedImages] = useState<string[]>([])
   const [modelName, setModelName] = useState('')
   const [power, setPower] = useState('')
   const [hashRate, setHashRate] = useState('')
   const [manufacturer, setManufacturer] = useState<null | string>(null)
+  const watchedModelName = watch('modelName')
+  const watchedPower = watch('power')
+  const watchedHashRate = watch('hashRate')
+  const watchedManufacturer = watch('manufacturer')
   const [files, setFiles] = useState<File[] | FileList | string>([])
   const { mutateAsync } = usePost()
+
+  useEffect(() => {
+    setModelName(watchedModelName)
+    setPower(watchedPower)
+    setHashRate(watchedHashRate)
+    setManufacturer(watchedManufacturer)
+  }, [watchedModelName, watchedPower, watchedHashRate, watchedManufacturer])
 
   useEffect(() => {
     if (productDetails && productDetails.images) {
@@ -172,7 +185,11 @@ const useAddProduct = (productDetails?: AddProductInterface) => {
     handleEditImageChange,
     handleImageChange,
     handleRemoveImage,
-    renderPhoto
+    renderPhoto,
+    modelName,
+    power,
+    hashRate,
+    manufacturer
   }
 }
 
