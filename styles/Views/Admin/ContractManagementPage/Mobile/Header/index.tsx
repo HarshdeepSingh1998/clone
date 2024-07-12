@@ -11,7 +11,7 @@ export const HeaderContainer = styled.div`
     flex-direction: column;
     font-size: 32px;
     margin: 0px;
-    align-items: center;
+    align-items: baseline;
   }
 `
 export const TitleContainer = styled.div`
@@ -25,9 +25,6 @@ export const TitleContainer = styled.div`
   letter-spacing: -0.02em;
   text-align: left;
   color: #efefef;
-  @media (min-width: 768px) {
-    padding: 16px;
-  }
   justify-content: space-between;
   align-items: center;
 
@@ -44,44 +41,11 @@ export const TitleContainer = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 10px;
-`
-export const PrimaryButttonContainer = styled.div`
-  justify-content: center;
-  // background: #392834;
-  align-items: center;
-  display: flex;
-  width: 150px;
-  height: 40px;
-  padding: 10px 6.67px 10px 6.67px;
-  border-radius: 10px;
-  border: 1.67px solid #fb674b;
-  gap: 6.67px;
-  cursor: pointer;
-  font-family: Inter;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: -0.01em;
-  text-align: left;
-  color: #fb674b;
   @media (max-width: 767px) {
-    width: 167px;
-  }
-`
-export const SecondaryButtonContainer = styled.div`
-  display: flex;
-  button {
-    height: 40px;
-    width: 160px;
-    color: #fff;
-    border: none;
-    padding: unset;
-    @media (max-width: 767px) {
-      width: 167px;
+    button {
+      height: 40px;
       padding: unset;
+      width: 167px;
     }
-  }
-  svg {
-    margin: 4px 5px 0 0;
   }
 `

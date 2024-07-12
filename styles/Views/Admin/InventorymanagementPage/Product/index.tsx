@@ -11,7 +11,7 @@ export const ProductViewContainer = styled.div`
   padding: 24px;
   border: 1px solid #161929;
   @media (max-width: 767px) {
-    margin: 20px 0px 0px 0px;
+    margin: unset;
     padding: 12px;
     gap: 0px;
   }

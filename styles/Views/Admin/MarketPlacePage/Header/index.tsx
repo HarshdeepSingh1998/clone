@@ -4,7 +4,6 @@ export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 18px;
   @media (max-width: 767px) {
     gap: unset;
   }
@@ -15,7 +14,7 @@ export const TitleContainer = styled.h3`
   font-size: 40px;
   line-height: 48px;
   text-transform: capitalize;
-  @media (min-width: 360px) {
+  @media (min-width: 768px) {
     padding: 16px;
   }
   @media (max-width: 767px) {
@@ -33,10 +32,6 @@ export const ButtonContainer = styled.div`
   }
   @media (max-width: 767px) {
     display: flex;
-    justify-content: center;
-  }
-  @media only screen and (min-width: 360px) {
-    padding-bottom: 15px;
   }
 `
 export const ButtonContent = styled.div`
