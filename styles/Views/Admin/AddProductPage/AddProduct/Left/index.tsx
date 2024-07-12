@@ -8,6 +8,9 @@ export const FormContainer = styled.form`
   @media screen and (max-width: 1366px) {
     gap: 5px;
   }
+  @media screen and (max-width: 1224px) {
+    width: 100%;
+  }
 `
 
 export const AddProductLeftContainer = styled.div`
@@ -59,4 +62,39 @@ export const BoxImage = styled.div`
   height: 35px;
   border-radius: 5px;
   background: #fb674b52;
+`
+export const RowContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  @media screen and (max-width: 1224px) {
+    flex-direction: column;
+  }
+`
+export const ButtonContainer = styled.div<{ disable?: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // padding-bottom: 31px;
+  gap: 20px;
+  button {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ${props =>
+      props.disable &&
+      `
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: grey
+    `}
+  }
+
+  .MuiCircularProgress-root {
+    display: flex;
+    align-items: flex-end;
+  }
 `

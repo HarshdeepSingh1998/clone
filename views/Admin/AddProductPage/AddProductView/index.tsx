@@ -17,6 +17,7 @@ import {
   ModalNameText
 } from '@/styles/Views/Admin/AddProductPage/AddProduct'
 import useAddProduct from '@/utils/Customhooks/useAddProduct'
+import useSubmit from '@/utils/Callback/Admin/AddProductPage'
 
 const AddProductView = () => {
   const productDetails = useSelector(
@@ -31,6 +32,8 @@ const AddProductView = () => {
 
   const addProductData = useAddProduct({ productDetails, watch })
 
+  const { onSubmit } = useSubmit(addProductData, productDetails)
+
   return (
     <AddProductContainer>
       <LeftView
@@ -38,6 +41,7 @@ const AddProductView = () => {
         handleSubmit={handleSubmit}
         control={control}
         errors={errors}
+        onSubmit={onSubmit}
       />
       <AddProductRightContainer>
         <ProductRightContent>

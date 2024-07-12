@@ -1,22 +1,68 @@
-import { EditorContainer, InputText } from '@/styles/Components/Editor'
+import { useState, ClipboardEvent } from 'react'
 import { Controller } from 'react-hook-form'
+import {
+  BtnBold,
+  BtnItalic,
+  BtnUnderline,
+  BtnBulletList,
+  BtnLink,
+  Editor,
+  EditorProvider,
+  Toolbar,
+  createButton
+} from 'react-simple-wysiwyg'
+import { EditorInterface } from 'components/Editor/types'
+import CenterAlign from 'assets/images/svg/CenterAlignBtn'
+import LeftAlign from 'assets/images/svg/LeftAlignBtn'
+import RightAlign from 'assets/images/svg/RightAlignBtn'
+import {
+  EditorContainer,
+  InputText,
+  ErrorMessageContainer
+} from '@/styles/Components/Editor'
 
-const Editor = ({ control, controllerName }) => {
+const EditorComponent = ({
+  control,
+  controllername,
+  errors,
+  value
+}: EditorInterface) => {
+  const [inputValue, setInputValue] = useState(value)
+
+  const handlePaste = (e: ClipboardEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    const text = e.clipboardData.getData('text/plain')
+    document.execCommand('insertText', false, text)
+  }
+
+  const BtnAlignCenter = createButton(
+    'Align center',
+    <CenterAlign />,
+    'justifyCenter'
+  )
+  const BtnAlignLeft = createButton('Align right', <LeftAlign />, 'justifyLeft')
+  const BtnAlignRight = createButton(
+    'Align left',
+    <RightAlign />,
+    'justifyRight'
+  )
+
   return (
     <EditorContainer>
       <InputText>Description</InputText>
       <Controller
-        name={controllerName}
+        name={controllername}
         control={control}
         defaultValue=""
         render={({ field }) => (
-          <EditorProvider
-            {...field}
-            value={productDetails ? productDetails.description : ''}
-          >
+          <EditorProvider>
             <Editor
+              {...field}
               value={inputValue}
-              onChange={handleChange}
+              onChange={e => {
+                setInputValue(e.target.value)
+                field.onChange(e.target.value)
+              }}
               onPaste={handlePaste}
               style={{
                 backgroundColor: 'transparent',
@@ -27,7 +73,6 @@ const Editor = ({ control, controllerName }) => {
                 padding: '10px'
               }}
             >
-              {' '}
               <Toolbar>
                 <BtnBold />
                 <BtnItalic />
@@ -42,15 +87,15 @@ const Editor = ({ control, controllerName }) => {
           </EditorProvider>
         )}
       />
-      <ErrorMessageWrapper id="description-section">
+      <ErrorMessageContainer>
         {errors.description && (
-          <span className="text-rose-500 text-left text-sm">
+          <span>
             {errors?.description?.message || 'Description is required'}
           </span>
         )}
-      </ErrorMessageWrapper>
+      </ErrorMessageContainer>
     </EditorContainer>
   )
 }
 
-export default Editor
+export default EditorComponent
