@@ -41,7 +41,6 @@ const Header = ({
         }
       })
     )
-
     inventoryData.setPage(1)
     inventoryData.setContractValue('')
     inventoryData.setModelName('')

@@ -37,10 +37,6 @@ export const TableContent = styled.div`
       gap: 27px;
     }
   }
-  @media only screen and (min-width: 1224px) and (max-width: 1430px) {
-    flex-direction: column;
-    gap: 27px;
-  }
 `
 export const HeaderTitle = styled.div`
   display: flex;

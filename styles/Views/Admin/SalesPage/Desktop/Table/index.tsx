@@ -23,27 +23,14 @@ export const TableContainer = styled.div<{ isGap: boolean }>`
 
 export const TableContent = styled.div`
   display: flex;
-  flex-direction: column;
   width: 100%;
-  align-items: start;
-  @media (max-width: 767px) {
-    flex-direction: column;
-    gap: 16px;
-    padding: 10px 0px 15px 0px;
-  }
-  &.admin-inventory {
-    @media only screen and (min-width: 768px) and (max-width: 1400px) {
-      flex-direction: column;
-      gap: 27px;
-    }
-  }
+  justify-content: space-between;
 `
 export const HeaderTitle = styled.div`
   display: flex;
   gap: 20px;
   align-items: center;
   justify-content: center;
-  height: 52px;
   //styleName: Title 1 (Semibold);
   font-family: Inter;
   font-size: 20px;
@@ -62,4 +49,35 @@ export const BoxImage = styled.div`
   height: 35px;
   border-radius: 5px;
   background: #fb674b;
+`
+export const ButtonContainer = styled.div`
+  display: flex;
+  button {
+    height: 40px;
+    width: 120px;
+    padding: 0px;
+    border: none;
+    color: #64718c;
+    @media (max-width: 767px) {
+      height: 30px;
+      font-size: 12px;
+      width: 76px;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1224px) {
+      width: 116px;
+      font-size: 12px;
+      height: 30px;
+    }
+  }
+  gap: 4px;
+`
+export const ButtonContent = styled.div`
+  display: flex;
+  border: 1px solid #161929;
+  border-radius: 62px;
+  padding: 5px;
+  gap: 5px;
+  @media (max-width: 767px) {
+    gap: unset;
+  }
 `
