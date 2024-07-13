@@ -66,6 +66,7 @@ const TableView = ({ salesData }: { salesData: SalesDataInterface }) => {
           data={data}
           openStates={openStates}
           openData={openData}
+          filtersData={salesData}
         />
       </TableContent>
       <NoProductView

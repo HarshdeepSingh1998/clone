@@ -39,8 +39,6 @@ export interface SalesDataInterface {
   fetchSalesData: () => void
   handleLoadMoreClick: () => void
   handleButtonClick: (i: number) => void
-  handleClick: (event: React.MouseEvent<HTMLElement>) => void
-  handleScroll: () => void
   selectedStatus: string | null
   setSelectedStatus: React.Dispatch<React.SetStateAction<string | null>>
   handlePendingButton: () => void
@@ -50,6 +48,7 @@ export interface SalesDataInterface {
   setProductId: React.Dispatch<React.SetStateAction<string>>
   handlePaymentReceived: (id: string) => void
   handleClose: () => void
+  actionButtonData: any
 }
 
 export interface NoProductViewInterface {

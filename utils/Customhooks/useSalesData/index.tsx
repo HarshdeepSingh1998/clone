@@ -14,11 +14,12 @@ const useSalesData = (): SalesDataInterface => {
     { type: 'outline', label: 'Assigned', id: 1, disabled: false },
     { type: 'outline', label: 'Purchased', id: 2, disabled: false }
   ])
-
+  const [actionButtonData, setActionButtonData] = useState<any>([])
   const [forceUpdate, setForceUpdate] = useState(false)
   const [salesList, setSalesList] = useState<SalesListInterface[] | undefined>(
     undefined
   )
+  const [productId, setProductId] = useState('')
   const [type, setType] = useState<string>('All')
   const [status, setStatus] = useState<string | boolean>('')
   const [screenType, setScreenType] = useState('desktop')
@@ -73,22 +74,6 @@ const useSalesData = (): SalesDataInterface => {
     setStatus('')
   }
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleScroll = () => {
-    handleClose()
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   const [selectedStatus, setSelectedStatus] = useState<string | null>('all')
 
   const handlePendingButton = () => {
@@ -115,8 +100,6 @@ const useSalesData = (): SalesDataInterface => {
     setSelectedStatus(prevSelected => (prevSelected === 'all' ? 'all' : 'all'))
   }
 
-  const [productId, setProductId] = useState('')
-
   const handlePaymentReceived = (id: string) => {
     setPaymentConformationModal(true)
     setProductId(id)
@@ -125,6 +108,30 @@ const useSalesData = (): SalesDataInterface => {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
+  useEffect(() => {
+    setActionButtonData([
+      {
+        key: 'all',
+        title: 'All',
+        handleClick: handleAllButton,
+        selected: selectedStatus === 'all'
+      },
+      {
+        key: 'pending',
+        title: 'Pending',
+        handleClick: handlePendingButton,
+        selected: selectedStatus === 'pending'
+      },
+      {
+        key: 'completed',
+        title: 'Completed',
+        handleClick: handleCompletedButton,
+        selected: selectedStatus === 'completed'
+      }
+    ])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [salesList])
 
   return {
     itemsPerPage,
@@ -153,8 +160,6 @@ const useSalesData = (): SalesDataInterface => {
     fetchSalesData,
     handleLoadMoreClick,
     handleButtonClick,
-    handleClick,
-    handleScroll,
     selectedStatus,
     setSelectedStatus,
     handlePendingButton,
@@ -163,7 +168,8 @@ const useSalesData = (): SalesDataInterface => {
     productId,
     setProductId,
     handlePaymentReceived,
-    handleClose
+    handleClose,
+    actionButtonData
   }
 }
 

@@ -1,3 +1,5 @@
+import { SalesDataInterface } from '@/views/Admin/SalesPage/Desktop/types'
+
 export interface TableInterface {
   columns: {
     id: string
@@ -11,4 +13,5 @@ export interface TableInterface {
     depositPrice: JSX.Element
     setupPrice: JSX.Element
   }[]
+  filtersData: SalesDataInterface
 }

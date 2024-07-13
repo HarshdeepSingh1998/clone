@@ -7,6 +7,7 @@ import {
   Typography
 } from '@mui/material'
 import { TableInterface } from 'components/Table/types'
+import FilterMenuList from 'components/FilterMenuList'
 
 const style = {
   fontFamily: 'Inter',
@@ -21,7 +22,8 @@ const TableComponent = ({
   columns,
   data,
   openStates,
-  openData
+  openData,
+  filtersData
 }: TableInterface) => {
   return (
     <Table>
@@ -34,7 +36,16 @@ const TableComponent = ({
               sx={{ background: 'transparent', padding: '16px 5px' }}
             >
               <Typography sx={{ ...style, color: 'rgb(100, 113, 140)' }}>
-                {column.icon && column.icon}
+                {column.icon && (
+                  <FilterMenuList
+                    open={filtersData.open}
+                    setAnchorEl={filtersData.setAnchorEl}
+                    anchorEl={filtersData.anchorEl}
+                    disabled={false}
+                    actionButtonData={filtersData.actionButtonData}
+                    handleClose={filtersData.handleClose}
+                  />
+                )}
                 {column.label || ''}
               </Typography>
             </TableCell>
