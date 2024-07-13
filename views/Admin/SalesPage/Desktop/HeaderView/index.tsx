@@ -1,9 +1,9 @@
 import { SalesDataInterface } from 'views/Admin/SalesPage/Desktop/types'
+import Loader from '@/components/Loader'
 import {
   HeaderContainer,
   TitleContainer
 } from '@/styles/Views/Admin/SalesPage/Desktop/Header'
-import Loader from '@/components/Loader'
 
 const HeaderView = ({ salesData }: { salesData: SalesDataInterface }) => {
   return (

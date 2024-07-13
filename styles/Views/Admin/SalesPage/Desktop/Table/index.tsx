@@ -23,8 +23,15 @@ export const TableContainer = styled.div<{ isGap: boolean }>`
 
 export const TableContent = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: space-between;
+
+  > div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
 `
 export const HeaderTitle = styled.div`
   display: flex;

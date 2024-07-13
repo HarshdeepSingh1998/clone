@@ -17,7 +17,12 @@ const style = {
   textAlign: 'left'
 }
 
-const TableComponent = ({ columns, data }: TableInterface) => {
+const TableComponent = ({
+  columns,
+  data,
+  openStates,
+  openData
+}: TableInterface) => {
   return (
     <Table>
       <TableHead>
@@ -29,6 +34,7 @@ const TableComponent = ({ columns, data }: TableInterface) => {
               sx={{ background: 'transparent', padding: '16px 5px' }}
             >
               <Typography sx={{ ...style, color: 'rgb(100, 113, 140)' }}>
+                {column.icon && column.icon}
                 {column.label || ''}
               </Typography>
             </TableCell>
@@ -37,21 +43,43 @@ const TableComponent = ({ columns, data }: TableInterface) => {
       </TableHead>
       <TableBody>
         {(data ?? []).map((row: any, rowIndex: number) => (
-          <TableRow key={rowIndex}>
-            {columns.map(column => (
-              <TableCell
-                key={column.id}
-                align={'left'}
-                sx={{
-                  padding: '16px 5px'
-                }}
-              >
-                <Typography align={'left'} sx={style}>
-                  {row[column.id]}
-                </Typography>
-              </TableCell>
-            ))}
-          </TableRow>
+          <>
+            <TableRow key={rowIndex}>
+              {columns.map(column => (
+                <TableCell
+                  key={column.id}
+                  align={'left'}
+                  sx={{
+                    padding: '16px 5px'
+                  }}
+                >
+                  <Typography
+                    align={'left'}
+                    sx={{ ...style, display: 'flex', gap: '10px' }}
+                  >
+                    {row[column.id]}
+                  </Typography>
+                </TableCell>
+              ))}
+            </TableRow>
+            {openStates?.[rowIndex] && (
+              <TableRow style={{ background: '#131529' }}>
+                <TableCell colSpan={columns.length}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    {openData?.[rowIndex].closedPrice}
+                    {openData?.[rowIndex].depositPrice}
+                    {openData?.[rowIndex].setupPrice}
+                  </div>
+                </TableCell>
+              </TableRow>
+            )}
+          </>
         ))}
       </TableBody>
     </Table>

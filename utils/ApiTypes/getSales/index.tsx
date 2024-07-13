@@ -28,15 +28,12 @@ export interface SalesListInterface {
     _id: string
   }
   assignee: {
-    closedPrice: number
-    createdAt: string
-    isActive: boolean
-    lotId: string
-    paymentReceived: boolean
-    quantity: number
-    transactionType: string
-    updatedAt: string
-    __v: number
+    email: string
+    name: string
+    phone: string
+    profileImage: string
+    role: string
+    username: string
     _id: string
   }
   closedPrice: number
