@@ -1,5 +1,3 @@
-import { SalesDataInterface } from '@/views/Admin/SalesPage/Desktop/types'
-
 export interface TableInterface {
   columns: {
     id: string
