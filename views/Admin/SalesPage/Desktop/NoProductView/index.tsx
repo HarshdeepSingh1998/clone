@@ -15,10 +15,7 @@ const NoProductView = ({
     <div>
       {(productList || [])?.length === 0 && data && (
         <NoProductViewContainer className="admin-marketplace">
-          <NoProductFound
-            heading="No Contracts in ContractManagement."
-            text=" "
-          />
+          <NoProductFound heading="No Sales." text=" " />
         </NoProductViewContainer>
       )}
       {(productList || [])?.length < data?.data?.meta?.totalNumberOfContracts &&

@@ -267,9 +267,9 @@ const totalPriceCalculator = (data: SalesListInterface) => {
 }
 
 export const columns = [
-  { id: 'machinemodel', label: 'Machine Model', icon: () => {} },
-  { id: 'type', label: 'Type', icon: () => {} },
-  { id: 'transactionid', label: 'Transaction ID', icon: () => {} },
+  { id: 'machinemodel', label: 'Machine Model' },
+  { id: 'type', label: 'Type' },
+  { id: 'transactionid', label: 'Transaction ID' },
   { id: 'status', label: 'Status', icon: <FilterIcon /> },
   { id: 'total', label: 'Total' },
   { id: 'seller', label: 'Seller' },
