@@ -322,7 +322,6 @@ export const PaymentContainer = styled.div<{ background: boolean }>`
   line-height: 24px;
   letter-spacing: -0.01em;
   text-align: left;
-  padding: 6px 12px;
   width: 95px;
   border-radius: 4px;
   /* background-color: ${props =>
