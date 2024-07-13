@@ -426,7 +426,7 @@ export const TotalContainer = styled.div`
     font-size: 12px;
   }
 `
-export const ButtonContainer = styled.div<{ variant?: string }>`
+export const ButtonContainer = styled.div<{ disabled?: boolean }>`
   button {
     display: flex;
     height: 51px;
@@ -439,6 +439,9 @@ export const ButtonContainer = styled.div<{ variant?: string }>`
     width: unset;
     height: 38px;
     lineheight: unset;
+
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+    opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   }
 
   @media (max-width: 767px) {

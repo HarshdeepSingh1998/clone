@@ -169,13 +169,12 @@ export const generateTableData = (
       </Tooltip>
     ),
     actions: (
-      <ButtonContainer>
+      <ButtonContainer disabled={data?.paymentReceived === true}>
         <Button
           type="button"
           variant="contained"
           label="Process"
           onClick={() => salesData.handlePaymentReceived(data._id)}
-          disable={data?.paymentReceived === true}
         />
       </ButtonContainer>
     ),

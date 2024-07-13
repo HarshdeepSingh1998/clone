@@ -8,7 +8,6 @@ import {
 } from '@mui/material'
 import { TableInterface } from 'components/Table/types'
 import FilterMenuList from 'components/FilterMenuList'
-
 const style = {
   fontFamily: 'Inter',
   fontSize: '13px',
@@ -17,7 +16,6 @@ const style = {
   letterSpacing: '-0.01em',
   textAlign: 'left'
 }
-
 const TableComponent = ({
   columns,
   data,
