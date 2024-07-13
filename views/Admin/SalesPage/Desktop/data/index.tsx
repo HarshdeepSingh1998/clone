@@ -2,7 +2,9 @@
 import Image from 'next/image'
 import { Tooltip } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
+import Button from '@/components/Button'
 import { SalesDataInterface } from 'views/Admin/SalesPage/Desktop/types'
+import { SalesListInterface } from '@/utils/ApiTypes/getSales'
 import FilterIcon from '@/assets/images/svg/TableFilterIcon'
 import DummyMachine from '@/assets/images/images/machine-bid.png'
 import LocationIcon from '@/assets/images/svg/LocationIcon'
@@ -31,8 +33,6 @@ import {
   DepositAmountContainer,
   SetupFeeContainer
 } from '@/styles/Views/Admin/SalesPage/Desktop/Data'
-import { SalesListInterface } from '@/utils/ApiTypes/getSales'
-import Button from '@/components/Button'
 
 export const generateTableData = (
   salesData: SalesDataInterface,
@@ -176,7 +176,7 @@ export const generateTableData = (
           label="Process"
           onClick={() => salesData.handlePaymentReceived(data._id)}
           disable={data?.paymentReceived === true}
-        ></Button>
+        />
       </ButtonContainer>
     ),
     icon: (
