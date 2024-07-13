@@ -13,5 +13,5 @@ export interface TableInterface {
     depositPrice: JSX.Element
     setupPrice: JSX.Element
   }[]
-  filtersData: SalesDataInterface
+  filtersData?: any
 }

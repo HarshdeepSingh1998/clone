@@ -35,7 +35,14 @@ const TableComponent = ({
               align={'left'}
               sx={{ background: 'transparent', padding: '16px 5px' }}
             >
-              <Typography sx={{ ...style, color: 'rgb(100, 113, 140)' }}>
+              <Typography
+                sx={{
+                  ...style,
+                  color: 'rgb(100, 113, 140)',
+                  display: 'flex',
+                  alignItems: 'center'
+                }}
+              >
                 {column.icon && (
                   <FilterMenuList
                     open={filtersData.open}

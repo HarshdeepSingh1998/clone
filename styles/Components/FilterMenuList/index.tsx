@@ -26,7 +26,6 @@ export const ActionButtonContent = styled.div<{ disabled?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
   opacity: ${props => (props.disabled ? 0.5 : 1)};
   pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
@@ -34,15 +33,12 @@ export const ActionButtonContent = styled.div<{ disabled?: boolean }>`
   }
 `
 
-export const CheckboxContainer = styled.div`
+export const CheckboxContainer = styled.div<{ publishModal?: boolean }>`
   display: flex;
   cursor: pointer;
   gap: 19px;
-  gap: 15px;
-  transform: translateX(3px);
-  width: 32px;
   align-items: center;
-  width: 38%;
+
   font-family: Inter;
   font-size: 13px;
   font-weight: 600;
@@ -50,7 +46,6 @@ export const CheckboxContainer = styled.div`
   letter-spacing: -0.01em;
   text-align: left;
   color: #64718c;
-
   input[type='checkbox'] {
     position: relative;
     cursor: pointer;
@@ -59,13 +54,16 @@ export const CheckboxContainer = styled.div`
     content: '';
     display: block;
     position: absolute;
-    width: 22px;
-    height: 22px;
+    width: ${props => (props.publishModal ? '22px' : '18px')};
+    height: ${props => (props.publishModal ? '22px' : '18px')};
+    // width: 22px;
+    // height: 22px;
     top: -3px;
     left: -2px;
     border: 2px solid #2a303c;
     border-radius: 7px;
     background: linear-gradient(180deg, #040717 1.55%, #121328 100%);
+    transform: ${props => (props.publishModal ? 'translateY(-2px)' : '')};
   }
   input[type='checkbox']:checked:before {
     background: linear-gradient(180deg, #fb674b 1.55%, #fb674b 100%);
@@ -82,8 +80,10 @@ export const CheckboxContainer = styled.div`
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     position: absolute;
-    top: 0;
+    top: ${props => (props.publishModal ? '0px' : '0')};
+    // top: 0;
     left: 7px;
+    left: ${props => (props.publishModal ? '7px' : '6px')};
   }
   @media (max-width: 767px) {
     gap: 14px;
