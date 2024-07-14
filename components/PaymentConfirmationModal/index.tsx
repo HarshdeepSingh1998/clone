@@ -1,6 +1,7 @@
 import Modal from 'react-modal'
 import Image from 'next/image'
 import { PaymentConfirmationModalProps } from 'components/PaymentConfirmationModal/types'
+import usePaymentConfirmationModal from '@/utils/Customhooks/usePaymentConfirmationModal'
 import Button from 'components/Button'
 import { Style } from 'components/RevokeModal'
 import FanImage from 'assets/images/images/fan-image.png'
@@ -10,7 +11,6 @@ import {
   ModalContainer,
   DescriptionContainer
 } from '@/styles/Components/PaymentConfirmationModal'
-import usePaymentConfirmationModal from '@/utils/Customhooks/usePaymentConfirmationModal'
 
 const PaymentConfirmationModal = ({
   isOpen,

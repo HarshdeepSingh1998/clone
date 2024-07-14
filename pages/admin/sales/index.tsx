@@ -4,6 +4,7 @@ import useScreenType from '@/utils/Customhooks/useScreenType'
 import AuthLayout from '@/components/AuthLayout'
 import PaymentConfirmationModal from '@/components/PaymentConfirmationModal'
 import SalesDesktop from '@/views/Admin/SalesPage/Desktop'
+import SalesMobile from '@/views/Admin/SalesPage/Mobile'
 import { SalesContainer } from '@/styles/Pages/Admin/SalesPage'
 
 const Sales = () => {
@@ -13,9 +14,9 @@ const Sales = () => {
     <AuthLayout isPopUpVisible={salesData.showPaymentConformationModal}>
       <SalesContainer>
         {screenType === 'desktop' && <SalesDesktop salesData={salesData} />}
-        {/* {(screenType === 'mobile' || screenType === 'tab') && (
-          <SalesMobile salesData={salesData} />
-        )} */}
+        {(screenType === 'mobile' || screenType === 'tab') && (
+          <SalesMobile salesData={salesData} screenType={screenType} />
+        )}
       </SalesContainer>
       {salesData.showPaymentConformationModal && (
         <PaymentConfirmationModal

@@ -87,11 +87,9 @@ export const CheckboxContainer = styled.div<{ publishModal?: boolean }>`
   }
   @media (max-width: 767px) {
     gap: 14px;
-    width: 100%;
   }
 
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
-    width: 50%;
     gap: 12px;
   }
 `
