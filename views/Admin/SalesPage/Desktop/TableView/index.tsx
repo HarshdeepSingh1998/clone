@@ -50,11 +50,7 @@ const TableView = ({ salesData }: { salesData: SalesDataInterface }) => {
                   variant={button.type}
                   label={button.label}
                   onClick={() => salesData.handleButtonClick(i)}
-                  style={
-                    button.type === 'contained'
-                      ? { color: '#fff', opacity: 1, cursor: 'pointer' }
-                      : { opacity: 1, cursor: 'pointer' }
-                  }
+                  className={button.type === 'contained' ? 'contained' : ''}
                   disable={button.disabled}
                 />
               ))}

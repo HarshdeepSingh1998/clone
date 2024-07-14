@@ -11,7 +11,7 @@ export const HeaderContainer = styled.div`
     flex-direction: column;
     font-size: 32px;
     margin: 0px;
-    align-items: center;
+    align-items: baseline;
   }
 `
 export const TitleContainer = styled.div`

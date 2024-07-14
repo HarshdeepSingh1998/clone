@@ -149,17 +149,9 @@ export const MachineNameContainer = styled.h3`
       font-size: 18px;
     }
   }
-  &.reject-modal-name {
-    font-size: 15px;
-  }
-
-  /* @media (max-width: 1560px) {
-    font-size: 14px;
-  } */
 `
 export const DetailRowContainer = styled.p`
   display: flex;
-
   align-items: center;
   gap: 10px;
 `
@@ -178,15 +170,6 @@ export const InformationContainer = styled.div`
   word-wrap: break-word;
   overflow-wrap: break-word;
 
-  &.mobile-machine-modal-text {
-    gap: 6px;
-  }
-
-  &.mobile-machine-modal {
-    font-size: 16px;
-    width: 100%;
-  }
-
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     font-size: 16px;
   }
@@ -203,9 +186,6 @@ export const InformationContainer = styled.div`
     color: rgb(255, 255, 255);
     font-size: 10px;
 
-    &.mobile-sn {
-      font-size: 12px;
-    }
     @media only screen and (min-width: 768px) and (max-width: 1224px) {
       font-size: 12px;
     }
@@ -220,10 +200,6 @@ export const InformationContainer = styled.div`
     text-align: left;
     color: #424962;
     font-size: clamp(8px, 1.06vw, 13px);
-
-    &.mobile-hashrate {
-      font-size: 14px;
-    }
 
     @media only screen and (min-width: 768px) and (max-width: 1224px) {
       font-size: 14px;
@@ -256,9 +232,7 @@ export const DescriptionContent = styled.div`
   text-align: left;
   color: #64718c;
   align-items: center;
-  /* &.host-rate {
-    margin-right: 14px;
-  } */
+
   &.host-rate {
     margin-right: 0px;
   }
@@ -279,41 +253,12 @@ export const ContractContainer = styled.div`
   color: #fff;
   width: 20%;
 
-  @media only screen and (min-width: 768px) and (max-width: 1224px) {
-    /* margin-right: 44px;
-    justify-content: center; */
-  }
-
   &.mobile-responsive {
     width: 100%;
     display: flex;
     align-items: center;
-    /* gap: 35px; */
     text-align: unset;
     line-height: unset;
-
-    @media only screen and (min-width: 768px) and (max-width: 1224px) {
-      width: 52%;
-    }
-  }
-  &.mobile-responsive-member {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    text-align: unset;
-    line-height: unset;
-
-    @media only screen and (min-width: 768px) and (max-width: 1224px) {
-      width: 52%;
-    }
-  }
-  &.contract-responsive-header {
-    width: 100%;
-    display: flex;
-    gap: 30px;
-    text-align: unset;
-    padding-bottom: 15px;
-    justify-content: space-between;
   }
 `
 
@@ -338,13 +283,6 @@ export const HeaderContainer = styled.div`
     text-align: unset;
     gap: 30px;
   }
-  &.padding-inventory {
-    transform: 'translateX(-14px)';
-
-    @media only screen and (min-width: 768px) and (max-width: 1224px) {
-      transform: 'translateX(14px)';
-    }
-  }
 `
 export const AdditonalInformationContainer = styled.div`
   font-family: Inter;
@@ -354,51 +292,6 @@ export const AdditonalInformationContainer = styled.div`
   letter-spacing: -0.01em;
   text-align: left;
   color: #fb674b;
-  &.bid-amount {
-    color: #f92727;
-    text-align: center;
-  }
-  &.bid-amount-class {
-    color: #f92727;
-  }
-  &.counter-price {
-    display: flex;
-    justify-content: center;
-    font-family: Inter;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: -0.01em;
-    text-align: center;
-    color: #ffffff;
-  }
-  &.admin-counter-price {
-    display: flex;
-    font-family: Inter;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: -0.01em;
-    text-align: center;
-    color: #ffffff;
-    padding-left: 35px;
-    @media (max-width: 767px) {
-      padding: unset;
-    }
-    @media only screen and (min-width: 768px) and (max-width: 1224px) {
-      padding: unset;
-    }
-  }
-  &.counter-price-class {
-    display: flex;
-    font-family: Inter;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: -0.01em;
-    color: #ffffff;
-    margin-left: 13px;
-  }
   &.transcation-id-class {
     font-family: Inter;
     padding-left: 5px;
@@ -418,19 +311,6 @@ export const AdditonalInformationContainer = styled.div`
       width: unset;
     }
   }
-  &.offer-price {
-    display: flex;
-    font-family: Inter;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: -0.01em;
-    color: #ffffff;
-    padding-left: 13px;
-    @media (max-width: 767px) {
-      padding-left: unset;
-    }
-  }
   @media (max-width: 1448px) {
     font-size: 12px;
   }
@@ -445,10 +325,6 @@ export const PaymentReceivedContainer = styled.div<{ background: boolean }>`
   padding: 6px 12px;
   width: 95px;
   border-radius: 4px;
-  /* background-color: ${props =>
-    props.background
-      ? 'rgba(47, 237, 55, 0.15)'
-      : 'rgba(237, 131, 47, 0.15)'}; */
   color: ${props => (props.background ? '#469B59' : '#FA8949')};
 
   @media (max-width: 767px) {
@@ -484,18 +360,6 @@ export const NameContainer = styled.h4`
   text-align: left;
   color: #ffffff;
   word-break: break-all;
-
-  &.member-details {
-    font-size: 28px;
-  }
-  &.sales-customer-name {
-    @media (max-width: 1366px) {
-      white-space: nowrap;
-    }
-    @media (max-width: 1660px) {
-      font-size: 13px;
-    }
-  }
   @media (max-width: 767px) {
     font-size: 12px;
     &.member-text {
@@ -507,14 +371,6 @@ export const NameContainer = styled.h4`
   }
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     font-size: 14px;
-  }
-  @media (max-width: 1600px) {
-    &.sales-customer-name {
-      display: none;
-    }
-    &.sales-customer-no {
-      display: none;
-    }
   }
 `
 export const NumberContainer = styled.p`
@@ -528,19 +384,6 @@ export const NumberContainer = styled.p`
   @media (max-width: 1366px) {
     font-size: 10px;
     white-space: nowrap;
-  }
-  @media (max-width: 1366px) {
-    &.member-text {
-      font-size: 12px;
-    }
-  }
-  &.member-details {
-    font-size: 14px;
-  }
-  @media (max-width: 767px) {
-    &.member-details {
-      font-size: 12px;
-    }
   }
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
     font-size: 12px;

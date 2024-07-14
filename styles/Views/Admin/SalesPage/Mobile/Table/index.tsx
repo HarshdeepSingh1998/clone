@@ -88,6 +88,9 @@ export const ButtonContent = styled.div`
     gap: unset;
   }
   button {
+    opacity: 1;
+    cursor: pointer;
+
     &.contained {
       color: #fff;
     }

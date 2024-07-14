@@ -87,4 +87,13 @@ export const ButtonContent = styled.div`
   @media (max-width: 767px) {
     gap: unset;
   }
+
+  button {
+    opacity: 1;
+    cursor: pointer;
+
+    &.contained {
+      color: #fff;
+    }
+  }
 `
