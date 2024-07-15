@@ -92,8 +92,6 @@ const useSalesData = (): SalesDataInterface => {
     setSelectedStatus(prev => (prev === 'completed' ? 'all' : 'completed'))
   }
 
-  console.log('selectedStatus', selectedStatus)
-
   const handleAllButton = () => {
     handleClose()
     setForceUpdate(prev => !prev)

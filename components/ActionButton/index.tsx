@@ -36,7 +36,6 @@ const ActionButton: React.FC<ActionButtonProps> = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
   return (
     <ActionButtonContainer>
       <ActionButtonContent

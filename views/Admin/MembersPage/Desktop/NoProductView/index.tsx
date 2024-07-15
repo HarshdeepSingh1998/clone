@@ -1,10 +1,11 @@
-import { NoProductViewInterface } from 'views/Admin/SalesPage/Desktop/types'
+import { NoProductViewInterface } from 'views/Admin/MembersPage/Desktop/types'
 import NoProductFound from '@/components/NoProductFound'
 import {
   NoProductViewContainer,
   LoadMoreContainer,
   LoadMore
-} from '@/styles/Views/Admin/SalesPage/Desktop/NoProduct'
+} from '@/styles/Views/Admin/MembersPage/Desktop/NoProduct'
+
 const NoProductView = ({
   productList,
   data,
@@ -17,7 +18,7 @@ const NoProductView = ({
           <NoProductFound heading="No Sales." text=" " />
         </NoProductViewContainer>
       )}
-      {(productList || [])?.length < data?.data?.meta?.totalNumberOfResults &&
+      {(productList || [])?.length < data?.data?.meta?.totalResults &&
         (productList || [])?.length !== 0 && (
           <LoadMoreContainer>
             <LoadMore onClick={handleLoadMoreClick}>Load More</LoadMore>
