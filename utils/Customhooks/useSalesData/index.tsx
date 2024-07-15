@@ -92,6 +92,8 @@ const useSalesData = (): SalesDataInterface => {
     setSelectedStatus(prev => (prev === 'completed' ? 'all' : 'completed'))
   }
 
+  console.log('selectedStatus', selectedStatus)
+
   const handleAllButton = () => {
     handleClose()
     setForceUpdate(prev => !prev)
@@ -131,7 +133,7 @@ const useSalesData = (): SalesDataInterface => {
       }
     ])
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [salesList])
+  }, [salesList, forceUpdate])
 
   return {
     itemsPerPage,
