@@ -14,7 +14,6 @@ import {
 
 const TableView = ({ memberData }: { memberData: MemberDataInterface }) => {
   const data = generateTableData(memberData)
-  console.log('product', memberData)
   return (
     <TableContainer
       isGap={
