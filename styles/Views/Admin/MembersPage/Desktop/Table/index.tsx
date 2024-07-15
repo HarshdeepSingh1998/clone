@@ -36,6 +36,7 @@ export const TableContent = styled.div`
 export const HeaderTitle = styled.div`
   display: flex;
   gap: 20px;
+  height: 52px;
   align-items: center;
   justify-content: center;
   //styleName: Title 1 (Semibold);
