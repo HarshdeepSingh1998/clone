@@ -3,7 +3,7 @@ import router from 'next/router'
 import useGet from '@/hooks/useGet'
 import { MemberDataInterface } from '@/views/Admin/MembersPage/Desktop/types'
 import { MemberList } from '@/utils/ApiTypes/MemberList'
-import ViewDetails from '@/assets/images/svg/ViewDetails'
+import EditModal from '@/assets/images/images/edit-modal.png'
 
 const useMemberData = (): MemberDataInterface => {
   const [showAddMemberModal, setShowAddMemberModal] = useState(false)
@@ -64,7 +64,8 @@ const useMemberData = (): MemberDataInterface => {
   }
 
   const handleButtonClick = () => {
-    router.push(`/admin/members/memberDetails?memberId=${selectedMember?._id}`)
+    selectedMember &&
+      router.push(`/admin/members/memberDetails?memberId=${selectedMember._id}`)
     handleClose()
   }
 
@@ -74,11 +75,11 @@ const useMemberData = (): MemberDataInterface => {
         key: 'view',
         title: 'View Details',
         handleClick: handleButtonClick,
-        image: <ViewDetails />
+        image: EditModal
       }
     ])
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [memberList])
+  }, [memberList, selectedMember])
 
   return {
     showAddMemberModal,
