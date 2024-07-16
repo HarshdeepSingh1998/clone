@@ -16,6 +16,8 @@ export interface MemberDataInterface {
   handleClose: () => void
   actionButtonData: any[]
   setSelectedMember: Dispatch<SetStateAction<MemberList | undefined>>
+  setShowAddMemberModal: Dispatch<SetStateAction<boolean>>
+  setPage: Dispatch<SetStateAction<number>>
 }
 
 export interface NoProductViewInterface {

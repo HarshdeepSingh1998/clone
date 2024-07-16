@@ -95,7 +95,9 @@ const useMemberData = (): MemberDataInterface => {
     anchorEl,
     open,
     actionButtonData,
-    setSelectedMember
+    setSelectedMember,
+    setShowAddMemberModal,
+    setPage
   }
 }
 

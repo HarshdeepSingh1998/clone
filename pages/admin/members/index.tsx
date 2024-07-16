@@ -1,9 +1,9 @@
 import withAuth from '@/utils/Authentication'
 import useMemberData from '@/utils/Customhooks/useMembersData'
 import useScreenType from '@/utils/Customhooks/useScreenType'
-import AuthLayout from '@/components/AuthLayout'
 import MemberDesktop from '@/views/Admin/MembersPage/Desktop'
-// import SalesMobile from '@/views/Admin/SalesPage/Mobile'
+import AuthLayout from '@/components/AuthLayout'
+import AddMemberModal from '@/components/AddMemberModal'
 import { MembersContainer } from '@/styles/Pages/Admin/MembersPage'
 
 const Members = () => {
@@ -19,6 +19,7 @@ const Members = () => {
           <SalesMobile salesData={salesData} screenType={screenType} />
         )} */}
       </MembersContainer>
+      <AddMemberModal memberData={memberData} />
     </AuthLayout>
   )
 }
