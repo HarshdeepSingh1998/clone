@@ -61,7 +61,7 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ memberData }) => {
                 type="submit"
                 variant="contained"
                 disable={false}
-                label={'Publish'}
+                label={'Add Member'}
               />
               <Button
                 type="submit"
