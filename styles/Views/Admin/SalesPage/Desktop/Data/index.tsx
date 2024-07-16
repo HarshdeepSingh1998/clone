@@ -40,9 +40,6 @@ export const ImageContainer = styled.div<{ profileImage?: string }>`
     border-radius: 50%;
     width: max-content;
     height: max-content;
-    @media only screen and (min-width: 768px) and (max-width: 1224px) {
-      margin-left: 40px;
-    }
 
     img {
       width: 3.542vw;
