@@ -11,7 +11,7 @@ const Members = () => {
   const memberData = useMemberData()
   const { screenType } = useScreenType()
   return (
-    <AuthLayout>
+    <AuthLayout isPopUpVisible={memberData.showAddMemberModal}>
       <MembersContainer>
         {(screenType === 'desktop' || screenType === 'tab') && (
           <MemberDesktop memberData={memberData} />
