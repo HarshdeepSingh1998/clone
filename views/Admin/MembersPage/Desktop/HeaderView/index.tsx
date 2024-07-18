@@ -6,7 +6,7 @@ import {
   HeaderContainer,
   TitleContainer,
   ButtonContainer
-} from '@/styles/Views/Admin/MembersPage/Desktop/Header'
+} from '@/styles/Views/Admin/MembersPage/MemberDetails/Desktop/Header'
 
 const HeaderView = ({ memberData }: { memberData: MemberDataInterface }) => {
   return (
