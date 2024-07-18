@@ -18,8 +18,8 @@ const HeaderView = ({ memberData }: { memberData: MemberDataInterface }) => {
           Add Member
         </Button>
       </ButtonContainer>
-      {!memberData?.memberList && (
-        <Loader blurredBackgroundtrue={!memberData?.memberList} />
+      {!memberData?.membersList && (
+        <Loader blurredBackgroundtrue={!memberData?.membersList} />
       )}
     </HeaderContainer>
   )
