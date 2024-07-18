@@ -9,3 +9,8 @@ export interface MemberDetailsDataInterface {
   setActive: React.Dispatch<React.SetStateAction<string>>
   data: any
 }
+export interface NoProductViewInterface {
+  productList: MemberDetailsDataInterface
+  data: any
+  handleLoadMoreClick: () => void
+}

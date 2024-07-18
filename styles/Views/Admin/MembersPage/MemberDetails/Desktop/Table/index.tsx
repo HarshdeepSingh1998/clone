@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-export const TableViewContainer = styled.div`
+export const TableViewContainer = styled.div<{ isGap: boolean }>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 40px;
+  gap: ${({ isGap }) => (isGap ? '40px' : '0')};
   background: linear-gradient(180deg, #040717 1.55%, #121328 100%);
   border-radius: 10px;
   padding: 16px;

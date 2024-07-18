@@ -1,8 +1,10 @@
 import { MemberDetailsDataInterface } from '@/views/Admin/MembersPage/MemberDetailsPage/Desktop/types'
+import TableComponent from '@/components/Table'
 import {
   columns,
   generateTableData
 } from 'views/Admin/MembersPage/MemberDetailsPage/Desktop/data'
+import NoProductView from 'views/Admin/MembersPage/MemberDetailsPage/Desktop/NoProductView'
 import {
   TableViewContainer,
   TableViewContent,
@@ -14,7 +16,6 @@ import {
   ButtonContent,
   MemberDetailsButton
 } from '@/styles/Views/Admin/MembersPage/MemberDetails/Desktop/Table'
-import TableComponent from '@/components/Table'
 
 const TableView = ({
   memberDetailsData
@@ -28,7 +29,12 @@ const TableView = ({
     )
   )
   return (
-    <TableViewContainer>
+    <TableViewContainer
+      isGap={
+        memberDetailsData?.displayedRows <
+        Number(memberDetailsData?.memberDetailsData?.assignedProducts?.length)
+      }
+    >
       <TableViewContent className="admin-inventory">
         <HeaderContainer>
           <HeaderSearchContainer>
@@ -56,6 +62,11 @@ const TableView = ({
         </HeaderContainer>
         <TableComponent columns={columns} data={data} />
       </TableViewContent>
+      <NoProductView
+        productList={memberDetailsData}
+        data={memberDetailsData?.memberDetailsData}
+        handleLoadMoreClick={memberDetailsData.handleShowMoreRows}
+      />
     </TableViewContainer>
   )
 }
