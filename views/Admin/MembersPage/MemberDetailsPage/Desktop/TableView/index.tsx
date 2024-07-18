@@ -60,7 +60,12 @@ const TableView = ({
             </ButtonContent>
           </ButtonContainer>
         </HeaderContainer>
-        <TableComponent columns={columns} data={data} />
+        {memberDetailsData.active == '1' && (
+          <TableComponent columns={columns} data={data} />
+        )}
+        {memberDetailsData.active === '2' && (
+          <TableComponent columns={columns} data={data} />
+        )}
       </TableViewContent>
       <NoProductView
         productList={memberDetailsData}
