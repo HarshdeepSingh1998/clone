@@ -1,9 +1,11 @@
 import { MemberDetailsDataInterface } from '@/views/Admin/MembersPage/MemberDetailsPage/Desktop/types'
-import TableComponent from '@/components/Table'
 import {
   columns,
-  generateTableData
+  generateTableData,
+  generateBiddingTableData,
+  biddingColumns
 } from 'views/Admin/MembersPage/MemberDetailsPage/Desktop/data'
+import TableComponent from '@/components/Table'
 import NoProductView from 'views/Admin/MembersPage/MemberDetailsPage/Desktop/NoProductView'
 import {
   TableViewContainer,
@@ -28,6 +30,13 @@ const TableView = ({
       memberDetailsData?.displayedRows
     )
   )
+
+  const biddingData = generateBiddingTableData(
+    memberDetailsData?.biddingList,
+    memberDetailsData?.userData,
+    memberDetailsData
+  )
+
   return (
     <TableViewContainer
       isGap={
@@ -64,7 +73,7 @@ const TableView = ({
           <TableComponent columns={columns} data={data} />
         )}
         {memberDetailsData.active === '2' && (
-          <TableComponent columns={columns} data={data} />
+          <TableComponent columns={biddingColumns} data={biddingData} />
         )}
       </TableViewContent>
       <NoProductView

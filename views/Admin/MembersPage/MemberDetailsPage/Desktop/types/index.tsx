@@ -38,6 +38,12 @@ export interface MemberDetailsDataInterface {
   rejectBid: (item: any) => void
   closeModal: () => void
   handleLoadMoreClick: () => void
+  anchorEl: HTMLElement | null
+  setAnchorEl: Dispatch<SetStateAction<HTMLElement | null>>
+  open: boolean
+  actionButtonData: any
+  setSelectedBidData: Dispatch<any>
+  handleClose: () => void
 }
 export interface NoProductViewInterface {
   productList: MemberDetailsDataInterface

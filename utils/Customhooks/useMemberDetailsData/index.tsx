@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import useGet from '@/hooks/useGet'
+import { selectUser } from '@/store/userSlice'
 import { MemberDetailsList } from '@/utils/ApiTypes/MemberDetailsList'
 import { MemberDetailsDataInterface } from '@/views/Admin/MembersPage/MemberDetailsPage/Desktop/types'
 import { BiddingList } from '@/utils/ApiTypes/BiddingList'
-import { useSelector } from 'react-redux'
-import { selectUser } from '@/store/userSlice'
+import EditModal from '@/assets/images/images/edit-modal.png'
 
 const useMemberDetails = (): MemberDetailsDataInterface => {
   const { query } = useRouter()
@@ -51,11 +52,16 @@ const useMemberDetails = (): MemberDetailsDataInterface => {
   const [selectedBid, setSelectedBid] = useState({})
   const [loadMoreButtonClicked, setLoadMoreButtonClicked] = useState(false)
   const [forceUpdate, setForceUpdate] = useState(false)
-
   const [biddingList, setBiddingList] = useState<BiddingList[] | undefined>(
     undefined
   )
 
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+  const [actionButtonData, setActionButtonData] = useState<any>([])
+  const [selectedBidData, setSelectedBidData] = useState<
+    BiddingList | undefined
+  >(undefined)
   const itemsPerPage = 10
   const [page, setPage] = useState(1)
   const { data: auctionData, refetch: fetchBiddingData } = useGet(
@@ -81,41 +87,30 @@ const useMemberDetails = (): MemberDetailsDataInterface => {
   }, [auctionData])
 
   const userData = useSelector(selectUser)
-  // console.log({ auctionData })
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
-  const acceptBidClick = (
-    // popupState: CustomPopupState,
-    item: any
-  ): void => {
+  const acceptBidClick = (item: BiddingList): void => {
     setIsAcceptBidModalVisible(true)
     setSelectedBid(item)
-    // popupState.close()
+    handleClose()
   }
-  const counterBid = (
-    // popupState: CustomPopupState,
-    item: any
-  ): void => {
+  const counterBid = (item: BiddingList): void => {
     setSelectedBid(item)
     setIsCounterBidModalVisible(true)
-    // popupState.close()
+    handleClose()
   }
-  const bidHistory = (
-    // popupState: CustomPopupState,
-    item: any
-  ): void => {
+  const bidHistory = (item: BiddingList): void => {
     setIsBidHistoryModalVisible(true)
     setSelectedBid(item)
-    // popupState.close()
+    handleClose()
   }
 
-  const rejectBid = (
-    // popupState: CustomPopupState,
-    item: any
-  ): void => {
+  const rejectBid = (item: BiddingList): void => {
     setIsRejectBidModalVisible(true)
     setSelectedBid(item)
-
-    // popupState.close()
+    handleClose()
   }
 
   const closeModal = () => {
@@ -130,6 +125,45 @@ const useMemberDetails = (): MemberDetailsDataInterface => {
     setPage(prev => prev + 1)
     setLoadMoreButtonClicked(true)
   }
+
+  useEffect(() => {
+    if (
+      selectedBidData?.auctionStatus === 'Pending' &&
+      selectedBidData.publisher._id === userData.data?.id &&
+      !(selectedBidData.counters.at(-1)?.bidUser === userData.data?.id)
+    ) {
+      setActionButtonData([
+        {
+          key: 'counter',
+          title: 'Counter Bid',
+          handleClick: () => counterBid(selectedBidData),
+          image: EditModal
+        },
+        {
+          key: 'history',
+          title: 'Bid History',
+          handleClick: () => bidHistory(selectedBidData),
+          image: EditModal
+        },
+        {
+          key: 'rejected',
+          title: 'Reject Bid',
+          handleClick: () => rejectBid(selectedBidData),
+          image: EditModal
+        }
+      ])
+    } else {
+      setActionButtonData([
+        {
+          key: 'history',
+          title: 'Bid History',
+          handleClick: () => bidHistory(selectedBidData as BiddingList),
+          image: EditModal
+        }
+      ])
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [biddingList, selectedBidData])
 
   return {
     loading,
@@ -164,7 +198,13 @@ const useMemberDetails = (): MemberDetailsDataInterface => {
     closeModal,
     handleLoadMoreClick,
     page,
-    setPage
+    setPage,
+    anchorEl,
+    setAnchorEl,
+    open,
+    actionButtonData,
+    setSelectedBidData,
+    handleClose
   }
 }
 
