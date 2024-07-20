@@ -32,6 +32,7 @@ export interface BiddingList {
     deviceToken: string
     email: string
     isActive: boolean
+    profileImage: string
     name: string
     phone: string
     role: string
