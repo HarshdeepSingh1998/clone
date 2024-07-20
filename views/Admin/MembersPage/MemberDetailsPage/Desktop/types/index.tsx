@@ -49,4 +49,6 @@ export interface NoProductViewInterface {
   productList: MemberDetailsDataInterface
   data: any
   handleLoadMoreClick: () => void
+  biddingList: BiddingList[] | undefined
+  active: string
 }

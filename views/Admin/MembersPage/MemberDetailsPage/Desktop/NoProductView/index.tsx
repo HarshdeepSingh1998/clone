@@ -9,26 +9,47 @@ import {
 const NoProductView = ({
   productList,
   data,
-  handleLoadMoreClick
+  handleLoadMoreClick,
+  biddingList,
+  active
 }: NoProductViewInterface) => {
-  return (
-    <div>
-      {(productList?.memberDetailsData?.assignedProducts || [])?.length === 0 &&
-        data && (
+  if (active === `1`) {
+    return (
+      <div>
+        {(productList?.memberDetailsData?.assignedProducts || [])?.length ===
+          0 &&
+          data && (
+            <NoProductViewContainer className="admin-marketplace">
+              <NoProductFound heading="No Products Found" text=" " />
+            </NoProductViewContainer>
+          )}
+        {productList?.displayedRows <
+          Number(productList?.memberDetailsData?.assignedProducts?.length) &&
+          (productList?.memberDetailsData?.assignedProducts || [])?.length !==
+            0 && (
+            <LoadMoreContainer>
+              <LoadMore onClick={handleLoadMoreClick}>Load More</LoadMore>
+            </LoadMoreContainer>
+          )}
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        {(biddingList || [])?.length === 0 && data && (
           <NoProductViewContainer className="admin-marketplace">
-            <NoProductFound heading="No Sales." text=" " />
+            <NoProductFound heading="No Bids Found." text=" " />
           </NoProductViewContainer>
         )}
-      {productList?.displayedRows <
-        Number(productList?.memberDetailsData?.assignedProducts?.length) &&
-        (productList?.memberDetailsData?.assignedProducts || [])?.length !==
-          0 && (
-          <LoadMoreContainer>
-            <LoadMore onClick={handleLoadMoreClick}>Load More</LoadMore>
-          </LoadMoreContainer>
-        )}
-    </div>
-  )
+        {(biddingList || [])?.length < data?.data?.meta?.totalNumberOfResults &&
+          (biddingList || [])?.length !== 0 && (
+            <LoadMoreContainer>
+              <LoadMore onClick={handleLoadMoreClick}>Load More</LoadMore>
+            </LoadMoreContainer>
+          )}
+      </div>
+    )
+  }
 }
 
 export default NoProductView

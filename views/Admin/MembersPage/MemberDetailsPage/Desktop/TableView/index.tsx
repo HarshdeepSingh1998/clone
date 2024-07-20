@@ -78,8 +78,10 @@ const TableView = ({
       </TableViewContent>
       <NoProductView
         productList={memberDetailsData}
-        data={memberDetailsData?.memberDetailsData}
+        data={memberDetailsData.memberDetailsData}
         handleLoadMoreClick={memberDetailsData.handleShowMoreRows}
+        biddingList={memberDetailsData.biddingList}
+        active={memberDetailsData.active}
       />
     </TableViewContainer>
   )
