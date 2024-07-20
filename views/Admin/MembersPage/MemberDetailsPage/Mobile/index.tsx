@@ -1,6 +1,6 @@
 import { MemberDetailsDataInterface } from '@/views/Admin/MembersPage/MemberDetailsPage/Mobile/types'
 import HeaderView from 'views/Admin/MembersPage/MemberDetailsPage/Mobile/HeaderView'
-// import TableView from 'views/Admin/MembersPage/MemberDetailsPage/Mobile/TableView'
+import TableView from 'views/Admin/MembersPage/MemberDetailsPage/Mobile/TableView'
 
 const MemberDetailsMobile = ({
   memberDetailsData
@@ -10,7 +10,7 @@ const MemberDetailsMobile = ({
   return (
     <>
       <HeaderView memberDetailsData={memberDetailsData} />
-      {/* <TableView memberDetailsData={memberDetailsData} /> */}
+      <TableView memberDetailsData={memberDetailsData} />
     </>
   )
 }
