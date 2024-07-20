@@ -99,7 +99,6 @@ export const MachineContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 16px;
-  padding: 24px 10px;
   cursor: pointer;
 
   @media (max-width: 767px) {

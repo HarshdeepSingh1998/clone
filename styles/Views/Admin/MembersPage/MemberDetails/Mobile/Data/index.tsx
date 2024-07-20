@@ -271,3 +271,12 @@ export const AmountPercentage = styled.div`
     }
   }
 `
+export const MachineInfo = styled.p`
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #424962;
+`

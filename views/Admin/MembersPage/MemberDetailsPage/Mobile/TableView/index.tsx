@@ -34,14 +34,13 @@ const TableView = ({
       memberDetailsData?.displayedRows
     )
   )
-
   const dataLength =
     memberDetailsData?.memberDetailsData?.assignedProducts?.slice(
       0,
       memberDetailsData?.displayedRows
     )?.length ?? 0
-
   const bidData = generateBiddingTableData(memberDetailsData?.biddingList)
+  const biddingDataLength = memberDetailsData?.biddingList?.length ?? 0
 
   return (
     <TableContainer
@@ -101,7 +100,7 @@ const TableView = ({
             memberDetailsData?.biddingList?.map((biddingListData, i) => (
               <ContentContainer
                 key={i}
-                className={i === dataLength - 1 ? 'last' : ''}
+                className={i === biddingDataLength - 1 ? 'last' : ''}
               >
                 {biddingColumns?.map((column, j) => (
                   <TableList

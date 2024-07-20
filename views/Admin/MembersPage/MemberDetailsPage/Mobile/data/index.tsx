@@ -24,8 +24,7 @@ import {
   DescriptionContainer,
   DepositAmountContainer,
   TextContainer,
-  MachineInfoContainer,
-  MachinePriceContainer,
+  MachineInfo,
   ActionContainer,
   AssignButtonContainer,
   AmountPercentage,
@@ -53,37 +52,35 @@ export const biddingColumns = [
   {
     id: 'machine',
     label: ({ biddingListData }: { biddingListData: BiddingList }) => (
-      <CheckboxContainer>
-        <MachineContainer className="sales-mobile-machine">
-          <ImageContainer className="member-image bidding">
-            <Image
-              src={biddingListData?.product.images[0] || Bid}
-              width={50}
-              alt="machine-Id"
-              height={50}
-            />
-            <TextContainer>
-              <MachineNameContainer>
-                {biddingListData?.product?.modelName &&
-                biddingListData.product.modelName.length > 15
-                  ? `${biddingListData.product.modelName.substring(0, 15)}...`
-                  : biddingListData?.product?.modelName || 'N/A'}
-              </MachineNameContainer>
-              <MachineInfoContainer>
-                <PowerIcon />
-                {biddingListData?.product?.power
-                  ? `${biddingListData?.product?.power} kw`
-                  : 'N/A'}
-                | <HashRateIcon />
-                {biddingListData?.product?.hashRate
-                  ? `${biddingListData?.product?.hashRate} TH/s`
-                  : 'N/A'}
-              </MachineInfoContainer>
-              <MachinePriceContainer>{`$ ${biddingListData?.product?.askPrice}`}</MachinePriceContainer>
-            </TextContainer>
-          </ImageContainer>
-        </MachineContainer>
-      </CheckboxContainer>
+      <MachineContainer className="sales-mobile-machine">
+        <ImageContainer>
+          <Image
+            src={biddingListData?.product.images[0] || Bid}
+            width={50}
+            alt="machine-Id"
+            height={50}
+          />
+        </ImageContainer>
+        <TextContainer>
+          <MachineNameContainer>
+            {biddingListData?.product?.modelName &&
+            biddingListData.product.modelName.length > 15
+              ? `${biddingListData.product.modelName.substring(0, 15)}...`
+              : biddingListData?.product?.modelName || 'N/A'}
+          </MachineNameContainer>
+          <MachineInfo>
+            <PowerIcon />
+            {biddingListData?.product?.power
+              ? `${biddingListData?.product?.power} kw`
+              : 'N/A'}
+            | <HashRateIcon />
+            {biddingListData?.product?.hashRate
+              ? `${biddingListData?.product?.hashRate} TH/s`
+              : 'N/A'}
+          </MachineInfo>
+          <MachinePrice>{`$ ${biddingListData?.product?.askPrice}`}</MachinePrice>
+        </TextContainer>
+      </MachineContainer>
     )
   },
   {

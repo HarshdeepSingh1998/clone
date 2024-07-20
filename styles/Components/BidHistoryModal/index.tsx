@@ -337,7 +337,6 @@ export const ButtonContainer = styled.div`
     justify-content: center;
   }
   @media (max-width: 767px) {
-    padding-top: 20px;
     &.mobile-responsive {
       padding-top: unset;
     }

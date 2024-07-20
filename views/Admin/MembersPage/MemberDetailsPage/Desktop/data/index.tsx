@@ -140,12 +140,14 @@ export const generateBiddingTableData = (
     machine: (
       <MachineContainer>
         <ImageContainer>
-          <Image
-            src={data?.product.images[0] || Bid}
-            width={50}
-            alt="machine-Id"
-            height={50}
-          />
+          <ImageContent>
+            <Image
+              src={data?.product.images[0] || Bid}
+              width={50}
+              alt="machine-Id"
+              height={50}
+            />
+          </ImageContent>
         </ImageContainer>
         <TextContainer>
           <MachineNameContainer>
