@@ -2,6 +2,7 @@ import withAuth from '@/utils/Authentication'
 import useMemberDetails from '@/utils/Customhooks/useMemberDetailsData'
 import useScreenType from '@/utils/Customhooks/useScreenType'
 import MemberDetailsDesktop from 'views/Admin/MembersPage/MemberDetailsPage/Desktop'
+import MemberDetailsMobile from '@/views/Admin/MembersPage/MemberDetailsPage/Mobile'
 import AuthLayout from '@/components/AuthLayout'
 import AcceptBidModal from '@/components/AcceptBidModal'
 import CounterBidModal from '@/components/CounterBidModal'
@@ -25,7 +26,9 @@ const Members = () => {
         {(screenType === 'desktop' || screenType === 'tab') && (
           <MemberDetailsDesktop memberDetailsData={memberDetailsData} />
         )}
-        {/* {screenType === 'mobile' && <MemberMobile memberData={memberData} />} */}
+        {screenType === 'mobile' && (
+          <MemberDetailsMobile memberDetailsData={memberDetailsData} />
+        )}
       </MemberDetailsContainer>
       <AcceptBidModal
         closeModal={memberDetailsData.closeModal}

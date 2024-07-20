@@ -3,11 +3,11 @@ import styled from 'styled-components'
 export const HeaderContainer = styled.div`
   border: 2px solid rgb(22, 25, 41);
   border-radius: 12px;
-  padding: 24px 19px 24px 24px;
+  padding: 15px;
   background: linear-gradient(rgb(4, 7, 23) 1.55%, rgb(18, 19, 40) 100%);
   display: grid;
-  gap: 44px;
   width: 100%;
+  gap: 30px;
 `
 export const HeaderContent = styled.div<{ cursor?: boolean }>`
   display: flex;
@@ -37,8 +37,8 @@ export const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
 
   @media (max-width: 767px) {

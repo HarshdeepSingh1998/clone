@@ -1,15 +1,15 @@
 import Image from 'next/image'
-import { MemberDetailsDataInterface } from '@/views/Admin/MembersPage/MemberDetailsPage/Desktop/types'
+import { MemberDetailsDataInterface } from '@/views/Admin/MembersPage/MemberDetailsPage/Mobile/types'
 import Loader from '@/components/Loader'
 import DEFAULT_PROFILE_URL from 'assets/images/images/default-profile.png'
 import {
+  ContactNumberContainer,
+  CustomerNameContainer,
   HeaderContainer,
   HeaderContent,
   ImageContainer,
-  TextContainer,
-  CustomerNameContainer,
-  ContactNumberContainer
-} from '@/styles/Views/Admin/MembersPage/MemberDetails/Desktop/Header'
+  TextContainer
+} from '@/styles/Views/Admin/MembersPage/MemberDetails/Mobile/Header'
 
 const HeaderView = ({
   memberDetailsData
@@ -26,8 +26,8 @@ const HeaderView = ({
                 ?.profileImage || DEFAULT_PROFILE_URL
             }
             alt="customer"
-            width={80}
-            height={80}
+            width={50}
+            height={50}
             style={{ borderRadius: '50px' }}
           />
         </ImageContainer>
