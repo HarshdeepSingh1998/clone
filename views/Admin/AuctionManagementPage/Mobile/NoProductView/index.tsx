@@ -1,10 +1,10 @@
-import { NoProductViewInterface } from 'views/Admin/AuctionManagementPage/Desktop/types'
+import { NoProductViewInterface } from 'views/Admin/AuctionManagementPage/Mobile/types'
 import NoProductFound from '@/components/NoProductFound'
 import {
   NoProductViewContainer,
   LoadMoreContainer,
   LoadMore
-} from '@/styles/Views/Admin/AuctionManagementPage/Desktop/NoProduct'
+} from '@/styles/Views/Admin/AuctionManagementPage/Mobile/NoProduct'
 const NoProductView = ({
   productList,
   data,

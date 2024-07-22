@@ -7,6 +7,7 @@ import CounterBidModal from '@/components/CounterBidModal'
 import BidHistoryModal from '@/components/BidHistoryModal'
 import RejectBidModal from '@/components/RejectBidModal'
 import AuctionManagementDesktop from '@/views/Admin/AuctionManagementPage/Desktop'
+import AuctionManagementMobile from '@/views/Admin/AuctionManagementPage/Mobile'
 import { AuctionManagementContainer } from '@/styles/Pages/Admin/AuctionManagementPage'
 
 const AuctionManagement = () => {
@@ -28,9 +29,12 @@ const AuctionManagement = () => {
             screenType={screenType}
           />
         )}
-        {/* {screenType === 'mobile' && (
-          <SalesMobile salesData={salesData} screenType={screenType} />
-        )} */}
+        {screenType === 'mobile' && (
+          <AuctionManagementMobile
+            auctionManagementData={auctionManagementData}
+            screenType={screenType}
+          />
+        )}
       </AuctionManagementContainer>
       <AcceptBidModal
         closeModal={auctionManagementData.closeModal}
