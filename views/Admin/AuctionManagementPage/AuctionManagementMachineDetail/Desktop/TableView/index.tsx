@@ -12,7 +12,7 @@ import {
   HeaderSearchContainer,
   HeaderTitle,
   BoxImage
-} from '@/styles/Views/Admin/MembersPage/MemberDetails/Desktop/Table'
+} from '@/styles/Views/Admin/AuctionManagementPage/AuctionManagementMachineDetail/Desktop/Table'
 
 const TableView = ({
   auctionManagementData
