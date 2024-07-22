@@ -7,6 +7,7 @@ import CounterBidModal from '@/components/CounterBidModal'
 import BidHistoryModal from '@/components/BidHistoryModal'
 import RejectBidModal from '@/components/RejectBidModal'
 import AuctionManagementMachineDetailDesktop from '@/views/Admin/AuctionManagementPage/AuctionManagementMachineDetail/Desktop'
+import AuctionManagementMachineDetailMobile from '@/views/Admin/AuctionManagementPage/AuctionManagementMachineDetail/Mobile'
 import { AuctionManagementMachineDetailContainer } from '@/styles/Pages/Admin/AuctionManagementPage/AuctionManagementMachineDetail'
 
 const AuctionManagementMachineDetail = () => {
@@ -27,9 +28,11 @@ const AuctionManagementMachineDetail = () => {
             auctionManagementData={auctionManagementData}
           />
         )}
-        {/* {screenType === 'mobile' && (
-          <SalesMobile salesData={salesData} screenType={screenType} />
-        )} */}
+        {screenType === 'mobile' && (
+          <AuctionManagementMachineDetailMobile
+            auctionManagementData={auctionManagementData}
+          />
+        )}
       </AuctionManagementMachineDetailContainer>
       <AcceptBidModal
         closeModal={auctionManagementData.closeModal}

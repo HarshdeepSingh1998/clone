@@ -31,6 +31,12 @@ export const ImageContainer = styled.div`
     max-height: 44px;
     border-radius: 50%;
   }
+  @media only screen and (min-width: 768px) and (max-width: 1224px) {
+    img {
+      width: 43px;
+      height: 43px;
+    }
+  }
 `
 export const BidderContainer = styled.div`
   width: 100%;
@@ -49,6 +55,9 @@ export const BidderContent = styled.h4`
   text-align: left;
   color: #ffffff;
   word-break: break-all;
+  @media only screen and (min-width: 768px) and (max-width: 1224px) {
+    font-size: 14px;
+  }
 `
 export const BidderContactNumber = styled.p`
   font-family: Inter;

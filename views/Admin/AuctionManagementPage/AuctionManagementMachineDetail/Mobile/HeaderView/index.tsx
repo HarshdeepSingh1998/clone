@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { endDate } from '@/utils/HelperFunctions/AuctionEndDate'
-import { AuctionManagementMachineDetailInterface } from 'views/Admin/AuctionManagementPage/AuctionManagementMachineDetail/Desktop/types'
+import { AuctionManagementMachineDetailInterface } from 'views/Admin/AuctionManagementPage/AuctionManagementMachineDetail/Mobile/types'
 import Loader from '@/components/Loader'
 import DummyMachine from '@/assets/images/images/machine-bid.png'
 import {
@@ -15,7 +15,7 @@ import {
   PriceContainer,
   EndingTimeContainer,
   EndingTimeContent
-} from '@/styles/Views/Admin/AuctionManagementPage/AuctionManagementMachineDetail/Desktop/Header'
+} from '@/styles/Views/Admin/AuctionManagementPage/AuctionManagementMachineDetail/Mobile/Header'
 
 const HeaderView = ({
   auctionManagementData
@@ -55,7 +55,7 @@ const HeaderView = ({
         </DescriptionContainer>
         <EndingTimeContainer>
           <EndingTimeContent className="time-end-class">
-            Ends in
+            Ends in&nbsp;
             {endDate(
               auctionManagementData?.biddingList?.[0]?.product
                 ?.auctionEndDate as string
