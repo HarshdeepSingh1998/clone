@@ -1,10 +1,19 @@
 import AuthLayout from '@/components/AuthLayout'
 import withAuth from '@/utils/Authentication'
+import { useUserMarketplace } from '@/utils/Customhooks/useUserMarketPlaceData'
+import ProgressBarView from '@/views/User/MarketPlacePage/ProgressBarView'
+import { MarketPlaceContainer } from '@/styles/Pages/User/MarketPlacePage'
 
 const AdminMarketPlace = () => {
+  const marketplaceData = useUserMarketplace()
   return (
     <AuthLayout>
-      <div>hi</div>
+      <MarketPlaceContainer>
+        <ProgressBarView marketplaceData={marketplaceData} />
+        {/* <HeaderView />
+        <CardView />
+        <NoProductView /> */}
+      </MarketPlaceContainer>
     </AuthLayout>
   )
 }
