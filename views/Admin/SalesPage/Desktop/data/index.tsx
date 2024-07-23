@@ -122,7 +122,11 @@ export const generateTableData = (
     ),
     status: (
       <PaymentContainer background={data?.paymentReceived}>
-        {data?.paymentReceived ? 'Completed' : 'Pending'}
+        {data?.paymentReceived === true
+          ? 'Completed'
+          : !data?.paymentReceived && data?.transactionType === 'Purchase'
+            ? 'Processing'
+            : 'Pending'}
       </PaymentContainer>
     ),
     total: <TotalContainer>{totalPriceCalculator(data)}</TotalContainer>,

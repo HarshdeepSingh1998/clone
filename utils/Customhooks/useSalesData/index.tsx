@@ -43,7 +43,8 @@ const useSalesData = (): SalesDataInterface => {
     } else {
       setSalesList(list)
     }
-  }, [loadMoreButtonClicked, salesMemberList])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [salesMemberList])
 
   const handleLoadMoreClick = () => {
     setPage(prev => prev + 1)

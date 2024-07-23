@@ -220,7 +220,11 @@ export const generateTableData = (
         <ContractContainer className="mobile-responsive">
           <HeaderContainer className="contract-header">Status</HeaderContainer>
           <PaymentReceivedContainer background={data?.paymentReceived}>
-            {data?.paymentReceived ? 'Completed' : 'Pending'}
+            {data?.paymentReceived === true
+              ? 'Completed'
+              : !data?.paymentReceived && data?.transactionType === 'Purchase'
+                ? 'Processing'
+                : 'Pending'}
           </PaymentReceivedContainer>
         </ContractContainer>
         <ContractContainer className="mobile-responsive">
