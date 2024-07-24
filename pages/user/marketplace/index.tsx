@@ -7,7 +7,7 @@ import CardView from '@/views/User/MarketPlacePage/CardView'
 import NoProductView from '@/views/User/MarketPlacePage/NoProductView'
 import { MarketPlaceContainer } from '@/styles/Pages/User/MarketPlacePage'
 
-const AdminMarketPlace = () => {
+const UserMarketPlace = () => {
   const marketplaceData = useUserMarketplace()
   return (
     <AuthLayout>
@@ -25,4 +25,4 @@ const AdminMarketPlace = () => {
   )
 }
 
-export default withAuth(AdminMarketPlace, 'user')
+export default withAuth(UserMarketPlace, 'user')
