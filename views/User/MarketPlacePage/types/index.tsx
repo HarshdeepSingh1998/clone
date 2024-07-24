@@ -1,6 +1,7 @@
 import { UserState } from '@/store/userSlice'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
 import { StaticImageData } from 'next/image'
+import { Dispatch, SetStateAction } from 'react'
 
 export interface MarketPlaceDataInterface {
   toggleActive: string
@@ -19,4 +20,13 @@ export interface MarketPlaceDataInterface {
   handleShopClick: () => void
   data: any
   userData: UserState
+  setProductList: Dispatch<SetStateAction<ProductList[] | undefined>>
+  setPage: Dispatch<SetStateAction<number>>
+  setSwitchActive: Dispatch<SetStateAction<string>>
+}
+
+export interface NoProductViewInterface {
+  productList: ProductList[] | undefined
+  data: any
+  handleLoadMoreClick: () => void
 }

@@ -1,10 +1,10 @@
 import NoProductFound from '@/components/NoProductFound'
-import { NoProductViewInterface } from 'views/Admin/MarketPlacePage/NoProductView/types'
+import { NoProductViewInterface } from 'views/User/MarketPlacePage/types'
 import {
   NoProductViewContainer,
   LoadMoreContainer,
   LoadMore
-} from '@/styles/Views/Admin/MarketPlacePage/NoProduct'
+} from '@/styles/Views/User/MarketPlacePage/NoProduct'
 
 const NoProductView = ({
   productList,

@@ -103,6 +103,9 @@ export const useUserMarketplace = (): MarketPlaceDataInterface => {
     handleBuyAndHostClick,
     handleShopClick,
     data,
-    userData
+    userData,
+    setProductList,
+    setPage,
+    setSwitchActive
   }
 }
