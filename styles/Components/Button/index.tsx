@@ -46,8 +46,9 @@ const getButtonStyles = ({ variant, disabled, padding }: IStyledButton) => {
 
 export const StyledButton = styled.button<IStyledButton>`
   width: 100%;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
+  cursor: ${({ disabled }) =>
+    disabled ? 'not-allowed !important' : 'pointer'};
+  opacity: ${({ disabled }) => (disabled ? '0.5 !important' : '1')};
   ${({ variant, padding }) =>
     variant && getButtonStyles({ variant, disabled: false, padding })};
   padding: ${({ padding, disabled }) => padding || (disabled ? '5px' : '15px')}
