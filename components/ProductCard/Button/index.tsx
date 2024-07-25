@@ -18,11 +18,6 @@ const ProductCardButton: React.FC<ButtonProps> = ({
               label={'Buy now'}
               type="button"
               onClick={() => buyNowClick?.(data._id)}
-              style={{
-                height: '40px',
-                lineHeight: '10px',
-                fontWeight: '700'
-              }}
             />
           ) : (
             <ButtonContainer className="button-container">
@@ -31,11 +26,6 @@ const ProductCardButton: React.FC<ButtonProps> = ({
                 variant="outline"
                 type="button"
                 onClick={() => placeBidClick?.(data._id)}
-                style={{
-                  height: '40px',
-                  lineHeight: '10px',
-                  color: '#FB674B'
-                }}
                 disable={
                   !isTodayBetween(
                     data?.auctionStartDate,
@@ -47,11 +37,6 @@ const ProductCardButton: React.FC<ButtonProps> = ({
                 label={'Buy now'}
                 type="button"
                 onClick={() => buyNowClick?.(data._id)}
-                style={{
-                  height: '40px',
-                  lineHeight: '10px',
-                  fontSize: '12px'
-                }}
                 disable={
                   !isTodayBetween(
                     data?.auctionStartDate,
@@ -71,11 +56,6 @@ const ProductCardButton: React.FC<ButtonProps> = ({
                   label={'Buy now '}
                   type="button"
                   onClick={() => buyNowClick?.(data._id)}
-                  style={{
-                    height: '40px',
-                    lineHeight: '10px',
-                    fontWeight: '700'
-                  }}
                 />
               ) : (
                 <ButtonContainer className="button-container">
@@ -84,11 +64,6 @@ const ProductCardButton: React.FC<ButtonProps> = ({
                     variant="outline"
                     type="button"
                     onClick={() => placeBidClick?.(data._id)}
-                    style={{
-                      height: '40px',
-                      lineHeight: '10px',
-                      color: '#FB674B'
-                    }}
                     disable={
                       !isTodayBetween(
                         data?.auctionStartDate,
@@ -100,11 +75,6 @@ const ProductCardButton: React.FC<ButtonProps> = ({
                     label={'Buy now'}
                     type="button"
                     onClick={() => buyNowClick?.(data._id)}
-                    style={{
-                      height: '40px',
-                      lineHeight: '10px',
-                      fontSize: '12px'
-                    }}
                     disable={
                       !isTodayBetween(
                         data?.auctionStartDate,
@@ -120,12 +90,6 @@ const ProductCardButton: React.FC<ButtonProps> = ({
               label={'Request Quote'}
               type="button"
               onClick={() => clickGetQuote?.(data?._id)}
-              style={{
-                height: '40px',
-                lineHeight: '10px',
-                fontSize: '12px',
-                fontWeight: '700'
-              }}
             />
           )}
         </>

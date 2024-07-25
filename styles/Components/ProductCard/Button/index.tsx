@@ -10,10 +10,14 @@ export const ButtonContainer = styled.div`
     font-size: 12px;
     font-weight: 700;
     padding: 0;
+    height: 40px;
   }
   &.button-container {
     width: 100%;
     margin-top: 0;
     padding: 0;
+    button: first-child {
+      color: rgb(251, 103, 75);
+    }
   }
 `

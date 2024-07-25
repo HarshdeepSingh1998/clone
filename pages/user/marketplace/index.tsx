@@ -47,7 +47,7 @@ const UserMarketPlace = () => {
           productDetailData={marketplaceData.productDetailData?.data}
         />
       )}
-      {/* {marketplaceData.showBuyNowModal && (
+      {marketplaceData.showBuyNowModal && (
         <BuyNowModal
           closeBuyNowModal={marketplaceData.closeAllModal}
           data={marketplaceData.productList}
@@ -58,7 +58,7 @@ const UserMarketPlace = () => {
           setForceUpdate={marketplaceData.setForceUpdate}
           setProductList={marketplaceData.setProductList}
         />
-      )} */}
+      )}
     </AuthLayout>
   )
 }
