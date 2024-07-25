@@ -13,7 +13,6 @@ const CardView = ({
   marketplaceData: MarketPlaceDataInterface
 }) => {
   const { screenType } = useScreenType()
-  const userData = useSelector(selectUser)
   return (
     <CardContainer isMobile={screenType === 'mobile'}>
       {!marketplaceData.data && (
@@ -27,10 +26,10 @@ const CardView = ({
             key={i}
             width="238px"
             productDetailsPage={false}
-            userData={userData}
             setIndex={() => {}}
             setSelectedProduct={() => {}}
             marketplaceData={marketplaceData}
+            userData={marketplaceData.userData}
           />
         </>
       ))}

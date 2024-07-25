@@ -2,8 +2,15 @@
 import { ProductList } from '@/utils/ApiTypes/ProductList'
 
 export interface PlaceBidModalProps {
-  closePlaceBidModal: (productId: string) => void
-  data: ProductList[] | undefined
+  closePlaceBidModal: () => void
+  productList: ProductList[] | undefined
   selectedProduct: string
-  productDetailData: any
+  productDetailData: ProductList[]
+  isOpen: boolean
+}
+
+export interface ProductListProps {
+  publishModalData: {
+    productDetails: ProductList[] | undefined
+  }
 }

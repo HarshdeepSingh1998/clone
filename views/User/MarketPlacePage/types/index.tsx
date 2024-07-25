@@ -32,7 +32,7 @@ export interface MarketPlaceDataInterface {
   productDetailData: any
   placeBidClick: (productId: string) => void
   buyNowClick: (productId: string) => void
-  closeAllModal: (productId: string) => void
+  closeAllModal: () => void
   clickGetQuote: (productId: string | undefined) => Promise<void>
   forceUpdate: boolean
   setForceUpdate: Dispatch<SetStateAction<boolean>>

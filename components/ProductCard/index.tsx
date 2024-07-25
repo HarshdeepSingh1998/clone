@@ -39,7 +39,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
             ? handleViewProduct(data._id as string)
             : userData?.data?.role === 'admin'
               ? ''
-              : router.push('/signin')
+              : userData?.data?.role === 'user'
+                ? ''
+                : router.push('/signin')
           setIndex(i)
           setSelectedProduct(data)
         }}

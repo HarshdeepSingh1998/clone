@@ -40,8 +40,9 @@ const UserMarketPlace = () => {
       )}
       {marketplaceData.showPlaceBidModal && (
         <PlaceBidModal
+          isOpen={marketplaceData.showPlaceBidModal}
           closePlaceBidModal={marketplaceData.closeAllModal}
-          data={marketplaceData.productList}
+          productList={marketplaceData.productList}
           selectedProduct={marketplaceData.selectedMachine}
           productDetailData={marketplaceData.productDetailData?.data}
         />
