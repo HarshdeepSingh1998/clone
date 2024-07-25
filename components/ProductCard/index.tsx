@@ -3,6 +3,7 @@ import { ProductCardProps } from 'components/ProductCard/types'
 import Header from 'components/ProductCard/Header'
 import Content from 'components/ProductCard/Content'
 import Footer from 'components/ProductCard/Footer'
+import Button from 'components/ProductCard/Button'
 import DealClosed from '@/assets/images/svg/DealClosed'
 import {
   CardContent,
@@ -17,7 +18,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   userData,
   setIndex,
   setSelectedProduct,
-  selectedCard
+  selectedCard,
+  marketplaceData
 }) => {
   const router = useRouter()
 
@@ -50,6 +52,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
           productDetailsPage={productDetailsPage}
         />
         <Footer data={data} />
+        {userData?.data?.role === 'user' &&
+          !productDetailsPage &&
+          data?.user?._id !== userData?.data?.id && (
+            <Button
+              data={data}
+              placeBidClick={marketplaceData?.placeBidClick}
+              buyNowClick={marketplaceData?.buyNowClick}
+              clickGetQuote={marketplaceData?.clickGetQuote}
+            />
+          )}
       </CardContent>
       {data.transaction?.paymentReceived === false && (
         <div className="overlay">

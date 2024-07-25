@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { UserState } from '@/store/userSlice'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
 import { StaticImageData } from 'next/image'
@@ -10,8 +11,8 @@ export interface MarketPlaceDataInterface {
   hosting: boolean
   showEditProfileModal: boolean
   setShowEditProfileModal: React.Dispatch<React.SetStateAction<boolean>>
-  showPlaceModal: boolean
-  setShowPlaceModal: React.Dispatch<React.SetStateAction<boolean>>
+  showPlaceBidModal: boolean
+  setShowPlaceBidModal: React.Dispatch<React.SetStateAction<boolean>>
   selectedImage: string | StaticImageData
   showBuyNowModal: boolean
   setShowBuyNowModal: React.Dispatch<React.SetStateAction<boolean>>
@@ -23,6 +24,18 @@ export interface MarketPlaceDataInterface {
   setProductList: Dispatch<SetStateAction<ProductList[] | undefined>>
   setPage: Dispatch<SetStateAction<number>>
   setSwitchActive: Dispatch<SetStateAction<string>>
+  setSelectedImage: Dispatch<SetStateAction<string | StaticImageData>>
+  selectedMachine: string
+  setSelectedMachine: Dispatch<SetStateAction<string>>
+  productId: string | null
+  setProductId: Dispatch<SetStateAction<string | null>>
+  productDetailData: any
+  placeBidClick: (productId: string) => void
+  buyNowClick: (productId: string) => void
+  closeAllModal: (productId: string) => void
+  clickGetQuote: (productId: string | undefined) => Promise<void>
+  forceUpdate: boolean
+  setForceUpdate: Dispatch<SetStateAction<boolean>>
 }
 
 export interface NoProductViewInterface {

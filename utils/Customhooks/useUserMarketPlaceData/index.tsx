@@ -1,28 +1,34 @@
 import { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
 import { StaticImageData } from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
 import useGet from '@/hooks/useGet'
 import { fetchUser, selectUser } from '@/store/userSlice'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
-import DEFAULT_PROFILE_URL from 'assets/images/images/default-profile.png'
 import { AppDispatch } from '@/store/store'
+import usePut from '@/hooks/usePut'
 import { MarketPlaceDataInterface } from '@/views/User/MarketPlacePage/types'
+import DEFAULT_PROFILE_URL from 'assets/images/images/default-profile.png'
 const itemsPerPage = 10
 
 export const useUserMarketplace = (): MarketPlaceDataInterface => {
+  const { mutateAsync } = usePut()
   const userData = useSelector(selectUser)
   const [toggleActive, setToggleActive] = useState<string>('1')
   const [productList, setProductList] = useState<ProductList[] | undefined>(
     undefined
   )
+  const [forceUpdate, setForceUpdate] = useState(false)
+  const [selectedMachine, setSelectedMachine] = useState('')
+  const [productId, setProductId] = useState<string | null>(null)
   const [switchActive, setSwitchActive] = useState('inactive')
   const [hosting, setHosting] = useState<boolean>(true)
   const [showEditProfileModal, setShowEditProfileModal] = useState(false)
-  const [showPlaceModal, setShowPlaceModal] = useState(false)
+  const [showPlaceBidModal, setShowPlaceBidModal] = useState(false)
+  const [showBuyNowModal, setShowBuyNowModal] = useState(false)
   const [selectedImage, setSelectedImage] = useState<string | StaticImageData>(
     DEFAULT_PROFILE_URL
   )
-  const [showBuyNowModal, setShowBuyNowModal] = useState(false)
   const [page, setPage] = useState(1)
   const dispatch: AppDispatch = useDispatch()
   const { data, refetch: fetchData } = useGet(
@@ -32,10 +38,19 @@ export const useUserMarketplace = (): MarketPlaceDataInterface => {
       : `/api/getPublishedProducts?sortBy=desc&status=Published&isHosting=${hosting}&limit=${itemsPerPage}&page=${page}&bidderId=${userData?.data?.id}`,
     true
   )
-
+  const { data: productDetailData, refetch: fetchDataProductDetail } = useGet(
+    `productDetail/${productId}`,
+    `/api/getProductDetails/${productId}`,
+    true
+  )
+  useEffect(() => {
+    if (productId) {
+      fetchDataProductDetail()
+    }
+  }, [productId, fetchDataProductDetail, showBuyNowModal, showPlaceBidModal])
   useEffect(() => {
     fetchData()
-  }, [hosting, fetchData, switchActive, page])
+  }, [hosting, productList, fetchData, switchActive, page, forceUpdate])
 
   useEffect(() => {
     if (switchActive === 'inactive') {
@@ -87,6 +102,35 @@ export const useUserMarketplace = (): MarketPlaceDataInterface => {
     }
   }
 
+  const placeBidClick = (productId: string) => {
+    setShowPlaceBidModal?.(true)
+    setSelectedMachine(productId)
+    setProductId(productId)
+  }
+  const buyNowClick = (productId: string) => {
+    setShowBuyNowModal?.(true)
+    setSelectedMachine(productId)
+    setProductId(productId)
+  }
+  const closeAllModal = () => {
+    setShowPlaceBidModal?.(false)
+    setShowBuyNowModal?.(false)
+    setProductId(null)
+  }
+
+  const clickGetQuote = async (productId: string | undefined) => {
+    try {
+      const response = await mutateAsync({
+        url: `/api/getQuote/${productId}`
+      })
+      if (response?.data.status === 200) {
+        toast.success(`${response?.data?.message}`)
+      }
+    } catch (error: any) {
+      toast.error(`${error?.response?.data?.message}`)
+    }
+  }
+
   return {
     toggleActive,
     productList,
@@ -94,8 +138,8 @@ export const useUserMarketplace = (): MarketPlaceDataInterface => {
     hosting,
     showEditProfileModal,
     setShowEditProfileModal,
-    showPlaceModal,
-    setShowPlaceModal,
+    showPlaceBidModal,
+    setShowPlaceBidModal,
     selectedImage,
     showBuyNowModal,
     setShowBuyNowModal,
@@ -106,6 +150,18 @@ export const useUserMarketplace = (): MarketPlaceDataInterface => {
     userData,
     setProductList,
     setPage,
-    setSwitchActive
+    setSwitchActive,
+    setSelectedImage,
+    selectedMachine,
+    setSelectedMachine,
+    productId,
+    setProductId,
+    productDetailData,
+    placeBidClick,
+    buyNowClick,
+    closeAllModal,
+    clickGetQuote,
+    forceUpdate,
+    setForceUpdate
   }
 }

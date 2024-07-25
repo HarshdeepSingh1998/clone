@@ -30,6 +30,7 @@ const CardView = ({
             userData={userData}
             setIndex={() => {}}
             setSelectedProduct={() => {}}
+            marketplaceData={marketplaceData}
           />
         </>
       ))}
