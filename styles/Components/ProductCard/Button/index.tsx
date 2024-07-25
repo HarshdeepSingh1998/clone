@@ -5,6 +5,7 @@ export const ButtonContainer = styled.div`
   margin-top: 14px;
   display: flex;
   gap: 10px;
+
   button {
     font-size: 12px;
     font-weight: 700;

@@ -3,12 +3,12 @@ import styled from 'styled-components'
 export const FooterContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  height: 36px;
+  padding-top: 10px;
 `
 export const FooterContent = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 16px;
   border-top: 1px solid #191f3f;
 
   &.toggle {

@@ -174,3 +174,19 @@ export const Container = styled.div`
   justify-content: space-between;
   max-width: unset;
 `
+export const AmountDueContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: #fff;
+  span {
+    color: #fb674b;
+  }
+`
+export const NoteContainer = styled.div`
+  color: #fb674b;
+  font-size: 10px;
+  font-weight: 500;
+  margin-top: 15px;
+  width: 100%;
+`

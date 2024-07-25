@@ -19,7 +19,9 @@ import {
   HostingDetailContainer,
   HostingDetailBorderBottom,
   ModalNameContainer,
-  Container
+  Container,
+  AmountDueContainer,
+  NoteContainer
 } from '@/styles/Components/PlaceBidModal'
 
 const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
@@ -145,8 +147,28 @@ const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
                     )}
                   </ModalNameContainer>
                 )}
+                <AmountDueContainer>
+                  Total Amount Due :
+                  <span>
+                    $
+                    {publishModalData.productDetails?.[0]?.contract
+                      ? Number(bidAmount) +
+                        publishModalData.productDetails?.[0]?.contract
+                          ?.depositPrice *
+                          publishModalData.productDetails?.length +
+                        publishModalData.productDetails?.[0]?.contract
+                          ?.setupPrice *
+                          publishModalData.productDetails?.length
+                      : Number(bidAmount)}
+                  </span>
+                </AmountDueContainer>
               </HostingDetailContainer>
             </DetailContainer>
+            <NoteContainer>
+              Note: If you win this auction you will be invoiced for the Total
+              Amount Due plus applicable sales tax. Payment must be submitted
+              within 24 hours after an auction has been won.
+            </NoteContainer>
             <ButtonContainer disable={false}>
               <Button
                 type="submit"

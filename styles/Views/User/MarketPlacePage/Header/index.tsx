@@ -34,6 +34,11 @@ export const ButtonContainer = styled.div`
   }
   @media (max-width: 767px) {
     display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    > div {
+      padding-left: 0px;
+    }
   }
 `
 export const ButtonContent = styled.div`
