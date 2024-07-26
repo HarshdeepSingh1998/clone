@@ -6,6 +6,7 @@ import { Style } from 'components/RevokeModal'
 import Button from 'components/Button'
 import ProductList from 'components/BuyNowModal/ProductList'
 import { BuyNowModalProps } from 'components/BuyNowModal/types'
+import Loader from 'components/Loader'
 import {
   BoxImage,
   HeaderContainer,
@@ -54,6 +55,9 @@ const BuyNowModal: React.FC<BuyNowModalProps> = ({
       style={Style}
     >
       <ModalContainer>
+        {buyNowData.isLoading && (
+          <Loader blurredBackgroundtrue={buyNowData.isLoading} />
+        )}
         <HeaderContainer>
           <BoxImage />
           {'Buy Now'}
