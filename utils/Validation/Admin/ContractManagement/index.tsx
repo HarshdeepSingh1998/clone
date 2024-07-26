@@ -2,7 +2,10 @@ import * as yup from 'yup'
 
 export const ADD_CONTRACT_SCHEMA = yup.object().shape({
   contractId: yup.string().required('Contract ID is required'),
-  location: yup.string().required('Location is required'),
+  location: yup
+    .string()
+    .required('Location is required')
+    .matches(/^[^\d]*$/, 'Location must not contain numbers'),
   hostRate: yup
     .number()
     .typeError('Host rate must be a number')

@@ -19,7 +19,7 @@ const HeaderView = ({
       <ButtonContainer onClick={contractData.handleModal}>
         <Button type="button" variant="contained" label={''}>
           <CircleIcon cursor="pointer" /> {''}
-          Add Product
+          Add Contract
         </Button>
       </ButtonContainer>
       {!contractData?.contractData && (
