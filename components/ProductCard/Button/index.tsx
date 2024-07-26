@@ -20,7 +20,7 @@ const ProductCardButton: React.FC<ButtonProps> = ({
               onClick={() => buyNowClick?.(data._id)}
             />
           ) : (
-            <ButtonContainer className="button-container">
+            <ButtonContainer className="button-container" data={data}>
               <Button
                 label={'Place Bid'}
                 variant="outline"
@@ -32,6 +32,7 @@ const ProductCardButton: React.FC<ButtonProps> = ({
                     data?.auctionEndDate
                   ) || data?.isBidder
                 }
+                className="place-bid-button"
               />
               <Button
                 label={'Buy now'}
@@ -43,6 +44,7 @@ const ProductCardButton: React.FC<ButtonProps> = ({
                     data?.auctionEndDate
                   ) || data?.disableBuyNow
                 }
+                className="buy-now-button"
               />
             </ButtonContainer>
           )}
@@ -70,6 +72,7 @@ const ProductCardButton: React.FC<ButtonProps> = ({
                         data?.auctionEndDate
                       ) || data?.isBidder
                     }
+                    className="place-bid-button"
                   />
                   <Button
                     label={'Buy now'}
@@ -81,6 +84,7 @@ const ProductCardButton: React.FC<ButtonProps> = ({
                         data?.auctionEndDate
                       ) || data?.disableBuyNow
                     }
+                    className="buy-now-button"
                   />
                 </ButtonContainer>
               )}

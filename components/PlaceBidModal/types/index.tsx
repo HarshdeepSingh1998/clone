@@ -5,7 +5,7 @@ export interface PlaceBidModalProps {
   closePlaceBidModal: () => void
   productList: ProductList[] | undefined
   selectedProduct: string
-  productDetailData: ProductList[]
+  productDetailData: any
   isOpen: boolean
 }
 

@@ -1,6 +1,8 @@
+import { ProductList } from '@/utils/ApiTypes/ProductList'
+import { isTodayBetween } from '@/utils/HelperFunctions/GetToday'
 import styled from 'styled-components'
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div<{ data?: ProductList }>`
   padding: 5px 0px;
   margin-top: 14px;
   display: flex;
@@ -19,5 +21,26 @@ export const ButtonContainer = styled.div`
     button: first-child {
       color: rgb(251, 103, 75);
     }
+
+    ${({ data }) => {
+      const isWithinDateRange = data
+        ? isTodayBetween(data.auctionStartDate, data.auctionEndDate)
+        : false
+      const isBidder = data?.isBidder
+      const disableBuyNow = data?.disableBuyNow
+
+      return `
+      .place-bid-button {
+        opacity: ${isWithinDateRange && isBidder ? '0.5' : '1'};
+        cursor: ${isWithinDateRange && isBidder ? 'not-allowed' : ''};
+      }
+
+      .buy-now-button {
+        opacity: ${isWithinDateRange && disableBuyNow ? '0.5' : '1'};
+        cursor: ${isWithinDateRange && disableBuyNow ? 'not-allowed' : ''};
+
+      }
+    `
+    }}
   }
 `

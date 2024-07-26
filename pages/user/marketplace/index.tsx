@@ -7,6 +7,7 @@ import CardView from '@/views/User/MarketPlacePage/CardView'
 import NoProductView from '@/views/User/MarketPlacePage/NoProductView'
 import EditProfileModal from '@/components/EditProfileModal'
 import PlaceBidModal from '@/components/PlaceBidModal'
+import BuyNowModal from '@/components/BuyNowModal'
 import { MarketPlaceContainer } from '@/styles/Pages/User/MarketPlacePage'
 
 const UserMarketPlace = () => {
@@ -49,8 +50,9 @@ const UserMarketPlace = () => {
       )}
       {marketplaceData.showBuyNowModal && (
         <BuyNowModal
+          isOpen={marketplaceData.showBuyNowModal}
           closeBuyNowModal={marketplaceData.closeAllModal}
-          data={marketplaceData.productList}
+          productList={marketplaceData.productList}
           selectedProduct={marketplaceData.selectedMachine}
           toggleActive={marketplaceData.toggleActive}
           productDetailData={marketplaceData.productDetailData?.data}
