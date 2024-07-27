@@ -134,7 +134,7 @@ const useAuctionManagementData = (): AuctionManagementDataInterface => {
   }
 
   const handleClickTable = (productId: string) => {
-    router.push(`/admin/auctionManagement/machine?machineId=${productId}`)
+    router.push(`/user/biddingmanagement/machine?machineId=${productId}`)
   }
 
   const handleLoadMoreClick = () => {
