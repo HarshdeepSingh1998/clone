@@ -28,8 +28,14 @@ export const useProductDetails = (): ProductDetailsInterface => {
     true
   )
 
+  const { data: orderData, refetch: fetchOrderData } = useGet(
+    `getOrder/${productId}`,
+    `/api/getOrderStatus/${data?.data[0]?.transaction?.paymentId}`,
+    true
+  )
+
   useEffect(() => {
-    fetchData()
+    if (productId) fetchData()
   }, [fetchData, productId])
 
   useEffect(() => {
@@ -42,6 +48,19 @@ export const useProductDetails = (): ProductDetailsInterface => {
   useEffect(() => {
     setSelectedProduct(productDetails?.[0])
   }, [productDetails])
+
+  useEffect(() => {
+    if (
+      productId &&
+      data?.data[0]?.transaction &&
+      data?.data[0]?.transaction?.paymentId
+    ) {
+      fetchOrderData()
+      // eslint-disable-next-line no-console
+      console.log('orderData', orderData)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data?.data, fetchOrderData, productId])
 
   const handleClick = (i: number) => {
     setSelectedImageIndex(i)
