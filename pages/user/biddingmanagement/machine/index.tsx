@@ -28,11 +28,11 @@ const AuctionManagementMachineDetail = () => {
             auctionManagementData={auctionManagementData}
           />
         )}
-        {/* {screenType === 'mobile' && (
+        {screenType === 'mobile' && (
           <AuctionManagementMachineDetailMobile
             auctionManagementData={auctionManagementData}
           />
-        )} */}
+        )}
       </AuctionManagementMachineDetailContainer>
       <AcceptBidModal
         closeModal={auctionManagementData.closeModal}
