@@ -1,3 +1,4 @@
+import Modal from 'react-modal'
 import AuthLayout from '@/components/AuthLayout'
 import withAuth from '@/utils/Authentication'
 import { useUserMarketplace } from '@/utils/Customhooks/useUserMarketPlaceData'
@@ -12,6 +13,7 @@ import { MarketPlaceContainer } from '@/styles/Pages/User/MarketPlacePage'
 
 const UserMarketPlace = () => {
   const marketplaceData = useUserMarketplace()
+
   return (
     <AuthLayout
       isPopUpVisible={
@@ -31,13 +33,28 @@ const UserMarketPlace = () => {
         />
       </MarketPlaceContainer>
       {marketplaceData.showEditProfileModal && (
-        <EditProfileModal
-          showModal={marketplaceData.setShowEditProfileModal}
-          selectedImage={marketplaceData.selectedImage}
-          setSelectedImage={marketplaceData.setSelectedImage}
-          userData={marketplaceData.userData}
-          setMenuModalOpen={() => {}}
-        />
+        <Modal
+          isOpen={marketplaceData.showEditProfileModal}
+          onRequestClose={() => marketplaceData.setShowEditProfileModal(false)}
+          ariaHideApp={false}
+          style={{
+            content: {
+              overflow: 'hidden',
+              height: '100%',
+              width: '100%',
+              inset: 0,
+              padding: '0px'
+            }
+          }}
+        >
+          <EditProfileModal
+            showModal={marketplaceData.setShowEditProfileModal}
+            selectedImage={marketplaceData.selectedImage}
+            setSelectedImage={marketplaceData.setSelectedImage}
+            userData={marketplaceData.userData}
+            setMenuModalOpen={() => {}}
+          />
+        </Modal>
       )}
       {marketplaceData.showPlaceBidModal && (
         <PlaceBidModal
