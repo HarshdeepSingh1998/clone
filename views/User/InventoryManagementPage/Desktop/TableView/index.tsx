@@ -52,7 +52,11 @@ const TableView = ({
             </ButtonContent>
           </ButtonContainer>
         </HeaderSearchContainer>
-        <TableComponent columns={columns} data={data} />
+        <TableComponent
+          columns={columns}
+          data={data}
+          inventoryData={inventoryData}
+        />
       </TableViewContent>
       <NoProductView
         productList={inventoryData.productList}

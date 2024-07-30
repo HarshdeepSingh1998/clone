@@ -21,7 +21,8 @@ const TableComponent = ({
   data,
   openStates,
   openData,
-  filtersData
+  filtersData,
+  inventoryData
 }: TableInterface) => {
   return (
     <Table>
@@ -51,7 +52,9 @@ const TableComponent = ({
                     handleClose={filtersData.handleClose}
                   />
                 )}
-                {column.label || ''}
+                {column.renderHeader
+                  ? column.renderHeader(inventoryData)
+                  : column.label}
               </Typography>
             </TableCell>
           ))}

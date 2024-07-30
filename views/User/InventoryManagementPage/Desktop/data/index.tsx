@@ -20,7 +20,24 @@ import {
 } from '@/styles/Views/User/InventoryManagementPage/Desktop/Data'
 
 export const columns = [
-  { id: 'checkbox', label: '' },
+  {
+    id: 'checkbox',
+    label: '',
+    renderHeader: (inventoryData?: UserInventoryDataInterface) =>
+      inventoryData?.status === 'UnPublished' ? (
+        <CheckboxContainer>
+          <div>
+            <input
+              type="checkbox"
+              checked={inventoryData.selectAll}
+              onChange={inventoryData.handleHeaderCheckboxToggle}
+            />
+          </div>
+        </CheckboxContainer>
+      ) : (
+        <></>
+      )
+  },
   { id: 'machine', label: 'Machine Model' },
   { id: 'contract', label: 'Contract ID' },
   { id: 'lot', label: 'Lot ID' },
