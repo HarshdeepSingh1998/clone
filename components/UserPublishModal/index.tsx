@@ -2,7 +2,7 @@ import Modal from 'react-modal'
 import { useUserPublishModalForm } from '@/utils/Customhooks/useUserPublishForm'
 import { PublishModalProps } from 'components/UserPublishModal/types'
 import useUserPublishData from '@/utils/Customhooks/useUserPublishModalData'
-import useSubmit from '@/utils/Callback/User/InventoryManagementPage'
+import useSubmit from '@/utils/Callback/User/InventoryManagementPage/PublishModal'
 import PublishForm from 'components/UserPublishModal/PublishForm'
 import { Style } from 'components/RevokeModal/index'
 import {

@@ -52,6 +52,8 @@ export interface UserInventoryDataInterface {
   ) => item is SalesListInterface
   setSelectedProductIds: Dispatch<SetStateAction<string[]>>
   setSelectedProduct: Dispatch<SetStateAction<string>>
+  setIsLotModalOpen: Dispatch<SetStateAction<boolean>>
+  setSelectAll: Dispatch<SetStateAction<boolean>>
 }
 
 export interface NoProductViewInterface {

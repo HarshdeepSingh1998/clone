@@ -233,7 +233,9 @@ const useUserInventoryData = (): UserInventoryDataInterface => {
     isProductList,
     isSalesList,
     setSelectedProductIds,
-    setSelectedProduct
+    setSelectedProduct,
+    setIsLotModalOpen,
+    setSelectAll
   }
 }
 
