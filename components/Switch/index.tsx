@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { SwitchProps } from 'components/Switch/types'
 import {
   SwitchContainer,
@@ -20,19 +19,6 @@ const Switch: React.FC<SwitchProps> = ({
   title,
   userPublishModalData
 }) => {
-  const [isChecked, setIsChecked] = useState(
-    marketplaceData?.toggleActive === 'active'
-  )
-
-  const handleMarketplaceChange = () => {
-    marketplaceData?.setProductList([])
-    marketplaceData?.setPage(1)
-    marketplaceData?.setSwitchActive(prev =>
-      prev !== 'active' ? 'active' : 'inactive'
-    )
-    setIsChecked(prev => !prev)
-  }
-
   if (userPublishModalData) {
     return (
       <SwitchContainer className={className}>
@@ -72,11 +58,19 @@ const Switch: React.FC<SwitchProps> = ({
             <span>{startvalue}</span>
             <ToggleContainer>
               <AntSwitch
-                checked={isChecked}
+                checked={
+                  marketplaceData?.switchActive === 'inactive' ? false : true
+                }
                 inputProps={{
                   'aria-label': 'ant design'
                 }}
-                onChange={handleMarketplaceChange}
+                onChange={() => {
+                  marketplaceData?.setProductList([])
+                  marketplaceData?.setPage(1)
+                  marketplaceData?.setSwitchActive(prev =>
+                    prev !== 'active' ? 'active' : 'inactive'
+                  )
+                }}
               />
             </ToggleContainer>
           </MainContainer>

@@ -26,7 +26,6 @@ const UserPublishModal: React.FC<PublishModalProps> = ({ inventoryData }) => {
   } = useUserPublishModalForm(context)
   const publishModalData = useUserPublishData(setValue)
   const { onSubmit } = useSubmit(inventoryData, reset)
-  console.log('error', errors)
   return (
     <Modal
       isOpen={inventoryData.isPublishModalVisible}
