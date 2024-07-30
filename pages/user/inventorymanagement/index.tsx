@@ -4,13 +4,15 @@ import useScreenType from '@/utils/Customhooks/useScreenType'
 import AuthLayout from '@/components/AuthLayout'
 import InventoryManagementDesktop from '@/views/User/InventoryManagementPage/Desktop'
 import { InventoryManagementContainer } from '@/styles/Pages/User/InventoryManagementPage'
+import UserRevokeModal from '@/components/UserRevokeModal'
+import UserPublishModal from '@/components/UserPublishModal'
 
 const InventoryManagement = () => {
   const inventoryData = useUserInventoryData()
   const { screenType } = useScreenType()
 
   return (
-    <AuthLayout>
+    <AuthLayout isPopUpVisible={inventoryData.showRevokeModel}>
       <InventoryManagementContainer>
         {(screenType === 'desktop' || screenType === 'tab') && (
           <InventoryManagementDesktop inventoryData={inventoryData} />
@@ -19,6 +21,12 @@ const InventoryManagement = () => {
           <ContractManagementMobile contractData={contractData} />
         )} */}
       </InventoryManagementContainer>
+      <UserRevokeModal
+        setShowRevokeModel={inventoryData?.setShowRevokeModel}
+        isOpen={inventoryData?.showRevokeModel}
+        inventoryData={inventoryData}
+      />
+      <UserPublishModal inventoryData={inventoryData} />
     </AuthLayout>
   )
 }

@@ -9,7 +9,7 @@ import { SalesListInterface } from '@/utils/ApiTypes/getSales'
 
 const useUserInventoryData = (): UserInventoryDataInterface => {
   const userData = useSelector(selectUser)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState('')
   const itemsPerPage = 10
   const [page, setPage] = useState(1)
@@ -36,7 +36,7 @@ const useUserInventoryData = (): UserInventoryDataInterface => {
   const [forceUpdate, setForceUpdate] = useState(false)
 
   const { data, refetch: fetchData } = useGet(
-    'productList',
+    `productList?status=${status}`,
     status === 'Assigned'
       ? '/api/getAssignedProducts'
       : status === 'Pending'
@@ -46,6 +46,7 @@ const useUserInventoryData = (): UserInventoryDataInterface => {
   )
 
   useEffect(() => {
+    setLoading(true)
     fetchData()
   }, [fetchData, status, page, forceUpdate])
 
@@ -64,7 +65,6 @@ const useUserInventoryData = (): UserInventoryDataInterface => {
       setProductList(list)
     }
 
-    setLoading(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, status])
 
@@ -86,11 +86,10 @@ const useUserInventoryData = (): UserInventoryDataInterface => {
       )
     )
     setPage(1)
+    setProductList([])
   }
 
   const handleLoadMoreClick = () => {
-    setLoading(true)
-    setLoading(false)
     setPage(prev => prev + 1)
     setLoadMoreButtonClicked(true)
   }
@@ -232,7 +231,9 @@ const useUserInventoryData = (): UserInventoryDataInterface => {
     userData,
     handlePublishButtonClick,
     isProductList,
-    isSalesList
+    isSalesList,
+    setSelectedProductIds,
+    setSelectedProduct
   }
 }
 

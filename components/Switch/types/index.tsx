@@ -8,4 +8,8 @@ export interface SwitchProps {
   endvalue: string
   marketplaceData?: MarketPlaceDataInterface
   title?: string
+  userPublishModalData?: {
+    toggleValue: string
+    handleToggleChange: () => void
+  }
 }

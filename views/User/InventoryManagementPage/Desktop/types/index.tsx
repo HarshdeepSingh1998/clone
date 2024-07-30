@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { Dispatch, SetStateAction } from 'react'
 import { UserState } from '@/store/userSlice'
 import { SalesListInterface } from '@/utils/ApiTypes/getSales'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
@@ -49,6 +50,8 @@ export interface UserInventoryDataInterface {
   isSalesList: (
     item: ProductList | SalesListInterface
   ) => item is SalesListInterface
+  setSelectedProductIds: Dispatch<SetStateAction<string[]>>
+  setSelectedProduct: Dispatch<SetStateAction<string>>
 }
 
 export interface NoProductViewInterface {
