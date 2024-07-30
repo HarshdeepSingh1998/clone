@@ -8,7 +8,7 @@ const useSubmit = (inventoryData: UserInventoryDataInterface, reset: any) => {
   const onSubmit = async (values: any) => {
     const payload = {
       ...values,
-      hosting: inventoryData.productDetails?.hosting,
+      hosting: inventoryData.productDetails?.hosting ? true : false,
       contract: inventoryData.productDetails?.contract?._id,
       disableBuyNow: true
     }
