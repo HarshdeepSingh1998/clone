@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+import { UserState } from '@/store/userSlice'
+import { SalesListInterface } from '@/utils/ApiTypes/getSales'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
 
 export interface UserInventoryDataInterface {
@@ -19,7 +21,7 @@ export interface UserInventoryDataInterface {
       { type: string; label: string; id: number; disabled: boolean }[]
     >
   >
-  productList: ProductList[] | undefined
+  productList: ProductList[] | SalesListInterface[] | undefined
   isPublishModalVisible: boolean
   setIsPublishModalVisible: React.Dispatch<React.SetStateAction<boolean>>
   showRevokeModel: boolean
@@ -41,4 +43,17 @@ export interface UserInventoryDataInterface {
   handleLotModalClick: () => void
   totalLength: number | undefined
   setForceUpdate: React.Dispatch<React.SetStateAction<boolean>>
+  userData: UserState
+  handlePublishButtonClick: (productId: string, product: ProductList) => void
+  isProductList: (item: ProductList | SalesListInterface) => item is ProductList
+  isSalesList: (
+    item: ProductList | SalesListInterface
+  ) => item is SalesListInterface
+}
+
+export interface NoProductViewInterface {
+  productList: ProductList[] | SalesListInterface[] | undefined
+  data: any
+  handleLoadMoreClick: () => void
+  totalLength: number | undefined
 }

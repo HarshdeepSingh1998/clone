@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux'
 import useGet from '@/hooks/useGet'
 import { selectUser } from '@/store/userSlice'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
+import { UserInventoryDataInterface } from '@/views/User/InventoryManagementPage/Desktop/types'
+import { SalesListInterface } from '@/utils/ApiTypes/getSales'
 
-const useUserInventoryData = () => {
+const useUserInventoryData = (): UserInventoryDataInterface => {
   const userData = useSelector(selectUser)
   const [loading, setLoading] = useState(true)
   const [status, setStatus] = useState('')
@@ -20,9 +22,9 @@ const useUserInventoryData = () => {
   ])
   const [isPublishModalVisible, setIsPublishModalVisible] = useState(false)
   const [showRevokeModel, setShowRevokeModel] = useState(false)
-  const [productList, setProductList] = useState<ProductList[] | undefined>(
-    undefined
-  )
+  const [productList, setProductList] = useState<
+    ProductList[] | SalesListInterface[] | undefined
+  >(undefined)
   const [productDetails, setProductDetails] = useState<ProductList | undefined>(
     undefined
   )
@@ -32,12 +34,13 @@ const useUserInventoryData = () => {
   const [isLotModalOpen, setIsLotModalOpen] = useState(false)
   const [loadMoreButtonClicked, setLoadMoreButtonClicked] = useState(false)
   const [forceUpdate, setForceUpdate] = useState(false)
+
   const { data, refetch: fetchData } = useGet(
     'productList',
     status === 'Assigned'
       ? '/api/getAssignedProducts'
       : status === 'Pending'
-        ? `/api/getSales?isPending=true&assignedUser=${userData.data?.id}`
+        ? `/api/getSales?page=${page}&limit=${itemsPerPage}&isPending=true&assignedUser=${userData.data?.id}`
         : `/api/getProducts?status=${status}&userId=${userData.data?.id}&limit=${itemsPerPage}&page=${page}`,
     true
   )
@@ -98,14 +101,34 @@ const useUserInventoryData = () => {
     setShowRevokeModel(true)
   }
 
+  const handlePublishButtonClick = (
+    productId: string,
+    product: ProductList
+  ) => {
+    // handleClose()
+    setSelectedProduct(productId)
+    setProductDetails(product)
+    setIsPublishModalVisible(true)
+
+    if (!selectedProductIds?.includes(product._id as string)) {
+      setSelectedProductIds([])
+    }
+  }
+
   const handleLotModalClick = () => {
     const selectedProducts = productList?.filter(product =>
       selectedProductIds.includes(product._id)
     )
 
-    const modelNames = selectedProducts?.map(product => product?.modelName)
-    const contractId = selectedProducts?.map(
-      product => product?.contract?.contractId
+    const modelNames = selectedProducts?.map(product =>
+      isProductList(product)
+        ? product.modelName
+        : product.assignedProduct.modelName
+    )
+    const contractId = selectedProducts?.map(product =>
+      isProductList(product)
+        ? product.contract?.contractId
+        : product.assignedProduct.contract.contractId
     )
     const isSameModelName = modelNames?.every(name => name === modelNames[0])
     const isSameContractId = contractId?.every(
@@ -163,6 +186,18 @@ const useUserInventoryData = () => {
       ? data?.data?.meta?.totalNumberOfProducts
       : data?.data?.meta?.totalNumberOfResults
 
+  function isProductList(
+    item: ProductList | SalesListInterface
+  ): item is ProductList {
+    return (item as ProductList).modelName !== undefined
+  }
+
+  function isSalesList(
+    item: ProductList | SalesListInterface
+  ): item is SalesListInterface {
+    return (item as SalesListInterface).assignedProduct !== undefined
+  }
+
   return {
     loading,
     status,
@@ -193,7 +228,11 @@ const useUserInventoryData = () => {
     handleHeaderCheckboxToggle,
     handleLotModalClick,
     totalLength,
-    setForceUpdate
+    setForceUpdate,
+    userData,
+    handlePublishButtonClick,
+    isProductList,
+    isSalesList
   }
 }
 

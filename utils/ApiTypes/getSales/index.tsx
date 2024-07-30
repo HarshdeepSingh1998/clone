@@ -11,6 +11,7 @@ export interface SalesListInterface {
     hashRate: number
     images: string[]
     lotId: string
+    lotCreatedBy: string
     modelName: string
     power: number
     quantity: number
