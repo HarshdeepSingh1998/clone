@@ -21,7 +21,7 @@ export const TableViewContainer = styled.div`
 `
 export const TableViewContent = styled.div`
   display: flex;
-
+  flex-direction: column;
   width: 100%;
   justify-content: space-between;
   @media (max-width: 767px) {

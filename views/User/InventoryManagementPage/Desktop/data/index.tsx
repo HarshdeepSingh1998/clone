@@ -15,10 +15,12 @@ import {
   TitleContent,
   ContractContainer,
   LotContainer,
-  ActionContainer
+  ActionContainer,
+  CheckboxContainer
 } from '@/styles/Views/User/InventoryManagementPage/Desktop/Data'
 
 export const columns = [
+  { id: 'checkbox', label: '' },
   { id: 'machine', label: 'Machine Model' },
   { id: 'contract', label: 'Contract ID' },
   { id: 'lot', label: 'Lot ID' },
@@ -29,6 +31,19 @@ export const generateTableData = (
   inventoryData: UserInventoryDataInterface
 ) => {
   return (inventoryData.productList || []).map(data => ({
+    checkbox: (
+      <CheckboxContainer>
+        {inventoryData.status === 'UnPublished' && (
+          <div>
+            <input
+              type="checkbox"
+              checked={inventoryData.selectedProductIds.includes(data._id)}
+              onChange={() => inventoryData.handleCheckboxToggle(data._id)}
+            />
+          </div>
+        )}
+      </CheckboxContainer>
+    ),
     machine:
       inventoryData?.status != 'Pending' &&
       inventoryData.isProductList(data) ? (

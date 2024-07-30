@@ -52,9 +52,6 @@ export const PrimaryButttonContainer = styled.div`
   display: flex;
   width: 150px;
   height: 40px;
-  padding: 10px 6.67px 10px 6.67px;
-  border-radius: 10px;
-  border: 1.67px solid #fb674b;
   gap: 6.67px;
   cursor: pointer;
   font-family: Inter;
@@ -64,6 +61,10 @@ export const PrimaryButttonContainer = styled.div`
   letter-spacing: -0.01em;
   text-align: left;
   color: #fb674b;
+  button {
+    height: 40px;
+    padding: unset;
+  }
   @media (max-width: 767px) {
     width: 167px;
   }
