@@ -41,7 +41,7 @@ const UserLotModal: React.FC<UserLotModalProps> = ({ inventoryData }) => {
       <ModalContainer>
         <HeaderContainer>
           <BoxImage />
-          Publish
+          Create Lot
         </HeaderContainer>
         <PublishForm
           handleSubmit={handleSubmit}
