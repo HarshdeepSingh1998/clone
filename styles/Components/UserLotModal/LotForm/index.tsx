@@ -244,7 +244,6 @@ export const TotalPriceContainer = styled.div`
   font-weight: 400;
   line-height: 30px;
   letter-spacing: 0em;
-  padding-top: 10px;
   color: #fff;
   span {
     color: #fb674b;
