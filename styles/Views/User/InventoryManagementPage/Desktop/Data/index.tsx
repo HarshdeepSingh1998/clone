@@ -73,7 +73,6 @@ export const ContractContainer = styled.div`
   &.transcation-id-class {
     font-family: Inter;
     padding-left: 5px;
-    font-size: 12px;
     font-weight: 400;
     color: #ffffff;
     width: 80px;
@@ -97,7 +96,7 @@ export const ContractContainer = styled.div`
 export const LotContainer = styled.div`
   font-family: Inter;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 24px;
   letter-spacing: -0.01em;
   text-align: center;
