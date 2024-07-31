@@ -32,7 +32,7 @@ const ProductList: React.FC<ProductListProps> = ({ publishModalData }) => {
           blurredBackgroundtrue={!publishModalData.productDetails?.length}
         />
       )}
-      <ProductListContent>
+      <ProductListContent className="product-list-content">
         {publishModalData.productDetails?.map((product, i: number) => (
           <LotContainer key={i}>
             <LotContent>

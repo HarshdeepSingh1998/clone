@@ -20,6 +20,10 @@ export const ProductListContent = styled.div`
   line-height: 24px;
   // padding: 5px 0;
   text-transform: capitalize;
+  &.product-list-content {
+    flex-direction: column;
+    gap: 10px;
+  }
 `
 export const AskingPriceContainer = styled.div`
   font-size: 20px;

@@ -27,7 +27,6 @@ const InventoryManagement = () => {
         isOpen={inventoryData?.showRevokeModel}
         inventoryData={inventoryData}
       />
-
       <UserPublishModal inventoryData={inventoryData} />
       <UserLotModal inventoryData={inventoryData} />
     </AuthLayout>

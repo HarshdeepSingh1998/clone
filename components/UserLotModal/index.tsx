@@ -3,7 +3,7 @@ import { useUserLotModalForm } from '@/utils/Customhooks/useUserLotModalForm'
 import { UserLotModalProps } from 'components/UserLotModal/types'
 import useUserLotModalData from '@/utils/Customhooks/useUserLotModalData'
 import useSubmit from '@/utils/Callback/User/InventoryManagementPage/LotModal'
-import PublishForm from 'components/UserLotModal/LotForm'
+import LotForm from 'components/UserLotModal/LotForm'
 import { Style } from 'components/RevokeModal/index'
 import {
   ModalContainer,
@@ -43,7 +43,7 @@ const UserLotModal: React.FC<UserLotModalProps> = ({ inventoryData }) => {
           <BoxImage />
           Create Lot
         </HeaderContainer>
-        <PublishForm
+        <LotForm
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
           control={control}

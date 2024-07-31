@@ -31,7 +31,7 @@ const ProductList: React.FC<ProductListProps> = ({ buyNowData }) => {
       {!buyNowData.productDetails?.length && (
         <Loader blurredBackgroundtrue={!buyNowData.productDetails?.length} />
       )}
-      <ProductListContent>
+      <ProductListContent className="product-list-content">
         {buyNowData.productDetails?.map((product, i: number) => (
           <LotContainer key={i}>
             <LotContent>
