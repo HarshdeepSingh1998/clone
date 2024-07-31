@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import usePut from '@/hooks/usePut'
 import { UserInventoryDataInterface } from '@/views/User/InventoryManagementPage/Desktop/types'
@@ -10,17 +10,19 @@ const useSubmit = (
   inventoryData: UserInventoryDataInterface,
   lotModalData: UseUserLotModalDataInterface,
   reset: any,
-  getValues: any
+  watch: any
 ) => {
   const [unitAskingPrice, setUnitAskingPrice] = useState(0)
-  const handleAskPriceChange = () => {
-    const askPrice = getValues('askPrice')
-    const numericAskPrice = Number(askPrice)
 
+  const askPrice = watch('askPrice')
+
+  useEffect(() => {
+    const numericAskPrice = Number(askPrice)
     const calculatedUnitAskingPrice =
       numericAskPrice * inventoryData.selectedProductIds.length
     setUnitAskingPrice(calculatedUnitAskingPrice)
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [askPrice])
 
   const { mutateAsync } = usePut()
 
@@ -32,12 +34,8 @@ const useSubmit = (
 
   const onSubmit = async (values: any) => {
     const inventoryPage = true
-    const calculatedUnitAskingPrice =
-      Number(values.askPrice) * inventoryData.selectedProductIds.length
-    setUnitAskingPrice(calculatedUnitAskingPrice)
     const productListItems =
       lotModalData.lotProducts?.filter(isProductList) || []
-
     const payload = {
       ...values,
       askPrice:
@@ -80,7 +78,7 @@ const useSubmit = (
     }
   }
 
-  return { onSubmit, handleAskPriceChange, unitAskingPrice }
+  return { onSubmit, unitAskingPrice, setUnitAskingPrice }
 }
 
 export default useSubmit

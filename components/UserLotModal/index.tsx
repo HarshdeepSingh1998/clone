@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Modal from 'react-modal'
 import { useUserLotModalForm } from '@/utils/Customhooks/useUserLotModalForm'
 import { UserLotModalProps } from 'components/UserLotModal/types'
@@ -23,15 +24,28 @@ const UserLotModal: React.FC<UserLotModalProps> = ({ inventoryData }) => {
     watch,
     setValue,
     reset,
-    getValues,
     formState: { errors }
   } = useUserLotModalForm(context)
-  const { onSubmit, handleAskPriceChange, unitAskingPrice } = useSubmit(
+  const { onSubmit, unitAskingPrice, setUnitAskingPrice } = useSubmit(
     inventoryData,
     lotModalData,
     reset,
-    getValues
+    watch
   )
+  const [toggleValue, setToggleValue] = useState('Bid')
+  const handleToggleChange = () => {
+    if (toggleValue === 'Bid') {
+      return
+    }
+
+    setValue('auctionStartDate', '')
+    setValue('auctionEndDate', '')
+    setToggleValue(() => {
+      setValue('auctionType', 'Bid')
+      return 'Bid'
+    })
+  }
+
   return (
     <Modal
       isOpen={inventoryData.isLotModalOpen}
@@ -53,8 +67,10 @@ const UserLotModal: React.FC<UserLotModalProps> = ({ inventoryData }) => {
           setValue={setValue}
           reset={reset}
           lotModalData={lotModalData}
-          handleAskPriceChange={handleAskPriceChange}
           unitAskingPrice={unitAskingPrice}
+          toggleValue={toggleValue}
+          handleToggleChange={handleToggleChange}
+          setUnitAskingPrice={setUnitAskingPrice}
         />
       </ModalContainer>
     </Modal>

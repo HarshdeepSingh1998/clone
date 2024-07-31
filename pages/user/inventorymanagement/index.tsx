@@ -13,7 +13,13 @@ const InventoryManagement = () => {
   const { screenType } = useScreenType()
 
   return (
-    <AuthLayout isPopUpVisible={inventoryData.showRevokeModel}>
+    <AuthLayout
+      isPopUpVisible={
+        inventoryData.showRevokeModel ||
+        inventoryData.isLotModalOpen ||
+        inventoryData.isPublishModalVisible
+      }
+    >
       <InventoryManagementContainer>
         {(screenType === 'desktop' || screenType === 'tab') && (
           <InventoryManagementDesktop inventoryData={inventoryData} />
@@ -28,7 +34,9 @@ const InventoryManagement = () => {
         inventoryData={inventoryData}
       />
       <UserPublishModal inventoryData={inventoryData} />
-      <UserLotModal inventoryData={inventoryData} />
+      {inventoryData.isLotModalOpen && (
+        <UserLotModal inventoryData={inventoryData} />
+      )}
     </AuthLayout>
   )
 }

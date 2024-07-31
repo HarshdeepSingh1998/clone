@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react'
 import { UseUserLotModalDataInterface } from '@/utils/Customhooks/useUserLotModalData'
 import { UserInventoryDataInterface } from '@/views/User/InventoryManagementPage/Desktop/types'
 
@@ -15,6 +16,8 @@ export interface LotFormProps {
   setValue: any
   reset: any
   lotModalData: UseUserLotModalDataInterface
-  handleAskPriceChange: () => void
   unitAskingPrice: number
+  toggleValue: string
+  handleToggleChange: () => void
+  setUnitAskingPrice: Dispatch<SetStateAction<number>>
 }

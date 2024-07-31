@@ -35,7 +35,7 @@ const LeftView = ({
   onSubmit: any
 }) => {
   const router = useRouter()
-  console.log('errors', errors)
+
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <AddProductLeftContainer>

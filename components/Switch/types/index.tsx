@@ -12,4 +12,8 @@ export interface SwitchProps {
     toggleValue: string
     handleToggleChange: () => void
   }
+  userLotModalData?: {
+    toggleValue: string
+    handleToggleChange: () => void
+  }
 }

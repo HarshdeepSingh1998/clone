@@ -17,7 +17,8 @@ const Switch: React.FC<SwitchProps> = ({
   endvalue,
   marketplaceData,
   title,
-  userPublishModalData
+  userPublishModalData,
+  userLotModalData
 }) => {
   if (userPublishModalData) {
     return (
@@ -37,6 +38,34 @@ const Switch: React.FC<SwitchProps> = ({
                   'aria-label': 'ant design'
                 }}
                 onChange={userPublishModalData.handleToggleChange}
+                checked={true}
+              />
+            </ToggleContainer>
+            <span>{endvalue}</span>
+          </MainContainer>
+        </SwitchContent>
+      </SwitchContainer>
+    )
+  }
+
+  if (userLotModalData) {
+    return (
+      <SwitchContainer className={className}>
+        <SwitchContent className={className}>
+          <div>
+            <InputText>{title || `Type`}</InputText>
+          </div>
+          <MainContainer
+            toggleValue={userLotModalData.toggleValue}
+            className={className}
+          >
+            <span>{startvalue}</span>
+            <ToggleContainer style={{ opacity: '0.5' }}>
+              <AntSwitch
+                inputProps={{
+                  'aria-label': 'ant design'
+                }}
+                onChange={userLotModalData.handleToggleChange}
                 checked={true}
               />
             </ToggleContainer>
