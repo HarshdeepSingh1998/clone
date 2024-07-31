@@ -8,6 +8,6 @@ export const InventoryManagementContainer = styled.div`
   height: 100%;
 
   @media (max-width: 767px) {
-    padding: 20px;
+    padding: 1vw 3vw;
   }
 `

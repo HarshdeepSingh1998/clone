@@ -1,12 +1,12 @@
 import Button from '@/components/Button'
-import { UserInventoryDataInterface } from 'views/User/InventoryManagementPage/Desktop/types'
+import Loader from '@/components/Loader'
+import { UserInventoryDataInterface } from 'views/User/InventoryManagementPage/Mobile/types'
 import {
   HeaderContainer,
   TitleContainer,
   ButtonContainer,
   PrimaryButttonContainer
-} from '@/styles/Views/User/InventoryManagementPage/Desktop/Header'
-import Loader from '@/components/Loader'
+} from '@/styles/Views/User/InventoryManagementPage/Mobile/Header'
 
 const HeaderView = ({
   inventoryData

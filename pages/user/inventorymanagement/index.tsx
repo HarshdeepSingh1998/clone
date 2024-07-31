@@ -6,6 +6,7 @@ import UserRevokeModal from '@/components/UserRevokeModal'
 import UserPublishModal from '@/components/UserPublishModal'
 import UserLotModal from '@/components/UserLotModal'
 import InventoryManagementDesktop from '@/views/User/InventoryManagementPage/Desktop'
+import InventoryManagementMobile from '@/views/User/InventoryManagementPage/Mobile'
 import { InventoryManagementContainer } from '@/styles/Pages/User/InventoryManagementPage'
 
 const InventoryManagement = () => {
@@ -24,9 +25,9 @@ const InventoryManagement = () => {
         {(screenType === 'desktop' || screenType === 'tab') && (
           <InventoryManagementDesktop inventoryData={inventoryData} />
         )}
-        {/* {screenType === 'mobile' && (
-          <ContractManagementMobile contractData={contractData} />
-        )} */}
+        {screenType === 'mobile' && (
+          <InventoryManagementMobile inventoryData={inventoryData} />
+        )}
       </InventoryManagementContainer>
       <UserRevokeModal
         setShowRevokeModel={inventoryData?.setShowRevokeModel}
