@@ -89,7 +89,7 @@ export const columns = [
               </TitleContent>
               <DetailContainer>
                 <Tooltip title={productList?.serialNumber} placement="top-end">
-                  <ModalDescriptionContainer className="mobile-machine-modal">
+                  <ModalDescriptionContainer className="mobile-machine-modal serial-number">
                     {productList?.serialNumber &&
                     productList?.serialNumber?.length > 10
                       ? `SN: ${productList?.serialNumber?.substring(0, 10)}...`
@@ -97,7 +97,7 @@ export const columns = [
                   </ModalDescriptionContainer>
                 </Tooltip>
               </DetailContainer>
-              <DetailContainer>
+              <DetailContainer className="detail-container">
                 <PowerIcon /> {productList?.power} kW | <HashRateIcon />
                 {productList?.hashRate} TH/s
               </DetailContainer>
@@ -137,7 +137,7 @@ export const columns = [
                     title={productList?.assignedProduct?.serialNumber}
                     placement="top-end"
                   >
-                    <ModalDescriptionContainer className="mobile-machine-modal">
+                    <ModalDescriptionContainer className="mobile-machine-modal serial-number">
                       {productList?.assignedProduct?.serialNumber &&
                       productList?.assignedProduct?.serialNumber?.length > 10
                         ? `SN: ${productList?.assignedProduct?.serialNumber?.substring(0, 10)}...`
@@ -146,7 +146,7 @@ export const columns = [
                     </ModalDescriptionContainer>
                   </Tooltip>
                 </DetailContainer>
-                <DetailContainer>
+                <DetailContainer className="detail-container">
                   <PowerIcon /> {productList?.assignedProduct?.power} kW |{' '}
                   <HashRateIcon />
                   {productList?.assignedProduct?.hashRate} TH/s

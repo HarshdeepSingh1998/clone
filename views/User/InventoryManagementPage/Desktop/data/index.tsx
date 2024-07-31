@@ -85,14 +85,14 @@ export const generateTableData = (
             </TitleContent>
             <DetailContainer>
               <Tooltip title={data?.serialNumber} placement="top-end">
-                <ModalDescriptionContainer className="mobile-machine-modal">
+                <ModalDescriptionContainer className="mobile-machine-modal serial-number">
                   {data?.serialNumber && data?.serialNumber?.length > 10
                     ? `SN: ${data?.serialNumber?.substring(0, 10)}...`
                     : `SN: ${data?.serialNumber}` || 'N/A'}
                 </ModalDescriptionContainer>
               </Tooltip>
             </DetailContainer>
-            <DetailContainer>
+            <DetailContainer className="detail-container">
               <PowerIcon /> {data?.power} kW | <HashRateIcon />
               {data?.hashRate} TH/s
             </DetailContainer>
@@ -132,7 +132,7 @@ export const generateTableData = (
                   title={data?.assignedProduct?.serialNumber}
                   placement="top-end"
                 >
-                  <ModalDescriptionContainer className="mobile-machine-modal">
+                  <ModalDescriptionContainer className="mobile-machine-modal serial-number">
                     {data?.assignedProduct?.serialNumber &&
                     data?.assignedProduct?.serialNumber?.length > 10
                       ? `SN: ${data?.assignedProduct?.serialNumber?.substring(0, 10)}...`
@@ -140,7 +140,7 @@ export const generateTableData = (
                   </ModalDescriptionContainer>
                 </Tooltip>
               </DetailContainer>
-              <DetailContainer>
+              <DetailContainer className="detail-container">
                 <PowerIcon /> {data?.assignedProduct?.power} kW |{' '}
                 <HashRateIcon />
                 {data?.assignedProduct?.hashRate} TH/s

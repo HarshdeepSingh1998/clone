@@ -57,6 +57,9 @@ export const DetailContainer = styled.div`
   color: #fff;
   font-weight: 600;
   font-family: Inter;
+  &.detail-container {
+    color: #9a9fa5;
+  }
 `
 export const ContractContainer = styled.div`
   font-family: Inter;
@@ -201,11 +204,15 @@ export const ModalDescriptionContainer = styled.div`
   word-wrap: break-word;
   overflow-wrap: break-word;
   &.mobile-machine-modal {
-    font-size: 16px;
+    font-size: 14px;
+    color: #fff !important;
+  }
+  &.serial-number {
+    font-size: 12px;
     color: #fff !important;
   }
   @media only screen and (min-width: 768px) and (max-width: 1224px) {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   div {
