@@ -160,7 +160,6 @@ export const LotContainer = styled.div`
   font-weight: 600;
   line-height: 24px;
   letter-spacing: -0.01em;
-  text-align: center;
   color: #fff;
   width: 20%;
 `
@@ -192,4 +191,54 @@ export const MachineContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+`
+export const ModalDescriptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: Inter;
+  font-size: clamp(8px, 1.06vw, 15px);
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #fff;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  &.mobile-machine-modal {
+    font-size: 16px;
+    color: #fff !important;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1224px) {
+    font-size: 16px;
+  }
+
+  div {
+    overflow: hidden;
+    color: #fb674b;
+    fontsize: 12px;
+    text-overflow: ellipsis;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: -0.01em;
+    text-align: left;
+  }
+
+  span {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: #fff;
+    font-size: 10px;
+    &.mobile-hashrate {
+      color: rgb(66, 73, 98);
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1224px) {
+      font-size: 14px;
+    }
+  }
 `

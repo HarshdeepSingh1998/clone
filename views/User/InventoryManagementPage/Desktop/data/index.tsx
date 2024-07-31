@@ -16,7 +16,8 @@ import {
   ContractContainer,
   LotContainer,
   ActionContainer,
-  CheckboxContainer
+  CheckboxContainer,
+  ModalDescriptionContainer
 } from '@/styles/Views/User/InventoryManagementPage/Desktop/Data'
 
 export const columns = [
@@ -73,8 +74,24 @@ export const generateTableData = (
             )}
           </ImageContent>
           <TitleContainer>
-            <TitleContent>{data?.modelName}</TitleContent>
-            <DetailContainer>{`SN: ${data?.serialNumber}`}</DetailContainer>
+            <TitleContent>
+              <Tooltip title={data?.modelName} placement="top-end">
+                <ModalDescriptionContainer className="mobile-machine-modal">
+                  {data?.modelName && data?.modelName?.length > 15
+                    ? `${data?.modelName?.substring(0, 15)}...`
+                    : `${data?.modelName}` || 'N/A'}
+                </ModalDescriptionContainer>
+              </Tooltip>
+            </TitleContent>
+            <DetailContainer>
+              <Tooltip title={data?.serialNumber} placement="top-end">
+                <ModalDescriptionContainer className="mobile-machine-modal">
+                  {data?.serialNumber && data?.serialNumber?.length > 10
+                    ? `SN: ${data?.serialNumber?.substring(0, 10)}...`
+                    : `SN: ${data?.serialNumber}` || 'N/A'}
+                </ModalDescriptionContainer>
+              </Tooltip>
+            </DetailContainer>
             <DetailContainer>
               <PowerIcon /> {data?.power} kW | <HashRateIcon />
               {data?.hashRate} TH/s
@@ -97,9 +114,31 @@ export const generateTableData = (
               )}
             </ImageContent>
             <TitleContainer>
-              <TitleContent>{data?.assignedProduct?.modelName}</TitleContent>
+              <TitleContent>
+                <Tooltip
+                  title={data?.assignedProduct?.modelName}
+                  placement="top-end"
+                >
+                  <ModalDescriptionContainer className="mobile-machine-modal">
+                    {data?.assignedProduct?.modelName &&
+                    data?.assignedProduct?.modelName?.length > 15
+                      ? `${data?.assignedProduct?.modelName?.substring(0, 15)}...`
+                      : `${data?.assignedProduct?.modelName}` || 'N/A'}
+                  </ModalDescriptionContainer>
+                </Tooltip>
+              </TitleContent>
               <DetailContainer>
-                {`SN: ${data?.assignedProduct?.serialNumber}`}
+                <Tooltip
+                  title={data?.assignedProduct?.serialNumber}
+                  placement="top-end"
+                >
+                  <ModalDescriptionContainer className="mobile-machine-modal">
+                    {data?.assignedProduct?.serialNumber &&
+                    data?.assignedProduct?.serialNumber?.length > 10
+                      ? `SN: ${data?.assignedProduct?.serialNumber?.substring(0, 10)}...`
+                      : `SN: ${data?.assignedProduct?.serialNumber}` || 'N/A'}
+                  </ModalDescriptionContainer>
+                </Tooltip>
               </DetailContainer>
               <DetailContainer>
                 <PowerIcon /> {data?.assignedProduct?.power} kW |{' '}
