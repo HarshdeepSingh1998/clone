@@ -3,7 +3,7 @@ import Header from 'views/Admin/InventorymanagementPage/Desktop/ProductView/Head
 import {
   ProductViewContainer,
   ProductViewContent
-} from '@/styles/Views/Admin/InventorymanagementPage/Product'
+} from '@/styles/Views/Admin/InventorymanagementPage/Desktop/Product'
 
 const ProductView = ({
   inventoryData

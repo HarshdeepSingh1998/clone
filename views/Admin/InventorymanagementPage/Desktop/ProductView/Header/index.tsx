@@ -10,7 +10,7 @@ import {
   SvgContainer,
   ButtonContainer,
   ButtonContent
-} from '@/styles/Views/Admin/InventorymanagementPage/Product/Header'
+} from '@/styles/Views/Admin/InventorymanagementPage/Desktop/Product/Header'
 import { StyledInput } from '@/styles/Components/Input'
 
 const Header = ({

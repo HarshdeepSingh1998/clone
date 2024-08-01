@@ -2,6 +2,7 @@ import { toast } from 'react-toastify'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Button from '@/components/Button'
+import Loader from '@/components/Loader'
 import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/Desktop/types'
 import File from 'assets/images/images/File.png'
 import CircleIcon from '@/assets/images/svg/CircleIcon'
@@ -11,8 +12,7 @@ import {
   ButtonContainer,
   PrimaryButttonContainer,
   SecondaryButtonContainer
-} from '@/styles/Views/Admin/InventorymanagementPage/Header'
-import Loader from '@/components/Loader'
+} from '@/styles/Views/Admin/InventorymanagementPage/Desktop/Header'
 
 const HeaderView = ({
   inventoryData
