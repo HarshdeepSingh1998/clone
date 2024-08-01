@@ -1,17 +1,22 @@
 import AuthLayout from '@/components/AuthLayout'
 import withAuth from '@/utils/Authentication'
+import useScreenType from '@/utils/Customhooks/useScreenType'
 import { useInventoryProduct } from '@/utils/Customhooks/useInventoryProduct'
-import ProductView from '@/views/Admin/InventorymanagementPage/ProductView'
-import HeaderView from '@/views/Admin/InventorymanagementPage/HeaderView'
+import InventoryManagementDesktop from '@/views/Admin/InventorymanagementPage/Desktop'
 import { InventorymanagementContainer } from '@/styles/Pages/Admin/InventorymanagementPage'
 
 const InventoryManagement = () => {
   const inventoryData = useInventoryProduct()
+  const { screenType } = useScreenType()
   return (
     <AuthLayout>
       <InventorymanagementContainer>
-        <HeaderView inventoryData={inventoryData} />
-        <ProductView inventoryData={inventoryData} />
+        {(screenType === 'desktop' || screenType === 'tab') && (
+          <InventoryManagementDesktop inventoryData={inventoryData} />
+        )}
+        {/* {screenType === 'mobile' && (
+          <InventoryManagementMobile inventoryData={inventoryData} />
+        )} */}
       </InventorymanagementContainer>
     </AuthLayout>
   )

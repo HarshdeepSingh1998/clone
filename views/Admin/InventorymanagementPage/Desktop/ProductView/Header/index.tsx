@@ -1,5 +1,5 @@
 import Button from '@/components/Button'
-import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/ProductView/types'
+import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/Desktop/types'
 import SearchIcon from '@/assets/images/svg/SearchIcon'
 import {
   HeaderSearchContainer,
@@ -67,7 +67,7 @@ const Header = ({
               type="email"
               maxwidth="100%"
               onChange={(e: any) => {
-                inventoryData.setSearchBySerialNumber(e)
+                inventoryData.setSearchBySerialNumber(e.target.value)
               }}
               defaultValue=""
             />

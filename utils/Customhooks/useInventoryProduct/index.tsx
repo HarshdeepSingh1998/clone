@@ -11,7 +11,7 @@ import { ContractList } from '@/utils/ApiTypes/ContractList'
 import {
   ModalState,
   UseInventoryProductInterface
-} from '@/views/Admin/InventorymanagementPage/HeaderView/types'
+} from '@/views/Admin/InventorymanagementPage/Desktop/types'
 
 export const useInventoryProduct = (): UseInventoryProductInterface => {
   const userData = useSelector(selectUser)

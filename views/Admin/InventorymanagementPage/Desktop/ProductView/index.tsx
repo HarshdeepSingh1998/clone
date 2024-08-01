@@ -1,5 +1,5 @@
-import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/ProductView/types'
-import Header from 'views/Admin/InventorymanagementPage/ProductView/Header'
+import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/Desktop/types'
+import Header from 'views/Admin/InventorymanagementPage/Desktop/ProductView/Header'
 import {
   ProductViewContainer,
   ProductViewContent

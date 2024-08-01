@@ -2,7 +2,7 @@ import { toast } from 'react-toastify'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Button from '@/components/Button'
-import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/HeaderView/types'
+import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/Desktop/types'
 import File from 'assets/images/images/File.png'
 import CircleIcon from '@/assets/images/svg/CircleIcon'
 import {
