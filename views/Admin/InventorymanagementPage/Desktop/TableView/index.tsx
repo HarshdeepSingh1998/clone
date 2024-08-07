@@ -1,17 +1,28 @@
 import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/Desktop/types'
+import TableComponent from '@/components/Table'
+import NoProductView from 'views/Admin/InventorymanagementPage/Desktop/NoProductView'
+import { generateTableData } from 'views/Admin/InventorymanagementPage/Desktop/Data'
+import {
+  TableContainer,
+  TableContent,
+  HeaderTitle,
+  BoxImage
+} from 'styles/Views/Admin/InventorymanagementPage/Desktop/Table'
 
 const TableView = ({
-  inventoryData
+  inventoryData,
+  screenType
 }: {
   inventoryData: UseInventoryProductInterface
+  screenType: string
 }) => {
-  const data = generateTableData(salesData, openStates, handleToggle)
+  const data = generateTableData(inventoryData, screenType)
 
   return (
     <TableContainer
       isGap={
-        (salesData.salesList || [])?.length <
-        salesData.salesMemberList?.data?.meta?.totalNumberOfResults
+        (inventoryData.productList || [])?.length <
+        inventoryData.data?.data?.meta?.totalNumberOfProducts
       }
     >
       <TableContent>
@@ -20,34 +31,13 @@ const TableView = ({
             <BoxImage />
             Products
           </HeaderTitle>
-          <ButtonContainer>
-            <ButtonContent>
-              {salesData.selectedButton.map((button, i) => (
-                <Button
-                  key={i}
-                  type="submit"
-                  variant={button.type}
-                  label={button.label}
-                  onClick={() => salesData.handleButtonClick(i)}
-                  className={button.type === 'contained' ? 'contained' : ''}
-                  disable={button.disabled}
-                />
-              ))}
-            </ButtonContent>
-          </ButtonContainer>
         </div>
-        <TableComponent
-          columns={columns}
-          data={data}
-          openStates={openStates}
-          openData={openData}
-          filtersData={salesData}
-        />
+        <TableComponent columns={columns} data={data} filtersData={salesData} />
       </TableContent>
       <NoProductView
-        productList={salesData.salesList}
-        data={salesData.salesMemberList}
-        handleLoadMoreClick={salesData.handleLoadMoreClick}
+        productList={inventoryData.productList}
+        data={inventoryData.data}
+        handleLoadMoreClick={inventoryData.handleLoadMoreClick}
       />
     </TableContainer>
   )

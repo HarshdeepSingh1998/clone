@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
 import useGet from '@/hooks/useGet'
 import useDelete from '@/hooks/useDelete'
 import usePut from '@/hooks/usePut'
 import { selectUser } from '@/store/userSlice'
+import { setProductDetail } from '@/store/productSlice'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
 import { UsersList } from '@/utils/ApiTypes/UsersList'
 import { ContractList } from '@/utils/ApiTypes/ContractList'
@@ -12,8 +14,15 @@ import {
   ModalState,
   UseInventoryProductInterface
 } from '@/views/Admin/InventorymanagementPage/Desktop/types'
+import Revoke from '@/assets/images/images/Revoke.png'
+import Publish from '@/assets/images/images/Publish.png'
+import Assign from '@/assets/images/images/Assign.png'
+import EditModal from '@/assets/images/images/edit-modal.png'
+import Remove from '@/assets/images/images/Remove.png'
 
 export const useInventoryProduct = (): UseInventoryProductInterface => {
+  const dispatch = useDispatch()
+  const router = useRouter()
   const userData = useSelector(selectUser)
   const { mutateAsync: mutateDeleteAsync } = useDelete()
   const { mutateAsync } = usePut()
@@ -31,6 +40,18 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   const [productDetails, setProductDetails] = useState<ProductList | undefined>(
     undefined
   )
+  const [isPubishModalVisible, setIsPublishModalVisible] = useState(false)
+  const [showRevokeModel, setShowRevokeModel] = useState(false)
+  const [showDeleteModel, setShowDeleteModel] = useState(false)
+  const [showBulkDeleteModel, setShowBulkDeleteModel] = useState(false)
+  const [showUnassignedModel, setShowUnassignedModel] = useState(false)
+  const [actionButtonData, setActionButtonData] = useState<any>()
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [assignEl, setAssignEl] = useState<null | HTMLElement>(null)
+  const [contractEl, setContractEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+  const assignOpen = Boolean(assignEl)
+  const contractOpen = Boolean(contractEl)
   const [statusProduct, setStatusProduct] = useState('Published')
   const [fileUploadError, setFileUploadError] = useState('')
   const [userPage, setUserPage] = useState(1)
@@ -185,6 +206,124 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     fetchData()
   }, [fetchData, modelName])
 
+  const handleLoadMoreClick = () => {
+    setPage(prev => prev + 1)
+    setLoadMoreButtonClicked(true)
+  }
+
+  const handleHeaderCheckboxToggle = () => {
+    if (selectAll) {
+      setSelectedProductIds([])
+    } else {
+      const allProductIds = productList?.map(product => product._id)
+      setSelectedProductIds(allProductIds || [])
+    }
+
+    setSelectAll(prev => !prev)
+  }
+
+  const handleCheckboxToggle = (productId: string) => {
+    if (selectedProductIds?.includes(productId)) {
+      setSelectedProductIds(prevIds => prevIds?.filter(id => id !== productId))
+    } else {
+      setSelectedProductIds(prevIds => [...prevIds, productId])
+    }
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+    setContractEl(null)
+    setAssignEl(null)
+  }
+
+  const handleRevokeButton = (productId: string) => {
+    handleClose()
+    setSelectedProduct(productId)
+    setShowRevokeModel(true)
+  }
+  const handlePublishButtonClick = (productId: string) => {
+    handleClose()
+    setSelectedProduct(productId)
+    setIsPublishModalVisible(true)
+  }
+  const handleAssignButtonClick = (productId: string) => {
+    handleClose()
+    setSelectedProduct(productId)
+    setIsAssignModalVisible(true)
+  }
+  const handleEditProduct = (productDetails: ProductList) => {
+    setAnchorEl(null)
+    handleClose()
+    dispatch(setProductDetail(productDetails))
+
+    if (productDetails._id) router.push(`/admin/product/${productDetails?._id}`)
+  }
+  const handleDeleteButton = (productId: string) => {
+    handleClose()
+    setSelectedProduct(productId)
+    setShowDeleteModel(true)
+  }
+  const handleUnassignedButton = (productId: string) => {
+    handleClose()
+    setSelectedProduct(productId)
+    setShowUnassignedModel(true)
+  }
+
+  useEffect(() => {
+    if (productDetails?.status === 'Published') {
+      setActionButtonData([
+        {
+          key: 'revoke',
+          image: Revoke,
+          title: 'Revoke',
+          handleClick: () => handleRevokeButton(productDetails?._id as string)
+        }
+      ])
+    } else if (
+      statusProduct === 'UnPublished' &&
+      !productDetails?.transaction
+    ) {
+      setActionButtonData([
+        {
+          key: 'publishProduct',
+          image: Publish,
+          title: 'Publish',
+          handleClick: () =>
+            handlePublishButtonClick(productDetails?._id as string)
+        },
+        {
+          key: 'assignProduct',
+          image: Assign,
+          title: 'Assign',
+          handleClick: () =>
+            handleAssignButtonClick(productDetails?._id as string)
+        },
+        {
+          key: 'editProduct',
+          image: EditModal,
+          title: 'Edit',
+          handleClick: () => handleEditProduct(productDetails as ProductList)
+        },
+        {
+          key: 'delete',
+          image: Remove,
+          title: 'Delete',
+          handleClick: () => handleDeleteButton(productDetails?._id as string)
+        }
+      ])
+    } else {
+      setActionButtonData([
+        {
+          key: 'unAssigned',
+          image: Revoke,
+          title: 'Unassign',
+          handleClick: () =>
+            handleUnassignedButton(productDetails?._id as string)
+        }
+      ])
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productList])
+
   return {
     page,
     setPage,
@@ -242,6 +381,17 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     setSelectAll,
     isModalOpen,
     toggleModal,
-    data
+    data,
+    handleLoadMoreClick,
+    handleHeaderCheckboxToggle,
+    handleCheckboxToggle,
+    userData,
+    handleClose,
+    isPubishModalVisible,
+    showRevokeModel,
+    showDeleteModel,
+    showBulkDeleteModel,
+    showUnassignedModel,
+    actionButtonData
   }
 }

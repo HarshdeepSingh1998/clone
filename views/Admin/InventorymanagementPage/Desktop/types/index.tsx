@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { UserState } from '@/store/userSlice'
 import { ContractList } from '@/utils/ApiTypes/ContractList'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
 
@@ -73,6 +74,11 @@ export interface UseInventoryProductInterface {
   isModalOpen: ModalState
   toggleModal: (modalName: keyof ModalState) => void
   data: any
+  handleLoadMoreClick: () => void
+  handleHeaderCheckboxToggle: () => void
+  handleCheckboxToggle: (productId: string) => void
+  userData: UserState
+  handleClose: () => void
 }
 
 export type ModalState = {
@@ -84,4 +90,10 @@ export type ModalState = {
   isAssignModalVisible: boolean
   isLotModalOpen: boolean
   bulkAssignModalVisible: boolean
+}
+
+export interface NoProductViewInterface {
+  productList: ProductList[] | undefined
+  data: any
+  handleLoadMoreClick: () => void
 }

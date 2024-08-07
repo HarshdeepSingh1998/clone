@@ -12,7 +12,10 @@ const InventoryManagement = () => {
     <AuthLayout>
       <InventorymanagementContainer>
         {(screenType === 'desktop' || screenType === 'tab') && (
-          <InventoryManagementDesktop inventoryData={inventoryData} />
+          <InventoryManagementDesktop
+            inventoryData={inventoryData}
+            screenType={screenType}
+          />
         )}
         {/* {screenType === 'mobile' && (
           <InventoryManagementMobile inventoryData={inventoryData} />
