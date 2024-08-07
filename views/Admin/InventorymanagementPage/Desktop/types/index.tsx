@@ -94,6 +94,7 @@ export interface UseInventoryProductInterface {
   assignOpen: boolean
   contractOpen: boolean
   setShowBulkDeleteModel: React.Dispatch<React.SetStateAction<boolean>>
+  filterData: any
 }
 
 export type ModalState = {

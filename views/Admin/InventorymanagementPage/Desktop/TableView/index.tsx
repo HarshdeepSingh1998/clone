@@ -20,7 +20,6 @@ const TableView = ({
   screenType: string
 }) => {
   const data = generateTableData(inventoryData, screenType)
-
   return (
     <TableContainer
       isGap={
@@ -39,7 +38,7 @@ const TableView = ({
           columns={columns}
           data={data}
           inventoryData={inventoryData}
-          // filtersData={salesData}
+          filtersData={inventoryData.filterData}
         />
       </TableContent>
       <NoProductView
