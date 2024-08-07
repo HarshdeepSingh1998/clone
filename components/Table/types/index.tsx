@@ -1,12 +1,10 @@
-import { UserInventoryDataInterface } from '@/views/User/InventoryManagementPage/Desktop/types'
-
 /* eslint-disable no-unused-vars */
 export interface TableInterface {
   columns: {
     id: string
     label: string
     icon?: JSX.Element
-    renderHeader?: (inventoryData?: UserInventoryDataInterface) => JSX.Element
+    renderHeader?: (inventoryData?: any) => JSX.Element
   }[]
   data: any
   openStates?: any[]
@@ -16,5 +14,5 @@ export interface TableInterface {
     setupPrice: JSX.Element
   }[]
   filtersData?: any
-  inventoryData?: UserInventoryDataInterface
+  inventoryData?: any
 }

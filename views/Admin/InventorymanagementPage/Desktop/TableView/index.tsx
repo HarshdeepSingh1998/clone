@@ -38,6 +38,7 @@ const TableView = ({
         <TableComponent
           columns={columns}
           data={data}
+          inventoryData={inventoryData}
           // filtersData={salesData}
         />
       </TableContent>
