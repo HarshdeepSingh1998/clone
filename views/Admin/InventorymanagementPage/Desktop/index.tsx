@@ -11,6 +11,7 @@ const InventoryManagementDesktop = ({
     <>
       <HeaderView inventoryData={inventoryData} />
       <ProductView inventoryData={inventoryData} />
+      <TableView inventoryData={inventoryData} />
     </>
   )
 }
