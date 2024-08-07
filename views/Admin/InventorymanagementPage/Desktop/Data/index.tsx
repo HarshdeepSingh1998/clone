@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Tooltip } from '@mui/material'
+import ActionButton from '@/components/ActionButton'
 import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/Desktop/types'
 import FilterIcon from '@/assets/images/svg/TableFilterIcon'
 import LocationIcon from '@/assets/images/svg/LocationIcon'
@@ -45,7 +46,7 @@ export const columns = [
   { id: 'machinemodel', label: 'Machine Model' },
   { id: 'contract', label: 'Contract ID' },
   { id: 'lot', label: 'Lot ID' },
-  { id: 'assign', label: 'Assigned To', icon: <FilterIcon /> },
+  { id: 'assign', label: 'Assigned To' },
   { id: 'actions', label: 'Actions' }
 ]
 
@@ -53,7 +54,7 @@ export const generateTableData = (
   inventoryData: UseInventoryProductInterface,
   screenType: string
 ) => {
-  return (inventoryData.productList || []).map((data, index) => ({
+  return (inventoryData.productList || []).map(data => ({
     checkbox: (
       <CheckboxContainer>
         {inventoryData.status === 'UnPublished' && (
@@ -192,6 +193,23 @@ export const generateTableData = (
         )}
       </>
     ),
-    actions: <></>
+    actions: (
+      <ActionButton
+        open={inventoryData.open}
+        setAnchorEl={inventoryData.setAnchorEl}
+        anchorEl={inventoryData.anchorEl}
+        actionButtonData={inventoryData.actionButtonData}
+        handleClose={inventoryData.handleClose}
+        setData={() => {
+          inventoryData.setProductDetails(data)
+          inventoryData.setStatusProduct(data.status)
+        }}
+        disabled={
+          (data?.transaction && data?.status === 'Published') ||
+          (inventoryData.selectedProductIds.includes(data._id) &&
+            inventoryData.selectedProductIds?.length >= 2)
+        }
+      />
+    )
   }))
 }

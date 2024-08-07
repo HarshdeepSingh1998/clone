@@ -2,6 +2,7 @@
 import { UserState } from '@/store/userSlice'
 import { ContractList } from '@/utils/ApiTypes/ContractList'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
+import { Dispatch, SetStateAction } from 'react'
 
 export interface UseInventoryProductInterface {
   page: number
@@ -79,6 +80,20 @@ export interface UseInventoryProductInterface {
   handleCheckboxToggle: (productId: string) => void
   userData: UserState
   handleClose: () => void
+  isPublishModalVisible: boolean
+  showRevokeModel: boolean
+  showDeleteModel: boolean
+  showBulkDeleteModel: boolean
+  showUnassignedModel: boolean
+  actionButtonData: any[]
+  anchorEl: HTMLElement | null
+  setAnchorEl: Dispatch<SetStateAction<HTMLElement | null>>
+  assignEl: HTMLElement | null
+  contractEl: HTMLElement | null
+  open: boolean
+  assignOpen: boolean
+  contractOpen: boolean
+  setShowBulkDeleteModel: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export type ModalState = {

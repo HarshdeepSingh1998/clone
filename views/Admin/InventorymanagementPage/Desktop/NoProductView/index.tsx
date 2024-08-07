@@ -17,7 +17,7 @@ const NoProductView = ({
           <NoProductFound heading="No Assets Found." text=" " />
         </NoProductViewContainer>
       )}
-      {(productList || [])?.length < data?.data?.meta?.totalNumberOfResults &&
+      {(productList || [])?.length < data?.data?.meta?.totalNumberOfProducts &&
         (productList || [])?.length !== 0 && (
           <LoadMoreContainer>
             <LoadMore onClick={handleLoadMoreClick}>Load More</LoadMore>

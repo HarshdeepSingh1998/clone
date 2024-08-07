@@ -40,11 +40,15 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   const [productDetails, setProductDetails] = useState<ProductList | undefined>(
     undefined
   )
-  const [isPubishModalVisible, setIsPublishModalVisible] = useState(false)
+  const [isPublishModalVisible, setIsPublishModalVisible] = useState(false)
   const [showRevokeModel, setShowRevokeModel] = useState(false)
   const [showDeleteModel, setShowDeleteModel] = useState(false)
   const [showBulkDeleteModel, setShowBulkDeleteModel] = useState(false)
   const [showUnassignedModel, setShowUnassignedModel] = useState(false)
+  const [isAssignModalVisible, setIsAssignModalVisible] = useState(false)
+  const [bulkAssignModalVisible, setBulkAssignModalVisible] =
+    useState<boolean>(false)
+  const [isLotModalOpen, setIsLotModalOpen] = useState(false)
   const [actionButtonData, setActionButtonData] = useState<any>()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [assignEl, setAssignEl] = useState<null | HTMLElement>(null)
@@ -84,7 +88,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   const [status, setStatus] = useState('')
   const [loadMoreButtonClicked, setLoadMoreButtonClicked] = useState(false)
   const [forceUpdate, setForceUpdate] = useState(false)
-  const [isAssignModalVisible, setIsAssignModalVisible] = useState(false)
   const [selectedButton, setSelectedButton] = useState([
     { type: 'contained', label: 'All', id: 0, disabled: true },
     { type: 'outline', label: 'Published', id: 1, disabled: false },
@@ -93,9 +96,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   ])
   const [selectedProductIds, setSelectedProductIds] = useState<string[]>([])
   const [selectAll, setSelectAll] = useState(false)
-  const [bulkAssignModalVisible, setBulkAssignModalVisible] =
-    useState<boolean>(false)
-  const [isLotModalOpen, setIsLotModalOpen] = useState(false)
   const [selectedContract, setSelectedContract] = useState<string | null>('all')
   const [selectedAssignee, setSelectedAssignee] = useState<string | null>('all')
 
@@ -123,7 +123,8 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     }
 
     setLoading(false)
-  }, [data, loadMoreButtonClicked, status])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, status])
 
   const { data: usersData, refetch: fetchUsersData } = useGet(
     'userList',
@@ -322,7 +323,7 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
       ])
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [productList])
+  }, [productList, productDetails, open])
 
   return {
     page,
@@ -387,11 +388,19 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     handleCheckboxToggle,
     userData,
     handleClose,
-    isPubishModalVisible,
+    isPublishModalVisible,
     showRevokeModel,
     showDeleteModel,
     showBulkDeleteModel,
     showUnassignedModel,
-    actionButtonData
+    actionButtonData,
+    anchorEl,
+    setAnchorEl,
+    assignEl,
+    contractEl,
+    open,
+    assignOpen,
+    contractOpen,
+    setShowBulkDeleteModel
   }
 }
