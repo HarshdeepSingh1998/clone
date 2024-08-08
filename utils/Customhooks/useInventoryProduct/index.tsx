@@ -301,18 +301,15 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
       prevSelected === value ? 'all' : value
     )
   }
-  const dynamicEntries = contractList
-    ?.filter(data => data?.isAssignedToProduct)
-    ?.map(data => ({
-      key: data._id,
-      title: data.contractId,
-      handleClick: () => handleContractButton(data._id),
-      selected: selectedContract === data._id
-    }))
-
-  if (dynamicEntries && dynamicEntries.length > 0) {
-    filterData.actionButtonData.splice(1, 0, ...dynamicEntries)
-  }
+  const dynamicEntries =
+    contractList
+      ?.filter(data => data?.isAssignedToProduct)
+      ?.map(data => ({
+        key: data._id,
+        title: data.contractId,
+        handleClick: () => handleContractButton(data._id),
+        selected: selectedContract === data._id
+      })) || []
 
   useEffect(() => {
     if (productDetails?.status === 'Published') {
@@ -381,7 +378,8 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
           title: 'All',
           handleClick: handleAllButton,
           selected: selectedContract === 'all'
-        }
+        },
+        ...dynamicEntries
       ],
       handleClose: handleClose
     })
