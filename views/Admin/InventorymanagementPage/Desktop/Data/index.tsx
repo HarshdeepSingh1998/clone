@@ -3,6 +3,7 @@ import { Tooltip } from '@mui/material'
 import ActionButton from '@/components/ActionButton'
 import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/Desktop/types'
 import FilterIcon from '@/assets/images/svg/TableFilterIcon'
+import AssignFilterIcon from '@/assets/images/svg/TableFilterIcon'
 import PowerIcon from '@/assets/images/svg/PowerIcon'
 import HashRateIcon from '@/assets/images/svg/HashRateIcon'
 import DummyMachine from '@/assets/images/images/machine-bid.png'
@@ -44,7 +45,7 @@ export const columns = [
   { id: 'machinemodel', label: 'Machine Model' },
   { id: 'contract', label: 'Contract ID', icon: <FilterIcon /> },
   { id: 'lot', label: 'Lot ID' },
-  { id: 'assign', label: 'Assigned To', icon: <FilterIcon /> },
+  { id: 'assign', label: 'Assigned To', icon: <AssignFilterIcon /> },
   { id: 'actions', label: 'Actions' }
 ]
 

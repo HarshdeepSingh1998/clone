@@ -289,7 +289,6 @@ export const CheckboxContainer = styled.div<{ publishModal?: boolean }>`
 export const AssignContainer = styled.div`
   display: flex;
   justify-content: start;
-  transform: translateX(36px);
   align-items: center;
   width: 100%;
   height: 100%;
