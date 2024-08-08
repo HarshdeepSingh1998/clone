@@ -19,6 +19,7 @@ const FilterMenuList: React.FC<FilterMenuListProps> = ({
   setData
 }) => {
   const handleOptionClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation()
     setAnchorEl(event.currentTarget)
     if (setData) {
       setData()
@@ -51,22 +52,18 @@ const FilterMenuList: React.FC<FilterMenuListProps> = ({
         <FilterIcon />
       </ActionButtonContent>
       <List anchorEl={anchorEl} handleClose={handleClose}>
-        <>
-          {actionButtonData?.map((data: any) => (
-            <>
-              <MenuItem key={data.key}>
-                <CheckboxContainer>
-                  <input
-                    type="checkbox"
-                    checked={data.selected}
-                    onChange={data.handleClick}
-                  />
-                </CheckboxContainer>
-                {data.title}
-              </MenuItem>
-            </>
-          ))}
-        </>
+        {actionButtonData?.map((data: any) => (
+          <MenuItem key={data.key}>
+            <CheckboxContainer>
+              <input
+                type="checkbox"
+                checked={data.selected}
+                onChange={data.handleClick}
+              />
+            </CheckboxContainer>
+            {data.title}
+          </MenuItem>
+        ))}
       </List>
     </ActionButtonContainer>
   )

@@ -50,16 +50,12 @@ const ActionButton: React.FC<ActionButtonProps> = ({
         <Image src={ActionImage} alt="action-image" />
       </ActionButtonContent>
       <List anchorEl={anchorEl} handleClose={handleClose}>
-        <>
-          {actionButtonData?.map((data: any) => (
-            <>
-              <MenuItem key={data.key} onClick={data.handleClick}>
-                <Image src={data.image} alt="action-image" />
-                {data.title}
-              </MenuItem>
-            </>
-          ))}
-        </>
+        {actionButtonData?.map((data: any) => (
+          <MenuItem key={data.key} onClick={data.handleClick}>
+            <Image src={data.image} alt="action-image" />
+            {data.title}
+          </MenuItem>
+        ))}
       </List>
     </ActionButtonContainer>
   )

@@ -289,18 +289,18 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
       prevSelected === value ? 'all' : value
     )
   }
-  // const dynamicEntries = contractList
-  //   ?.filter(data => data?.isAssignedToProduct)
-  //   ?.map(data => ({
-  //     key: data._id,
-  //     title: data.contractId,
-  //     handleClick: () => handleContractButton(data._id),
-  //     selected: selectedContract === data._id
-  //   }))
+  const dynamicEntries = contractList
+    ?.filter(data => data?.isAssignedToProduct)
+    ?.map(data => ({
+      key: data._id,
+      title: data.contractId,
+      handleClick: () => handleContractButton(data._id),
+      selected: selectedContract === data._id
+    }))
 
-  // if (dynamicEntries && dynamicEntries.length > 0) {
-  //   filterData.actionButtonData.splice(1, 0, ...dynamicEntries)
-  // }
+  if (dynamicEntries && dynamicEntries.length > 0) {
+    filterData.actionButtonData.splice(1, 0, ...dynamicEntries)
+  }
 
   useEffect(() => {
     if (productDetails?.status === 'Published') {
@@ -358,8 +358,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productList, productDetails, open])
 
-  console.log('state', filterData)
-
   useEffect(() => {
     setFilterData({
       open: contractOpen,
@@ -376,7 +374,7 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
       handleClose: handleClose
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [contractList])
+  }, [contractOpen])
 
   return {
     page,
