@@ -21,6 +21,11 @@ import EditModal from '@/assets/images/images/edit-modal.png'
 import Remove from '@/assets/images/images/Remove.png'
 
 export const useInventoryProduct = (): UseInventoryProductInterface => {
+  const handleClose = () => {
+    setAnchorEl(null)
+    setContractEl(null)
+    setAssignEl(null)
+  }
   const dispatch = useDispatch()
   const router = useRouter()
   const userData = useSelector(selectUser)
@@ -56,7 +61,20 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   const open = Boolean(anchorEl)
   const assignOpen = Boolean(assignEl)
   const contractOpen = Boolean(contractEl)
-  const [filterData, setFilterData] = useState<any>({})
+  const [filterData, setFilterData] = useState({
+    open: false,
+    setAnchorEl: setAnchorEl,
+    anchorEl: contractEl,
+    actionButtonData: [
+      {
+        key: '',
+        title: '',
+        handleClick: () => {},
+        selected: false
+      }
+    ],
+    handleClose: handleClose
+  })
   const [statusProduct, setStatusProduct] = useState('Published')
   const [fileUploadError, setFileUploadError] = useState('')
   const [userPage, setUserPage] = useState(1)
@@ -230,12 +248,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     } else {
       setSelectedProductIds(prevIds => [...prevIds, productId])
     }
-  }
-
-  const handleClose = () => {
-    setAnchorEl(null)
-    setContractEl(null)
-    setAssignEl(null)
   }
 
   const handleRevokeButton = (productId: string) => {
