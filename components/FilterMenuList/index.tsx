@@ -16,10 +16,11 @@ const FilterMenuList: React.FC<FilterMenuListProps> = ({
   disabled,
   actionButtonData,
   handleClose,
-  setData
+  setData,
+  icon,
+  inventoryData
 }) => {
   const handleOptionClick = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation()
     setAnchorEl(event.currentTarget)
     if (setData) {
       setData()
@@ -49,7 +50,11 @@ const FilterMenuList: React.FC<FilterMenuListProps> = ({
         onClick={(event: any) => handleOptionClick(event)}
         disabled={disabled}
       >
-        <FilterIcon />
+        {icon && typeof icon === 'function' ? (
+          icon(inventoryData)
+        ) : (
+          <FilterIcon />
+        )}
       </ActionButtonContent>
       <List anchorEl={anchorEl} handleClose={handleClose}>
         {actionButtonData?.map((data: any) => (

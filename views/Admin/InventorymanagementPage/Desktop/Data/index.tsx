@@ -43,9 +43,27 @@ export const columns = [
       )
   },
   { id: 'machinemodel', label: 'Machine Model' },
-  { id: 'contract', label: 'Contract ID', icon: <FilterIcon /> },
+  {
+    id: 'contract',
+    label: 'Contract ID',
+    icon: (inventoryData?: UseInventoryProductInterface) => {
+      return (
+        <FilterIcon onClick={() => inventoryData?.setFilterValue('contract')} />
+      )
+    }
+  },
   { id: 'lot', label: 'Lot ID' },
-  { id: 'assign', label: 'Assigned To', icon: <AssignFilterIcon /> },
+  {
+    id: 'assign',
+    label: 'Assigned To',
+    icon: (inventoryData?: UseInventoryProductInterface) => {
+      return (
+        <AssignFilterIcon
+          onClick={() => inventoryData?.setFilterValue('assign')}
+        />
+      )
+    }
+  },
   { id: 'actions', label: 'Actions' }
 ]
 

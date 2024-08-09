@@ -3,7 +3,7 @@ export interface TableInterface {
   columns: {
     id: string
     label: string
-    icon?: JSX.Element
+    icon?: any
     renderHeader?: (inventoryData?: any) => JSX.Element
   }[]
   data: any

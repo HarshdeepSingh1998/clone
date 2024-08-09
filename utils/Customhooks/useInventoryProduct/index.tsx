@@ -61,10 +61,11 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   const open = Boolean(anchorEl)
   const assignOpen = Boolean(assignEl)
   const contractOpen = Boolean(contractEl)
-  const [filterData, setFilterData] = useState({
+  const [filterData, setFilterData] = useState<any>({
+    id: '',
     open: false,
-    setAnchorEl: setAnchorEl,
-    anchorEl: contractEl,
+    setAnchorEl: '',
+    anchorEl: '',
     actionButtonData: [
       {
         key: '',
@@ -117,7 +118,7 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   const [selectAll, setSelectAll] = useState(false)
   const [selectedContract, setSelectedContract] = useState<string | null>('all')
   const [selectedAssignee, setSelectedAssignee] = useState<string | null>('all')
-
+  const [filterValue, setFilterValue] = useState('')
   const { data, refetch: fetchData } = useGet(
     `productListStatus${status}`,
     status === 'Assigned'
@@ -292,6 +293,7 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
       prevSelected === 'all' ? 'all' : 'all'
     )
   }
+
   const handleContractButton = (value: string) => {
     selectedContract === value ? setContractValue('') : setContractValue(value)
     setPage(1)
@@ -301,6 +303,7 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
       prevSelected === value ? 'all' : value
     )
   }
+
   const dynamicEntries =
     contractList
       ?.filter(data => data?.isAssignedToProduct)
@@ -309,6 +312,39 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
         title: data.contractId,
         handleClick: () => handleContractButton(data._id),
         selected: selectedContract === data._id
+      })) || []
+
+  const handleAssignAllButton = () => {
+    setAssigneeName('')
+    setPage(1)
+    setAssignFilterClicked(prev => !prev)
+    handleClose()
+    setSelectedAssignee(prevSelected =>
+      prevSelected === 'all' ? 'all' : 'all'
+    )
+  }
+
+  const handleAssignButton = (value: string) => {
+    selectedAssignee === value ? setAssigneeName('') : setAssigneeName(value)
+    // setAssigneeName(value)
+    setPage(1)
+    setAssignFilterClicked(prev => !prev)
+    handleClose()
+    setSelectedAssignee(prevSelected =>
+      prevSelected === value ? 'all' : value
+    )
+  }
+
+  const dynamicAssigneeEntries =
+    userDataList
+      ?.filter(
+        data => data.assignedProducts && data.assignedProducts.length > 0
+      )
+      ?.map(data => ({
+        key: data._id,
+        title: !data?.name ? data?.email?.split('@')[0] : data?.name,
+        handleClick: () => handleAssignButton(data._id),
+        selected: selectedAssignee === data._id
       })) || []
 
   useEffect(() => {
@@ -368,23 +404,47 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   }, [productList, productDetails, open])
 
   useEffect(() => {
-    setFilterData({
-      open: contractOpen,
-      setAnchorEl: setContractEl,
-      anchorEl: contractEl,
-      actionButtonData: [
-        {
-          key: 'all',
-          title: 'All',
-          handleClick: handleAllButton,
-          selected: selectedContract === 'all'
-        },
-        ...dynamicEntries
-      ],
-      handleClose: handleClose
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [contractOpen])
+    if (filterValue === 'contract') {
+      setFilterData({
+        id: 'contract',
+        open: contractOpen,
+        setAnchorEl: setContractEl,
+        anchorEl: contractEl,
+        actionButtonData: [
+          {
+            key: 'all',
+            title: 'All',
+            handleClick: handleAllButton,
+            selected: selectedContract === 'all'
+          },
+          ...dynamicEntries
+        ],
+        handleClose: handleClose
+      })
+    }
+  }, [contractEl, filterValue])
+
+  useEffect(() => {
+    if (filterValue === 'assign') {
+      setFilterData({
+        id: 'assign',
+        open: assignOpen,
+        setAnchorEl: setAssignEl,
+        anchorEl: assignEl,
+        actionButtonData: [
+          {
+            key: 'all',
+            title: 'All',
+            handleClick: handleAssignAllButton,
+            selected: selectedAssignee === 'all'
+          },
+          ...dynamicAssigneeEntries
+        ],
+        handleClose: handleClose
+      })
+    }
+  }, [assignEl, filterValue])
+  console.log('dfdfdf', filterData, contractEl, assignEl)
 
   return {
     page,
@@ -463,6 +523,7 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     assignOpen,
     contractOpen,
     setShowBulkDeleteModel,
-    filterData
+    filterData,
+    setFilterValue
   }
 }

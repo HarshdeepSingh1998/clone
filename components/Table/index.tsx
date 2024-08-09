@@ -50,6 +50,8 @@ const TableComponent = ({
                     disabled={false}
                     actionButtonData={filtersData.actionButtonData}
                     handleClose={filtersData.handleClose}
+                    icon={column.icon}
+                    inventoryData={inventoryData}
                   />
                 )}
                 {column.renderHeader
