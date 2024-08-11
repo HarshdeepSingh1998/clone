@@ -97,3 +97,9 @@ export const ButtonContent = styled.div`
     }
   }
 `
+export const HeaderContainer = styled.div`
+  @media only screen and (min-width: 768px) and (max-width: 1400px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+`

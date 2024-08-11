@@ -8,7 +8,8 @@ import {
 } from 'views/Admin/InventorymanagementPage/Desktop/Data'
 import {
   TableContainer,
-  TableContent
+  TableContent,
+  HeaderContainer
 } from 'styles/Views/Admin/InventorymanagementPage/Desktop/Table'
 
 const TableView = ({
@@ -27,9 +28,9 @@ const TableView = ({
       }
     >
       <TableContent>
-        <div>
+        <HeaderContainer>
           <Header inventoryData={inventoryData} />
-        </div>
+        </HeaderContainer>
         <TableComponent
           columns={columns}
           data={data}
