@@ -1,15 +1,14 @@
 import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/Desktop/types'
 import TableComponent from '@/components/Table'
 import NoProductView from 'views/Admin/InventorymanagementPage/Desktop/NoProductView'
+import Header from 'views/Admin/InventorymanagementPage/Desktop/TableView/Header'
 import {
   columns,
   generateTableData
 } from 'views/Admin/InventorymanagementPage/Desktop/Data'
 import {
   TableContainer,
-  TableContent,
-  HeaderTitle,
-  BoxImage
+  TableContent
 } from 'styles/Views/Admin/InventorymanagementPage/Desktop/Table'
 
 const TableView = ({
@@ -29,10 +28,7 @@ const TableView = ({
     >
       <TableContent>
         <div>
-          <HeaderTitle>
-            <BoxImage />
-            Products
-          </HeaderTitle>
+          <Header inventoryData={inventoryData} />
         </div>
         <TableComponent
           columns={columns}

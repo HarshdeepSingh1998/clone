@@ -1,6 +1,7 @@
-import Button from '@/components/Button'
 import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/Desktop/types'
+import Button from '@/components/Button'
 import SearchIcon from '@/assets/images/svg/SearchIcon'
+import { StyledInput } from '@/styles/Components/Input'
 import {
   HeaderSearchContainer,
   HeaderTitle,
@@ -10,8 +11,7 @@ import {
   SvgContainer,
   ButtonContainer,
   ButtonContent
-} from '@/styles/Views/Admin/InventorymanagementPage/Desktop/Product/Header'
-import { StyledInput } from '@/styles/Components/Input'
+} from '@/styles/Views/Admin/InventorymanagementPage/Desktop/Table/Header'
 
 const Header = ({
   inventoryData
