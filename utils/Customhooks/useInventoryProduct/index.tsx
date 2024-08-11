@@ -65,7 +65,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   const [filterData, setFilterData] = useState<FilterData>({
     id: '',
     open: false,
-    setAnchorEl: () => {},
     anchorEl: null,
     actionButtonData: [
       {
@@ -408,7 +407,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
       setFilterData({
         id: 'contract',
         open: contractOpen,
-        setAnchorEl: () => {},
         anchorEl: contractEl,
         actionButtonData: [
           {
@@ -425,7 +423,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
       setFilterData({
         id: 'assign',
         open: assignOpen,
-        setAnchorEl: () => {},
         anchorEl: assignEl,
         actionButtonData: [
           {

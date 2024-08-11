@@ -119,7 +119,7 @@ export interface NoProductViewInterface {
 export interface FilterData {
   id: string
   open: boolean
-  setAnchorEl: (element: HTMLElement | null) => void
+  // setAnchorEl: (element: HTMLElement | null) => void
   anchorEl: HTMLElement | null
   actionButtonData: {
     key: string
