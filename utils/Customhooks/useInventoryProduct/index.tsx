@@ -46,6 +46,7 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   const [productDetails, setProductDetails] = useState<ProductList | undefined>(
     undefined
   )
+  const [selectedProduct, setSelectedProduct] = useState('')
   const [isPublishModalVisible, setIsPublishModalVisible] = useState(false)
   const [showRevokeModel, setShowRevokeModel] = useState(false)
   const [showDeleteModel, setShowDeleteModel] = useState(false)
@@ -98,7 +99,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
       [modalName]: !prevState[modalName]
     }))
   }
-  const [selectedProduct, setSelectedProduct] = useState('')
   const [contractValue, setContractValue] = useState<string>('')
   const [modelName, setModelName] = useState('')
   const [assigneeName, setAssigneeName] = useState('')
