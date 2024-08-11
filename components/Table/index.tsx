@@ -52,6 +52,7 @@ const TableComponent = ({
                     handleClose={filtersData.handleClose}
                     inventoryData={inventoryData}
                     id={column.id}
+                    icon={column.icon}
                   />
                 )}
                 {column.renderHeader

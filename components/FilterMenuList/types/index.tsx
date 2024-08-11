@@ -10,4 +10,5 @@ export interface FilterMenuListProps {
   setData?: () => void
   inventoryData?: any
   id?: string
+  icon?: any
 }

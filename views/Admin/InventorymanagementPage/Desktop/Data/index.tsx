@@ -46,13 +46,21 @@ export const columns = [
   {
     id: 'contract',
     label: 'Contract ID',
-    icon: <FilterIcon />
+    icon: (inventoryData?: UseInventoryProductInterface) => {
+      if (inventoryData?.status !== 'UnPublished') {
+        return <FilterIcon />
+      } else return null
+    }
   },
   { id: 'lot', label: 'Lot ID' },
   {
     id: 'assign',
     label: 'Assigned To',
-    icon: <AssignFilterIcon />
+    icon: (inventoryData?: UseInventoryProductInterface) => {
+      if (inventoryData?.status !== 'UnPublished') {
+        return <AssignFilterIcon />
+      } else return null
+    }
   },
   { id: 'actions', label: 'Actions' }
 ]
