@@ -11,6 +11,7 @@ import { ProductList } from '@/utils/ApiTypes/ProductList'
 import { UsersList } from '@/utils/ApiTypes/UsersList'
 import { ContractList } from '@/utils/ApiTypes/ContractList'
 import {
+  FilterData,
   ModalState,
   UseInventoryProductInterface
 } from '@/views/Admin/InventorymanagementPage/Desktop/types'
@@ -61,11 +62,11 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   const open = Boolean(anchorEl)
   const assignOpen = Boolean(assignEl)
   const contractOpen = Boolean(contractEl)
-  const [filterData, setFilterData] = useState<any>({
+  const [filterData, setFilterData] = useState<FilterData>({
     id: '',
     open: false,
-    setAnchorEl: '',
-    anchorEl: '',
+    setAnchorEl: () => {},
+    anchorEl: null,
     actionButtonData: [
       {
         key: '',
@@ -74,7 +75,7 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
         selected: false
       }
     ],
-    handleClose: handleClose
+    handleClose: () => {}
   })
   const [statusProduct, setStatusProduct] = useState('Published')
   const [fileUploadError, setFileUploadError] = useState('')
@@ -118,7 +119,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   const [selectAll, setSelectAll] = useState(false)
   const [selectedContract, setSelectedContract] = useState<string | null>('all')
   const [selectedAssignee, setSelectedAssignee] = useState<string | null>('all')
-  const [filterValue, setFilterValue] = useState('')
   const { data, refetch: fetchData } = useGet(
     `productListStatus${status}`,
     status === 'Assigned'
@@ -404,11 +404,11 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
   }, [productList, productDetails, open])
 
   useEffect(() => {
-    if (filterValue === 'contract') {
+    if (contractOpen) {
       setFilterData({
         id: 'contract',
         open: contractOpen,
-        setAnchorEl: setContractEl,
+        setAnchorEl: () => {},
         anchorEl: contractEl,
         actionButtonData: [
           {
@@ -421,15 +421,11 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
         ],
         handleClose: handleClose
       })
-    }
-  }, [contractEl, filterValue])
-
-  useEffect(() => {
-    if (filterValue === 'assign') {
+    } else {
       setFilterData({
         id: 'assign',
         open: assignOpen,
-        setAnchorEl: setAssignEl,
+        setAnchorEl: () => {},
         anchorEl: assignEl,
         actionButtonData: [
           {
@@ -443,8 +439,10 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
         handleClose: handleClose
       })
     }
-  }, [assignEl, filterValue])
-  console.log('dfdfdf', filterData, contractEl, assignEl)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [contractEl, assignEl])
+
+  console.log('dfdfdfdf', filterData)
 
   return {
     page,
@@ -524,6 +522,7 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     contractOpen,
     setShowBulkDeleteModel,
     filterData,
-    setFilterValue
+    setAssignEl,
+    setContractEl
   }
 }

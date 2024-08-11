@@ -46,23 +46,13 @@ export const columns = [
   {
     id: 'contract',
     label: 'Contract ID',
-    icon: (inventoryData?: UseInventoryProductInterface) => {
-      return (
-        <FilterIcon onClick={() => inventoryData?.setFilterValue('contract')} />
-      )
-    }
+    icon: <FilterIcon />
   },
   { id: 'lot', label: 'Lot ID' },
   {
     id: 'assign',
     label: 'Assigned To',
-    icon: (inventoryData?: UseInventoryProductInterface) => {
-      return (
-        <AssignFilterIcon
-          onClick={() => inventoryData?.setFilterValue('assign')}
-        />
-      )
-    }
+    icon: <AssignFilterIcon />
   },
   { id: 'actions', label: 'Actions' }
 ]

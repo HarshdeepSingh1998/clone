@@ -94,8 +94,9 @@ export interface UseInventoryProductInterface {
   assignOpen: boolean
   contractOpen: boolean
   setShowBulkDeleteModel: React.Dispatch<React.SetStateAction<boolean>>
-  filterData: any
-  setFilterValue: Dispatch<SetStateAction<string>>
+  filterData: FilterData
+  setAssignEl: Dispatch<SetStateAction<HTMLElement | null>>
+  setContractEl: Dispatch<SetStateAction<HTMLElement | null>>
 }
 
 export type ModalState = {
@@ -113,4 +114,18 @@ export interface NoProductViewInterface {
   productList: ProductList[] | undefined
   data: any
   handleLoadMoreClick: () => void
+}
+
+export interface FilterData {
+  id: string
+  open: boolean
+  setAnchorEl: (element: HTMLElement | null) => void
+  anchorEl: HTMLElement | null
+  actionButtonData: {
+    key: string
+    title: string
+    handleClick: () => void
+    selected: boolean
+  }[]
+  handleClose: () => void
 }

@@ -8,6 +8,6 @@ export interface FilterMenuListProps {
   open: boolean
   handleClose: () => void
   setData?: () => void
-  icon?: any
   inventoryData?: any
+  id?: string
 }
