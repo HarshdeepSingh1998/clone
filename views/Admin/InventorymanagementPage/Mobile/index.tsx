@@ -1,6 +1,6 @@
 import { UseInventoryProductInterface } from 'views/Admin/InventorymanagementPage/Mobile/types'
 import HeaderView from 'views/Admin/InventorymanagementPage/Mobile/HeaderView'
-// import TableView from 'views/Admin/InventorymanagementPage/Mobile/TableView'
+import TableView from 'views/Admin/InventorymanagementPage/Mobile/TableView'
 
 const InventoryManagementMobile = ({
   inventoryData
@@ -10,7 +10,7 @@ const InventoryManagementMobile = ({
   return (
     <>
       <HeaderView inventoryData={inventoryData} />
-      {/* <TableView inventoryData={inventoryData} /> */}
+      <TableView inventoryData={inventoryData} />
     </>
   )
 }
