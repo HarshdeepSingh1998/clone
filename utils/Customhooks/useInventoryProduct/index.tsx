@@ -439,8 +439,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contractEl, assignEl])
 
-  console.log('dfdfdfdf', filterData)
-
   return {
     page,
     setPage,

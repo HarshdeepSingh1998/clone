@@ -28,9 +28,9 @@ export const ActionButtonContent = styled.div<{ disabled?: boolean }>`
   align-items: center;
   opacity: ${props => (props.disabled ? 0.5 : 1)};
   pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
-  @media only screen and (min-width: 768px) and (max-width: 1224px) {
-    width: 45px;
-  }
+  // @media only screen and (min-width: 768px) and (max-width: 1224px) {
+  //   width: 45px;
+  // }
 `
 
 export const CheckboxContainer = styled.div<{ publishModal?: boolean }>`
