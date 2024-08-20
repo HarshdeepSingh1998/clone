@@ -3,6 +3,7 @@ import withAuth from '@/utils/Authentication'
 import useScreenType from '@/utils/Customhooks/useScreenType'
 import { useInventoryProduct } from '@/utils/Customhooks/useInventoryProduct'
 import InventoryManagementDesktop from '@/views/Admin/InventorymanagementPage/Desktop'
+import InventoryManagementMobile from '@/views/Admin/InventorymanagementPage/Mobile'
 import { InventorymanagementContainer } from '@/styles/Pages/Admin/InventorymanagementPage'
 
 const InventoryManagement = () => {
@@ -17,9 +18,9 @@ const InventoryManagement = () => {
             screenType={screenType}
           />
         )}
-        {/* {screenType === 'mobile' && (
+        {screenType === 'mobile' && (
           <InventoryManagementMobile inventoryData={inventoryData} />
-        )} */}
+        )}
       </InventorymanagementContainer>
     </AuthLayout>
   )
