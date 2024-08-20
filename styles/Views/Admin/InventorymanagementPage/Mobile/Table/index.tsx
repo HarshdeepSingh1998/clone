@@ -190,7 +190,7 @@ export const FilterContainer = styled.div`
   align-items: center;
   display: flex;
   width: 85px;
-  height: 40px;
+  height: 30px;
   border-radius: 10px;
   border: 1.67px solid #fb674b;
   gap: 6.67px;
