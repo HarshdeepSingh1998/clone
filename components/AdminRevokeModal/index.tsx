@@ -1,52 +1,52 @@
 import Modal from 'react-modal'
-import { useUnassignProduct } from '@/utils/Customhooks/useAdminUnassignModal'
-import { Style } from 'components/RevokeModal/index'
-import { AdminUnassignModalProps } from 'components/AdminUnassignModal/types'
+import { AdminRevokeModalProps } from 'components/AdminRevokeModal/types'
 import Button from '@/components/Button'
+import { useAdminRevokeProduct } from '@/utils/Customhooks/useAdminRevokeModal'
+import { Style } from 'components/RevokeModal'
 import {
   ModalContainer,
   HeaderContainer,
   BoxImage,
   DescriptionContainer,
   ButtonContainer
-} from 'styles/Components/AdminUnassignModal'
+} from '@/styles/Components/AdminRevokeModal'
 
-const AdminUnassignModal = ({
+const RevokeModal: React.FC<AdminRevokeModalProps> = ({
   isOpen,
-  setShowUnassignModel,
+  setShowRevokeModel,
   inventoryData
-}: AdminUnassignModalProps) => {
-  const { handleUnassignProduct } = useUnassignProduct({
+}) => {
+  const { handleRevokeProduct } = useAdminRevokeProduct({
     inventoryData
   })
 
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={() => setShowUnassignModel('showUnassignedModel')}
+      onRequestClose={() => setShowRevokeModel('showRevokeModel')}
       style={Style}
     >
       <ModalContainer>
         <HeaderContainer>
           <BoxImage />
-          {'Unassign Machine'}
+          Revoke Machine
         </HeaderContainer>
         <DescriptionContainer>
-          {'Do you want to unassign this machine?'}
+          Do you want to revoke machine from marketplace?
         </DescriptionContainer>
         <ButtonContainer>
           <Button
             type="submit"
             variant={'contained'}
-            label={'Unassign'}
-            onClick={() => handleUnassignProduct()}
+            label={'Revoke'}
+            onClick={() => handleRevokeProduct()}
           />
           <Button
             type="submit"
             variant={'outline'}
             label={'Cancel'}
             onClick={() => {
-              setShowUnassignModel('showUnassignedModel')
+              setShowRevokeModel('showRevokeModel')
             }}
           />
         </ButtonContainer>
@@ -55,4 +55,4 @@ const AdminUnassignModal = ({
   )
 }
 
-export default AdminUnassignModal
+export default RevokeModal

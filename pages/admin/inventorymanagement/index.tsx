@@ -3,6 +3,7 @@ import AdminDeleteModal from '@/components/AdminDeleteModal'
 import AuthLayout from '@/components/AuthLayout'
 import BulkDeleteModal from '@/components/BulkDeleteModal'
 import AdminUnassignModal from '@/components/AdminUnassignModal'
+import AdminRevokeModal from '@/components/AdminRevokeModal'
 import withAuth from '@/utils/Authentication'
 import useScreenType from '@/utils/Customhooks/useScreenType'
 import { useInventoryProduct } from '@/utils/Customhooks/useInventoryProduct'
@@ -19,7 +20,8 @@ const InventoryManagement = () => {
         inventoryData.importCsvModalVisible ||
         inventoryData.isModalOpen.showDeleteModel ||
         inventoryData.isModalOpen.showBulkDeleteModel ||
-        inventoryData.isModalOpen.showUnassignedModel
+        inventoryData.isModalOpen.showUnassignedModel ||
+        inventoryData.isModalOpen.showRevokeModel
       }
     >
       <InventorymanagementContainer>
@@ -62,6 +64,13 @@ const InventoryManagement = () => {
       <AdminUnassignModal
         isOpen={inventoryData?.isModalOpen.showUnassignedModel}
         setShowUnassignModel={inventoryData?.toggleModal}
+        setPage={inventoryData.setPage}
+        setForceUpdate={inventoryData.setForceUpdate}
+        inventoryData={inventoryData}
+      />
+      <AdminRevokeModal
+        isOpen={inventoryData?.isModalOpen.showRevokeModel}
+        setShowRevokeModel={inventoryData?.toggleModal}
         setPage={inventoryData.setPage}
         setForceUpdate={inventoryData.setForceUpdate}
         inventoryData={inventoryData}
