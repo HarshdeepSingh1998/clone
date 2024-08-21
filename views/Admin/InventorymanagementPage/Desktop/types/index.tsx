@@ -35,8 +35,7 @@ export interface UseInventoryProductInterface {
   setLoadMoreButtonClicked: React.Dispatch<React.SetStateAction<boolean>>
   forceUpdate: boolean
   setForceUpdate: React.Dispatch<React.SetStateAction<boolean>>
-  isAssignModalVisible: boolean
-  setIsAssignModalVisible: React.Dispatch<React.SetStateAction<boolean>>
+
   contractList: ContractList[] | undefined
   setContractList: React.Dispatch<
     React.SetStateAction<ContractList[] | undefined>
@@ -64,10 +63,6 @@ export interface UseInventoryProductInterface {
   setSelectedProductIds: React.Dispatch<React.SetStateAction<string[]>>
   selectAll: boolean
   setSelectAll: React.Dispatch<React.SetStateAction<boolean>>
-  bulkAssignModalVisible: boolean
-  setBulkAssignModalVisible: React.Dispatch<React.SetStateAction<boolean>>
-  isLotModalOpen: boolean
-  setIsLotModalOpen: React.Dispatch<React.SetStateAction<boolean>>
   selectedContract: string | null
   setSelectedContract: React.Dispatch<React.SetStateAction<string | null>>
   selectedAssignee: string | null
@@ -80,11 +75,6 @@ export interface UseInventoryProductInterface {
   handleCheckboxToggle: (productId: string) => void
   userData: UserState
   handleClose: () => void
-  isPublishModalVisible: boolean
-  showRevokeModel: boolean
-  showDeleteModel: boolean
-  showBulkDeleteModel: boolean
-  showUnassignedModel: boolean
   actionButtonData: any[]
   anchorEl: HTMLElement | null
   setAnchorEl: Dispatch<SetStateAction<HTMLElement | null>>
@@ -93,7 +83,6 @@ export interface UseInventoryProductInterface {
   open: boolean
   assignOpen: boolean
   contractOpen: boolean
-  setShowBulkDeleteModel: React.Dispatch<React.SetStateAction<boolean>>
   filterData: FilterData
   setAssignEl: Dispatch<SetStateAction<HTMLElement | null>>
   setContractEl: Dispatch<SetStateAction<HTMLElement | null>>

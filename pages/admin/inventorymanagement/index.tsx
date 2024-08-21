@@ -1,10 +1,11 @@
+import CsvModal from '@/components/CsvModal'
+import AdminDeleteModal from '@/components/AdminDeleteModal'
 import AuthLayout from '@/components/AuthLayout'
 import withAuth from '@/utils/Authentication'
 import useScreenType from '@/utils/Customhooks/useScreenType'
 import { useInventoryProduct } from '@/utils/Customhooks/useInventoryProduct'
 import InventoryManagementDesktop from '@/views/Admin/InventorymanagementPage/Desktop'
 import InventoryManagementMobile from '@/views/Admin/InventorymanagementPage/Mobile'
-import CsvModal from '@/components/CsvModal'
 import { InventorymanagementContainer } from '@/styles/Pages/Admin/InventorymanagementPage'
 
 const InventoryManagement = () => {
@@ -34,6 +35,13 @@ const InventoryManagement = () => {
         handleFileChange={inventoryData.handleFileChange}
         fileUploadError={inventoryData.fileUploadError}
         setFileUploadError={inventoryData.setFileUploadError}
+      />
+      <AdminDeleteModal
+        isOpen={inventoryData?.isModalOpen.showDeleteModel}
+        setShowDeleteModel={inventoryData?.toggleModal}
+        setPage={inventoryData.setPage}
+        setForceUpdate={inventoryData.setForceUpdate}
+        inventoryData={inventoryData}
       />
     </AuthLayout>
   )
