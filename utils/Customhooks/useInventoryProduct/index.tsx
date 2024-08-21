@@ -545,6 +545,9 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     setContractEl,
     handleViewProduct,
     handleFileChange,
-    fetchData
+    fetchData,
+    setUserDataList,
+    setUserPage,
+    fetchContractData
   }
 }

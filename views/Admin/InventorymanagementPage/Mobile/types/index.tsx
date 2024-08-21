@@ -2,6 +2,7 @@
 import { UserState } from '@/store/userSlice'
 import { ContractList } from '@/utils/ApiTypes/ContractList'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
+import { UsersList } from '@/utils/ApiTypes/UsersList'
 import { Dispatch, SetStateAction } from 'react'
 
 export interface UseInventoryProductInterface {
@@ -35,6 +36,7 @@ export interface UseInventoryProductInterface {
   setLoadMoreButtonClicked: React.Dispatch<React.SetStateAction<boolean>>
   forceUpdate: boolean
   setForceUpdate: React.Dispatch<React.SetStateAction<boolean>>
+
   contractList: ContractList[] | undefined
   setContractList: React.Dispatch<
     React.SetStateAction<ContractList[] | undefined>
@@ -86,6 +88,11 @@ export interface UseInventoryProductInterface {
   setAssignEl: Dispatch<SetStateAction<HTMLElement | null>>
   setContractEl: Dispatch<SetStateAction<HTMLElement | null>>
   handleViewProduct: (productId: string) => void
+  handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  fetchData: any
+  setUserDataList: Dispatch<SetStateAction<UsersList[] | undefined>>
+  setUserPage: Dispatch<SetStateAction<number>>
+  fetchContractData: any
 }
 
 export type ModalState = {
