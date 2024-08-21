@@ -3,8 +3,9 @@ import NoProductView from 'views/Admin/InventorymanagementPage/Mobile/NoProductV
 import Header from 'views/Admin/InventorymanagementPage/Mobile/TableView/Header'
 import {
   columns,
+  TableData,
   generateTableData
-} from 'views/Admin/InventorymanagementPage/Desktop/Data'
+} from 'views/Admin/InventorymanagementPage/Mobile/Data'
 import {
   TableContainer,
   TableContent,
@@ -22,12 +23,12 @@ const TableView = ({
 }: {
   inventoryData: UseInventoryProductInterface
 }) => {
-  //   const data = generateTableData(inventoryData, screenType)
+  const data = generateTableData(inventoryData)
   const filter = [
     { id: 'contract', title: 'Contract' },
     { id: 'assign', title: 'Assign' }
   ]
-  const productListLength = inventoryData.productList?.length ?? 0
+  const inventoryListLength = inventoryData.productList?.length ?? 0
   return (
     <TableContainer
       isGap={
@@ -42,30 +43,31 @@ const TableView = ({
           </HeaderContainer>
         </TableContent>
         <div style={{ display: 'flex', gap: '10px' }}>
-          {filter.map(data => (
-            <>
-              <FilterContainer>
-                <FilterMenuList
-                  open={inventoryData.filterData.open}
-                  inventoryData={inventoryData}
-                  id={data.id}
-                  anchorEl={inventoryData.filterData.anchorEl}
-                  disabled={false}
-                  actionButtonData={inventoryData.filterData.actionButtonData}
-                  handleClose={inventoryData.filterData.handleClose}
-                  setAnchorEl={() => {}}
-                />
-                {data.title}
-              </FilterContainer>
-            </>
-          ))}
+          {inventoryData.status !== 'UnPublished' &&
+            filter.map(data => (
+              <>
+                <FilterContainer>
+                  <FilterMenuList
+                    open={inventoryData.filterData.open}
+                    inventoryData={inventoryData}
+                    id={data.id}
+                    anchorEl={inventoryData.filterData.anchorEl}
+                    disabled={false}
+                    actionButtonData={inventoryData.filterData.actionButtonData}
+                    handleClose={inventoryData.filterData.handleClose}
+                    setAnchorEl={() => {}}
+                  />
+                  {data.title}
+                </FilterContainer>
+              </>
+            ))}
         </div>
       </div>
       <Table>
-        {inventoryData?.productList?.map((_, i) => (
+        {inventoryData?.productList?.map((productList, i) => (
           <ContentContainer
             key={i}
-            className={i === productListLength - 1 ? 'last' : ''}
+            className={i === inventoryListLength - 1 ? 'last' : ''}
           >
             {columns?.map((column, j) => (
               <TableList
@@ -73,9 +75,11 @@ const TableView = ({
                 key={j}
               >
                 <HeaderText className="contract-header">
-                  {column?.label}
+                  {typeof column.label === 'function'
+                    ? column.label({ inventoryData, productList })
+                    : column.label}
                 </HeaderText>
-                {/* {data && data[i][column.id as keyof TableData]} */}
+                {data && data[i][column.id as keyof TableData]}
               </TableList>
             ))}
           </ContentContainer>
