@@ -47,6 +47,7 @@ export const ButtonContainer = styled.div`
       padding: unset;
       width: 167px;
     }
+    flex-wrap: wrap;
   }
 `
 

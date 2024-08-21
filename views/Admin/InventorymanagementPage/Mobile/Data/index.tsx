@@ -56,7 +56,11 @@ export const columns = [
           )}
         </CheckboxContainer>
         <>
-          <ImageContainer>
+          <ImageContainer
+            onClick={() => {
+              inventoryData.handleViewProduct(productList._id)
+            }}
+          >
             <ImageContent>
               {productList?.images?.length > 0 ? (
                 <Image
