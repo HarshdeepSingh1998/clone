@@ -1,6 +1,7 @@
 import CsvModal from '@/components/CsvModal'
 import AdminDeleteModal from '@/components/AdminDeleteModal'
 import AuthLayout from '@/components/AuthLayout'
+import BulkDeleteModal from '@/components/BulkDeleteModal'
 import withAuth from '@/utils/Authentication'
 import useScreenType from '@/utils/Customhooks/useScreenType'
 import { useInventoryProduct } from '@/utils/Customhooks/useInventoryProduct'
@@ -12,7 +13,13 @@ const InventoryManagement = () => {
   const inventoryData = useInventoryProduct()
   const { screenType } = useScreenType()
   return (
-    <AuthLayout isPopUpVisible={inventoryData.importCsvModalVisible}>
+    <AuthLayout
+      isPopUpVisible={
+        inventoryData.importCsvModalVisible ||
+        inventoryData.isModalOpen.showDeleteModel ||
+        inventoryData.isModalOpen.showBulkDeleteModel
+      }
+    >
       <InventorymanagementContainer>
         {(screenType === 'desktop' || screenType === 'tab') && (
           <InventoryManagementDesktop
@@ -38,6 +45,13 @@ const InventoryManagement = () => {
       />
       <AdminDeleteModal
         isOpen={inventoryData?.isModalOpen.showDeleteModel}
+        setShowDeleteModel={inventoryData?.toggleModal}
+        setPage={inventoryData.setPage}
+        setForceUpdate={inventoryData.setForceUpdate}
+        inventoryData={inventoryData}
+      />
+      <BulkDeleteModal
+        isOpen={inventoryData?.isModalOpen.showBulkDeleteModel}
         setShowDeleteModel={inventoryData?.toggleModal}
         setPage={inventoryData.setPage}
         setForceUpdate={inventoryData.setForceUpdate}

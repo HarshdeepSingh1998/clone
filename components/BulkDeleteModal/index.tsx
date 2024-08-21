@@ -1,7 +1,7 @@
 import Modal from 'react-modal'
-import { useDeleteProduct } from '@/utils/Customhooks/useAdminDeleteModal'
+import { useDeleteProduct } from '@/utils/Customhooks/useBulkDeleteModal'
 import { Style } from 'components/RevokeModal/index'
-import { AdminDeleteModalProps } from 'components/AdminDeleteModal/types'
+import { BulkDeleteModalProps } from 'components/BulkDeleteModal/types'
 import Button from '@/components/Button'
 import {
   ModalContainer,
@@ -9,13 +9,13 @@ import {
   BoxImage,
   DescriptionContainer,
   ButtonContainer
-} from 'styles/Components/AdminDeleteModal'
+} from 'styles/Components/BulkDeleteModal'
 
-const AdminDeleteModal = ({
+const BulkDeleteModal = ({
   isOpen,
   setShowDeleteModel,
   inventoryData
-}: AdminDeleteModalProps) => {
+}: BulkDeleteModalProps) => {
   const { handleDeleteProduct } = useDeleteProduct({
     inventoryData
   })
@@ -23,7 +23,7 @@ const AdminDeleteModal = ({
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={() => setShowDeleteModel('showDeleteModel')}
+      onRequestClose={() => setShowDeleteModel('showBulkDeleteModel')}
       style={Style}
     >
       <ModalContainer>
@@ -46,7 +46,7 @@ const AdminDeleteModal = ({
             variant={'outline'}
             label={'Cancel'}
             onClick={() => {
-              setShowDeleteModel('showDeleteModel')
+              setShowDeleteModel('showBulkDeleteModel')
             }}
           />
         </ButtonContainer>
@@ -55,4 +55,4 @@ const AdminDeleteModal = ({
   )
 }
 
-export default AdminDeleteModal
+export default BulkDeleteModal
