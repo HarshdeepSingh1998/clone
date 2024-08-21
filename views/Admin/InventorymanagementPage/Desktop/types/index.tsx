@@ -98,6 +98,8 @@ export interface UseInventoryProductInterface {
   setAssignEl: Dispatch<SetStateAction<HTMLElement | null>>
   setContractEl: Dispatch<SetStateAction<HTMLElement | null>>
   handleViewProduct: (productId: string) => void
+  handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  fetchData: any
 }
 
 export type ModalState = {

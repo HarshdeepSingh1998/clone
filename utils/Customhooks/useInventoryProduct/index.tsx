@@ -20,6 +20,7 @@ import Publish from '@/assets/images/images/Publish.png'
 import Assign from '@/assets/images/images/Assign.png'
 import EditModal from '@/assets/images/images/edit-modal.png'
 import Remove from '@/assets/images/images/Remove.png'
+import { toast } from 'react-toastify'
 
 export const useInventoryProduct = (): UseInventoryProductInterface => {
   const handleClose = () => {
@@ -443,6 +444,37 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     router.push(`/admin/productDetails?productId=${productId}&page=inventory`)
   }
 
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files
+    if (files && files.length > 0) {
+      for (let i = 0; i < files.length; i++) {
+        const fileType = files[i].type
+        const allowedTypes = [
+          'text/csv',
+          'application/vnd.ms-excel',
+          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        ]
+        if (!allowedTypes.includes(fileType)) {
+          setFileUploadError('Please select only CSV or Excel files.')
+          event.target.value = ''
+          return
+        } else {
+          setFileUploadError('')
+        }
+
+        const fileSizeExceeded = Array.from(files).every(
+          file => file.size > 2 * 1024 * 1024
+        )
+        if (fileSizeExceeded) {
+          toast.error(`Maximum file size allowed is ${2}MB`)
+          return
+        }
+      }
+
+      setSelectedFiles(files)
+    }
+  }
+
   return {
     page,
     setPage,
@@ -523,6 +555,8 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     filterData,
     setAssignEl,
     setContractEl,
-    handleViewProduct
+    handleViewProduct,
+    handleFileChange,
+    fetchData
   }
 }
