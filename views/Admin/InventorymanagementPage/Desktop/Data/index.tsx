@@ -84,7 +84,11 @@ export const generateTableData = (
       </CheckboxContainer>
     ),
     machinemodel: (
-      <>
+      <ContractContainer
+        onClick={() => {
+          inventoryData.handleViewProduct(data._id)
+        }}
+      >
         <ImageContainer>
           <Image
             src={data?.images[0] || DummyMachine}
@@ -125,7 +129,7 @@ export const generateTableData = (
             </ContractContainer>
           </AdditionalDetailContainer>
         </TextContainer>
-      </>
+      </ContractContainer>
     ),
     contract: (
       <ContractContainer>

@@ -439,6 +439,10 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contractEl, assignEl])
 
+  const handleViewProduct = (productId: string) => {
+    router.push(`/admin/productDetails?productId=${productId}&page=inventory`)
+  }
+
   return {
     page,
     setPage,
@@ -518,6 +522,7 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     setShowBulkDeleteModel,
     filterData,
     setAssignEl,
-    setContractEl
+    setContractEl,
+    handleViewProduct
   }
 }

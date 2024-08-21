@@ -68,6 +68,9 @@ const TableView = ({
           <ContentContainer
             key={i}
             className={i === inventoryListLength - 1 ? 'last' : ''}
+            onClick={() => {
+              inventoryData.handleViewProduct(productList._id)
+            }}
           >
             {columns?.map((column, j) => (
               <TableList

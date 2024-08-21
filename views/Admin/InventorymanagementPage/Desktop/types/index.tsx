@@ -97,6 +97,7 @@ export interface UseInventoryProductInterface {
   filterData: FilterData
   setAssignEl: Dispatch<SetStateAction<HTMLElement | null>>
   setContractEl: Dispatch<SetStateAction<HTMLElement | null>>
+  handleViewProduct: (productId: string) => void
 }
 
 export type ModalState = {
