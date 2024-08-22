@@ -6,10 +6,15 @@ import { ProductList } from '@/utils/ApiTypes/ProductList'
 const useSubmit = (
   reset: any,
   selectedProduct: ProductList | undefined,
-  setIsPublishModalVisible: Dispatch<SetStateAction<boolean>>,
+  setIsPublishModalVisible: any,
   inventoryPage: boolean,
   fetchData: any,
-  publishModalData: any
+  publishModalData: any,
+  setPage: Dispatch<SetStateAction<number>> | undefined,
+  setSelectedProductIds: Dispatch<SetStateAction<string[]>> | undefined,
+  setForceUpdate: Dispatch<SetStateAction<boolean>> | undefined,
+  setSelectedProduct: Dispatch<SetStateAction<string>> | undefined,
+  fetchContractData: any
 ) => {
   const { mutateAsync } = usePut()
   inventoryPage
@@ -40,17 +45,17 @@ const useSubmit = (
         setIsPublishModalVisible(false)
         reset()
         publishModalData.setCalenderClick(false)
-        // if (inventoryPage) {
-        //   setPage(1)
-        //   setSelectedProductIds([])
-        //   setForceUpdate((prev: any) => !prev)
-        //   fetchContractData()
-        // } else {
-        //   fetchData()
-        // }
-        // fetchData()
-        fetchData()
-        // setSelectedProduct('')
+        if (inventoryPage) {
+          setPage?.(1)
+          setSelectedProductIds?.([])
+          setForceUpdate?.((prev: any) => !prev)
+          fetchContractData()
+          setIsPublishModalVisible('isPublishModalVisible')
+        } else {
+          fetchData()
+        }
+
+        setSelectedProduct?.('')
       }
     } catch (error: any) {
       if (!error?.response?.data?.message) {

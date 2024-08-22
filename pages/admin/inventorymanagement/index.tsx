@@ -3,6 +3,7 @@ import useScreenType from '@/utils/Customhooks/useScreenType'
 import CsvModal from '@/components/CsvModal'
 import AdminDeleteModal from '@/components/AdminDeleteModal'
 import AuthLayout from '@/components/AuthLayout'
+import PublishModal from '@/components/PublishModal'
 import BulkDeleteModal from '@/components/BulkDeleteModal'
 import AdminUnassignModal from '@/components/AdminUnassignModal'
 import AdminRevokeModal from '@/components/AdminRevokeModal'
@@ -74,6 +75,18 @@ const InventoryManagement = () => {
         setPage={inventoryData.setPage}
         setForceUpdate={inventoryData.setForceUpdate}
         inventoryData={inventoryData}
+      />
+      <PublishModal
+        selectedProduct={inventoryData.productDetails}
+        fetchData={inventoryData.fetchData}
+        setIsPublishModalVisible={inventoryData.toggleModal as any}
+        inventoryPage={true}
+        isOpen={inventoryData.isModalOpen.isPublishModalVisible}
+        setPage={inventoryData.setPage}
+        setSelectedProductIds={inventoryData.setSelectedProductIds}
+        setForceUpdate={inventoryData.setForceUpdate}
+        fetchContractData={inventoryData.fetchContractData}
+        setSelectedProduct={inventoryData.setSelectedProduct}
       />
     </AuthLayout>
   )

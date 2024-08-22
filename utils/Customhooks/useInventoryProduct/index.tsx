@@ -48,15 +48,6 @@ export const useInventoryProduct = (): UseInventoryProductInterface => {
     undefined
   )
   const [selectedProduct, setSelectedProduct] = useState('')
-  // const [isPublishModalVisible, setIsPublishModalVisible] = useState(false)
-  // const [showRevokeModel, setShowRevokeModel] = useState(false)
-  // const [showDeleteModel, setShowDeleteModel] = useState(false)
-  // const [showBulkDeleteModel, setShowBulkDeleteModel] = useState(false)
-  // const [showUnassignedModel, setShowUnassignedModel] = useState(false)
-  // const [isAssignModalVisible, setIsAssignModalVisible] = useState(false)
-  // const [bulkAssignModalVisible, setBulkAssignModalVisible] =
-  //   useState<boolean>(false)
-  // const [isLotModalOpen, setIsLotModalOpen] = useState(false)
   const [actionButtonData, setActionButtonData] = useState<any>()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [assignEl, setAssignEl] = useState<null | HTMLElement>(null)

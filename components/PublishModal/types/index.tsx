@@ -6,9 +6,14 @@ export interface PublishModalProps {
   selectedProduct?: ProductList
   setSelectedProductId?: () => unknown
   fetchData: any
-  setIsPublishModalVisible: Dispatch<SetStateAction<boolean>>
+  setIsPublishModalVisible: any
   inventoryPage: boolean
   isOpen: boolean
+  setPage?: Dispatch<SetStateAction<number>>
+  setSelectedProductIds?: Dispatch<SetStateAction<string[]>>
+  setForceUpdate?: Dispatch<SetStateAction<boolean>>
+  fetchContractData?: any
+  setSelectedProduct?: Dispatch<SetStateAction<string>>
 }
 export interface PublishFormProps {
   handleSubmit: any
@@ -16,8 +21,9 @@ export interface PublishFormProps {
   control: any
   errors: any
   watch: any
-  setIsPublishModalVisible: Dispatch<SetStateAction<boolean>>
+  setIsPublishModalVisible: any
   setValue: any
   publishModalData: UsePublishDataInterface
   reset: any
+  inventoryPage: boolean
 }

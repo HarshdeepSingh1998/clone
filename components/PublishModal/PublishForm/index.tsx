@@ -28,7 +28,8 @@ const PublishForm: React.FC<PublishFormProps> = ({
   errors,
   setIsPublishModalVisible,
   publishModalData,
-  reset
+  reset,
+  inventoryPage
 }) => {
   const [, setShowContractFields] = useState(false)
   const [showAdditionalFields, setShowAdditionalFields] = useState(false)
@@ -168,7 +169,13 @@ const PublishForm: React.FC<PublishFormProps> = ({
               variant="text"
               label={'Cancel'}
               onClick={() => {
-                setIsPublishModalVisible(false), reset()
+                if (inventoryPage) {
+                  setIsPublishModalVisible('isPublishModalVisible')
+                } else {
+                  setIsPublishModalVisible(false)
+                }
+
+                reset()
               }}
             />
           </ButtonContainer>

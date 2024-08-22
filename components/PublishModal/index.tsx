@@ -16,7 +16,12 @@ const PublishModal: React.FC<PublishModalProps> = ({
   fetchData,
   setIsPublishModalVisible,
   inventoryPage,
-  isOpen
+  isOpen,
+  setPage,
+  setSelectedProductIds,
+  setForceUpdate,
+  fetchContractData,
+  setSelectedProduct
 }) => {
   const {
     handleSubmit,
@@ -34,12 +39,23 @@ const PublishModal: React.FC<PublishModalProps> = ({
     setIsPublishModalVisible,
     inventoryPage,
     fetchData,
-    publishModalData
+    publishModalData,
+    setPage,
+    setSelectedProductIds,
+    setForceUpdate,
+    fetchContractData,
+    setSelectedProduct
   )
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={() => setIsPublishModalVisible(false)}
+      onRequestClose={() => {
+        if (inventoryPage) {
+          setIsPublishModalVisible('isPublishModalVisible')
+        } else {
+          setIsPublishModalVisible(false)
+        }
+      }}
       style={Style}
     >
       <ModalContainer>
@@ -57,6 +73,7 @@ const PublishModal: React.FC<PublishModalProps> = ({
           setValue={setValue}
           publishModalData={publishModalData}
           reset={reset}
+          inventoryPage={inventoryPage}
         />
       </ModalContainer>
     </Modal>
