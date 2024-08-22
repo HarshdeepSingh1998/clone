@@ -73,7 +73,7 @@ const Input = ({
           />
         )}
       />
-      <ErrorMessageContainer>
+      <ErrorMessageContainer className="currency-selector">
         {errors[controllername] && (
           <span>{errors[controllername].message}</span>
         )}

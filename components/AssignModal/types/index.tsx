@@ -6,9 +6,15 @@ export interface AssignModalProps {
   selectedProduct?: ProductList
   setSelectedProductId?: () => unknown
   fetchData: any
-  setIsAssignModalVisible: Dispatch<SetStateAction<boolean>>
+  setIsAssignModalVisible: any
   inventoryPage: boolean
   isOpen: boolean
+  setPage?: Dispatch<SetStateAction<number>>
+  setUserPage?: Dispatch<SetStateAction<number>>
+  setSelectedProductIds?: Dispatch<SetStateAction<string[]>>
+  setForceUpdate?: Dispatch<SetStateAction<boolean>>
+  fetchContractData?: any
+  setSelectedProduct?: Dispatch<SetStateAction<string>>
 }
 
 export interface AssignFormProps {
@@ -28,8 +34,9 @@ export interface AssignFormProps {
   control: any
   errors: any
   watch: any
-  setIsAssignModalVisible: Dispatch<SetStateAction<boolean>>
+  setIsAssignModalVisible: any
   contractList: ContractList[] | undefined
   setValue: any
   reset: any
+  inventoryPage: boolean
 }

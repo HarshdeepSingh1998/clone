@@ -13,7 +13,7 @@ export const InputText = styled.div`
 export const CurrencyDropdownContainer = styled.div`
   display: grid;
   grid-template-columns: 90px 5px 50%;
-  align-items: center;
+  align-items: baseline;
   background: #1c1f30;
   border-radius: 12px;
   height: 48px;
@@ -21,7 +21,7 @@ export const CurrencyDropdownContainer = styled.div`
     border: none;
     background: #6f767e;
     width: 2px;
-    height: 24px;
+    height: 12px;
     border-radius: 50px;
   }
   .deposit-price {
@@ -34,6 +34,11 @@ export const CurrencyDropdownContainer = styled.div`
   }
   .deposit-unit {
     border: none;
+  }
+  .currency-selector {
+    position: absolute;
+    width: 200%;
+    top: 43px;
   }
 `
 export const InputContainer = styled.div`

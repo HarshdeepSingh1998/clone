@@ -16,9 +16,16 @@ const AssignModal: React.FC<AssignModalProps> = ({
   fetchData,
   setIsAssignModalVisible,
   inventoryPage,
-  isOpen
+  isOpen,
+  setPage,
+  setUserPage,
+  setSelectedProductIds,
+  setForceUpdate,
+  fetchContractData,
+  setSelectedProduct
 }) => {
-  const { contractList, assignOption, contractTypeOptions } = useUserData()
+  const { contractList, assignOption, contractTypeOptions, setUserDataList } =
+    useUserData()
 
   const {
     handleSubmit,
@@ -38,13 +45,26 @@ const AssignModal: React.FC<AssignModalProps> = ({
     selectedProduct,
     setIsAssignModalVisible,
     inventoryPage,
-    fetchData
+    fetchData,
+    setPage,
+    setUserPage,
+    setSelectedProductIds,
+    setForceUpdate,
+    fetchContractData,
+    setSelectedProduct,
+    setUserDataList
   )
 
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={() => setIsAssignModalVisible(false)}
+      onRequestClose={() => {
+        if (inventoryPage) {
+          setIsAssignModalVisible('isAssignModalVisible')
+        } else {
+          setIsAssignModalVisible(false)
+        }
+      }}
       style={Style}
     >
       <ModalContainer>
@@ -64,6 +84,7 @@ const AssignModal: React.FC<AssignModalProps> = ({
           contractList={contractList}
           setValue={setValue}
           reset={reset}
+          inventoryPage={inventoryPage}
         />
       </ModalContainer>
     </Modal>

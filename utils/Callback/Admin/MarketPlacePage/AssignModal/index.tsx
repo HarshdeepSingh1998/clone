@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import usePut from '@/hooks/usePut'
 import { ProductList } from '@/utils/ApiTypes/ProductList'
+import { UsersList } from '@/utils/ApiTypes/UsersList'
 
 const useSubmit = (
   setError: any,
@@ -9,9 +10,16 @@ const useSubmit = (
   setValue: any,
   reset: any,
   selectedProduct: ProductList | undefined,
-  setIsAssignModalVisible: Dispatch<SetStateAction<boolean>>,
+  setIsAssignModalVisible: any,
   inventoryPage: boolean,
-  fetchData: any
+  fetchData: any,
+  setPage: Dispatch<SetStateAction<number>> | undefined,
+  setUserPage: Dispatch<SetStateAction<number>> | undefined,
+  setSelectedProductIds: Dispatch<SetStateAction<string[]>> | undefined,
+  setForceUpdate: Dispatch<SetStateAction<boolean>> | undefined,
+  fetchContractData: any,
+  setSelectedProduct: Dispatch<SetStateAction<string>> | undefined,
+  setUserDataList: Dispatch<SetStateAction<UsersList[] | undefined>>
 ) => {
   const contract = watch('contract')
   const hosting = watch('hosting')
@@ -73,15 +81,18 @@ const useSubmit = (
         setIsAssignModalVisible(false)
         reset()
         if (inventoryPage) {
-          //   setPage(1)
-          //   setForceUpdate((prev: any) => !prev)
-          //   setSelectedProductIds([])
-          //   setUserDataList([])
-          //   setUserPage(1)
-          //   fetchContractData()
+          setPage?.(1)
+          setForceUpdate?.((prev: any) => !prev)
+          setSelectedProductIds?.([])
+          setUserDataList?.([])
+          setUserPage?.(1)
+          fetchContractData()
+          setIsAssignModalVisible('isAssignModalVisible')
         } else {
           fetchData()
         }
+
+        setSelectedProduct?.('')
       }
     } catch (error: any) {
       if (!error?.response?.data?.message) {

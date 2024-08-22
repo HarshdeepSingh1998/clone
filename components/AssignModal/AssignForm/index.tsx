@@ -24,7 +24,8 @@ const AssignForm: React.FC<AssignFormProps> = ({
   setIsAssignModalVisible,
   contractList,
   setValue,
-  reset
+  reset,
+  inventoryPage
 }) => {
   const [, setShowContractFields] = useState(false)
   const [showAdditionalFields, setShowAdditionalFields] = useState(false)
@@ -117,7 +118,12 @@ const AssignForm: React.FC<AssignFormProps> = ({
               variant="text"
               label={'Cancel'}
               onClick={() => {
-                setIsAssignModalVisible(false)
+                if (inventoryPage) {
+                  setIsAssignModalVisible('isAssignModalVisible')
+                } else {
+                  setIsAssignModalVisible(false)
+                }
+
                 reset()
               }}
             />

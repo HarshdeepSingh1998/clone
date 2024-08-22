@@ -3,6 +3,7 @@ import useScreenType from '@/utils/Customhooks/useScreenType'
 import CsvModal from '@/components/CsvModal'
 import AdminDeleteModal from '@/components/AdminDeleteModal'
 import AuthLayout from '@/components/AuthLayout'
+import AssignModal from '@/components/AssignModal'
 import PublishModal from '@/components/PublishModal'
 import BulkDeleteModal from '@/components/BulkDeleteModal'
 import AdminUnassignModal from '@/components/AdminUnassignModal'
@@ -22,7 +23,8 @@ const InventoryManagement = () => {
         inventoryData.isModalOpen.showDeleteModel ||
         inventoryData.isModalOpen.showBulkDeleteModel ||
         inventoryData.isModalOpen.showUnassignedModel ||
-        inventoryData.isModalOpen.showRevokeModel
+        inventoryData.isModalOpen.showRevokeModel ||
+        inventoryData.isModalOpen.isPublishModalVisible
       }
     >
       <InventorymanagementContainer>
@@ -76,18 +78,35 @@ const InventoryManagement = () => {
         setForceUpdate={inventoryData.setForceUpdate}
         inventoryData={inventoryData}
       />
-      <PublishModal
-        selectedProduct={inventoryData.productDetails}
-        fetchData={inventoryData.fetchData}
-        setIsPublishModalVisible={inventoryData.toggleModal as any}
-        inventoryPage={true}
-        isOpen={inventoryData.isModalOpen.isPublishModalVisible}
-        setPage={inventoryData.setPage}
-        setSelectedProductIds={inventoryData.setSelectedProductIds}
-        setForceUpdate={inventoryData.setForceUpdate}
-        fetchContractData={inventoryData.fetchContractData}
-        setSelectedProduct={inventoryData.setSelectedProduct}
-      />
+      {inventoryData.isModalOpen.isPublishModalVisible && (
+        <PublishModal
+          selectedProduct={inventoryData.productDetails}
+          fetchData={inventoryData.fetchData}
+          setIsPublishModalVisible={inventoryData.toggleModal as any}
+          inventoryPage={true}
+          isOpen={inventoryData.isModalOpen.isPublishModalVisible}
+          setPage={inventoryData.setPage}
+          setSelectedProductIds={inventoryData.setSelectedProductIds}
+          setForceUpdate={inventoryData.setForceUpdate}
+          fetchContractData={inventoryData.fetchContractData}
+          setSelectedProduct={inventoryData.setSelectedProduct}
+        />
+      )}
+      {inventoryData.isModalOpen.isAssignModalVisible && (
+        <AssignModal
+          selectedProduct={inventoryData.productDetails}
+          fetchData={inventoryData.fetchData}
+          setIsAssignModalVisible={inventoryData.toggleModal as any}
+          inventoryPage={true}
+          isOpen={inventoryData.isModalOpen.isAssignModalVisible}
+          setPage={inventoryData.setPage}
+          setUserPage={inventoryData.setUserPage}
+          setSelectedProductIds={inventoryData.setSelectedProductIds}
+          setForceUpdate={inventoryData.setForceUpdate}
+          fetchContractData={inventoryData.fetchContractData}
+          setSelectedProduct={inventoryData.setSelectedProduct}
+        />
+      )}
     </AuthLayout>
   )
 }

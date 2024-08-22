@@ -93,6 +93,7 @@ export const useUserData = () => {
     contractList,
     totalCount,
     assignOption,
-    contractTypeOptions
+    contractTypeOptions,
+    setUserDataList
   }
 }
