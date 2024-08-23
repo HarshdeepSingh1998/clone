@@ -34,4 +34,6 @@ export interface PublishFormProps {
   reset: any
   inventoryPage: boolean
   unitAskingPrice: number
+  setUnitAskingPrice: Dispatch<SetStateAction<number>>
+  children: any
 }

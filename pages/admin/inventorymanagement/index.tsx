@@ -26,7 +26,8 @@ const InventoryManagement = () => {
         inventoryData.isModalOpen.showUnassignedModel ||
         inventoryData.isModalOpen.showRevokeModel ||
         inventoryData.isModalOpen.isPublishModalVisible ||
-        inventoryData.isModalOpen.isLotModalOpen
+        inventoryData.isModalOpen.isLotModalOpen ||
+        inventoryData.isModalOpen.isAssignModalVisible
       }
     >
       <InventorymanagementContainer>

@@ -25,62 +25,11 @@ const LotForm: React.FC<LotFormProps> = ({
   reset,
   lotModalData,
   unitAskingPrice,
-  setValue
+  setValue,
+  setUnitAskingPrice
 }) => {
   return (
     <>
-      <ProductListContainer>
-        <ProductListContent>
-          Products
-          <AskingPriceContainer>
-            <span>QTY:&nbsp; </span>
-            {inventoryData.selectedProductIds?.length}
-          </AskingPriceContainer>
-        </ProductListContent>
-        <ProductListContent className="product-list-content">
-          {lotModalData.lotProducts?.map((product, i: number) => (
-            <LotContainer key={i}>
-              <LotContent>
-                <ImageContainer>
-                  {product?.images?.length > 0 ? (
-                    <Image
-                      src={`${product?.images[0]}`}
-                      alt="minus"
-                      width={100}
-                      height={100}
-                    />
-                  ) : (
-                    <Image src={Bid} alt="minus" width={100} height={100} />
-                  )}
-                </ImageContainer>
-                <ModalNameContainer>
-                  <Tooltip title={product?.modelName} placement="top-end">
-                    <ModalNameContainer className="mobile-machine-modal">
-                      {product?.modelName && product?.modelName?.length > 10
-                        ? `${product?.modelName?.substring(0, 10)}...`
-                        : `${product?.modelName}` || 'N/A'}
-                    </ModalNameContainer>
-                  </Tooltip>
-
-                  <span className="mobile-hashrate">
-                    {product?.power} kW | {product?.hashRate} TH/s
-                  </span>
-                </ModalNameContainer>
-              </LotContent>
-              <ModalNameContainer>
-                <Tooltip title={product?.serialNumber} placement="top-end">
-                  <SerialNumberContainer>
-                    {product?.serialNumber && product?.serialNumber?.length > 10
-                      ? `SN: ${product?.serialNumber?.substring(0, 10)}...`
-                      : `SN: ${product?.serialNumber}` || 'N/A'}
-                  </SerialNumberContainer>
-                </Tooltip>
-              </ModalNameContainer>
-            </LotContainer>
-          ))}
-        </ProductListContent>
-        <BorderBottom />
-      </ProductListContainer>
       <PublishForm
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
@@ -93,7 +42,64 @@ const LotForm: React.FC<LotFormProps> = ({
         reset={reset}
         inventoryPage={true}
         unitAskingPrice={unitAskingPrice}
-      />
+        setUnitAskingPrice={setUnitAskingPrice}
+      >
+        <div>
+          <ProductListContainer>
+            <ProductListContent>
+              Products
+              <AskingPriceContainer>
+                <span>QTY:&nbsp; </span>
+                {inventoryData.selectedProductIds?.length}
+              </AskingPriceContainer>
+            </ProductListContent>
+          </ProductListContainer>
+          <ProductListContent className="product-list-content">
+            {lotModalData.lotProducts?.map((product, i: number) => (
+              <LotContainer key={i}>
+                <LotContent>
+                  <ImageContainer>
+                    {product?.images?.length > 0 ? (
+                      <Image
+                        src={`${product?.images[0]}`}
+                        alt="minus"
+                        width={100}
+                        height={100}
+                      />
+                    ) : (
+                      <Image src={Bid} alt="minus" width={100} height={100} />
+                    )}
+                  </ImageContainer>
+                  <ModalNameContainer>
+                    <Tooltip title={product?.modelName} placement="top-end">
+                      <ModalNameContainer className="mobile-machine-modal">
+                        {product?.modelName && product?.modelName?.length > 10
+                          ? `${product?.modelName?.substring(0, 10)}...`
+                          : `${product?.modelName}` || 'N/A'}
+                      </ModalNameContainer>
+                    </Tooltip>
+
+                    <span className="mobile-hashrate">
+                      {product?.power} kW | {product?.hashRate} TH/s
+                    </span>
+                  </ModalNameContainer>
+                </LotContent>
+                <ModalNameContainer>
+                  <Tooltip title={product?.serialNumber} placement="top-end">
+                    <SerialNumberContainer>
+                      {product?.serialNumber &&
+                      product?.serialNumber?.length > 10
+                        ? `SN: ${product?.serialNumber?.substring(0, 10)}...`
+                        : `SN: ${product?.serialNumber}` || 'N/A'}
+                    </SerialNumberContainer>
+                  </Tooltip>
+                </ModalNameContainer>
+              </LotContainer>
+            ))}
+          </ProductListContent>
+          <BorderBottom />
+        </div>
+      </PublishForm>
     </>
   )
 }

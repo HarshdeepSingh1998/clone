@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
 export const ProductListContainer = styled.div`
-  max-height: 250px;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   gap: 10px;

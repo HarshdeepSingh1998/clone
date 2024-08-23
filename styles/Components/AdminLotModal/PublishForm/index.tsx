@@ -8,8 +8,6 @@ export const FormContainer = styled.form`
   @media screen and (max-width: 1366px) {
     gap: 5px;
   }
-  max-height: 70vh;
-  overflow: hidden auto;
 `
 export const InputContainer = styled.div`
   display: flex;
@@ -63,6 +61,7 @@ export const ButtonContainer = styled.div<{ disable?: boolean }>`
   align-items: center;
   // padding-bottom: 31px;
   gap: 10px;
+  padding-top: 10px;
   button {
     width: 100%;
     height: 50px;

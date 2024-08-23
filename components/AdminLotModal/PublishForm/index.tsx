@@ -31,7 +31,9 @@ const PublishForm: React.FC<PublishFormProps> = ({
   publishModalData,
   reset,
   inventoryPage,
-  unitAskingPrice
+  unitAskingPrice,
+  setUnitAskingPrice,
+  children
 }) => {
   const [, setShowContractFields] = useState(false)
   const [showAdditionalFields, setShowAdditionalFields] = useState(false)
@@ -54,139 +56,145 @@ const PublishForm: React.FC<PublishFormProps> = ({
   }, [publishModalData])
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)}>
-      <InputContainer>
-        <>
-          <SelectIndicator
-            title="Hosting Type"
-            control={control}
-            controllername="hosting"
-            defaultValue={''}
-            placeholder="Select Hosting Type"
-            options={hostingTypeOptions}
-            width="100%"
-            errors={errors}
-          />
-          {publishModalData.hostingType === 'with_hosting' && (
-            <SelectIndicator
-              title="Contract Type"
-              control={control}
-              controllername="contract"
-              defaultValue={''}
-              placeholder="Select Contract Type"
-              options={publishModalData.ContractIdOptions}
-              width="100%"
-              errors={errors}
-            />
-          )}
-          {showAdditionalFields && (
+    <>
+      <FormContainer onSubmit={handleSubmit(onSubmit)}>
+        <div style={{ maxHeight: '500px', overflowY: 'scroll' }}>
+          {children}
+          <InputContainer>
             <>
-              {renderFieldRows(control, errors)}
-              <InputContent>
-                <CurrencyDropdown
-                  control={control}
-                  errors={errors}
-                  controllername={currencyData.controllername}
-                  title={currencyData.title}
-                />
-                <Switch
-                  adminLotModal={publishModalData}
-                  startvalue="Sell"
-                  endvalue="Auction"
-                />
-              </InputContent>
-              <TotalPriceContainer>
-                Total Asking Price: <span>${unitAskingPrice} </span>
-              </TotalPriceContainer>
-              <div>
-                {publishModalData.toggleValue === 'Bid' && (
-                  <DatePickerContainer>
-                    {dataPickerData.map(data => (
-                      <DatePicker
-                        publishModalData={publishModalData as any}
-                        controllername={data.controllername}
-                        control={control}
-                        errors={errors}
-                        title={data.title}
-                      />
-                    ))}
-                  </DatePickerContainer>
-                )}
-              </div>
-            </>
-          )}
-          {publishModalData.hostingType === 'without_hosting' && (
-            <>
-              <Switch
-                adminLotModal={publishModalData}
-                className="switch"
-                startvalue="Auction"
-                endvalue="Sell"
+              <SelectIndicator
+                title="Hosting Type"
+                control={control}
+                controllername="hosting"
+                defaultValue={''}
+                placeholder="Select Hosting Type"
+                options={hostingTypeOptions}
+                width="100%"
+                errors={errors}
               />
-              {publishModalData.toggleValue === 'Bid' && (
-                <>
-                  <InputContent>
-                    {withoutHostingCurrencyData.map(data => (
-                      <CurrencyDropdown
-                        control={control}
-                        errors={errors}
-                        controllername={data.controllername}
-                        title={data.title}
-                      />
-                    ))}
-                  </InputContent>
-                  <DatePickerContainer>
-                    {dataPickerData.map(data => (
-                      <DatePicker
-                        publishModalData={publishModalData as any}
-                        controllername={data.controllername}
-                        control={control}
-                        errors={errors}
-                        title={data.title}
-                      />
-                    ))}
-                  </DatePickerContainer>
-                </>
+              {publishModalData.hostingType === 'with_hosting' && (
+                <SelectIndicator
+                  title="Contract Type"
+                  control={control}
+                  controllername="contract"
+                  defaultValue={''}
+                  placeholder="Select Contract Type"
+                  options={publishModalData.ContractIdOptions}
+                  width="100%"
+                  errors={errors}
+                />
               )}
-              {publishModalData.toggleValue !== 'Bid' && (
-                <InputContent>
-                  {withoutHostingCurrencyData.map(data => (
+              {showAdditionalFields && (
+                <>
+                  {renderFieldRows(control, errors)}
+                  <InputContent>
                     <CurrencyDropdown
                       control={control}
                       errors={errors}
-                      controllername={data.controllername}
-                      title={data.title}
+                      controllername={currencyData.controllername}
+                      title={currencyData.title}
                     />
-                  ))}
-                </InputContent>
+                    <Switch
+                      adminLotModal={publishModalData}
+                      startvalue="Sell"
+                      endvalue="Auction"
+                    />
+                  </InputContent>
+                  <TotalPriceContainer>
+                    Total Asking Price: <span>${unitAskingPrice} </span>
+                  </TotalPriceContainer>
+                  <div>
+                    {publishModalData.toggleValue === 'Bid' && (
+                      <DatePickerContainer>
+                        {dataPickerData.map(data => (
+                          <DatePicker
+                            publishModalData={publishModalData as any}
+                            controllername={data.controllername}
+                            control={control}
+                            errors={errors}
+                            title={data.title}
+                          />
+                        ))}
+                      </DatePickerContainer>
+                    )}
+                  </div>
+                </>
+              )}
+              {publishModalData.hostingType === 'without_hosting' && (
+                <>
+                  <Switch
+                    adminLotModal={publishModalData}
+                    className="switch"
+                    startvalue="Auction"
+                    endvalue="Sell"
+                  />
+                  {publishModalData.toggleValue === 'Bid' && (
+                    <>
+                      <InputContent>
+                        {withoutHostingCurrencyData.map(data => (
+                          <CurrencyDropdown
+                            control={control}
+                            errors={errors}
+                            controllername={data.controllername}
+                            title={data.title}
+                          />
+                        ))}
+                      </InputContent>
+                      <DatePickerContainer>
+                        {dataPickerData.map(data => (
+                          <DatePicker
+                            publishModalData={publishModalData as any}
+                            controllername={data.controllername}
+                            control={control}
+                            errors={errors}
+                            title={data.title}
+                          />
+                        ))}
+                      </DatePickerContainer>
+                    </>
+                  )}
+                  {publishModalData.toggleValue !== 'Bid' && (
+                    <InputContent>
+                      {withoutHostingCurrencyData.map(data => (
+                        <CurrencyDropdown
+                          control={control}
+                          errors={errors}
+                          controllername={data.controllername}
+                          title={data.title}
+                        />
+                      ))}
+                    </InputContent>
+                  )}
+                </>
               )}
             </>
-          )}
-          <ButtonContainer disable={false}>
-            <Button
-              type="submit"
-              variant="contained"
-              disable={false}
-              label={'Publish'}
-            />
-            <Button
-              type="submit"
-              variant="text"
-              label={'Cancel'}
-              onClick={() => {
-                if (inventoryPage) {
-                  setIsPublishModalVisible('isPublishModalVisible')
-                } else {
-                  setIsPublishModalVisible(false)
-                }
+          </InputContainer>
+        </div>
+        <ButtonContainer disable={false}>
+          <Button
+            type="submit"
+            variant="contained"
+            disable={false}
+            label={'Publish'}
+          />
+          <Button
+            type="submit"
+            variant="text"
+            label={'Cancel'}
+            onClick={() => {
+              if (inventoryPage) {
+                setIsPublishModalVisible('isLotModalOpen')
+              } else {
+                setIsPublishModalVisible(false)
+              }
 
-                reset()
-              }}
-            />
-          </ButtonContainer>
-        </>
-      </InputContainer>
-    </FormContainer>
+              reset()
+              setUnitAskingPrice(0)
+            }}
+          />
+        </ButtonContainer>
+      </FormContainer>
+    </>
   )
 }
 
