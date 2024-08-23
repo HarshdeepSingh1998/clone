@@ -19,7 +19,8 @@ import {
   ButtonContainer,
   DatePickerContainer,
   InputContent,
-  TotalPriceContainer
+  TotalPriceContainer,
+  FormContent
 } from '@/styles/Components/AdminLotModal/PublishForm'
 
 const PublishForm: React.FC<PublishFormProps> = ({
@@ -58,7 +59,7 @@ const PublishForm: React.FC<PublishFormProps> = ({
   return (
     <>
       <FormContainer onSubmit={handleSubmit(onSubmit)}>
-        <div style={{ maxHeight: '500px', overflowY: 'scroll' }}>
+        <FormContent>
           {children}
           <InputContainer>
             <>
@@ -169,7 +170,7 @@ const PublishForm: React.FC<PublishFormProps> = ({
               )}
             </>
           </InputContainer>
-        </div>
+        </FormContent>
         <ButtonContainer disable={false}>
           <Button
             type="submit"

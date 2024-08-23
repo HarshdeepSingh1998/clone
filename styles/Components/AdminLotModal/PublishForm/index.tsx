@@ -93,3 +93,12 @@ export const TotalPriceContainer = styled.div`
     color: #fb674b;
   }
 `
+
+export const FormContent = styled.div`
+  max-height: 500px;
+  overflow-y: scroll;
+
+  @media (max-width: 767px) {
+    max-height: 300px;
+  }
+`
