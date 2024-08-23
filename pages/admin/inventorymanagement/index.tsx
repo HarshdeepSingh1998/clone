@@ -7,6 +7,7 @@ import AssignModal from '@/components/AssignModal'
 import PublishModal from '@/components/PublishModal'
 import AdminLotModal from '@/components/AdminLotModal'
 import BulkDeleteModal from '@/components/BulkDeleteModal'
+import BulkAssignModal from '@/components/BulkAssignModal'
 import AdminUnassignModal from '@/components/AdminUnassignModal'
 import AdminRevokeModal from '@/components/AdminRevokeModal'
 import { useInventoryProduct } from '@/utils/Customhooks/useInventoryProduct'
@@ -27,7 +28,8 @@ const InventoryManagement = () => {
         inventoryData.isModalOpen.showRevokeModel ||
         inventoryData.isModalOpen.isPublishModalVisible ||
         inventoryData.isModalOpen.isLotModalOpen ||
-        inventoryData.isModalOpen.isAssignModalVisible
+        inventoryData.isModalOpen.isAssignModalVisible ||
+        inventoryData.isModalOpen.bulkAssignModalVisible
       }
     >
       <InventorymanagementContainer>
@@ -112,6 +114,20 @@ const InventoryManagement = () => {
       )}
       {inventoryData.isModalOpen.isLotModalOpen && (
         <AdminLotModal inventoryData={inventoryData} />
+      )}
+      {inventoryData.isModalOpen.bulkAssignModalVisible && (
+        <BulkAssignModal
+          fetchData={inventoryData.fetchData}
+          setIsAssignModalVisible={inventoryData.toggleModal as any}
+          inventoryPage={true}
+          isOpen={inventoryData.isModalOpen.bulkAssignModalVisible}
+          setPage={inventoryData.setPage}
+          setUserPage={inventoryData.setUserPage}
+          setSelectedProductIds={inventoryData.setSelectedProductIds}
+          setForceUpdate={inventoryData.setForceUpdate}
+          fetchContractData={inventoryData.fetchContractData}
+          selectedProductIds={inventoryData.selectedProductIds}
+        />
       )}
     </AuthLayout>
   )
