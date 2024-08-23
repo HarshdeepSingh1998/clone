@@ -5,6 +5,7 @@ import AdminDeleteModal from '@/components/AdminDeleteModal'
 import AuthLayout from '@/components/AuthLayout'
 import AssignModal from '@/components/AssignModal'
 import PublishModal from '@/components/PublishModal'
+import AdminLotModal from '@/components/AdminLotModal'
 import BulkDeleteModal from '@/components/BulkDeleteModal'
 import AdminUnassignModal from '@/components/AdminUnassignModal'
 import AdminRevokeModal from '@/components/AdminRevokeModal'
@@ -24,7 +25,8 @@ const InventoryManagement = () => {
         inventoryData.isModalOpen.showBulkDeleteModel ||
         inventoryData.isModalOpen.showUnassignedModel ||
         inventoryData.isModalOpen.showRevokeModel ||
-        inventoryData.isModalOpen.isPublishModalVisible
+        inventoryData.isModalOpen.isPublishModalVisible ||
+        inventoryData.isModalOpen.isLotModalOpen
       }
     >
       <InventorymanagementContainer>
@@ -106,6 +108,9 @@ const InventoryManagement = () => {
           fetchContractData={inventoryData.fetchContractData}
           setSelectedProduct={inventoryData.setSelectedProduct}
         />
+      )}
+      {inventoryData.isModalOpen.isLotModalOpen && (
+        <AdminLotModal inventoryData={inventoryData} />
       )}
     </AuthLayout>
   )

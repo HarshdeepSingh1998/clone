@@ -1,3 +1,4 @@
+import { UseAdminLotModalDataInterface } from '@/utils/Customhooks/useAdminLotModalData'
 import { UsePublishDataInterface } from '@/utils/Customhooks/usePublishModal/types'
 import { MarketPlaceDataInterface } from '@/views/User/MarketPlacePage/types'
 
@@ -16,4 +17,5 @@ export interface SwitchProps {
     toggleValue: string
     handleToggleChange: () => void
   }
+  adminLotModal?: UseAdminLotModalDataInterface
 }

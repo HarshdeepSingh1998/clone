@@ -18,7 +18,8 @@ const Switch: React.FC<SwitchProps> = ({
   marketplaceData,
   title,
   userPublishModalData,
-  userLotModalData
+  userLotModalData,
+  adminLotModal
 }) => {
   if (userPublishModalData) {
     return (
@@ -140,6 +141,48 @@ const Switch: React.FC<SwitchProps> = ({
                 <input
                   type="checkbox"
                   onChange={publishModalData.handleHeaderCheckboxToggle}
+                />
+              }
+              <div>Disable Buy Now From Auction</div>
+            </CheckboxContent>
+          </CheckboxContainer>
+        )}
+      </SwitchContainer>
+    )
+  }
+
+  if (adminLotModal) {
+    return (
+      <SwitchContainer className={className}>
+        <SwitchContent className={className}>
+          <div>
+            <InputText>{title || `Type`}</InputText>
+          </div>
+          <MainContainer
+            toggleValue={adminLotModal.toggleValue}
+            className={className}
+          >
+            <span style={{ marginTop: '3px' }}>{startvalue}</span>
+            <ToggleContainer>
+              <AntSwitch
+                defaultChecked
+                inputProps={{
+                  'aria-label': 'ant design'
+                }}
+                onChange={adminLotModal.handleToggleChange}
+              />
+            </ToggleContainer>
+            <span style={{ marginTop: '3px' }}>{endvalue}</span>
+          </MainContainer>
+        </SwitchContent>
+
+        {adminLotModal.toggleValue === 'Bid' && (
+          <CheckboxContainer>
+            <CheckboxContent publishModal={true}>
+              {
+                <input
+                  type="checkbox"
+                  onChange={adminLotModal.handleHeaderCheckboxToggle}
                 />
               }
               <div>Disable Buy Now From Auction</div>
