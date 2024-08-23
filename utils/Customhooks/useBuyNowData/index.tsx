@@ -42,23 +42,40 @@ export const useBuyNowData = ({
     )
 
     const askPrice = productDetails?.[0]?.askPrice ?? 0
-    const closedPrice = productDetails?.[0]?.hosting ? askPrice : askPrice
+    const shippingPrice = productDetails?.[0]?.shippingPrice ?? 0
+    const closedPrice = productDetails?.[0]?.hosting
+      ? askPrice
+      : askPrice + shippingPrice
+    const amount = productDetails?.[0]?.hosting
+      ? askPrice +
+        productDetails?.[0]?.contract?.depositPrice * productDetails?.length +
+        productDetails?.[0]?.contract?.setupPrice * productDetails?.length
+      : askPrice + shippingPrice
 
     try {
       const response = await mutateAsync({
         url: `/api/buyProduct/${product?._id}`,
         payload: {
           assignee: product?.user?._id,
-          closedPrice: closedPrice
+          closedPrice: closedPrice,
+          amount: amount
         }
       })
       if (response?.data?.status === 200) {
         const checkoutUrl = response.data.data.checkoutUrl
         toast.success(`${response?.data?.message}`)
+        if (checkoutUrl) {
+          const anchor = document.createElement('a')
+          anchor.href = checkoutUrl
+          anchor.target = '_blank'
+          anchor.rel = 'noopener noreferrer'
+          anchor.click()
+        }
+
         handleModalClose()
         reset()
         // router.push('/user/inventorymanagement')
-        window.open(checkoutUrl, '_blank')
+        // window.open(checkoutUrl, '_blank')
         setProductList([])
         setPage(1)
         setForceUpdate(prev => !prev)

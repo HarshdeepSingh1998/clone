@@ -31,14 +31,13 @@ export const ButtonContainer = styled.div<{ data?: ProductList }>`
 
       return `
       .place-bid-button {
-        opacity: ${isWithinDateRange && isBidder ? '0.5' : '1'};
-        cursor: ${isWithinDateRange && isBidder ? 'not-allowed' : ''};
+        opacity: ${!isWithinDateRange || isBidder ? '0.5' : '1'};
+        cursor: ${!isWithinDateRange || isBidder ? 'not-allowed' : ''};
       }
 
       .buy-now-button {
-        opacity: ${isWithinDateRange && disableBuyNow ? '0.5' : '1'};
-        cursor: ${isWithinDateRange && disableBuyNow ? 'not-allowed' : ''};
-
+        opacity: ${!isWithinDateRange || disableBuyNow ? '0.5' : '1'};
+        cursor: ${!isWithinDateRange || disableBuyNow ? 'not-allowed' : ''};
       }
     `
     }}

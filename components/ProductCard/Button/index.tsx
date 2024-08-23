@@ -60,7 +60,7 @@ const ProductCardButton: React.FC<ButtonProps> = ({
                   onClick={() => buyNowClick?.(data._id)}
                 />
               ) : (
-                <ButtonContainer className="button-container">
+                <ButtonContainer className="button-container" data={data}>
                   <Button
                     label={'Place Bid'}
                     variant="outline"
