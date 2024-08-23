@@ -173,7 +173,11 @@ export const generateTableData = (
       </Tooltip>
     ),
     actions: (
-      <ButtonContainer disabled={data?.paymentReceived === true}>
+      <ButtonContainer
+        disabled={
+          data?.paymentReceived === true || data?.transactionType === 'Purchase'
+        }
+      >
         <Button
           type="button"
           variant="contained"

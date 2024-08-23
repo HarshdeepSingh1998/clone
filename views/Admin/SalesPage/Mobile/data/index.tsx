@@ -67,7 +67,12 @@ export const generateOpenTabelData = (
             <span style={{ color: 'red' }}>Product might be deleted</span>
           )}
         </AccordianContent>
-        <ButtonContainer disabled={data?.paymentReceived === true}>
+        <ButtonContainer
+          disabled={
+            data?.paymentReceived === true ||
+            data?.transactionType === 'Purchase'
+          }
+        >
           <Button
             type="button"
             variant="contained"
