@@ -10,7 +10,7 @@ import {
 const Footer: React.FC<FooterProps> = ({ data }) => {
   return (
     <FooterContainer>
-      {data?.askPrice && (
+      {data?.askPrice ? (
         <div>
           <FooterContent className="footer">
             <AskPriceContainer className="bit">{`Asking Price :$${data?.askPrice}`}</AskPriceContainer>
@@ -34,6 +34,8 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
             )}
           </FooterContent>
         </div>
+      ) : (
+        ''
       )}
       {!data?.askPrice && (
         <div>
