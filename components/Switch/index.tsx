@@ -61,13 +61,13 @@ const Switch: React.FC<SwitchProps> = ({
             className={className}
           >
             <span>{startvalue}</span>
-            <ToggleContainer style={{ opacity: '0.5' }}>
+            <ToggleContainer>
               <AntSwitch
                 inputProps={{
                   'aria-label': 'ant design'
                 }}
                 onChange={userLotModalData.handleToggleChange}
-                checked={true}
+                checked={userLotModalData.toggleValue === 'Bid'}
               />
             </ToggleContainer>
             <span>{endvalue}</span>

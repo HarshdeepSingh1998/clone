@@ -20,4 +20,5 @@ export interface LotFormProps {
   toggleValue: string
   handleToggleChange: () => void
   setUnitAskingPrice: Dispatch<SetStateAction<number>>
+  setToggleValue: Dispatch<SetStateAction<string>>
 }

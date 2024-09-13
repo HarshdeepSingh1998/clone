@@ -15,8 +15,7 @@ import {
 const UserLotModal: React.FC<UserLotModalProps> = ({ inventoryData }) => {
   const lotModalData = useUserLotModalData(inventoryData)
   const context = {
-    productDetails: lotModalData.lotProducts,
-    auctionType: 'Bid'
+    productDetails: lotModalData.lotProducts
   }
   const {
     handleSubmit,
@@ -26,23 +25,20 @@ const UserLotModal: React.FC<UserLotModalProps> = ({ inventoryData }) => {
     reset,
     formState: { errors }
   } = useUserLotModalForm(context)
+  const [toggleValue, setToggleValue] = useState('Bid')
   const { onSubmit, unitAskingPrice, setUnitAskingPrice } = useSubmit(
     inventoryData,
     lotModalData,
     reset,
-    watch
+    watch,
+    setToggleValue
   )
-  const [toggleValue, setToggleValue] = useState('Bid')
   const handleToggleChange = () => {
-    if (toggleValue === 'Bid') {
-      return
-    }
-
     setValue('auctionStartDate', '')
     setValue('auctionEndDate', '')
-    setToggleValue(() => {
-      setValue('auctionType', 'Bid')
-      return 'Bid'
+    setToggleValue(prevValue => {
+      setValue('auctionType', prevValue === 'Buy' ? 'Bid' : 'Buy')
+      return prevValue === 'Buy' ? 'Bid' : 'Buy'
     })
   }
 
@@ -71,6 +67,7 @@ const UserLotModal: React.FC<UserLotModalProps> = ({ inventoryData }) => {
           toggleValue={toggleValue}
           handleToggleChange={handleToggleChange}
           setUnitAskingPrice={setUnitAskingPrice}
+          setToggleValue={setToggleValue}
         />
       </ModalContainer>
     </Modal>

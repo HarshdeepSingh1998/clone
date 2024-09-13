@@ -31,7 +31,7 @@ export const USER_LOT_MODAL_VALIDATION_SCHEMA = yup.object().shape({
       'valid-date',
       'Auction Start Date is required.',
       function (value: any) {
-        const { auctionType } = this.options.context as ValidationContext
+        const auctionType = this.parent.auctionType
         return auctionType !== 'Bid' || (value && value !== 'Invalid Date')
       }
     ),
@@ -39,7 +39,7 @@ export const USER_LOT_MODAL_VALIDATION_SCHEMA = yup.object().shape({
   auctionEndDate: yup
     .string()
     .test('valid-date', 'Auction End Date is required.', function (value: any) {
-      const { auctionType } = this.options.context as ValidationContext
+      const auctionType = this.parent.auctionType
       return auctionType !== 'Bid' || (value && value !== 'Invalid Date')
     })
 })

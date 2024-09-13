@@ -43,7 +43,8 @@ const LotForm: React.FC<LotFormProps> = ({
   unitAskingPrice,
   toggleValue,
   handleToggleChange,
-  setUnitAskingPrice
+  setUnitAskingPrice,
+  setToggleValue
 }) => {
   return (
     <>
@@ -149,22 +150,24 @@ const LotForm: React.FC<LotFormProps> = ({
             <TotalPriceContainer>
               Total Asking Price: <span>${unitAskingPrice} </span>
             </TotalPriceContainer>
-            <FieldRow>
-              <DatePicker
-                publishModalData={{} as any}
-                controllername={'auctionStartDate'}
-                control={control}
-                errors={errors}
-                title={'Auction Start Date'}
-              />
-              <DatePicker
-                publishModalData={{} as any}
-                controllername={'auctionEndDate'}
-                control={control}
-                errors={errors}
-                title={'Auction End Date'}
-              />
-            </FieldRow>
+            {toggleValue === 'Bid' && (
+              <FieldRow>
+                <DatePicker
+                  publishModalData={{} as any}
+                  controllername={'auctionStartDate'}
+                  control={control}
+                  errors={errors}
+                  title={'Auction Start Date'}
+                />
+                <DatePicker
+                  publishModalData={{} as any}
+                  controllername={'auctionEndDate'}
+                  control={control}
+                  errors={errors}
+                  title={'Auction End Date'}
+                />
+              </FieldRow>
+            )}
             <NoteContainer>
               Please note there is a 5% platform commission fee paid by the
               seller upon any successful transaction.
@@ -183,7 +186,8 @@ const LotForm: React.FC<LotFormProps> = ({
                 onClick={() => {
                   inventoryData.setIsLotModalOpen(false),
                     reset(),
-                    setUnitAskingPrice(0)
+                    setUnitAskingPrice(0),
+                    setToggleValue('Bid')
                 }}
               />
             </ButtonContainer>

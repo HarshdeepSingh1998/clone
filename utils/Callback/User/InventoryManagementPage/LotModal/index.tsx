@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import usePut from '@/hooks/usePut'
 import { UserInventoryDataInterface } from '@/views/User/InventoryManagementPage/Desktop/types'
@@ -10,7 +10,8 @@ const useSubmit = (
   inventoryData: UserInventoryDataInterface,
   lotModalData: UseUserLotModalDataInterface,
   reset: any,
-  watch: any
+  watch: any,
+  setToggleValue: Dispatch<SetStateAction<string>>
 ) => {
   const [unitAskingPrice, setUnitAskingPrice] = useState(0)
 
@@ -61,6 +62,7 @@ const useSubmit = (
 
         inventoryData.setSelectAll(false)
         inventoryData.setSelectedProductIds([])
+        setToggleValue('Bid')
       }
     } catch (error: any) {
       if (!error?.response?.data?.message) {
