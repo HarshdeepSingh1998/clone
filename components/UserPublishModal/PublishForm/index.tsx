@@ -53,22 +53,24 @@ const PublishForm: React.FC<PublishFormProps> = ({
               endvalue="Auction"
             />
           )}
-          <FieldRow>
-            <DatePicker
-              publishModalData={{} as any}
-              controllername={'auctionStartDate'}
-              control={control}
-              errors={errors}
-              title={'Auction Start Date'}
-            />
-            <DatePicker
-              publishModalData={{} as any}
-              controllername={'auctionEndDate'}
-              control={control}
-              errors={errors}
-              title={'Auction End Date'}
-            />
-          </FieldRow>
+          {publishModalData.toggleValue === 'Bid' && (
+            <FieldRow>
+              <DatePicker
+                publishModalData={{} as any}
+                controllername={'auctionStartDate'}
+                control={control}
+                errors={errors}
+                title={'Auction Start Date'}
+              />
+              <DatePicker
+                publishModalData={{} as any}
+                controllername={'auctionEndDate'}
+                control={control}
+                errors={errors}
+                title={'Auction End Date'}
+              />
+            </FieldRow>
+          )}
           <NoteContainer>
             Please note there is a 5% platform commission fee paid by the seller
             upon any successful transaction.
@@ -85,7 +87,9 @@ const PublishForm: React.FC<PublishFormProps> = ({
               variant="text"
               label={'Cancel'}
               onClick={() => {
-                inventoryData.setIsPublishModalVisible(false), reset()
+                inventoryData.setIsPublishModalVisible(false),
+                  reset(),
+                  publishModalData.setToggleValue('Bid')
               }}
             />
           </ButtonContainer>

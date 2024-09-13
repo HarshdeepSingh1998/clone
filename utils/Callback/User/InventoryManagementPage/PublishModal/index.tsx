@@ -1,8 +1,17 @@
+import { Dispatch, SetStateAction } from 'react'
 import { toast } from 'react-toastify'
 import usePut from '@/hooks/usePut'
 import { UserInventoryDataInterface } from '@/views/User/InventoryManagementPage/Desktop/types'
 
-const useSubmit = (inventoryData: UserInventoryDataInterface, reset: any) => {
+const useSubmit = (
+  inventoryData: UserInventoryDataInterface,
+  reset: any,
+  publishModalData: {
+    toggleValue: string
+    handleToggleChange: () => void
+    setToggleValue: Dispatch<SetStateAction<string>>
+  }
+) => {
   const { mutateAsync } = usePut()
 
   const onSubmit = async (values: any) => {
@@ -25,6 +34,7 @@ const useSubmit = (inventoryData: UserInventoryDataInterface, reset: any) => {
         inventoryData.setSelectedProductIds([])
         inventoryData.setForceUpdate((prev: any) => !prev)
         inventoryData.setSelectedProduct('')
+        publishModalData.setToggleValue('Bid')
       }
     } catch (error: any) {
       if (!error?.response?.data?.message) {

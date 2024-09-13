@@ -13,8 +13,7 @@ import {
 
 const UserPublishModal: React.FC<PublishModalProps> = ({ inventoryData }) => {
   const context = {
-    productDetails: inventoryData.productDetails,
-    auctionType: 'Bid'
+    productDetails: inventoryData.productDetails
   }
   const {
     handleSubmit,
@@ -25,7 +24,7 @@ const UserPublishModal: React.FC<PublishModalProps> = ({ inventoryData }) => {
     formState: { errors }
   } = useUserPublishModalForm(context)
   const publishModalData = useUserPublishData(setValue)
-  const { onSubmit } = useSubmit(inventoryData, reset)
+  const { onSubmit } = useSubmit(inventoryData, reset, publishModalData)
   return (
     <Modal
       isOpen={inventoryData.isPublishModalVisible}

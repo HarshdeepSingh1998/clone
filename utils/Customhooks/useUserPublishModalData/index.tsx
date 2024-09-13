@@ -4,19 +4,15 @@ export const useUserPublishData = (setValue: any) => {
   const [toggleValue, setToggleValue] = useState('Bid')
 
   const handleToggleChange = () => {
-    if (toggleValue === 'Bid') {
-      return
-    }
-
     setValue('auctionStartDate', '')
     setValue('auctionEndDate', '')
-    setToggleValue(() => {
-      setValue('auctionType', 'Bid')
-      return 'Bid'
+    setToggleValue(prevValue => {
+      setValue('auctionType', prevValue === 'Buy' ? 'Bid' : 'Buy')
+      return prevValue === 'Buy' ? 'Bid' : 'Buy'
     })
   }
 
-  return { toggleValue, handleToggleChange }
+  return { toggleValue, handleToggleChange, setToggleValue }
 }
 
 export default useUserPublishData
