@@ -148,7 +148,7 @@ const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
                   </ModalNameContainer>
                 )}
                 <AmountDueContainer>
-                  Total Amount Due :
+                  Total Amount Due:&nbsp;
                   <span>
                     $
                     {publishModalData.productDetails?.[0]?.contract

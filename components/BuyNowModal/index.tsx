@@ -137,7 +137,7 @@ const BuyNowModal: React.FC<BuyNowModalProps> = ({
                   </ModalNameContainer>
                 )}
                 <AmountDueContainer>
-                  Total Amount Due :
+                  Total Amount Due:&nbsp;
                   <span>
                     $
                     {buyNowData.productDetails?.[0]?.contract
@@ -155,7 +155,7 @@ const BuyNowModal: React.FC<BuyNowModalProps> = ({
             {!buyNowData.productDetails?.[0]?.contract && (
               <HostingDetailContainer>
                 <AmountDueContainer className="without-hosting">
-                  Total Amount Due :
+                  Total Amount Due:&nbsp;
                   <span>
                     $
                     {buyNowData.productDetails?.[0]?.contract
