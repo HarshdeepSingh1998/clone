@@ -32,7 +32,8 @@ export const useUserMarketplace = (): MarketPlaceDataInterface => {
   const [page, setPage] = useState(1)
   const dispatch: AppDispatch = useDispatch()
   const { data, refetch: fetchData } = useGet(
-    'marketPlaceProductList',
+    // 'marketPlaceProductList',
+    `marketPlaceProductListHosting${hosting}${switchActive}`,
     switchActive === 'active'
       ? `/api/getPublishedProducts?sortBy=desc&status=Published&isHosting=true&userId=${userData?.data?.id}&limit=${itemsPerPage}&page=${page}&bidderId=${userData?.data?.id}`
       : `/api/getPublishedProducts?sortBy=desc&status=Published&isHosting=${hosting}&limit=${itemsPerPage}&page=${page}&bidderId=${userData?.data?.id}`,
