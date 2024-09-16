@@ -40,12 +40,20 @@ export const CardHeading = styled.div`
     }
   }
 `
-export const ProfileImageContainer = styled.div`
+export const ProfileImageContainer = styled.div<{ isAdmin?: boolean }>`
   position: absolute;
   right: 0;
+  &.admin-marketplace {
+    img {
+      border-radius: ${props => (props.isAdmin ? '0' : '50%')};
+      transform: translateY(-2px);
+    }
+  }
 
-  img {
-    borderradius: 50px;
-    transform: translateY(-2px);
+  &.marketplace {
+    img {
+      border-radius: 50%;
+      transform: translateY(-2px);
+    }
   }
 `

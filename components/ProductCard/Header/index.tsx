@@ -15,9 +15,9 @@ const Header: React.FC<HeaderProps> = ({ data, userData }) => {
   const router = useRouter()
   const { pathname } = router
   const marketPlaceImage =
-    data?.user?.profileImage && pathname === 'marketplace'
+    data?.user?.profileImage && pathname === '/marketplace'
   const adminMarketPlaceImage =
-    userData?.data?.id !== data?.user?._id && pathname !== 'marketplace'
+    userData?.data?.id !== data?.user?._id && pathname !== '/marketplace'
   return (
     <HeaderContainer>
       <HeadingContent isProfileImage={Boolean(data?.user?.profileImage)}>
@@ -27,7 +27,10 @@ const Header: React.FC<HeaderProps> = ({ data, userData }) => {
           </CardHeading>
         )}
         {marketPlaceImage && (
-          <ProfileImageContainer style={{ position: 'absolute', right: '0' }}>
+          <ProfileImageContainer
+            style={{ position: 'absolute', right: '0' }}
+            className="marketplace"
+          >
             <Image
               src={data?.user?.profileImage || DEFAULT_PROFILE_URL}
               alt="profile-image"
@@ -37,7 +40,11 @@ const Header: React.FC<HeaderProps> = ({ data, userData }) => {
           </ProfileImageContainer>
         )}
         {adminMarketPlaceImage && (
-          <ProfileImageContainer style={{ position: 'absolute', right: '0' }}>
+          <ProfileImageContainer
+            style={{ position: 'absolute', right: '0' }}
+            className="admin-marketplace"
+            isAdmin={data?.user?.role === 'admin'}
+          >
             <Image
               src={
                 data?.user?.role === 'admin'
