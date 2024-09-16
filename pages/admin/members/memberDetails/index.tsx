@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import withAuth from '@/utils/Authentication'
 import useMemberDetails from '@/utils/Customhooks/useMemberDetailsData'
 import useScreenType from '@/utils/Customhooks/useScreenType'
@@ -14,13 +13,6 @@ import RejectBidModal from '@/components/RejectBidModal'
 const Members = () => {
   const memberDetailsData = useMemberDetails()
   const { screenType } = useScreenType()
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-  if (!isClient) {
-    return null
-  }
 
   return (
     <AuthLayout

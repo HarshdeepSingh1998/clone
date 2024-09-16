@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import withAuth from '@/utils/Authentication'
 import useAuctionManagementData from '@/utils/Customhooks/useAuctionManagementData'
 import useScreenType from '@/utils/Customhooks/useScreenType'
@@ -14,13 +13,6 @@ import { AuctionManagementContainer } from '@/styles/Pages/Admin/AuctionManageme
 const AuctionManagement = () => {
   const auctionManagementData = useAuctionManagementData()
   const { screenType } = useScreenType()
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-  if (!isClient) {
-    return null
-  }
 
   return (
     <AuthLayout

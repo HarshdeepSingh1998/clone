@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import withAuth from '@/utils/Authentication'
 import useContractList from '@/utils/Customhooks/useContactList'
 import useScreenType from '@/utils/Customhooks/useScreenType'
@@ -15,13 +14,6 @@ const ContractManagement = () => {
   //   const inventoryData = useInventoryProduct()
   const { screenType } = useScreenType()
   const contractData = useContractList()
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-  if (!isClient) {
-    return null
-  }
 
   return (
     <AuthLayout

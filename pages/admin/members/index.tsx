@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import withAuth from '@/utils/Authentication'
 import useMemberData from '@/utils/Customhooks/useMembersData'
 import useScreenType from '@/utils/Customhooks/useScreenType'
@@ -11,13 +10,6 @@ import { MembersContainer } from '@/styles/Pages/Admin/MembersPage'
 const Members = () => {
   const memberData = useMemberData()
   const { screenType } = useScreenType()
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-  if (!isClient) {
-    return null
-  }
 
   return (
     <AuthLayout isPopUpVisible={memberData.showAddMemberModal}>
