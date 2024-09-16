@@ -15,6 +15,7 @@ const HostingView = ({
 }) => {
   const hostingDetails =
     productDetailsData.productDetails?.[productDetailsData?.index]
+
   return (
     <>
       {hostingDetails?.hosting && hostingDetails?.contract && (

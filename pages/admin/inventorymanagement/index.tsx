@@ -44,46 +44,56 @@ const InventoryManagement = () => {
           <InventoryManagementMobile inventoryData={inventoryData} />
         )}
       </InventorymanagementContainer>
-      <CsvModal
-        isModalOpen={inventoryData.importCsvModalVisible}
-        closeModal={inventoryData.setImportCsvModalVisible}
-        inventoryData={inventoryData}
-        setPage={inventoryData.setPage}
-        setForceUpdate={inventoryData.setForceUpdate}
-        selectedFiles={inventoryData.selectedFiles}
-        setSelectedFiles={inventoryData.setSelectedFiles}
-        handleFileChange={inventoryData.handleFileChange}
-        fileUploadError={inventoryData.fileUploadError}
-        setFileUploadError={inventoryData.setFileUploadError}
-      />
-      <AdminDeleteModal
-        isOpen={inventoryData?.isModalOpen.showDeleteModel}
-        setShowDeleteModel={inventoryData?.toggleModal}
-        setPage={inventoryData.setPage}
-        setForceUpdate={inventoryData.setForceUpdate}
-        inventoryData={inventoryData}
-      />
-      <BulkDeleteModal
-        isOpen={inventoryData?.isModalOpen.showBulkDeleteModel}
-        setShowDeleteModel={inventoryData?.toggleModal}
-        setPage={inventoryData.setPage}
-        setForceUpdate={inventoryData.setForceUpdate}
-        inventoryData={inventoryData}
-      />
-      <AdminUnassignModal
-        isOpen={inventoryData?.isModalOpen.showUnassignedModel}
-        setShowUnassignModel={inventoryData?.toggleModal}
-        setPage={inventoryData.setPage}
-        setForceUpdate={inventoryData.setForceUpdate}
-        inventoryData={inventoryData}
-      />
-      <AdminRevokeModal
-        isOpen={inventoryData?.isModalOpen.showRevokeModel}
-        setShowRevokeModel={inventoryData?.toggleModal}
-        setPage={inventoryData.setPage}
-        setForceUpdate={inventoryData.setForceUpdate}
-        inventoryData={inventoryData}
-      />
+      {inventoryData.importCsvModalVisible && (
+        <CsvModal
+          isModalOpen={inventoryData.importCsvModalVisible}
+          closeModal={inventoryData.setImportCsvModalVisible}
+          inventoryData={inventoryData}
+          setPage={inventoryData.setPage}
+          setForceUpdate={inventoryData.setForceUpdate}
+          selectedFiles={inventoryData.selectedFiles}
+          setSelectedFiles={inventoryData.setSelectedFiles}
+          handleFileChange={inventoryData.handleFileChange}
+          fileUploadError={inventoryData.fileUploadError}
+          setFileUploadError={inventoryData.setFileUploadError}
+        />
+      )}
+      {inventoryData?.isModalOpen.showDeleteModel && (
+        <AdminDeleteModal
+          isOpen={inventoryData?.isModalOpen.showDeleteModel}
+          setShowDeleteModel={inventoryData?.toggleModal}
+          setPage={inventoryData.setPage}
+          setForceUpdate={inventoryData.setForceUpdate}
+          inventoryData={inventoryData}
+        />
+      )}
+      {inventoryData?.isModalOpen.showBulkDeleteModel && (
+        <BulkDeleteModal
+          isOpen={inventoryData?.isModalOpen.showBulkDeleteModel}
+          setShowDeleteModel={inventoryData?.toggleModal}
+          setPage={inventoryData.setPage}
+          setForceUpdate={inventoryData.setForceUpdate}
+          inventoryData={inventoryData}
+        />
+      )}
+      {inventoryData?.isModalOpen.showUnassignedModel && (
+        <AdminUnassignModal
+          isOpen={inventoryData?.isModalOpen.showUnassignedModel}
+          setShowUnassignModel={inventoryData?.toggleModal}
+          setPage={inventoryData.setPage}
+          setForceUpdate={inventoryData.setForceUpdate}
+          inventoryData={inventoryData}
+        />
+      )}
+      {inventoryData?.isModalOpen.showRevokeModel && (
+        <AdminRevokeModal
+          isOpen={inventoryData?.isModalOpen.showRevokeModel}
+          setShowRevokeModel={inventoryData?.toggleModal}
+          setPage={inventoryData.setPage}
+          setForceUpdate={inventoryData.setForceUpdate}
+          inventoryData={inventoryData}
+        />
+      )}
       {inventoryData.isModalOpen.isPublishModalVisible && (
         <PublishModal
           selectedProduct={inventoryData.productDetails}

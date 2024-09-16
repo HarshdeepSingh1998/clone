@@ -11,6 +11,7 @@ const CardView = ({
   marketplaceData: MarketPlaceDataInterface
 }) => {
   const { screenType } = useScreenType()
+
   return (
     <CardContainer isMobile={screenType === 'mobile'}>
       {!marketplaceData.data && (

@@ -10,6 +10,7 @@ import {
 } from '@/styles/Views/Admin/ProductDetailsPage/Description'
 import ProductCard from '@/components/ProductCard'
 import { selectUser } from '@/store/userSlice'
+import { useState, useEffect } from 'react'
 
 const DescriptionView = ({
   productDetailsData
@@ -20,6 +21,15 @@ const DescriptionView = ({
     productDetailsData.productDetails?.[productDetailsData?.index]
 
   const userData = useSelector(selectUser)
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) {
+    return null
+  }
+
   return (
     <>
       {!descriptionDetails?.lotId && (
