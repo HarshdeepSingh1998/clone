@@ -32,7 +32,6 @@ const Popup = ({
               alt="Asic mining"
               width={48}
               height={48}
-              style={{ borderRadius: '50px' }}
               {...bindTrigger(popupState)}
             />
           </ImageContainer>
