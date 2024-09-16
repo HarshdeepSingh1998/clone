@@ -7,21 +7,38 @@ export const TextContainer = styled.div`
   font-style: normal;
   font-weight: 500;
   text-transform: capitalize;
-  padding-bottom: 10px;
 `
 export const TextBoxStyle = styled.textarea`
   min-height: 151px;
   border-radius: 12px;
   border: 1px solid #323a4b;
   background: #222836;
-  color: #ffffff;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   padding: 20px;
   resize: vertical;
-  @media (max-width: 767px) {
+  outline: none;
+  color: #fff;
+  &:focus {
+    border: 1px solid #fb674b;
+    caret-color: #fb674b;
+  }
+  &::placeholder {
+    color: #6f767e !important;
+    font-family: Inter, sans-serif;
+    //styleName: Base 2;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    text-align: left;
+  }
+  &::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #6f767e;
   }
 `
 export const ErrorMessageContainer = styled.div`
