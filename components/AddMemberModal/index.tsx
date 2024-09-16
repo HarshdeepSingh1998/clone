@@ -12,8 +12,8 @@ import {
   FormContainer,
   InputContainer
 } from '@/styles/Components/AddMemberModal'
-import Input from '../Input'
-import Button from '../Button'
+import Input from 'components/Input'
+import Button from 'components/Button'
 
 const AddMemberModal: React.FC<AddMemberModalProps> = ({ memberData }) => {
   const {

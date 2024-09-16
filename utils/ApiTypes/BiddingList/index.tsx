@@ -1,4 +1,4 @@
-import { ProductList } from '../ProductList'
+import { ProductList } from 'utils/ApiTypes/ProductList'
 
 export interface BiddingList {
   auctionStatus: string

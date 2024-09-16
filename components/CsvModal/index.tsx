@@ -25,7 +25,7 @@ import {
   UploadFileContainer,
   ButtonContainer
 } from '@/styles/Components/CsvModal'
-import Button from '../Button'
+import Button from 'components/Button'
 
 const CsvModal: React.FC<CsvModalProps> = ({
   isModalOpen,

@@ -1,4 +1,5 @@
-import { TermsandConditionInterface } from '../types'
+import { useState, useEffect } from 'react'
+import { TermsandConditionInterface } from 'components/Sidebar/types'
 import Modal from '@/components/Modal'
 import PdfViewer from '@/components/PdfViewer'
 import { TextContainer } from '@/styles/Components/Sidebar/TermsandCondition'
@@ -10,6 +11,15 @@ const TermsandCondition = ({
   pdfUrl,
   closePdfModal
 }: TermsandConditionInterface) => {
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) {
+    return null
+  }
+
   return (
     <>
       <TextContainer>

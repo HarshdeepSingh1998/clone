@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import useScreenType from '@/utils/Customhooks/useScreenType'
 import { RightContainerInterface } from 'components/AuthNavbar/types'
 import CloseNavMenu from '@/assets/images/svg/CloseNavMenu'
@@ -7,7 +8,7 @@ import {
   IconContainer,
   IconContent
 } from '@/styles/Components/AuthNavbar/RightContainer'
-import Popup from '../Popup'
+import Popup from 'components/AuthNavbar/Popup'
 
 const RightContainer = ({
   setMenuSliderOpen,
@@ -19,6 +20,15 @@ const RightContainer = ({
   handleLogoutClick
 }: RightContainerInterface) => {
   const { screenType } = useScreenType()
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) {
+    return null
+  }
+
   return (
     <RightContent>
       {screenType === 'mobile' || screenType === 'tab' ? (

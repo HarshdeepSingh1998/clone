@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import useMobileNavbar from '@/utils/Customhooks/useMobileNavbar'
-import { MobileNavbarInterface } from '../types'
+import { MobileNavbarInterface } from 'components/AuthNavbar/types'
 import { SideBarDataInterface } from '@/components/AuthNavbar/types'
 import {
   MobileNavbarContainer,
