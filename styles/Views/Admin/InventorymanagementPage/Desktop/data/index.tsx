@@ -203,6 +203,10 @@ export const ContractContainer = styled.div`
   /* justify-content: space-between; */
   align-items: center;
   gap: 10px;
+
+  &.modal-description {
+    cursor: pointer;
+  }
 `
 export const Container = styled.div`
   display: flex;

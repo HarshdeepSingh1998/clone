@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import withAuth from '@/utils/Authentication'
 import useSalesData from '@/utils/Customhooks/useSalesData'
 import useScreenType from '@/utils/Customhooks/useScreenType'
@@ -10,6 +11,14 @@ import { SalesContainer } from '@/styles/Pages/Admin/SalesPage'
 const Sales = () => {
   const salesData = useSalesData()
   const { screenType } = useScreenType()
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+  if (!isClient) {
+    return null
+  }
+
   return (
     <AuthLayout isPopUpVisible={salesData.showPaymentConformationModal}>
       <SalesContainer>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import withAuth from '@/utils/Authentication'
 import useScreenType from '@/utils/Customhooks/useScreenType'
 import CsvModal from '@/components/CsvModal'
@@ -18,6 +19,14 @@ import { InventorymanagementContainer } from '@/styles/Pages/Admin/Inventorymana
 const InventoryManagement = () => {
   const inventoryData = useInventoryProduct()
   const { screenType } = useScreenType()
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+  if (!isClient) {
+    return null
+  }
+
   return (
     <AuthLayout
       isPopUpVisible={

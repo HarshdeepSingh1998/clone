@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import withAuth from '@/utils/Authentication'
 import { useProductDetails } from '@/utils/Customhooks/useProductDetails'
 import useActionButton from '@/utils/Customhooks/useActionButton'
@@ -22,6 +22,13 @@ const ProductDetails = () => {
     productDetailsData.productDetails?.[productDetailsData?.index],
     setAnchorEl
   )
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+  if (!isClient) {
+    return null
+  }
 
   return (
     <AuthLayout

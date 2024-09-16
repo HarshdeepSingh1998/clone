@@ -36,52 +36,54 @@ const HeaderView = ({
   }
 
   return (
-    <HeaderContainer>
-      <TitleContainer>Inventory Management</TitleContainer>
-      <ButtonContainer>
-        {inventoryData.selectedProductIds?.length >= 2 ? (
-          <>
-            <PrimaryButttonContainer
-              onClick={() => inventoryData.toggleModal('showBulkDeleteModel')}
-            >
-              Bulk Delete
-            </PrimaryButttonContainer>
-            <PrimaryButttonContainer
-              onClick={() =>
-                inventoryData.toggleModal('bulkAssignModalVisible')
-              }
-            >
-              Bulk Assign
-            </PrimaryButttonContainer>
-            <SecondaryButtonContainer onClick={handleLotModalClick}>
-              <Button type="button" variant="contained" label={''}>
-                Create A Lot
-              </Button>
-            </SecondaryButtonContainer>
-          </>
-        ) : (
-          <>
-            <PrimaryButttonContainer
-              onClick={() => inventoryData.setImportCsvModalVisible(true)}
-            >
-              <Image src={File} alt="minus" />
-              Bulk Upload
-            </PrimaryButttonContainer>
-            <SecondaryButtonContainer
-              onClick={() => router.push('/admin/addProduct')}
-            >
-              <Button type="button" variant="contained" label={''}>
-                <CircleIcon cursor="pointer" /> {''}
-                Add Product
-              </Button>
-            </SecondaryButtonContainer>
-          </>
-        )}
-      </ButtonContainer>
+    <>
+      <HeaderContainer>
+        <TitleContainer>Inventory Management</TitleContainer>
+        <ButtonContainer>
+          {inventoryData.selectedProductIds?.length >= 2 ? (
+            <>
+              <PrimaryButttonContainer
+                onClick={() => inventoryData.toggleModal('showBulkDeleteModel')}
+              >
+                Bulk Delete
+              </PrimaryButttonContainer>
+              <PrimaryButttonContainer
+                onClick={() =>
+                  inventoryData.toggleModal('bulkAssignModalVisible')
+                }
+              >
+                Bulk Assign
+              </PrimaryButttonContainer>
+              <SecondaryButtonContainer onClick={handleLotModalClick}>
+                <Button type="button" variant="contained" label={''}>
+                  Create A Lot
+                </Button>
+              </SecondaryButtonContainer>
+            </>
+          ) : (
+            <>
+              <PrimaryButttonContainer
+                onClick={() => inventoryData.setImportCsvModalVisible(true)}
+              >
+                <Image src={File} alt="minus" />
+                Bulk Upload
+              </PrimaryButttonContainer>
+              <SecondaryButtonContainer
+                onClick={() => router.push('/admin/addProduct')}
+              >
+                <Button type="button" variant="contained" label={''}>
+                  <CircleIcon cursor="pointer" /> {''}
+                  Add Product
+                </Button>
+              </SecondaryButtonContainer>
+            </>
+          )}
+        </ButtonContainer>
+      </HeaderContainer>
       {!inventoryData?.data && (
         <Loader blurredBackgroundtrue={!inventoryData?.data} />
       )}
-    </HeaderContainer>
+    </>
   )
 }
 

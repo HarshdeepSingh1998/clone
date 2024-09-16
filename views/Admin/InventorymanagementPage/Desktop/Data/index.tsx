@@ -88,6 +88,7 @@ export const generateTableData = (
         onClick={() => {
           inventoryData.handleViewProduct(data._id)
         }}
+        className="modal-description"
       >
         <ImageContainer>
           <Image

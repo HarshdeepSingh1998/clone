@@ -8,7 +8,7 @@ export const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
   gap: 8px;
-  cursor: 'pointer';
+  cursor: pointer;
 
   @media (max-width: 767px) {
     transform: unset;

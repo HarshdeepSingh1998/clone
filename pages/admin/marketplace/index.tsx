@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import AuthLayout from '@/components/AuthLayout'
 import withAuth from '@/utils/Authentication'
 import HeaderView from '@/views/Admin/MarketPlacePage/HeaderView'
@@ -15,6 +16,14 @@ const AdminMarketPlace = () => {
     productList,
     handleLoadMoreClick
   } = useAdminMarketPlace()
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+  if (!isClient) {
+    return null
+  }
+
   return (
     <AuthLayout>
       <MarketPlaceContainer>
