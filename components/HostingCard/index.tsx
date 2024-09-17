@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useRouter } from 'next/router'
 import useScreenType from '@/utils/Customhooks/useScreenType'
 import { HostingCardProps } from 'components/HostingCard/types'
@@ -13,14 +12,14 @@ import {
   ButtonContainer
 } from '@/styles/Components/HostingCard'
 
-const HostingCard: React.FC<HostingCardProps> = ({ data, index }) => {
+const HostingCard: React.FC<HostingCardProps> = ({
+  data,
+  index,
+  handleCardClick,
+  selectedCard
+}) => {
   const router = useRouter()
-  const [selectedCard, setSelectedCard] = useState(null)
   const { screenType } = useScreenType()
-  const handleCardClick = (index: any) => {
-    setSelectedCard(index)
-  }
-
   return (
     <HostingCardContainer
       onClick={() => handleCardClick(index)}
