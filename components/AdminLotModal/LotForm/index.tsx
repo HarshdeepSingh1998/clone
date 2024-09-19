@@ -12,7 +12,8 @@ import {
   ImageContainer,
   ModalNameContainer,
   SerialNumberContainer,
-  BorderBottom
+  BorderBottom,
+  PublishFormContainer
 } from '@/styles/Components/AdminLotModal/LotForm'
 
 const LotForm: React.FC<LotFormProps> = ({
@@ -44,7 +45,7 @@ const LotForm: React.FC<LotFormProps> = ({
         unitAskingPrice={unitAskingPrice}
         setUnitAskingPrice={setUnitAskingPrice}
       >
-        <div>
+        <PublishFormContainer>
           <ProductListContainer>
             <ProductListContent>
               Products
@@ -98,7 +99,7 @@ const LotForm: React.FC<LotFormProps> = ({
             ))}
           </ProductListContent>
           <BorderBottom />
-        </div>
+        </PublishFormContainer>
       </PublishForm>
     </>
   )

@@ -134,6 +134,7 @@ export const SerialNumberContainer = styled.div`
 `
 export const BorderBottom = styled.div`
   border-bottom: 1px solid #404353;
+  margin-top: 5px;
 `
 export const QuantityContainer = styled.div`
   display: flex;
@@ -245,5 +246,12 @@ export const TotalPriceContainer = styled.div`
   color: #fff;
   span {
     color: #fb674b;
+  }
+`
+
+export const PublishFormContainer = styled.div`
+  @media (min-width: 768px) {
+    max-height: 250px;
+    overflow-y: scroll;
   }
 `
