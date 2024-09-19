@@ -5,7 +5,10 @@ import useGet from '@/hooks/useGet'
 import { selectUser } from '@/store/userSlice'
 import { BiddingList } from '@/utils/ApiTypes/BiddingList'
 import { AuctionManagementDataInterface } from '@/views/Admin/AuctionManagementPage/Desktop/types'
-import EditModal from '@/assets/images/images/edit-modal.png'
+import Accept from '@/assets/images/images/Accept.png'
+import Reject from '@/assets/images/images/Reject.png'
+import Counter from '@/assets/images/images/Counter.png'
+import History from '@/assets/images/images/History.png'
 
 const useAuctionManagementData = (): AuctionManagementDataInterface => {
   const router = useRouter()
@@ -153,25 +156,25 @@ const useAuctionManagementData = (): AuctionManagementDataInterface => {
           key: 'accept',
           title: 'Accept',
           handleClick: () => acceptBidClick(selectedBidData),
-          image: EditModal
+          image: Accept
         },
         {
           key: 'counter',
           title: 'Counter Bid',
           handleClick: () => counterBid(selectedBidData),
-          image: EditModal
+          image: Counter
         },
         {
           key: 'history',
           title: 'Bid History',
           handleClick: () => bidHistory(selectedBidData),
-          image: EditModal
+          image: History
         },
         {
           key: 'rejected',
           title: 'Reject Bid',
           handleClick: () => rejectBid(selectedBidData),
-          image: EditModal
+          image: Reject
         }
       ])
     } else {
@@ -180,7 +183,7 @@ const useAuctionManagementData = (): AuctionManagementDataInterface => {
           key: 'history',
           title: 'Bid History',
           handleClick: () => bidHistory(selectedBidData as BiddingList),
-          image: EditModal
+          image: History
         }
       ])
     }

@@ -46,7 +46,7 @@ const HeaderView = ({
                 : 'N/A'}
             </MachineInfoContainer>
             <PriceContainer className="price">
-              Price :
+              Price:&nbsp;
               {auctionManagementData?.biddingList?.[0]?.product?.askPrice
                 ? `$${auctionManagementData?.biddingList?.[0]?.product?.askPrice}`
                 : 'N/A'}

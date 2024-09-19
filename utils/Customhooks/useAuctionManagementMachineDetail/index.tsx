@@ -6,7 +6,9 @@ import useGet from '@/hooks/useGet'
 import { selectUser } from '@/store/userSlice'
 import { BiddingList } from '@/utils/ApiTypes/BiddingList'
 import { AuctionManagementMachineDetailInterface } from '@/views/Admin/AuctionManagementPage/AuctionManagementMachineDetail/Desktop/types'
-import EditModal from '@/assets/images/images/edit-modal.png'
+import Reject from '@/assets/images/images/Reject.png'
+import Counter from '@/assets/images/images/Counter.png'
+import History from '@/assets/images/images/History.png'
 
 const useAuctionManagementMachineDetail =
   (): AuctionManagementMachineDetailInterface => {
@@ -112,19 +114,19 @@ const useAuctionManagementMachineDetail =
             key: 'counter',
             title: 'Counter Bid',
             handleClick: () => counterBid(selectedBidData),
-            image: EditModal
+            image: Counter
           },
           {
             key: 'history',
             title: 'Bid History',
             handleClick: () => bidHistory(selectedBidData),
-            image: EditModal
+            image: History
           },
           {
             key: 'rejected',
             title: 'Reject Bid',
             handleClick: () => rejectBid(selectedBidData),
-            image: EditModal
+            image: Reject
           }
         ])
       } else {
@@ -133,7 +135,7 @@ const useAuctionManagementMachineDetail =
             key: 'history',
             title: 'Bid History',
             handleClick: () => bidHistory(selectedBidData as BiddingList),
-            image: EditModal
+            image: History
           }
         ])
       }

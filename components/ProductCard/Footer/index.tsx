@@ -13,7 +13,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
       {data?.askPrice ? (
         <div>
           <FooterContent className="footer">
-            <AskPriceContainer className="bit">{`Asking Price :$${data?.askPrice}`}</AskPriceContainer>
+            <AskPriceContainer className="bit">{`Asking Price: $${data?.askPrice}`}</AskPriceContainer>
             {data?.auctionType === 'Bid' &&
             data?.highestBid &&
             data?.highestBid > 0 ? (
