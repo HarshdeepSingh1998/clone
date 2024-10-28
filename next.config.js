@@ -30,8 +30,8 @@ const nextConfig = {
       '/contact': { page: '/contact' },
       '/signin': { page: '/signin' },
       '/signup': { page: '/signup' },
-      '/forgetpassword': { page: '/forgetpassword' },
-      '/admin/dashboard': { page: '/admin/dashboard' },
+      // '/forgetpassword': { page: '/forgetpassword' },
+      // '/admin/dashboard': { page: '/admin/dashboard' },
       '/admin/marketplace': { page: '/admin/marketplace' },
       '/admin/inventorymanagement': { page: '/admin/inventorymanagement' },
       '/admin/auctionManagement': { page: '/admin/auctionManagement' },
@@ -50,7 +50,7 @@ const nextConfig = {
       //   page: '/admin/members/[memberId]'
       // },
       '/admin/sales': { page: '/admin/sales' },
-      '/admin/product/[productId]': { page: '/admin/product/[productId]' },
+      // '/admin/product/[productId]': { page: '/admin/product/[productId]' },
       '/user/marketplace': {
         page: '/user/marketplace'
       },
@@ -69,7 +69,7 @@ const nextConfig = {
       '/user/contractmanagement': {
         page: '/user/contractmanagement'
       },
-      '/user/sales': { page: '/user/sales' },
+      // '/user/sales': { page: '/user/sales' },
       '/admin/auctionManagement/machine': {
         page: '/admin/auctionManagement/machine'
       },
